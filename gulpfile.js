@@ -45,7 +45,7 @@ gulp.task('sass', function() {
 	return merge(tasks);
 });
 
-var typescriptSources = ['typescript/**/*.ts', ];
+var typescriptSources = ['typescript/app/**/*.ts', ];
 
 /**
  * typescript

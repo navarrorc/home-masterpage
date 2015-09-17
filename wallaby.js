@@ -3,7 +3,7 @@ module.exports = function (wallaby) {
     files: [
       {"pattern": "builds/development/lib/jquery.min.js", "instrument": false},
       {"pattern": "typescript/test/lib/*.js", "instrument": false},
-      "typescript/*.ts",
+      "typescript/app/*.ts",
       "typescript/templates/*.ts"
     ],
 
