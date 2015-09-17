@@ -1,0 +1,20 @@
+{
+  "name": "people_display_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roberto C. Navarro",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-debug": "^2.1.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.8.3",
+    "gulp-util": "^3.0.6",
+    "merge-stream": "^1.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "mocha/mocha.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "sinon/sinon.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "assertion-error/assertion-error.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "chai/chai.d.ts": {
+      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    }
+  }
+}
