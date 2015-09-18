@@ -17,11 +17,14 @@
     "sinon/sinon.d.ts": {
       "commit": "5f480287834a2615274eea31574b713e64decf17"
     },
-    "assertion-error/assertion-error.d.ts": {
-      "commit": "5f480287834a2615274eea31574b713e64decf17"
-    },
     "chai/chai.d.ts": {
       "commit": "5f480287834a2615274eea31574b713e64decf17"
+    },
+    "sharepoint/SharePoint.d.ts": {
+      "commit": "6f6e5c7dd9effe21fee14eb65fe340ecbbc8580a"
+    },
+    "microsoft-ajax/microsoft.ajax.d.ts": {
+      "commit": "6f6e5c7dd9effe21fee14eb65fe340ecbbc8580a"
     }
   }
 }

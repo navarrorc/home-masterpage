@@ -3,11 +3,42 @@
 	height: 40px;
 	padding-top: 3px;
 }
-#O365_MainLink_Logo, .o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide, span.o365cs-nav-brandingText  {
+#O365_MainLink_Logo,
+span.o365cs-nav-brandingText,
+div.o365cs-me-tile-nophoto-username-container {
 	visibility: hidden;
 }
-
-h2 {
-	color: green !important;
-	font-weight: 800;
+.o365cs-nav-centerAlign {
+	padding-right: 25px;
 }
+.o365cs-me-tileview-container {
+	display: block !important;
+
+}
+// .o365cs-me-tileview-container::after	{
+// 	content: "";
+// 	display: block;
+// 	border-radius: 50%;
+// 	width: 42px;
+// 	height: 42px;
+// 	background-image: url("http://rushenterprises.sharepoint.com/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=NavarroAburR@RushEnterprises.Com");
+// 	//background-image: url("https://placehold.it/42x42");
+// 	background-size: 42px 42px;
+// 	margin: 5px 0 5px 5px;
+// }
+//
+// button.o365cs-nav-item.o365cs-nav-button.o365cs-me-nav-item.o365button.ms-bgc-tdr-h.ms-fcl-w {
+// 	//width: 50px;
+// }
+
+// .o365cs-me-tile-nophoto-username-container {
+// 	padding: 0;
+// }
+	.profileImage {
+		width: 42px;
+		height: 42px;
+		border-radius: 50%;
+	}
+	.wf-o365-downcarat:before {
+	//	color: #fff;
+	}

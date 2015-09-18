@@ -14,9 +14,9 @@ describe("Lorem Ipsum", () => {
 
 
   it("Dolor", () =>{
-    var greeter = new myModule.Greeter("Roberto");
-    console.log(greeter.greet());
-    greeter.greet().should.equal("Hello, Roberto!");
+    // var greeter = new myModule.Greeter("Roberto");
+    // console.log(greeter.greet());
+    // greeter.greet().should.equal("Hello, Roberto!");
   });
 
   it("something", ()=>{
@@ -24,6 +24,6 @@ describe("Lorem Ipsum", () => {
      console.log($('#O365_MainLink_Logo').html());
      $('#O365_MainLink_Logo').html("<a href='/sites/rushnet'><img src='/sites/rushnet/SiteAssets/rushlogo.PNG' class='companyLogo'></a>");
      console.log($('#O365_MainLink_Logo').html());
-     
+
   })
 });
