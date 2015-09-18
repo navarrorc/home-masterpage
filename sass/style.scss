@@ -1,20 +1,100 @@
+// declaration of "Suite bar to text icon"
+@mixin sbTextToIcon {
+    .o365cs-nav-brandingText {
+        display: none;
+    }
+    // Inject Logo before the original text link
+    &::before {
+        // Use Office 365 icon fonts
+        font-family: 'office365icons', 'o365Icons';
+        // add defined content here in our case the icons
+        @content;
+        /** Adjust font-size to match the other icons **/
+
+        font-size: 22px;
+        line-height: 50px;
+    }
+    // Finally avoid hover underline because of the link
+    &:hover {
+        text-decoration: none;
+    }
+}
+// media query for all smart phone
+@media only screen and (max-width: 600px) {
+
+        // Changes Office 365 text to logo
+    #O365_MainLink_Logo {
+        // include mixin and â€¦
+        // @include sbTextToIcon {
+        //     // â€¦ add the correct Office 365 icon
+        //     content: '\E055';
+        // }
+				display:none;
+    }
+    // Change "Sites" label to logo
+    .o365cs-nav-appTitle.o365cs-topnavText.o365button {
+            // include mixin and
+        // @include sbTextToIcon {
+        //     // add the correct Sites icon
+        //     content: '\E022';
+        // }
+    }
+		.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+			display: none;
+		}
+
+		.o365cs-nav-centerAlign {
+			padding: 0;
+		}
+
+		// .o365cs-nav-header16{
+		// 	.o365cs-nav-notificationTrayContainer {
+		// 		// remove fixed width of notification tray
+		// 		min-width: 0 !important;
+		// 		width: auto !important;
+		// 	}
+		// }
+}
+
+@media only screen and (max-width: 480px)
+                   and (orientation: portrait) {
+    .o365cs-nav-headerRegion {
+        display: none !important;
+    }
+		// .o365cs-nav-header16 .o365cs-nav-o365Branding{
+    //     padding: 0px 15px !important;
+    // }
+		.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff,
+		button.o365cs-nav-item.o365cs-nav-button.ms-fcl-w.o365cs-me-nav-item.o365button.ms-bgc-tdr-h {
+			display: none !important;
+		}
+
+}
+
+
+
 .companyLogo {
 	width: 60px;
 	height: 40px;
 	padding-top: 3px;
 }
 #O365_MainLink_Logo,
-span.o365cs-nav-brandingText,
+// span.o365cs-nav-brandingText,
 div.o365cs-me-tile-nophoto-username-container {
 	visibility: hidden;
 }
 .o365cs-nav-centerAlign {
-	padding-right: 25px;
+	padding-right: 10px;
 }
 .o365cs-me-tileview-container {
 	display: block !important;
 
 }
+
+span.o365cs-nav-brandingText {
+	font-family: "Times New Roman", Times, Serif !important;
+}
+
 // .o365cs-me-tileview-container::after	{
 // 	content: "";
 // 	display: block;
@@ -38,7 +118,16 @@ div.o365cs-me-tile-nophoto-username-container {
 		width: 42px;
 		height: 42px;
 		border-radius: 50%;
+		padding-top: 4px;
 	}
 	.wf-o365-downcarat:before {
 	//	color: #fff;
+	}
+
+	.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+		display:none;
+	}
+
+	.o365cs-nav-topItem.o365cs-nav-o365Branding.o365cs-rsp-tn-hideIfAffordanceOn {
+		padding-right: 10px;
 	}
