@@ -4,27 +4,31 @@ module myModule {
 		constructor() {
 		}
 		setProfileImage() {
-			SP.SOD.executeOrDelayUntilScriptLoaded(()=>{ // must wait for sp.js to be loaded
-				var context = SP.ClientContext.get_current();
-				var oWeb = context.get_web();
-				var currentUser = oWeb.get_currentUser();
-				context.load(currentUser);
-				context.executeQueryAsync((sender, args)=>{
-					// console.info(currentUser.get_email());
-					var profileImage = '<img src="/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + currentUser.get_email() + '" alt="" class="profileImage">';
+			jQuery(document).ready(function () {
+				//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
+				//see: http://blog.qumsieh.ca/2013/10/30/how-to-properly-reference-sp-js-in-a-master-page/
 
-					var interval = setInterval(()=> { // wait 1 second before executing
-						if($('div.o365cs-me-tile-nophoto-username-container').length) {
-							$('div.o365cs-me-tile-nophoto-username-container').html(profileImage);
-							$('div.o365cs-me-tile-nophoto-username-container').attr('style', 'visibility: visible');
-							clearInterval(interval);
-						}
-					}, 1000);
+				SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{
+					var context = SP.ClientContext.get_current();
+					var oWeb = context.get_web();
+					var currentUser = oWeb.get_currentUser();
+					context.load(currentUser);
+					context.executeQueryAsync((sender, args)=>{
+						var profileImage = '<img src="/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + currentUser.get_email() + '" alt="" class="profileImage">';
 
-				}, (sender, args)=>{
-					console.info('Error: ' + args.get_message());
+						var interval = setInterval(()=> { // wait 1 second before executing
+							if($('div.o365cs-me-tile-nophoto-username-container').length) {
+								$('div.o365cs-me-tile-nophoto-username-container').html(profileImage);
+								$('div.o365cs-me-tile-nophoto-username-container').attr('style', 'visibility: visible');
+								clearInterval(interval);
+							}
+						}, 1000);
+
+					}, (sender, args)=>{
+						console.info('Error: ' + args.get_message());
+					});
 				});
-			}, 'sp.js');
+			});
 		};
 		setSiteTitle(){
 			var interval = setInterval(function() {
@@ -47,14 +51,35 @@ module myModule {
 				}
 			}, 1000);
 		}
+		showProfileInfoOnConsole(){
+			jQuery(document).ready(function () {
+				SP.SOD.executeFunc('SP.js', 'SP.ClientContext', function() {
+					// Make sure PeopleManager is available
+					SP.SOD.executeFunc('userprofile', 'SP.UserProfiles.PeopleManager', function() {
+
+						var context = SP.ClientContext.get_current();
+						var peopleManager = new SP.UserProfiles.PeopleManager(context);
+						var personProperties = peopleManager.getMyProperties();
+						context.load(personProperties);
+						context.executeQueryAsync(function (sender, args) {
+							var properties = personProperties.get_userProfileProperties();
+							var messageText = "";
+							for (var key in properties) {
+								messageText += "\n[" + key + "]: \"" + properties[key] + "\"";
+							}
+							console.info(messageText);
+						}, function (sender, args) { alert('Error: ' + args.get_message()); });
+
+					});
+				});
+			});
+		}
 	}
 
-	jQuery(document).ready(function () {
-		//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
-    SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{});
-	});
-	var profile = new RenderUI();
-	profile.setProfileImage();
-	profile.setSiteTitle();
+
+	var renderUI = new RenderUI();
+	renderUI.setProfileImage();
+	renderUI.setSiteTitle();
+	renderUI.showProfileInfoOnConsole();
 
 }
