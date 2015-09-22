@@ -13,7 +13,7 @@
     "gulp-debug": "^2.1.0",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-typescript": "^2.8.3",
+    "gulp-typescript": "^2.9.0",
     "gulp-util": "^3.0.6",
     "merge-stream": "^1.0.0"
   }

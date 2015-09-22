@@ -25,6 +25,15 @@
     },
     "microsoft-ajax/microsoft.ajax.d.ts": {
       "commit": "6f6e5c7dd9effe21fee14eb65fe340ecbbc8580a"
+    },
+    "react/react.d.ts": {
+      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
+    },
+    "react/react-global.d.ts": {
+      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
+    },
+    "node/node.d.ts": {
+      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
     }
   }
 }

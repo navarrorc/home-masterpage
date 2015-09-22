@@ -49,9 +49,9 @@ module myModule {
 
 					clearInterval(interval);
 				}
-			}, 1000);
+			}, 500);
 		}
-		showProfileInfoOnConsole(){
+		showProfileInfoInConsole(){
 			jQuery(document).ready(function () {
 				SP.SOD.executeFunc('SP.js', 'SP.ClientContext', function() {
 					// Make sure PeopleManager is available
@@ -67,7 +67,7 @@ module myModule {
 							for (var key in properties) {
 								messageText += "\n[" + key + "]: \"" + properties[key] + "\"";
 							}
-							console.info(messageText);
+							//console.info(messageText);
 						}, function (sender, args) { alert('Error: ' + args.get_message()); });
 
 					});
@@ -76,10 +76,9 @@ module myModule {
 		}
 	}
 
-
 	var renderUI = new RenderUI();
-	renderUI.setProfileImage();
+	//renderUI.setProfileImage();
 	renderUI.setSiteTitle();
-	renderUI.showProfileInfoOnConsole();
+	renderUI.showProfileInfoInConsole();
 
 }

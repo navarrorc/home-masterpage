@@ -45,7 +45,7 @@ gulp.task('sass', function() {
 	return merge(tasks);
 });
 
-var typescriptSources = ['typescript/app/**/*.ts', ];
+var typescriptSources = ['typescript/app/**/**.ts','typescript/app/**/**.tsx' ];
 
 /**
  * typescript
@@ -58,7 +58,9 @@ function tsc(src, dest, out) {
       target: 'es5',
       declarationFiles: false,
       out: out,
-      noExternalResolve: false
+      noExternalResolve: false,
+      jsx: 'react',
+      module: 'commonjs'
     }));
 
   var js = tsResult.js
