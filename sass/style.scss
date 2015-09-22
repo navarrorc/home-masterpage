@@ -1,3 +1,6 @@
+@import "partials/overrides";
+@import "partials/suiteBarTop";
+
 // declaration of "Suite bar to text icon"
 @mixin sbTextToIcon {
     .o365cs-nav-brandingText {
@@ -88,7 +91,6 @@ div.o365cs-me-tile-nophoto-username-container {
 }
 .o365cs-me-tileview-container {
 	display: block !important;
-
 }
 
 span.o365cs-nav-brandingText {
@@ -118,7 +120,7 @@ span.o365cs-nav-brandingText {
 		width: 42px;
 		height: 42px;
 		border-radius: 50%;
-		padding-top: 4px;
+		padding-top: 0;
 	}
 	.wf-o365-downcarat:before {
 	//	color: #fff;

@@ -32,20 +32,19 @@ function log(msg) {
 /**
  * sass
  */
+var sassSources = ['./sass/**/*.scss'];
 gulp.task('sass', function() {
 	log('Compiling Sass --> CSS');
-
-	var tasks = folders.map(function(element){
-		return gulp.src('./sass/*.scss')
+	var tasks = folders.map(function(folder){
+		return gulp.src(sassSources)
 			.pipe(sass().on('error', sass.logError))
 			.pipe(autoprefixer({browsers: ['last 2 versions', '> 5%']}))
-			.pipe(gulp.dest(element));
+      .pipe(debug({title: 'sass'}))
+			.pipe(gulp.dest(folder));
 	});
-
 	return merge(tasks);
 });
 
-var typescriptSources = ['typescript/app/**/**.ts','typescript/app/**/**.tsx' ];
 
 /**
  * typescript
@@ -60,7 +59,8 @@ function tsc(src, dest, out) {
       out: out,
       noExternalResolve: false,
       jsx: 'react',
-      module: 'commonjs'
+      module: 'commonjs',
+      removeComments: true
     }));
 
   var js = tsResult.js
@@ -72,8 +72,10 @@ function tsc(src, dest, out) {
 
   return merge([js, dts]);
 }
-gulp.task('typescript', function () {
 
+var typescriptSources = ['typescript/app/**/**.ts','typescript/app/**/**.tsx' ];
+gulp.task('typescript', function () {
+  log('Compiling .ts/tsx --> JavaScript');
 	var tasks = jsfolders.map(function(folder){
 		return tsc(typescriptSources, folder, 'tsoutput.js')
 			.pipe(debug({title: 'scripts'}));
@@ -90,7 +92,8 @@ gulp.task('typescript', function () {
  * watch
  */
 gulp.task('watch', function () {
-	gulp.watch('sass/*.scss', ['sass']);
+  log('Watching file changes for .ts/.tsx and .scss');
+	gulp.watch('sass/**/*.scss', ['sass']);
 	gulp.watch(typescriptSources, ['typescript']);
 });
 

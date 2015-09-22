@@ -1,6 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts"/>
 /// <reference path="./services/dataService.ts"/>
-
 module suiteBarTop {
   interface barProps {
     // TODO: add properties if needed, see https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html
@@ -29,10 +27,8 @@ module suiteBarTop {
   $(()=> {
     var interval = setInterval(()=> { // wait 1 second before executing
       if($('div.o365cs-me-tile-nophoto-username-container').length) {
-      //if($('#s4-titlerow').length) {
         React.render(<ProfileImage />,
                       document.querySelector('div.o365cs-me-tile-nophoto-username-container')
-        //document.getElementById('s4-titlerow')
         );
         document.querySelector('div.o365cs-me-tile-nophoto-username-container').setAttribute('style', 'visibility: visible'); // No jquery needed here
         clearInterval(interval);
