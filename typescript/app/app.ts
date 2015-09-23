@@ -36,20 +36,22 @@ module myModule {
 					$('#O365_MainLink_Logo').html('<a href="/sites/rushnet"><img src="/sites/rushnet/SiteAssets/rushlogo.PNG" class="companyLogo"></a>');
 					$('#O365_MainLink_Logo').attr('style', 'visibility: visible');
 					$('#O365_MainLink_Logo').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
+
 					$('span.o365cs-nav-brandingText').html('RushNet'); // Add Intranet Name
+					$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible;');
+
 					$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
 					$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').removeAttr('style');
-					$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible');
 					$('span.o365cs-nav-appTitle.o365cs-topnavText').removeAttr('style');
 					$('.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').removeAttr('style');
 
-					$('span.o365cs-nav-brandingText').removeAttr('style'); // variation, needed for SPTestUser1@rush-enterprises.com
+					//$('span.o365cs-nav-brandingText').removeAttr('style'); // variation, needed for SPTestUser1@rush-enterprises.com
 					$('.o365cs-nav-centerAlign').html('Documents&nbsp;&nbsp; Locations&nbsp;&nbsp; People');
 					$('.o365cs-nav-centerAlign').attr('style', 'font-size:15px; color:#fff; text-align:right;');
 
 					clearInterval(interval);
 				}
-			}, 500);
+			}, 1000);
 		}
 		showProfileInfoInConsole(){
 			jQuery(document).ready(function () {
@@ -74,11 +76,43 @@ module myModule {
 				});
 			});
 		}
+
+		getUserGroups(){
+			jQuery(document).ready(function () {
+				//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
+				//see: http://blog.qumsieh.ca/2013/10/30/how-to-properly-reference-sp-js-in-a-master-page/
+
+				SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{
+					var context = SP.ClientContext.get_current();
+					var oWeb = context.get_web();
+					var currentUser = oWeb.get_currentUser();
+					var allGroups = currentUser.get_groups();
+					//context.load(currentUser);
+					context.load(allGroups);
+					context.executeQueryAsync((sender, args)=>{
+						var groupsEnum = allGroups.getEnumerator();
+						console.info('Groups for Current User');
+						var currentGroup:SP.Group;
+						while (groupsEnum.moveNext()){
+							// console.info(groupsEnum.get_current());
+							currentGroup = groupsEnum.get_current();
+							console.info(currentGroup.get_loginName());
+						}
+
+					}, (sender, args)=>{
+						console.info('Error: ' + args.get_message());
+					});
+				});
+			});
+		}
 	}
+
+
 
 	var renderUI = new RenderUI();
 	//renderUI.setProfileImage();
 	renderUI.setSiteTitle();
 	renderUI.showProfileInfoInConsole();
+	renderUI.getUserGroups();
 
 }

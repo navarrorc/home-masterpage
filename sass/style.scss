@@ -82,7 +82,7 @@
 	padding-top: 3px;
 }
 #O365_MainLink_Logo,
-// span.o365cs-nav-brandingText,
+span.o365cs-nav-brandingText,
 div.o365cs-me-tile-nophoto-username-container {
 	visibility: hidden;
 }
@@ -121,6 +121,7 @@ span.o365cs-nav-brandingText {
 		height: 42px;
 		border-radius: 50%;
 		padding-top: 0;
+    //visibility: hidden;
 	}
 	.wf-o365-downcarat:before {
 	//	color: #fff;
