@@ -31,27 +31,30 @@ module myModule {
 			});
 		};
 		setSiteTitle(){
-			var interval = setInterval(function() {
-				if ($('#O365_MainLink_Logo').length) {
-					$('#O365_MainLink_Logo').html('<a href="/sites/rushnet"><img src="/sites/rushnet/SiteAssets/rushlogo.PNG" class="companyLogo"></a>');
-					$('#O365_MainLink_Logo').attr('style', 'visibility: visible');
-					$('#O365_MainLink_Logo').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
+			SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+				var interval = setInterval(()=> { // wait 1 second before executing
+					if ($('#O365_MainLink_Logo').length) {
+						$('#O365_MainLink_Logo').html('<a href="/sites/rushnet"><img src="/sites/rushnet/SiteAssets/rushlogo.PNG" class="companyLogo"></a>');
+						$('#O365_MainLink_Logo').attr('style', 'visibility: visible');
+						$('#O365_MainLink_Logo').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
 
-					$('span.o365cs-nav-brandingText').html('RushNet'); // Add Intranet Name
-					$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible;');
+						$('span.o365cs-nav-brandingText').html('RushNet'); // Add Intranet Name
+						$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible;');
 
-					$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
-					$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').removeAttr('style');
-					$('span.o365cs-nav-appTitle.o365cs-topnavText').removeAttr('style');
-					$('.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').removeAttr('style');
+						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
+						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').removeAttr('style');
+						$('span.o365cs-nav-appTitle.o365cs-topnavText').removeAttr('style');
+						$('.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').removeAttr('style');
 
-					//$('span.o365cs-nav-brandingText').removeAttr('style'); // variation, needed for SPTestUser1@rush-enterprises.com
-					$('.o365cs-nav-centerAlign').html('Documents&nbsp;&nbsp; Locations&nbsp;&nbsp; People');
-					$('.o365cs-nav-centerAlign').attr('style', 'font-size:15px; color:#fff; text-align:right;');
+						//$('span.o365cs-nav-brandingText').removeAttr('style'); // variation, needed for SPTestUser1@rush-enterprises.com
+						$('.o365cs-nav-centerAlign').html('Documents&nbsp;&nbsp; Locations&nbsp;&nbsp; People');
+						$('.o365cs-nav-centerAlign').attr('style', 'font-size:15px; color:#fff; text-align:right;');
 
-					clearInterval(interval);
-				}
-			}, 1000);
+						clearInterval(interval);
+					}
+				}, 1000);
+			}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
+
 		}
 		showProfileInfoInConsole(){
 			jQuery(document).ready(function () {
@@ -76,8 +79,7 @@ module myModule {
 				});
 			});
 		}
-
-		getUserGroups(){
+		getUserGroups() {
 			jQuery(document).ready(function () {
 				//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
 				//see: http://blog.qumsieh.ca/2013/10/30/how-to-properly-reference-sp-js-in-a-master-page/
@@ -105,6 +107,19 @@ module myModule {
 				});
 			});
 		}
+		setSearchBoxPlaceHolderText() {
+			$(function () {
+			    var value = $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val();
+			    if (value === "Search..." || value === "Search this site") {
+			        $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val('');
+			    }
+				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('value');
+				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('onfocus');
+				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('onblur');
+				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('title');
+				 $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').attr('placeholder','Search People, Locations or Documents');
+			})
+		}
 	}
 
 
@@ -114,5 +129,6 @@ module myModule {
 	renderUI.setSiteTitle();
 	renderUI.showProfileInfoInConsole();
 	renderUI.getUserGroups();
+	renderUI.setSearchBoxPlaceHolderText();
 
 }

@@ -11,16 +11,17 @@ module suiteBarTop {
       this.state = {profileImageUrl: '', visible:false}
       var service = new Services.DataService("fetching data from myService");
       service.getSPUser().then((user: SP.User)=>{
-        var url = '/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + user.get_email();
-        this.setState({profileImage: url, visible: true});
+        var email = user.get_email();
+        console.info('email:', email);
+        var url = '/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + email;
+        this.setState({profileImageUrl: url, visible: true});
       })
     }
     render() {
-      console.info("inside render() imgUrl:", this.state.profileImage);
+      console.info("inside render() imgUrl:", this.state.profileImageUrl);
       //this.props.imgUrl = "https://pbs.twimg.com/profile_images/378800000247666963/9b177e5de625a8420dd839bb1561280d.jpeg";
-
       return (
-        <img src={this.state.profileImage}
+        <img src={this.state.profileImageUrl}
           style={this.state.visible? {visibility: 'visible'} : {visibility: 'hidden'}}
           className="profileImage" alt="">
         </img>
@@ -29,16 +30,16 @@ module suiteBarTop {
   };
 
   $(()=> {
-    var interval = setInterval(()=> { // wait 1 second before executing
-      SP.SOD.executeOrDelayUntilScriptLoaded(()=>{
-        if($('div.o365cs-me-tile-nophoto-username-container').length) {
-          React.render(<ProfileImage />, document.querySelector('div.o365cs-me-tile-nophoto-username-container')
-          );
-          clearInterval(interval);
+    SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+      var interval = setInterval(()=> { // wait 1 second before executing
+        if ($('div.o365cs-me-tile-nophoto-username-container').length) {
+            React.render(<ProfileImage />, document.querySelector('div.o365cs-me-tile-nophoto-username-container')
+            );
+            clearInterval(interval);
         }
-    //  }, 'sp.ui.pub.ribbon.js'); // This seems to help when the network speed is slowwwwww
-       }, 'sp.ribbon.js'); // This seems to help when the network speed is slowwwwww
+      }, 1000);
 
-    }, 1000);
-  });
+    }, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
+
+});
 }

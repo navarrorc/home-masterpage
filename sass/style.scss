@@ -1,5 +1,7 @@
 @import "partials/overrides";
 @import "partials/suiteBarTop";
+@import "partials/topBarContainer";
+@import "partials/homePageLayout";
 
 // declaration of "Suite bar to text icon"
 @mixin sbTextToIcon {

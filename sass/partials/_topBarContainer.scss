@@ -1,0 +1,89 @@
+#s4-titlerow {
+  padding: 0;
+  height: 50px;
+}
+
+#contentBox {
+  margin: 0;
+}
+
+.ms-core-listMenu-horizontalBox {
+  margin-top: 15px;
+}
+
+ul.root.ms-core-listMenu-root.static > li:not(:nth-last-child(2))::after {
+  color: #fff;
+  content: '|';
+  font-size: 1.4em;
+  font-weight: 100;
+}
+  .ms-core-listMenu-item,
+  .ms-core-listMenu-item:link
+  {
+    color: #fff !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0;
+  }
+  li.static.ms-verticalAlignTop.ms-listMenu-editLink.ms-navedit-editArea {
+    display: none;
+  }
+
+
+span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode {
+  margin: 0;
+}
+
+.ms-core-listMenu-item,
+.ms-core-listMenu-item:link {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+.topBarContainer {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #ECE9DF;
+  height: 50px;
+}
+  //.topBarContainer-widgets > h3:first-of-type {
+  .topBarContainer-widgets * {
+    display:inline;
+  }
+
+// Search bar
+div#ctl00_PlaceHolderSearchArea_ctl00_csr_sboxdiv {
+  background-color: #fff;
+  height: 30px;
+  width: 290px;
+}
+  .ms-srch-sb-border {
+    border: 1px solid #D9D6CB;
+  }
+   .ms-srch-sb-border:hover {
+     border: 1px solid #EEB111;
+   }
+  input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox {
+    height: 29px;
+    width: 260px;
+  }
+  a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink {
+    height: 28px;
+    width: 23px;
+    border: 0;
+    margin: 0;
+  }
+   a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink:hover {
+     background-color: #EEB111;
+   }
+  .ms-srch-sb-searchImg {
+    top: -54px;
+    left: -34px;
+  }
+  .ms-srch-sb-searchImg:hover {
+    top: -66px;
+    left: 0;
+  }
