@@ -1,4 +1,109 @@
 .mainBanner {
+  text-align: center;
   height: 400px;
+  width: 100%;
   background-color: #000;
+}
+.newsCarousel {
+  text-align: center;
+  height: 350px;
+  width: 62%;
+  background-color: #111111;
+  position: relative;
+  top: -80px;
+}
+.widgetsContainer{
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  //border: 2px solid red;
+  justify-content: center;
+  //align-items: stretch;
+  position: relative;
+  top: -50px;
+
+}
+  .widgetsContainer-satisfactionIndex,
+  .widgetsContainer-strategicInitiatives {
+    text-align: center;
+    background-color: #ECE9DF;
+    height: 350px;
+    width: 30%;
+    //border: 2px solid rgb(76, 203, 24);
+  }
+  .widgetsContainer-separator {
+    width: 2%;
+  }
+
+.middleContainer {
+  display: flex;
+  width: 100%;
+  //border: 2px solid rgb(71, 185, 24);
+  justify-content: center;
+  position: relative;
+  top: -15px;
+  min-height: 600px;
+}
+ .middleContainer-apps,
+ .middleContainer-misc {
+   width: 30%;
+   //height: 600px;
+   border: 1px solid red;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }
+ .middleContainer-apps {
+   //justify-content: space-around;
+   align-content: space-between;
+ }
+  .middleContainer-apps-sap,
+  .middleContainer-apps-workflows,
+  .middleContainer-apps-learning,
+  .middleContainer-apps-benefits,
+  .middleContainer-apps-travel,
+  .middleContainer-apps-adp {
+    flex-shrink: 1;
+    text-align: center;
+    width: 250px;
+    height: 160px;
+    border: 1px solid rgb(36, 67, 199);
+  }
+.middleContainer-misc{
+  flex-flow: column;
+  // align-items: flex-start;
+  justify-content: space-between;
+
+}
+  .middleContainer-misc-calendar {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(31, 196, 53);
+    justify-content: space-between;
+    min-height: 350px;
+    text-align: center;
+  }
+    .middleContainer-misc-calendar-widget {
+      width: 350px;
+      height: 280px;
+      border: 1px solid red;
+    }
+    .middleContainer-misc-calendar-eventsList {
+      border: 1px solid rgb(45, 67, 84);
+      width: 150px;
+      min-height: 346px;
+    }
+  .middleContainer-misc-policy {
+    text-align: center;
+    border: 1px solid rgb(160, 228, 33);
+    height: 200px;
+    //height: 100vh;
+  }
+.faqContainer {
+  margin-top:25px;
+  margin-bottom: 35px;
+  text-align: center;
+  height: 250px;
+  width: 62%;
+  border: 1px solid rgb(22, 189, 174);
 }
