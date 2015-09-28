@@ -73,7 +73,7 @@ function tsc(src, dest, out) {
   return merge([js, dts]);
 }
 
-var typescriptSources = ['typescript/app/**/**.ts','typescript/app/**/**.tsx' ];
+var typescriptSources = ['typescript/app/**/**/*.ts','typescript/app/**/**/*.tsx' ];
 gulp.task('typescript', function () {
   log('Compiling .ts/tsx --> JavaScript');
 	var tasks = jsfolders.map(function(folder){

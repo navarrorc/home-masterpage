@@ -1,4 +1,5 @@
 /// <reference path='../../typings/tsd.d.ts'/>
+
 module myModule {
 	export class RenderUI {
 		constructor() {
@@ -122,13 +123,25 @@ module myModule {
 		}
 	}
 
-
-
 	var renderUI = new RenderUI();
 	//renderUI.setProfileImage();
 	renderUI.setSiteTitle();
 	renderUI.showProfileInfoInConsole();
 	renderUI.getUserGroups();
 	renderUI.setSearchBoxPlaceHolderText();
+
+	$(()=>{
+		// Render the SuiteBarTop Components
+		C.showComponents();
+
+		// Render the News Carousel on the Home Page
+		SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+				if ($('.newsCarousel').length){
+					var newsCarousel = new C.NewsCarousel({imgUrl: 'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
+					newsCarousel.showComponent();
+					// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+				}
+		}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
+	});
 
 }
