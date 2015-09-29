@@ -136,10 +136,19 @@ module myModule {
 
 		// Render the News Carousel on the Home Page
 		SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+				var topHeaderWidgets = new C.TopHeaderWidgets({imgUrl:'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/notification-stock-widget.png'});
+				topHeaderWidgets.showComponent();
+
 				if ($('.newsCarousel').length){
+					/**
+					 * Only render for Home-Page Layout
+					 */
 					var newsCarousel = new C.NewsCarousel({imgUrl: 'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
 					newsCarousel.showComponent();
 					// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+
+					var mainBanner = new C.MainBanner(null); // no properties being passed to the constructor
+					mainBanner.showComponent();
 				}
 		}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
 	});

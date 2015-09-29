@@ -1,6 +1,7 @@
 module C {
-  'use strict';
-  // Interfaces
+  /**
+   * Interfaces
+   */
   interface Link {
     id: number,
     title: string
@@ -11,15 +12,16 @@ module C {
   interface globalLinksState {
     links: Link[]
   }
-
-  // Component Class
+  /**
+   * Component Class
+   */
   export class GlobalLinks extends React.Component<globalLinksProps, globalLinksState> {
     constructor(props: globalLinksProps, state: globalLinksState){
       super(props, state);
       this.state = {links: []};
     }
     componentDidMount() {
-      /** Great place to integrate with frameworks, set timers and make AJAX requests and setState **/
+      /*Great place to integrate with frameworks, set timers and make AJAX requests and setState*/
       if (isMounted(this)){
         // TODO: get actual data from the GlobalLinks SharePoint List
         //this.setState({links: ['Documents', 'Locations', 'People']});
@@ -39,7 +41,9 @@ module C {
       }
       var ilStyle = {
         display: 'inline',
-        marginRight: '15px'
+        marginRight: '15px',
+        fontSize: '.8em',
+        fontWeight: 700        
       }
       var createLink = function(link: Link) {
         return (

@@ -18,9 +18,10 @@ module C {
     render() {
       return (
         <div>
-          <img style={{width: '100%'}} src={this.props.imgUrl}></img>
+          <h1 style={{position:'absolute', left: '34%'}}>News Carousel</h1>
+          <img style={{width: '100%', height: '350px'}} src={this.props.imgUrl}></img>
         </div>
-      );
+      )
     }
     showComponent() {
       React.render(
