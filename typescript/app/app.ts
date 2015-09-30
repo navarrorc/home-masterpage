@@ -131,11 +131,21 @@ module myModule {
 	renderUI.setSearchBoxPlaceHolderText();
 
 	$(()=>{
+
+		/**
+		 * Testing REST endpoint
+		 */
+		//  var service = new Services.DataService('fetching data from myService');
+		//  service.getGlobalLinks().then((data)=>{
+		// 	 console.info(data);
+		//  });
+
+
 		// Render the SuiteBarTop Components
 		C.showComponents();
 
 		// Render the News Carousel on the Home Page
-		SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+		//SP.SOD.executeOrDelayUntilScriptLoaded(() => {
 				var topHeaderWidgets = new C.TopHeaderWidgets({imgUrl:'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/notification-stock-widget.png'});
 				topHeaderWidgets.showComponent();
 
@@ -150,7 +160,7 @@ module myModule {
 					var mainBanner = new C.MainBanner(null); // no properties being passed to the constructor
 					mainBanner.showComponent();
 				}
-		}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
+		//}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
 	});
 
 }
