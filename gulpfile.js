@@ -10,6 +10,41 @@ var gulp = require('gulp'),
 		sourcemaps = require('gulp-sourcemaps'),
 		debug = require('gulp-debug');
 
+var browserify = require('browserify'), // Bundles JS
+    tsify = require('tsify'),
+    exorcist = require('exorcist'),
+    source = require('vinyl-source-stream'); // Use conventional text streams with Gulp
+
+
+// browserify()
+//     .add('main.ts')
+//     .plugin('tsify', { noImplicitAny: true })
+//     .bundle()
+//     .on('error', function (error) { console.error(error.toString()); })
+//     .pipe(process.stdout);
+
+var config = {
+	bowerDir: __dirname + '/bower_components',
+	applicationDir: __dirname + '/typescript/app',
+	stylesDir: __dirname + '/styles',
+	publicDir: __dirname + '/public'
+};
+
+gulp.task('compile-js', function() {
+  var bundler = browserify({
+        baseDir: config.applicationDir + '/index.ts',
+        debug: true
+      })
+      .add(config.applicationDir)
+      .plugin(tsify);
+
+  return bundler.bundle()
+          .on('error', console.error.bind(console))
+          .pipe(exorcist(config.publicDir + '/bundle.js.map'))
+          .pipe(source('bundle.js'))
+          .pipe(gulp.dest(config.publicDir));
+})
+
 var folders = ['./builds/development/css', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/css'];
 var jsfolders = ['./builds/development/js', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/js'];
 

@@ -4,33 +4,6 @@ module myModule {
 	export class RenderUI {
 		constructor() {
 		}
-		setProfileImage() {
-			jQuery(document).ready(function () {
-				//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
-				//see: http://blog.qumsieh.ca/2013/10/30/how-to-properly-reference-sp-js-in-a-master-page/
-
-				SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{
-					var context = SP.ClientContext.get_current();
-					var oWeb = context.get_web();
-					var currentUser = oWeb.get_currentUser();
-					context.load(currentUser);
-					context.executeQueryAsync((sender, args)=>{
-						var profileImage = '<img src="/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + currentUser.get_email() + '" alt="" class="profileImage">';
-
-						var interval = setInterval(()=> { // wait 1 second before executing
-							if($('div.o365cs-me-tile-nophoto-username-container').length) {
-								$('div.o365cs-me-tile-nophoto-username-container').html(profileImage);
-								$('div.o365cs-me-tile-nophoto-username-container').attr('style', 'visibility: visible');
-								clearInterval(interval);
-							}
-						}, 1000);
-
-					}, (sender, args)=>{
-						console.info('Error: ' + args.get_message());
-					});
-				});
-			});
-		};
 		setSiteTitle(){
 			SP.SOD.executeOrDelayUntilScriptLoaded(() => {
 				var interval = setInterval(()=> { // wait 1 second before executing
@@ -124,7 +97,6 @@ module myModule {
 	}
 
 	var renderUI = new RenderUI();
-	//renderUI.setProfileImage();
 	renderUI.setSiteTitle();
 	renderUI.showProfileInfoInConsole();
 	renderUI.getUserGroups();
