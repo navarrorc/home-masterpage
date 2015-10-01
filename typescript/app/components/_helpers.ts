@@ -1,4 +1,3 @@
-module C {
   /**
   * Helper functions
   **/
@@ -15,4 +14,3 @@ module C {
       return false;
     }
   };
-}

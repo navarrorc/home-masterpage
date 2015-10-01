@@ -11,42 +11,26 @@ var gulp = require('gulp'),
 		debug = require('gulp-debug');
 
 var browserify = require('browserify'), // Bundles JS
+    streamify = require('gulp-streamify'),
     tsify = require('tsify'),
     exorcist = require('exorcist'),
-    source = require('vinyl-source-stream'); // Use conventional text streams with Gulp
-
-
-// browserify()
-//     .add('main.ts')
-//     .plugin('tsify', { noImplicitAny: true })
-//     .bundle()
-//     .on('error', function (error) { console.error(error.toString()); })
-//     .pipe(process.stdout);
+    source = require('vinyl-source-stream'), // Use conventional text streams with Gulp
+    mold = require('mold-source-map'),
+    uglifyJs = require('gulp-uglify'),
+    rename = require('gulp-rename');
 
 var config = {
-	bowerDir: __dirname + '/bower_components',
+	//bowerDir: __dirname + '/bower_components',
 	applicationDir: __dirname + '/typescript/app',
-	stylesDir: __dirname + '/styles',
-	publicDir: __dirname + '/public'
+	//stylesDir: __dirname + '/styles',
+	publicDir: __dirname + '/public',
+  mainJs: __dirname + '/typescript/app/app.ts'
 };
 
-gulp.task('compile-js', function() {
-  var bundler = browserify({
-        baseDir: config.applicationDir + '/index.ts',
-        debug: true
-      })
-      .add(config.applicationDir)
-      .plugin(tsify);
-
-  return bundler.bundle()
-          .on('error', console.error.bind(console))
-          .pipe(exorcist(config.publicDir + '/bundle.js.map'))
-          .pipe(source('bundle.js'))
-          .pipe(gulp.dest(config.publicDir));
-})
 
 var folders = ['./builds/development/css', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/css'];
-var jsfolders = ['./builds/development/js', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/js'];
+var jsfolders = [__dirname + '/builds/development/js', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/js'];
+var typescriptSources = ['typescript/app/**/**/*.ts','typescript/app/**/**/*.tsx' ];
 
 
 /**
@@ -63,6 +47,38 @@ function log(msg) {
 		util.log(util.colors.blue(msg));
 	}
 }
+
+/*
+* Browserify w/ typescript
+*/
+gulp.task('compile-js', function() {
+  log('Transpiling ts/tsx --> JavaScript using browserify')
+  var bundler = browserify({
+        baseDir: config.applicationDir,
+        debug: true
+      })
+      .add(config.mainJs)
+      .plugin(tsify, {
+        noImplicitAny: true,
+        target: 'es5',
+        declarationFiles: false,
+        noExternalResolve: false,
+        jsx: 'react',
+        module: 'commonjs',
+        removeComments: true
+      });
+
+    return bundler.bundle()
+          .on('error', console.error.bind(console))
+          //.pipe(exorcist(jsfolders[0] + '/bundle.js.map','','/sources/', './typescript/app/')) // TODO:fix, cannot write .map to both places
+          .pipe(exorcist(jsfolders[1] + '/bundle.js.map','','/sources/', './typescript/app/')) // server, we need it here for debugging in Chrome
+          .pipe(source('bundle.js')) // gives streaming vinyl file object
+          //.pipe(streamify(uglifyJs))
+          //.pipe(rename('bundle.min.js'))
+          .pipe(gulp.dest(jsfolders[0])) // local
+          .pipe(gulp.dest(jsfolders[1])) // server
+          .pipe(debug({title: 'scripts'}));
+})
 
 /**
  * sass
@@ -84,44 +100,45 @@ gulp.task('sass', function() {
 /**
  * typescript
  */
-function tsc(src, dest, out) {
-  var tsResult = gulp.src(src)
-    .pipe(sourcemaps.init())
-    .pipe(ts({
-      noImplicitAny: true,
-      target: 'es5',
-      declarationFiles: false,
-      out: out,
-      noExternalResolve: false,
-      jsx: 'react',
-      module: 'commonjs',
-      removeComments: true
-    }));
+// function tsc(src, dest, out) {
+//   var tsResult = gulp.src(src)
+//     .pipe(sourcemaps.init())
+//     .pipe(ts({
+//       noImplicitAny: true,
+//       target: 'es5',
+//       declarationFiles: false,
+//       out: out,
+//       noExternalResolve: false,
+//       jsx: 'react',
+//       module: 'commonjs',
+//       removeComments: true
+//     }));
+//
+//   var js = tsResult.js
+//     .pipe(sourcemaps.write('.'))
+//     .pipe(gulp.dest(dest));
+//
+//   var dts = tsResult.dts
+//     .pipe(gulp.dest(dest));
+//
+//   return merge([js, dts]);
+// }
+//
 
-  var js = tsResult.js
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(dest));
-
-  var dts = tsResult.dts
-    .pipe(gulp.dest(dest));
-
-  return merge([js, dts]);
-}
-
-var typescriptSources = ['typescript/app/**/**/*.ts','typescript/app/**/**/*.tsx' ];
-gulp.task('typescript', function () {
-  log('Compiling .ts/tsx --> JavaScript');
-	var tasks = jsfolders.map(function(folder){
-		return tsc(typescriptSources, folder, 'tsoutput.js')
-			.pipe(debug({title: 'scripts'}));
-	});
-
-	return merge(tasks);
-
-	// return tsc(typescriptSources, outputDir + 'js', 'tsoutput.js')
-  //   .pipe(debug({ title: 'scripts:' }));
-
-});
+// gulp.task('typescript', function () {
+//   log('Compiling .ts/tsx --> JavaScript');
+//
+// 	var tasks = jsfolders.map(function(folder){
+// 		return tsc(typescriptSources, folder, 'tsoutput.js')
+// 			.pipe(debug({title: 'scripts'}));
+// 	});
+//
+// 	return merge(tasks);
+//
+// 	// return tsc(typescriptSources, outputDir + 'js', 'tsoutput.js')
+//   //   .pipe(debug({ title: 'scripts:' }));
+//
+// });
 
 /**
  * watch
@@ -129,11 +146,11 @@ gulp.task('typescript', function () {
 gulp.task('watch', function () {
   log('Watching file changes for .ts/.tsx and .scss');
 	gulp.watch('sass/**/*.scss', ['sass']);
-	gulp.watch(typescriptSources, ['typescript']);
+	gulp.watch(typescriptSources, ['compile-js']);
 });
 
 
 /**
  * Default Task
  */
-gulp.task('default', ['typescript','sass','watch']);
+gulp.task('default', ['compile-js','sass','watch']);

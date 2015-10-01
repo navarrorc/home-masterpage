@@ -1,4 +1,3 @@
-module Services {
   export class DataService {
     constructor(message?: string){
       if (message){
@@ -46,4 +45,3 @@ module Services {
         return deferred.promise();
     }
   }
-}

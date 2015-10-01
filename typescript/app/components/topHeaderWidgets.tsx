@@ -1,4 +1,3 @@
-module C {
   interface topWidgetProps {
     //name:string;
     //age:number;
@@ -22,4 +21,3 @@ module C {
         ,document.querySelector('div.topBarContainer-widgets'));
     }
   }
-}

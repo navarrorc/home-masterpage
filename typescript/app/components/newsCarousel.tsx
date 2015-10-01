@@ -1,4 +1,3 @@
-module C {
   interface carouselProps {
     //name:string;
     //age:number;
@@ -30,4 +29,3 @@ module C {
         ,document.querySelector('.newsCarousel'));
     }
   }
-}

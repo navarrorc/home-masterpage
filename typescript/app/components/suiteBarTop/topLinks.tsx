@@ -1,4 +1,7 @@
-module C {
+import api = require('../../services/dataService');
+import helpers = require('../_helpers');
+
+//module C {
   /**
    * Interfaces
    */
@@ -22,11 +25,11 @@ module C {
     }
     componentDidMount() {
       /*Great place to integrate with frameworks, set timers and make AJAX requests and setState*/
-      if (isMounted(this)){
+      if (helpers.isMounted(this)){
         /**
          * Calling Data Service
          */
-        var service = new Services.DataService();
+        var service = new api.DataService();
         service.getTopLinks().then((data:any)=>{
           // console.info(data);
           var temp: Link[];
@@ -41,7 +44,7 @@ module C {
               links: temp
           });
         });
-      }
+     }
     }
     render() {
       var ulStyle = {
@@ -67,4 +70,4 @@ module C {
       )
     }
   }
-}
+//}

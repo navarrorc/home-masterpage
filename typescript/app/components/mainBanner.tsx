@@ -1,4 +1,3 @@
-module C {
   interface bannerProps {
     //name:string;
     //age:number;
@@ -23,4 +22,3 @@ module C {
         ,document.querySelector('.mainBanner'));
     }
   }
-}
