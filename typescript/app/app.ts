@@ -111,7 +111,8 @@ class RenderUI {
 
 	$(()=>{
 
-		console.info('Logging.....test!!!!');
+		console.info('Logging.....test 1, 2, 3, 4!!!!');
+
 
 		/**
 		 * Testing REST endpoint

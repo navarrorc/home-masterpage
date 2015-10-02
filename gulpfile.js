@@ -17,7 +17,14 @@ var browserify = require('browserify'), // Bundles JS
     source = require('vinyl-source-stream'), // Use conventional text streams with Gulp
     mold = require('mold-source-map'),
     uglifyJs = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    buffer = require('gulp-buffer'),
+    gulpIf = require('gulp-if'),
+    fixWindowsSourceMaps = require('gulp-fix-windows-source-maps'),
+    fs = require('fs');
+
+var isWin = Boolean(~process.platform.indexOf('win'));
+var appRoot = './typescript/app/';
 
 var config = {
 	//bowerDir: __dirname + '/bower_components',
@@ -31,6 +38,7 @@ var config = {
 var folders = ['./builds/development/css', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/css'];
 var jsfolders = [__dirname + '/builds/development/js', '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/js'];
 var typescriptSources = ['typescript/app/**/**/*.ts','typescript/app/**/**/*.tsx' ];
+var mapFilePath = jsfolders[0]; // server
 
 
 /**
@@ -51,31 +59,53 @@ function log(msg) {
 /*
 * Browserify w/ typescript
 */
+function mapFileUrlComment(sourcemap, cb) {
+  function unixifySourceMap(src){
+    return src.replace(/\\/g, '/').replace(/^([A-Z]):\//, '/$1/');
+  }
+  sourcemap.sourceRoot('/sources/');
+  sourcemap.mapSources(mold.mapPathRelativeTo(appRoot));
+  if (isWin){
+    // fixes the backslashes issue, only happens in Windows
+    sourcemap.mapSources(mold.transformSources(unixifySourceMap)));
+  }
+
+  // write map file and return a sourceMappingUrl that points to it
+  jsfolders.map(function(folder){
+    fs.writeFile(folder + '/bundle.js.map', sourcemap.toJSON(2), 'utf-8', function (err) {
+      if (err) return console.error(err);
+      cb('//@ sourceMappingURL=' + path.basename(folder + '/bundle.js.map'));
+    });
+  });
+
+}
+
 gulp.task('compile-js', function() {
   log('Transpiling ts/tsx --> JavaScript using browserify')
   var bundler = browserify({
         baseDir: config.applicationDir,
         debug: true
       })
-      .add(config.mainJs)
+      .add(config.mainJs) // app.ts
       .plugin(tsify, {
         noImplicitAny: true,
         target: 'es5',
         declarationFiles: false,
         noExternalResolve: false,
         jsx: 'react',
-        module: 'commonjs',
         removeComments: true
       });
 
     return bundler.bundle()
           .on('error', console.error.bind(console))
-          //.pipe(exorcist(jsfolders[0] + '/bundle.js.map','','/sources/', './typescript/app/')) // TODO:fix, cannot write .map to both places
-          .pipe(exorcist(jsfolders[1] + '/bundle.js.map','','/sources/', './typescript/app/')) // server, we need it here for debugging in Chrome
-          .pipe(source('bundle.js')) // gives streaming vinyl file object
-          //.pipe(streamify(uglifyJs))
-          //.pipe(rename('bundle.min.js'))
+          // .pipe(mold.transformSourcesRelativeTo(appRoot))
+          // .pipe(gulpIf(isWin,mold.transformSources(unixifySourceMap))) // fixes the backslashes issue, only happens in Windows
+          .pipe(mold.transform(mapFileUrlComment)) // extract source map and save in separate file
+          // vinyl-source-stream makes the bundle compatible with gulp
+          .pipe(source('bundle.js')) // Desired filename
+          // Output the file
           .pipe(gulp.dest(jsfolders[0])) // local
+          .pipe(debug({title: 'scripts'}))
           .pipe(gulp.dest(jsfolders[1])) // server
           .pipe(debug({title: 'scripts'}));
 })
