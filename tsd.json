@@ -37,6 +37,12 @@
     },
     "lodash/lodash.d.ts": {
       "commit": "ffceea9dd124d277c4597c7bd12930666ec074c5"
+    },
+    "flux/flux.d.ts": {
+      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+    },
+    "object-assign/object-assign.d.ts": {
+      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
     }
   }
 }

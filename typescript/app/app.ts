@@ -3,10 +3,17 @@
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
 
-import widgets = require('./components/topHeaderWidgets');
-import news = require('./components/newsCarousel');
-import banner = require('./components/mainBanner');
-import suite = require('./components/suiteBarTop/_suiteBarTop');
+import {TopHeaderWidgets} from './components/topHeaderWidgets';
+import {NewsCarousel} from './components/newsCarousel';
+import {MainBanner} from './components/mainBanner';
+import SuiteBarTop = require('./components/suiteBarTop/_suiteBarTop');
+
+import actions = require('./actions');
+
+
+import ChirpStore = require('./stores/chirps');
+[ChirpStore]
+import {API} from './services/api';
 
 class RenderUI {
 		constructor() {
@@ -75,8 +82,7 @@ class RenderUI {
 					context.executeQueryAsync((sender, args)=>{
 						var groupsEnum = allGroups.getEnumerator();
 						console.info('Groups for Current User');
-						var currentGroup:SP.Group;
-						while (groupsEnum.moveNext()){
+						var currentGroup:SP.Group;						while (groupsEnum.moveNext()){
 							// console.info(groupsEnum.get_current());
 							currentGroup = groupsEnum.get_current();
 							console.info(currentGroup.get_loginName());
@@ -111,7 +117,18 @@ class RenderUI {
 
 	$(()=>{
 
+
+		// Playground
+		// Object.keys(actions).forEach((key:string)=>{
+		// 	console.info(key);
+		// 	console.info(actions[key].toString());
+		// });
+
+		API.fetchChirps();
+
+
 		console.info('Logging.....test 1, 2, 3, 4!!!!');
+		//--Playground
 
 
 		/**
@@ -124,24 +141,24 @@ class RenderUI {
 
 
 		// Render the SuiteBarTop Components
-		suite.showComponents();
+		SuiteBarTop.showComponents();
 
 		//debugger;
 
 		// Render the News Carousel on the Home Page
 		//SP.SOD.executeOrDelayUntilScriptLoaded(() => {
-				var topHeaderWidgets = new widgets.TopHeaderWidgets({imgUrl:'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/notification-stock-widget.png'});
+				var topHeaderWidgets = new TopHeaderWidgets({imgUrl:_spPageContextInfo.webAbsoluteUrl + '/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/notification-stock-widget.png'});
 				topHeaderWidgets.showComponent();
 
 				if ($('.newsCarousel').length){
 					/**
 					 * Only render for Home-Page Layout
 					 */
-					var newsCarousel = new news.NewsCarousel({imgUrl: 'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
+					var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
 					newsCarousel.showComponent();
 					// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
 
-					var mainBanner = new banner.MainBanner(null); // no properties being passed to the constructor
+					var mainBanner = new MainBanner(null); // no properties being passed to the constructor
 					mainBanner.showComponent();
 				}
 		//}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop

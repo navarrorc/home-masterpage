@@ -56,22 +56,18 @@ function log(msg) {
 	}
 }
 
+function unixifySourceMap(src){
+  return src.replace(/\\/g, '/').replace(/^([A-Z]):\//, '/$1/');
+}
 /*
 * Browserify w/ typescript
 */
 function mapFileUrlComment(sourcemap, cb) {
-  function unixifySourceMap(src){
-    return src.replace(/\\/g, '/').replace(/^([A-Z]):\//, '/$1/');
-  }
   sourcemap.sourceRoot('/sources/');
-  sourcemap.mapSources(mold.mapPathRelativeTo(appRoot));
-  if (isWin){
-    // fixes the backslashes issue, only happens in Windows
-    sourcemap.mapSources(mold.transformSources(unixifySourceMap)));
-  }
 
   // write map file and return a sourceMappingUrl that points to it
   jsfolders.map(function(folder){
+    // writing to multiple locations
     fs.writeFile(folder + '/bundle.js.map', sourcemap.toJSON(2), 'utf-8', function (err) {
       if (err) return console.error(err);
       cb('//@ sourceMappingURL=' + path.basename(folder + '/bundle.js.map'));
@@ -79,7 +75,6 @@ function mapFileUrlComment(sourcemap, cb) {
   });
 
 }
-
 gulp.task('compile-js', function() {
   log('Transpiling ts/tsx --> JavaScript using browserify')
   var bundler = browserify({
@@ -98,12 +93,13 @@ gulp.task('compile-js', function() {
 
     return bundler.bundle()
           .on('error', console.error.bind(console))
-          // .pipe(mold.transformSourcesRelativeTo(appRoot))
-          // .pipe(gulpIf(isWin,mold.transformSources(unixifySourceMap))) // fixes the backslashes issue, only happens in Windows
-          .pipe(mold.transform(mapFileUrlComment)) // extract source map and save in separate file
+          .pipe(mold.transformSourcesRelativeTo(appRoot)) // example, './typescript/app/'
+          .pipe(gulpIf(isWin, mold.transformSources(unixifySourceMap))) // fixes the backslashes issue, only happens in Windows
+          .pipe(mold.transform(mapFileUrlComment)) // extract source map and save in separate file, to multiple locations if needed
           // vinyl-source-stream makes the bundle compatible with gulp
           .pipe(source('bundle.js')) // Desired filename
           // Output the file
+          .pipe(buffer()) // per Jesse Warden, see: https://www.youtube.com/watch?v=5Z82cpVP_qo
           .pipe(gulp.dest(jsfolders[0])) // local
           .pipe(debug({title: 'scripts'}))
           .pipe(gulp.dest(jsfolders[1])) // server
@@ -120,55 +116,12 @@ gulp.task('sass', function() {
 		return gulp.src(sassSources)
 			.pipe(sass().on('error', sass.logError))
 			.pipe(autoprefixer({browsers: ['last 2 versions', '> 5%']}))
-      .pipe(debug({title: 'sass'}))
-			.pipe(gulp.dest(folder));
+			.pipe(gulp.dest(folder))
+      .pipe(debug({title: 'sass'}));
+
 	});
 	return merge(tasks);
 });
-
-
-/**
- * typescript
- */
-// function tsc(src, dest, out) {
-//   var tsResult = gulp.src(src)
-//     .pipe(sourcemaps.init())
-//     .pipe(ts({
-//       noImplicitAny: true,
-//       target: 'es5',
-//       declarationFiles: false,
-//       out: out,
-//       noExternalResolve: false,
-//       jsx: 'react',
-//       module: 'commonjs',
-//       removeComments: true
-//     }));
-//
-//   var js = tsResult.js
-//     .pipe(sourcemaps.write('.'))
-//     .pipe(gulp.dest(dest));
-//
-//   var dts = tsResult.dts
-//     .pipe(gulp.dest(dest));
-//
-//   return merge([js, dts]);
-// }
-//
-
-// gulp.task('typescript', function () {
-//   log('Compiling .ts/tsx --> JavaScript');
-//
-// 	var tasks = jsfolders.map(function(folder){
-// 		return tsc(typescriptSources, folder, 'tsoutput.js')
-// 			.pipe(debug({title: 'scripts'}));
-// 	});
-//
-// 	return merge(tasks);
-//
-// 	// return tsc(typescriptSources, outputDir + 'js', 'tsoutput.js')
-//   //   .pipe(debug({ title: 'scripts:' }));
-//
-// });
 
 /**
  * watch

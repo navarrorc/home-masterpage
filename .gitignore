@@ -3,6 +3,7 @@ builds/development/js
 builds/development/css
 builds/production
 ssl/*.pfx
+typings
 
 # Ignore Visual Studio  Project #
 ###################
@@ -76,4 +77,3 @@ journal
 ehthumbs.db
 Icon?
 Thumbs.db
-

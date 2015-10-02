@@ -27,6 +27,7 @@
     "jquery": "^2.1.4",
     "merge-stream": "^1.0.0",
     "mold-source-map": "^0.4.0",
+    "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "tsify": "^0.12.2",

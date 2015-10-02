@@ -9,3 +9,5 @@
 /// <reference path="react/react-global.d.ts" />
 /// <reference path="node/node.d.ts" />
 /// <reference path="lodash/lodash.d.ts" />
+/// <reference path="flux/flux.d.ts" />
+/// <reference path="object-assign/object-assign.d.ts" />

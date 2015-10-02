@@ -1,4 +1,3 @@
-//export module C {
   // Interfaces
   interface imageProps {
     // TODO: add properties if needed, see https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html
@@ -7,7 +6,7 @@
   }
 
   // Component Class
-  export class ProfileImage extends React.Component<imageProps, any> {
+  class ProfileImage extends React.Component<imageProps, any> {
     private foo: number;
     //private isUnmounted: boolean;
     constructor(props: imageProps){
@@ -25,4 +24,5 @@
       );
     }
   }
-//}
+
+export = ProfileImage;
