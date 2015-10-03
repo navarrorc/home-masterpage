@@ -14,9 +14,9 @@ var storeMethods = {
     //   return currIds.indexOf(item.cid) === -1;
     // }).forEach(this.add.bind(this));
 
-    console.info('Data set');
-    console.info('arr', arr);
-    console.info(this._data);
+    // console.info('Data set');
+    // console.info('arr', arr);
+    // console.info(this._data);
   },
   add: function(item:any) {
     this._data.push(item);
@@ -57,7 +57,6 @@ export var extend = (methods:any) => {
 
   assign(store, EventEmitterProto, storeMethods, methods);
   store.init();
-  //storeMethods.init();
 
   dispatcher.register((action: any)=>{
     if (store.actions[action.actionType]) {

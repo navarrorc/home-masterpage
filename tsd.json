@@ -29,9 +29,6 @@
     "react/react.d.ts": {
       "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
     },
-    "react/react-global.d.ts": {
-      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
-    },
     "node/node.d.ts": {
       "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
     },
@@ -42,6 +39,9 @@
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
     },
     "object-assign/object-assign.d.ts": {
+      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+    },
+    "react/react-global.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
     }
   }

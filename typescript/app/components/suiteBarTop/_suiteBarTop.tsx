@@ -3,6 +3,8 @@ import ProfileImage = require('./profileImage');
 import TopLinks = require('./topLinks');
 import helpers = require('../_helpers');
 
+//import React = require('react');
+
 // Parent Component
 class SuiteBarTop extends React.Component<any, any> {
   constructor(){
@@ -15,7 +17,7 @@ class SuiteBarTop extends React.Component<any, any> {
     service.getSPUser()
       .then((data: any)=>{
          var email = data.Email;
-         console.info('email:', email);
+         //console.info('email:', email);
          var url = '/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + email;
          if (helpers.isMounted(this)){
            this.setState({profileImageUrl: url, visible: true});

@@ -11,16 +11,12 @@ var gulp = require('gulp'),
 		debug = require('gulp-debug');
 
 var browserify = require('browserify'), // Bundles JS
-    streamify = require('gulp-streamify'),
     tsify = require('tsify'),
-    exorcist = require('exorcist'),
     source = require('vinyl-source-stream'), // Use conventional text streams with Gulp
     mold = require('mold-source-map'),
     uglifyJs = require('gulp-uglify'),
-    rename = require('gulp-rename'),
     buffer = require('gulp-buffer'),
     gulpIf = require('gulp-if'),
-    fixWindowsSourceMaps = require('gulp-fix-windows-source-maps'),
     fs = require('fs');
 
 var isWin = Boolean(~process.platform.indexOf('win'));
@@ -83,7 +79,7 @@ gulp.task('compile-js', function() {
       })
       .add(config.mainJs) // app.ts
       .plugin(tsify, {
-        noImplicitAny: true,
+        noImplicitAny: false,
         target: 'es5',
         declarationFiles: false,
         noExternalResolve: false,

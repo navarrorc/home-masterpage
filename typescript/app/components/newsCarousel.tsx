@@ -1,3 +1,5 @@
+//import React = require('react');
+
 interface carouselProps {
   //name:string;
   //age:number;

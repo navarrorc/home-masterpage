@@ -1,3 +1,5 @@
+//import React = require('react');
+
 interface bannerProps {
   // TODO: create properties for MainBanner Component to use
 }

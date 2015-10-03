@@ -9,8 +9,6 @@ import {MainBanner} from './components/mainBanner';
 import SuiteBarTop = require('./components/suiteBarTop/_suiteBarTop');
 
 import actions = require('./actions');
-
-
 import ChirpStore = require('./stores/chirps');
 [ChirpStore]
 import {API} from './services/api';
@@ -81,11 +79,11 @@ class RenderUI {
 					context.load(allGroups);
 					context.executeQueryAsync((sender, args)=>{
 						var groupsEnum = allGroups.getEnumerator();
-						console.info('Groups for Current User');
+						//console.info('Groups for Current User');
 						var currentGroup:SP.Group;						while (groupsEnum.moveNext()){
 							// console.info(groupsEnum.get_current());
 							currentGroup = groupsEnum.get_current();
-							console.info(currentGroup.get_loginName());
+							//console.info(currentGroup.get_loginName());
 						}
 
 					}, (sender, args)=>{
@@ -116,50 +114,23 @@ class RenderUI {
 	renderUI.setSearchBoxPlaceHolderText();
 
 	$(()=>{
-
-
-		// Playground
-		// Object.keys(actions).forEach((key:string)=>{
-		// 	console.info(key);
-		// 	console.info(actions[key].toString());
-		// });
-
-		API.fetchChirps();
-
-
-		console.info('Logging.....test 1, 2, 3, 4!!!!');
-		//--Playground
-
-
-		/**
-		 * Testing REST endpoint
-		 */
-		//  var service = new Services.DataService('fetching data from myService');
-		//  service.getGlobalLinks().then((data)=>{
-		// 	 console.info(data);
-		//  });
-
-
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
 
-		//debugger;
 
 		// Render the News Carousel on the Home Page
-		//SP.SOD.executeOrDelayUntilScriptLoaded(() => {
-				var topHeaderWidgets = new TopHeaderWidgets({imgUrl:_spPageContextInfo.webAbsoluteUrl + '/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/notification-stock-widget.png'});
-				topHeaderWidgets.showComponent();
+		var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});
+		topHeaderWidgets.showComponent();
 
-				if ($('.newsCarousel').length){
-					/**
-					 * Only render for Home-Page Layout
-					 */
-					var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
-					newsCarousel.showComponent();
-					// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+		if ($('.newsCarousel').length){
+			/**
+			 * Only render for Home-Page Layout
+			 */
+			var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
+			newsCarousel.showComponent();
+			// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
 
-					var mainBanner = new MainBanner(null); // no properties being passed to the constructor
-					mainBanner.showComponent();
-				}
-		//}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
+			var mainBanner = new MainBanner(null); // no properties being passed to the constructor
+			mainBanner.showComponent();
+		}
 	});

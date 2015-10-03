@@ -5,6 +5,10 @@ export var API = {
     //console.info(actions['gotChirps'].toString());
     get(_spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Email")
       .then(actions['gotChirps'].bind(actions));
+  },
+  startFetchingChirps: function () {
+    this.fetchChirps();
+    return setInterval(this.fetchChirps, 1000);
   }
 };
 

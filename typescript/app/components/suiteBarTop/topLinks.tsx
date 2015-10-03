@@ -1,6 +1,8 @@
 import api = require('../../services/dataService');
 import helpers = require('../_helpers');
 
+//import React = require('react');
+
 /**
  * Interfaces
  */
@@ -51,7 +53,7 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
       margin: 0,
       padding: 0
     }
-    var ilStyle = {
+    var liStyle = {
       display: 'inline',
       marginRight: '15px',
       fontSize: '.8em',
@@ -59,7 +61,7 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
     }
     var createLink = function(link: Link) {
       return (
-        <li style={ilStyle} key={link.id}>{link.title}</li>
+        <li style={liStyle} key={link.id}>{link.title}</li>
       );
     };
     return (

@@ -1,7 +1,7 @@
 export class DataService {
   constructor(message?: string){
     if (message){
-      console.info(message);
+      //console.info(message);
     }
   }
   getSPUser() {
@@ -22,7 +22,7 @@ export class DataService {
     $.get(
       _spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Email",
       (data:any, status: string)=>{
-        //console.info('User Email:', data.d.results);
+        //console.info('User Email:', data);
         deferred.resolve(data);
       }, 'json').fail((sender, args)=>{
         deferred.reject(sender, args);
