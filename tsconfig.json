@@ -1,0 +1,42 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": false,
+        "jsx": "react",
+        "sourceMap": true,
+        "removeComments": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "../typings/**/*.d.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./typescript/app/actions.ts",
+        "./typescript/app/app.ts",
+        "./typescript/app/components/_helpers.ts",
+        "./typescript/app/constants.ts",
+        "./typescript/app/dispatcher.ts",
+        "./typescript/app/services/api.ts",
+        "./typescript/app/services/dataService.ts",
+        "./typescript/app/stores/chirps.ts",
+        "./typescript/app/stores/store.ts",
+        "./typescript/templates/myTemplate.ts",
+        "./typescript/test/SampleTests.ts",
+        "./typings/angularjs/angular.d.ts",
+        "./typings/chai/chai.d.ts",
+        "./typings/flux/flux.d.ts",
+        "./typings/jquery/jquery.d.ts",
+        "./typings/lodash/lodash.d.ts",
+        "./typings/microsoft-ajax/microsoft.ajax.d.ts",
+        "./typings/mocha/mocha.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/object-assign/object-assign.d.ts",
+        "./typings/react/react-global.d.ts",
+        "./typings/react/react.d.ts",
+        "./typings/sharepoint/SharePoint.d.ts",
+        "./typings/sinon/sinon.d.ts",
+        "./typings/tsd.d.ts"
+    ]
+}

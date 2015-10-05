@@ -9,9 +9,12 @@ import {MainBanner} from './components/mainBanner';
 import SuiteBarTop = require('./components/suiteBarTop/_suiteBarTop');
 
 import actions = require('./actions');
-import ChirpStore = require('./stores/chirps');
-[ChirpStore]
+// import ChirpStore = require('./stores/chirps');
+// [ChirpStore]
 import {API} from './services/api';
+
+// CSS
+require('../../sass/style.scss'); // see http://www.pluralsight.com/training/Player?author=joe-eames&name=webpack-fundamentals-m3&clip=4&course=webpack-fundamentals
 
 class RenderUI {
 		constructor() {
@@ -116,6 +119,8 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
+		console.info('test 1, 2, 3, 4, 5, 6, 7, 8...');
+		// debugger;
 
 
 		// Render the News Carousel on the Home Page

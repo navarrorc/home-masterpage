@@ -1,8 +1,8 @@
 export class DataService {
   constructor(message?: string){
-    if (message){
-      //console.info(message);
-    }
+    // if (message){
+    //   //console.info(message);
+    // }
   }
   getSPUser() {
     var deferred = $.Deferred();

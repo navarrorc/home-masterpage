@@ -1,0 +1,340 @@
+/* Bootstrap Overrides*/
+#suiteBarTop * {
+  box-sizing: content-box; }
+
+#Ribbon * {
+  box-sizing: content-box; }
+
+/*--Bootstrap Overrides */
+.o365cs-base.o365cst.o365cs-topnavBGColor-2 {
+  background-color: #000 !important; }
+
+.o365cs-me-tile-nophoto {
+  border-left: 0 !important; }
+
+span#fullscreenmodebox {
+  display: none; }
+
+a#O365_SubLink_ShellAboutMe {
+  display: none; }
+
+#s4-bodyContainer {
+  padding: 0; }
+
+#s4-titlerow {
+  padding: 0;
+  height: 50px; }
+
+#contentBox {
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.ms-core-listMenu-horizontalBox {
+  margin-top: 15px;
+  position: relative; }
+
+ul.root.ms-core-listMenu-root.static > li:not(:nth-last-child(2))::after {
+  color: #fff;
+  content: '|';
+  font-size: 1.4em;
+  font-weight: 100; }
+
+.ms-core-listMenu-item,
+.ms-core-listMenu-item:link {
+  color: #fff !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0; }
+
+li.static.ms-verticalAlignTop.ms-listMenu-editLink.ms-navedit-editArea {
+  display: none; }
+
+span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode {
+  margin: 0; }
+
+.ms-core-listMenu-item,
+.ms-core-listMenu-item:link {
+  font-weight: 500;
+  font-size: 1.2em; }
+
+.topBarContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  background-color: #ECE9DF;
+  height: 50px; }
+
+.topBarContainer-widgets * {
+  display: inline; }
+
+.ms-srch-sb-borderFocused {
+  border: 1px solid #EEB111; }
+
+div#ctl00_PlaceHolderSearchArea_ctl00_csr_sboxdiv {
+  background-color: #fff;
+  height: 30px;
+  width: 290px; }
+
+.ms-srch-sb-border {
+  border: 1px solid #D9D6CB; }
+
+.ms-srch-sb-border:hover {
+  border: 1px solid #EEB111; }
+
+input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox {
+  height: 29px;
+  width: 260px; }
+
+input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox:focus {
+  border-color: #EEB111;
+  outline-color: #EEB111; }
+
+a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink {
+  height: 28px;
+  width: 18px;
+  border: 0;
+  margin: 0; }
+
+a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink:hover {
+  background-color: #fff; }
+
+.ms-srch-sb-searchImg {
+  top: -54px;
+  left: -34px; }
+
+.ms-srch-sb-searchImg:hover {
+  top: -66px;
+  left: 0; }
+
+.ms-srch-sb-searchLink:active {
+  background-color: #fff; }
+
+.ms-srch-sb-searchLink > img:active {
+  background-color: #fff; }
+
+.mainBanner {
+  text-align: center;
+  height: 400px;
+  width: 100%;
+  background-color: #000; }
+
+.newsCarousel {
+  text-align: center;
+  height: 350px;
+  width: 62%;
+  background-color: #111111;
+  position: relative;
+  top: -80px; }
+
+.widgetsContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: -50px; }
+
+.widgetsContainer-satisfactionIndex,
+.widgetsContainer-strategicInitiatives {
+  text-align: center;
+  background-color: #ECE9DF;
+  height: 350px;
+  width: 30%; }
+
+.widgetsContainer-separator {
+  width: 2%; }
+
+.middleContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: -15px;
+  min-height: 600px; }
+
+.middleContainer-apps,
+.middleContainer-misc {
+  width: 30%;
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.middleContainer-apps {
+  -webkit-align-content: space-between;
+      -ms-flex-line-pack: justify;
+          align-content: space-between; }
+
+.middleContainer-apps-sap,
+.middleContainer-apps-workflows,
+.middleContainer-apps-learning,
+.middleContainer-apps-benefits,
+.middleContainer-apps-travel,
+.middleContainer-apps-adp {
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+  text-align: center;
+  width: 250px;
+  height: 160px;
+  border: 1px solid #2443c7; }
+
+.middleContainer-misc {
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.middleContainer-misc-calendar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  border: 1px solid #1fc435;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 350px;
+  text-align: center; }
+
+.middleContainer-misc-calendar-widget {
+  width: 350px;
+  height: 280px;
+  border: 1px solid red; }
+
+.middleContainer-misc-calendar-eventsList {
+  border: 1px solid #2d4354;
+  width: 150px;
+  min-height: 346px; }
+
+.middleContainer-misc-policy {
+  text-align: center;
+  border: 1px solid #a0e421;
+  height: 200px; }
+
+.faqContainer {
+  margin-top: 25px;
+  margin-bottom: 35px;
+  text-align: center;
+  height: 250px;
+  width: 62%;
+  border: 1px solid #16bdae; }
+
+footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 250px;
+  background-color: #000;
+  color: #fff;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+@media only screen and (max-width: 600px) {
+  #O365_MainLink_Logo {
+    display: none; }
+  .o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+    display: none; }
+  .o365cs-nav-centerAlign {
+    padding: 0; } }
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+  .o365cs-nav-headerRegion {
+    display: none !important; }
+  .o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff,
+  button.o365cs-nav-item.o365cs-nav-button.ms-fcl-w.o365cs-me-nav-item.o365button.ms-bgc-tdr-h {
+    display: none !important; } }
+
+.companyLogo {
+  width: 60px;
+  height: 40px;
+  padding-top: 3px; }
+
+#O365_MainLink_Logo,
+span.o365cs-nav-brandingText,
+div.o365cs-me-tile-nophoto-username-container {
+  visibility: hidden; }
+
+.o365cs-nav-centerAlign {
+  padding-right: 10px; }
+
+.o365cs-me-tileview-container {
+  display: block !important; }
+
+span.o365cs-nav-brandingText {
+  font-family: "Times New Roman", Times, Serif !important; }
+
+.profileImage {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding-top: 0; }
+
+.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+  display: none; }
+
+.o365cs-nav-topItem.o365cs-nav-o365Branding.o365cs-rsp-tn-hideIfAffordanceOn {
+  padding-right: 10px; }
+
+/*# sourceMappingURL=styles.css.map*/
