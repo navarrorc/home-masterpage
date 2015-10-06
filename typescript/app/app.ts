@@ -119,7 +119,7 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
-		console.info('test 1, 2, 3, 4, 5, 6, 7, 8...');
+		console.info('test 1, 2, 3...');
 		// debugger;
 
 
