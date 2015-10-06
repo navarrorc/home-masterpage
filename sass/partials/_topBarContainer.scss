@@ -58,7 +58,6 @@ span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode
   background-color: #ECE9DF;
   height: 50px;
 }
-  //.topBarContainer-widgets > h3:first-of-type {
   .topBarContainer-widgets * {
     display:inline;
   }
@@ -67,32 +66,45 @@ span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode
 .ms-srch-sb-borderFocused {
   border: 1px solid #EEB111;
 }
-div#ctl00_PlaceHolderSearchArea_ctl00_csr_sboxdiv {
-  background-color: #fff;
-  height: 30px;
-  width: 290px;
-}
+  div.ms-srch-sb.ms-srch-sb-border {
+    background-color: #fff;
+    height: 30px;
+    width: 290px;
+  }
+  div.ms-srch-sb.ms-srch-sb-borderFocused {
+    background-color: #fff;
+    height: 30px;
+    width: 290px;
+  }
   .ms-srch-sb-border {
     border: 1px solid #D9D6CB;
   }
    .ms-srch-sb-border:hover {
      border: 1px solid #EEB111;
    }
-  input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox {
+  div.ms-srch-sb.ms-srch-sb-border > input{
     height: 29px;
     width: 260px;
   }
-  input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox:focus {
+  div.ms-srch-sb.ms-srch-sb-borderFocused > input{
+    height: 29px;
+    width: 260px;
+  }
+  div.ms-srch-sb.ms-srch-sb-border > input:focus {
     border-color: #EEB111;
     outline-color: #EEB111;
   }
-  a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink {
-    height: 28px;
+  div.ms-srch-sb.ms-srch-sb-borderFocused > input:focus {
+    border-color: #EEB111;
+    outline-color: #EEB111;
+  }
+  a.ms-srch-sb-searchLink {
+    height: 28px !important;
     width: 18px;
     border: 0;
     margin: 0;
   }
-   a#ctl00_PlaceHolderSearchArea_ctl00_csr_SearchLink:hover {
+   a.ms-srch-sb-searchLink:hover {
      background-color: #fff;
    }
   .ms-srch-sb-searchImg {
@@ -108,4 +120,7 @@ div#ctl00_PlaceHolderSearchArea_ctl00_csr_sboxdiv {
   }
   .ms-srch-sb-searchLink > img:active {
     background-color: #fff;
+  }
+  a[title='Navigation'] {
+    display: none;
   }

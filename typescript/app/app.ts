@@ -1,5 +1,3 @@
-/// <reference path='../../typings/tsd.d.ts'/>
-
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
 
@@ -13,7 +11,11 @@ import actions = require('./actions');
 // [ChirpStore]
 import {API} from './services/api';
 
-// CSS
+// CSS Dependencies
+/*
+	See webpack.config.js
+	Using the 'extract-text-webpack-plugin' to extract the css to a file
+*/
 require('../../sass/style.scss'); // see http://www.pluralsight.com/training/Player?author=joe-eames&name=webpack-fundamentals-m3&clip=4&course=webpack-fundamentals
 
 class RenderUI {
@@ -97,15 +99,11 @@ class RenderUI {
 		}
 		setSearchBoxPlaceHolderText() {
 			$(function () {
-			    var value = $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val();
+					var value = $('div.ms-srch-sb.ms-srch-sb-border>input').val();
 			    if (value === "Search..." || value === "Search this site") {
-			        $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val('');
+							$('div.ms-srch-sb.ms-srch-sb-border>input').val('');
 			    }
-				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('value');
-				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('onfocus');
-				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('onblur');
-				// $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').removeAttr('title');
-				 $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').attr('placeholder','Search People, Locations or Documents');
+				 $('div.ms-srch-sb.ms-srch-sb-border>input').attr('placeholder','Search People, Locations or Documents');
 			})
 		}
 	}
@@ -119,7 +117,7 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
-		console.info('test 1, 2, 3...');
+		console.info('test 1, 2, 3, 4...');
 		// debugger;
 
 

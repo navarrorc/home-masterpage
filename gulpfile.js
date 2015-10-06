@@ -26,9 +26,8 @@ function onBuild(done) {
 }
 
 /**
-* Gulp Tasks
+*Gulp Tasks
 **/
-
 //gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
 gulp.task('default', ['webpack:prod-watch'], function() {
   nodemon({

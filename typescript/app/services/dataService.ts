@@ -34,7 +34,7 @@ export class DataService {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      _spPageContextInfo.webAbsoluteUrl + "/_api/web/Lists/GetByTitle('TopLinks')/items?$select=Title,ID",
+      "https://rushenterprises.sharepoint.com/sites/rushnet/_api/web/Lists/GetByTitle('TopLinks')/items?$select=Title,ID",
       (data:any)=>{
         //console.info('data.value', data.value);
         deferred.resolve(data.value);
