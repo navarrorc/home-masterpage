@@ -1,11 +1,21 @@
-footer {
-  display: flex;
-  flex-flow:column;
-  height: 250px;
-  background-color: #000;
-  color: #fff;
-  justify-content: center;
-  align-items: center;
-  // position: relative;
-  // top: -50px;
+#ftr {
+	background: $black2; color: $white; padding-top: 40px; overflow: hidden;
+
+	h1 { margin-bottom: 20px; color: $dark-yellow; }
+	#coin-wrap {
+		padding-right: 48px;
+
+		img { display: block; width: 100%; }
+	}
+	#links-list {
+		a { color: $white; border: 0; font-style: normal; margin-bottom: 20px; float: left; clear: left; }
+	}
+	#social-link-list {
+		a {
+			border: 0; color: $black2; background: $light-stone-blue; display: block; border-radius: 50%; width: 28px; height: 28px; text-align: center; float: left; margin-right: 24px;
+
+			&:hover { background: $pale-stone-blue; }
+			i { display: block; line-height: 28px; }
+		}
+	}
 }

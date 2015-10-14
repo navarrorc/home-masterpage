@@ -1,20 +1,28 @@
-//*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-
-body { font: 15px/21px $sans-serif; color: $black1; background: url(/img/bg.png); }
+body { font: 15px/21px $sans-serif; color: $black1;
+	 background: url($baseUrl	+ "/img/bg.png");
+}
 a {
-	color: $light-stone-blue; text-decoration: none;
+	font-weight: bold; font-style: italic; color: $light-stone-blue; border-bottom: dashed 1px; text-decoration: none;
 
 	&:hover { color: $pale-stone-blue; }
 	&[disabled], &.disabled { color: #adafba; color: $pale-stone-blue; opacity: 0.5; pointer-events: none; }
 }
-  a:visited {
-    color: $light-stone-blue;
-  }
 strong, b { font-weight: bold; }
 em, i { font-style: italic; }
 p { margin-bottom: 20px; }
-h1 { font: 23px/29px $serif; }
+img { max-width: 100%; height: auto }
+h1 {
+	font: bold 23px/29px $serif; color: $dark-stone-blue; margin-bottom: 22px;
 
+	&.yellow { color: $dark-yellow; }
+}
+
+/* Global re-useable styles */
+.search-box {
+	height: 36px; background: $white; border: solid 1px $stone; font-size: 15px; color: $light-stone-blue; padding: 0 16px; width: 100%;
+
+	& + .icon-search { color: $stone; font-size: 24px; line-height: 1; float: right; width: 24px; position: relative; margin: -30px 12px 0 0; }
+}
 .counter {
 	display: inline-block; width: 24px; height: 24px; border-radius: 50%; color: $light-stone; line-height: 24px; text-align: center; font-size: 12px; background: $dark-stone-blue; font-weight: bold;
 
@@ -24,4 +32,30 @@ h1 { font: 23px/29px $serif; }
 	font-style: normal; text-transform: uppercase; border: 0;
 
 	.counter { position: relative; top: -2px; }
+}
+.panel {
+	background: $light-stone; margin-bottom: 30px; padding: 15px 26px; color: $grey; position: relative;
+
+	&.no-bg { background: none; }
+	p { margin-bottom: 27px; }
+}
+.content-rotator {
+	position: relative;
+
+	.nav-link {
+		position: absolute; top: 50%; font-size: 30px; border: 0; @include translateY(-50%);
+
+		&.left { left: 0; }
+		&.right { right: 0; }
+	}
+	.content {
+		width: calc(100% - 140px); display: block; margin: 0 70px 20px;
+
+		> * {
+			display: block; border: 0;
+
+			&.hide { display: none; }
+			&.show { display: block; }
+		}
+	}
 }

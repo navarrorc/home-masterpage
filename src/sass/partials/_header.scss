@@ -1,0 +1,21 @@
+#hdr {
+	background: $lighter-stone; padding: 23px 0;
+
+	.notification { line-height: 44px; margin-right: 38px; }
+
+	#hdr-search-box-wrap { width: 350px; padding: 4px 0; }
+	#stock-ticker {
+		text-align: right; font: 16px/22px TradeGothic; color: $dark-stone-blue;
+
+		.paging-control-left, .paging-control-right { font-size: 15px; line-height: 44px; cursor: pointer; float: left; border: 0; }
+		.paging-control-left { padding-right: 8px; }
+		.paging-control-right { padding-left: 8px; }
+		.counter { position: relative; top: -2px; }
+		#stock-symbols {
+			> div { display: none; }
+			> div:first-child { display: block; }
+			> div.show { display: block; }
+			> div.hide { display: none; }
+		}
+	}
+}

@@ -133,7 +133,7 @@
 	renderUI.setSearchBoxPlaceHolderText();
 	$(function () {
 	    SuiteBarTop.showComponents();
-	    console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9...');
+	    console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...');
 	    var topHeaderWidgets = new topHeaderWidgets_1.TopHeaderWidgets({ updates: 10, alerts: 3 });
 	    topHeaderWidgets.showComponent();
 	    if ($('.newsCarousel').length) {

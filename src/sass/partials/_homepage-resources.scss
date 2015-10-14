@@ -1,0 +1,6 @@
+.resource {
+	display: block; border: 0; font-style: normal; border: solid 1px $dark-brown; margin-bottom: 30px; text-transform: uppercase;
+
+	.resource-title, img { display: block; width: 100%; }
+	.resource-title { background: $brown; font: bold 16px/52px TradeGothicCondensed; color: $white; @include text-shadow(01px 0 0 rgb(52, 50, 40)); padding: 0 26px; }
+}

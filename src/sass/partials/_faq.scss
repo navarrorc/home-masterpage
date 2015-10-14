@@ -1,0 +1,12 @@
+.faq-link-list-wrap {
+	@include display-flex;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+
+	.faq-link-list {
+		padding: 0 30px; width: calc(33.333333333% - 1px);
+
+		li a { line-height: 33px; }
+	}
+	.faq-link-list-divider { width: 1px; background: $stone; @include box-shadow(0 2px 1px 0 $white); }
+}

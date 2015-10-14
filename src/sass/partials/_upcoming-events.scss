@@ -1,0 +1,37 @@
+.events-calendar {
+	background: $white;
+
+	* { border: 0 !important; }
+
+	.fc-toolbar {
+		margin: 0; background: $black1;
+
+		h2 { color: $white; font: 22px/55px $sans-serif; float: none; }
+		.fc-center { display: block; }
+		.fc-button { @include border-radius(0); background: none; @include text-shadow(0 0); color: $light-stone-blue; line-height: 55px; height: auto; }
+	}
+	.fc-basic-view {
+		.fc-day-grid-container { overflow: visible !important; height: auto !important; }
+		.fc-row {
+			min-height: 0; height: auto !important;
+
+			.fc-content-skeleton { padding: 0; }
+		}
+		.fc-day-number {
+			text-align: center; padding: 0; font: 24px/39px $sans-serif; color: $black2; padding: 0 5px;
+
+			&.has-event { background: $dark-yellow; }
+		}
+		.fc-event { display: none; }
+		.fc-bg { display: none; }
+		.fc-day-header { background: $black1; color: $white; font: 18px/39px $sans-serif; }
+		.fc-view-container { background: $black1; }
+		.fc-day-grid-container { border: solid $stone !important; border-width: 0 1px 1px !important; background: #fff; }
+	}
+
+}
+.events-list {
+	dt { font: bold 16px/22px TradeGothic; }
+	dd, a { font: 16px/22px TradeGothic; border: 0; color: $black1; }
+	dd { margin-bottom: 16px; }
+}

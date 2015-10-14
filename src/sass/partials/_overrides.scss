@@ -1,8 +1,16 @@
 /* Bootstrap Overrides*/
 #suiteBarTop * {
   box-sizing: content-box;
+
+  img {max-width: none !important;}
+  a {font-weight: 500; font-style: normal; border-bottom: 0;}
 }
-#Ribbon * {
+#s4-ribbonrow * {
   box-sizing: content-box;
+
+  img {max-width: none !important;}
+  a {font-weight: 500; font-style: normal; border-bottom: 0;}
+
 }
+
 /*--Bootstrap Overrides */
