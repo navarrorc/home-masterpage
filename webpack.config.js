@@ -5,8 +5,8 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  context: path.resolve('./typescript/app'),
-  entry: './app', // app.ts
+  context: path.resolve('./src/app'),
+  entry: './App', // App.ts
   output: {
     path: path.resolve('builds/dev'), // destination of bundle.js
     publicPath: '/builds/assets/',
@@ -18,7 +18,7 @@ module.exports = {
   /**
   * Turn on sourcemap
   **/
-  //devtool: 'source-map',
+  devtool: 'source-map',
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -50,7 +50,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader')
+        loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader?includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" + path.resolve(__dirname, "./mixins/app_mixins"))
       }
     ]
   }

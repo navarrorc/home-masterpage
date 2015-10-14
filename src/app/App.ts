@@ -16,7 +16,7 @@ import {API} from './services/api';
 	See webpack.config.js
 	Using the 'extract-text-webpack-plugin' to extract the css to a file
 */
-require('../../sass/style.scss'); // see http://www.pluralsight.com/training/Player?author=joe-eames&name=webpack-fundamentals-m3&clip=4&course=webpack-fundamentals
+require('../sass/styles.scss'); // see http://www.pluralsight.com/training/Player?author=joe-eames&name=webpack-fundamentals-m3&clip=4&course=webpack-fundamentals
 
 class RenderUI {
 		constructor() {
@@ -103,7 +103,7 @@ class RenderUI {
 			    if (value === "Search..." || value === "Search this site") {
 							$('div.ms-srch-sb.ms-srch-sb-border>input').val('');
 			    }
-				 $('div.ms-srch-sb.ms-srch-sb-border>input').attr('placeholder','Search People, Locations or Documents');
+				 $('div.ms-srch-sb.ms-srch-sb-border>input').attr('placeholder','Search Documents, Locations, or People');
 			})
 		}
 	}
@@ -117,7 +117,7 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
-		console.info('test 1, 2, 3, 4...');
+		console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9...');
 		// debugger;
 
 

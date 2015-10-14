@@ -52,8 +52,8 @@
 		<SharePoint:CssRegistration Name="Themable/corev15.css" runat="server" />
 
 		<!-- ===== STARTER: Custom CSS  =================================================================================================== -->
-    <SharePoint:CssRegistration ID="CssRegistration1" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/css/bootstrap.min.css %&gt;" runat="server" after="SharepointCssFile" />
-    <SharePoint:CssRegistration ID="CssRegistration3" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/assets/styles.css %&gt;" runat="server" after="SharepointCssFile" />
+    <%--<SharePoint:CssRegistration ID="CssRegistration1" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/css/bootstrap.min.css %&gt;" runat="server" after="SharepointCssFile" />--%>
+    <SharePoint:CssRegistration ID="CssRegistration3" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/assets/styles.min.css %&gt;" runat="server" after="SharepointCssFile" />
 
 		<!-- ===== STARTER: Custom JAVASCRIPT  =================================================================================================== -->
 		<SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/lib/jquery-1.11.3.min.js" runat="server" Localizable="false" />

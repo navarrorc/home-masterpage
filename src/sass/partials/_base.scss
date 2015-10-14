@@ -1,0 +1,27 @@
+//*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+body { font: 15px/21px $sans-serif; color: $black1; background: url(/img/bg.png); }
+a {
+	color: $light-stone-blue; text-decoration: none;
+
+	&:hover { color: $pale-stone-blue; }
+	&[disabled], &.disabled { color: #adafba; color: $pale-stone-blue; opacity: 0.5; pointer-events: none; }
+}
+  a:visited {
+    color: $light-stone-blue;
+  }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+p { margin-bottom: 20px; }
+h1 { font: 23px/29px $serif; }
+
+.counter {
+	display: inline-block; width: 24px; height: 24px; border-radius: 50%; color: $light-stone; line-height: 24px; text-align: center; font-size: 12px; background: $dark-stone-blue; font-weight: bold;
+
+	&.red { background: $red; }
+}
+.notification {
+	font-style: normal; text-transform: uppercase; border: 0;
+
+	.counter { position: relative; top: -2px; }
+}

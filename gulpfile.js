@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     webpack = require('webpack'),
     path = require('path'),
     fs = require('fs'),
-    nodemon = require('nodemon');
+    nodemon = require('nodemon'),
+    notify = require('gulp-notify');
 
 
 function onBuild(done) {
@@ -28,18 +29,20 @@ function onBuild(done) {
 /**
 *Gulp Tasks
 **/
-//gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
-gulp.task('default', ['webpack:prod-watch'], function() {
+gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
+//gulp.task('default', ['webpack:prod-watch'], function() {
   nodemon({
     execMap: {
       js: 'node'
     },
-    script: path.join(__dirname, 'builds/dev'),
+    //script: path.join(__dirname, 'builds/dev'),
     ignore: ['*'],
     watch: ['foo/'],
     ext: 'noop'
   }).on('restart', function() {
-    gutil.log('Restarted!');
+    gulp.src('server.js')
+      .pipe(notify('Nodemon Reastarted!'));
+    //gutil.log('Restarted!');
   });
 });
 

@@ -58,9 +58,9 @@ span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode
   background-color: #ECE9DF;
   height: 50px;
 }
-  .topBarContainer-widgets * {
-    display:inline;
-  }
+  // .topBarContainer-widgets * {
+  //   display:inline;
+  // }
 
 // Search bar
 .ms-srch-sb-borderFocused {
@@ -124,3 +124,7 @@ span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode
   a[title='Navigation'] {
     display: none;
   }
+
+  // Notifications
+  .notification { line-height: 44px; margin-right: 38px; }
+  .notification a:hover {text-decoration: none;}

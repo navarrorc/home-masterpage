@@ -8,7 +8,8 @@ import helpers = require('../_helpers');
  */
 interface Link {
   id: number,
-  title: string
+  title: string,
+  url: string
 }
 interface topLinksProps {
   // TODO: add properties to topLinksProps Interface
@@ -38,7 +39,7 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
 
         // map data from Ajax call to fit the Link type [{title: 'link', id: 1}, ...]
         _.map(data,(n:any)=>{
-          temp.push({title: n.Title, id: n.Id});
+          temp.push({title: n.Title, id: n.Id, url: n.Url});
         });
 
         this.setState({
@@ -59,13 +60,16 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
       fontSize: '.8em',
       fontWeight: 700
     }
+    var aStyle = {
+      color: '#fff'
+    }
     var createLink = function(link: Link) {
       return (
-        <li style={liStyle} key={link.id}>{link.title}</li>
+        <li style={liStyle} key={link.id}><a style={aStyle} href={link.url}>{link.title}</a></li>
       );
     };
     return (
-      <ul style={ulStyle}>
+      <ul style={ulStyle} className='topLinks'>
         {this.state.links.map(createLink, this)}
       </ul>
     )

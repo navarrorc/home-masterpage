@@ -23,3 +23,10 @@ span#fullscreenmodebox {
 a#O365_SubLink_ShellAboutMe {
   display:none;
 }
+
+/**
+** topLinks.tsx
+**/
+.topLinks > li > a:hover {
+  text-decoration: none;
+}

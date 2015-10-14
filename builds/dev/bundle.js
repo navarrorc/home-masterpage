@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/builds/assets/";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -44,7 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/// <reference path='../../typings/tsd.d.ts'/>
+	//$ = jQuery = require('jquery'); // see cory's course on pluralsight
+	// [$]
 	var topHeaderWidgets_1 = __webpack_require__(1);
 	var newsCarousel_1 = __webpack_require__(2);
 	var mainBanner_1 = __webpack_require__(3);
@@ -116,11 +117,11 @@
 	    };
 	    RenderUI.prototype.setSearchBoxPlaceHolderText = function () {
 	        $(function () {
-	            var value = $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val();
+	            var value = $('div.ms-srch-sb.ms-srch-sb-border>input').val();
 	            if (value === "Search..." || value === "Search this site") {
-	                $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').val('');
+	                $('div.ms-srch-sb.ms-srch-sb-border>input').val('');
 	            }
-	            $('input#ctl00_PlaceHolderSearchArea_ctl00_csr_sbox').attr('placeholder', 'Search People, Locations or Documents');
+	            $('div.ms-srch-sb.ms-srch-sb-border>input').attr('placeholder', 'Search Documents, Locations, or People');
 	        });
 	    };
 	    return RenderUI;
@@ -132,7 +133,7 @@
 	renderUI.setSearchBoxPlaceHolderText();
 	$(function () {
 	    SuiteBarTop.showComponents();
-	    console.info('test 1, 2, 3, 4, 5, 6, 7...');
+	    console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9...');
 	    var topHeaderWidgets = new topHeaderWidgets_1.TopHeaderWidgets({ updates: 10, alerts: 3 });
 	    topHeaderWidgets.showComponent();
 	    if ($('.newsCarousel').length) {
@@ -160,27 +161,7 @@
 	        _super.call(this, props);
 	    }
 	    TopHeaderWidgets.prototype.render = function () {
-	        var liStyle = {
-	            color: '#5F5C4F',
-	            display: 'inline',
-	            marginRight: '30px',
-	            fontSize: '1em',
-	            fontWeight: 700,
-	        };
-	        var spanStyle = {
-	            backgroundColor: '#ED1C24',
-	            paddingTop: '2px',
-	            paddingRight: '1px',
-	            color: '#fff',
-	            borderRadius: '50%',
-	            width: '25px',
-	            height: '25px',
-	            textAlign: 'center',
-	            display: 'inline-block',
-	            verticalAlign: 'middle',
-	            marginBottom: '3px'
-	        };
-	        return (React.createElement("div", null, React.createElement("ul", null, React.createElement("li", {"style": liStyle}, "UPDATES ", React.createElement("span", {"style": spanStyle}, this.props.updates)), React.createElement("li", {"style": liStyle}, "ALERTS ", React.createElement("span", {"style": spanStyle}, this.props.alerts)))));
+	        return (React.createElement("div", null, React.createElement("a", {"href": "", "className": "notification float-right"}, "Alerts ", React.createElement("span", {"className": "counter red"}, "1")), React.createElement("a", {"href": "", "className": "notification float-right"}, "Updates ", React.createElement("span", {"className": "counter red"}, "10"))));
 	    };
 	    TopHeaderWidgets.prototype.showComponent = function () {
 	        React.render(React.createElement(TopHeaderWidgets, {"updates": this.props.updates, "alerts": this.props.alerts}), document.querySelector('div.topBarContainer-widgets'));
@@ -312,7 +293,7 @@
 	    };
 	    DataService.prototype.getTopLinks = function () {
 	        var deferred = $.Deferred();
-	        $.get(_spPageContextInfo.webAbsoluteUrl + "/_api/web/Lists/GetByTitle('TopLinks')/items?$select=Title,ID", function (data) {
+	        $.get("https://rushenterprises.sharepoint.com/sites/rushnet/_api/web/Lists/GetByTitle('TopLinks')/items?$select=Title,ID,Url", function (data) {
 	            deferred.resolve(data.value);
 	        }, 'json').fail(function (sender, args) {
 	            console.error(args, 'status:', sender.status, '$.get() in getTopLinks() failed!');
@@ -373,7 +354,7 @@
 	                var temp;
 	                temp = [];
 	                _.map(data, function (n) {
-	                    temp.push({ title: n.Title, id: n.Id });
+	                    temp.push({ title: n.Title, id: n.Id, url: n.Url });
 	                });
 	                _this.setState({
 	                    links: temp
@@ -393,10 +374,13 @@
 	            fontSize: '.8em',
 	            fontWeight: 700
 	        };
-	        var createLink = function (link) {
-	            return (React.createElement("li", {"style": liStyle, "key": link.id}, link.title));
+	        var aStyle = {
+	            color: '#fff'
 	        };
-	        return (React.createElement("ul", {"style": ulStyle}, this.state.links.map(createLink, this)));
+	        var createLink = function (link) {
+	            return (React.createElement("li", {"style": liStyle, "key": link.id}, React.createElement("a", {"style": aStyle, "href": link.url}, link.title)));
+	        };
+	        return (React.createElement("ul", {"style": ulStyle, "className": 'topLinks'}, this.state.links.map(createLink, this)));
 	    };
 	    return TopLinks;
 	})(React.Component);
@@ -429,3 +413,4 @@
 
 /***/ }
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

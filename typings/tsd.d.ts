@@ -11,3 +11,4 @@
 /// <reference path="flux/flux.d.ts" />
 /// <reference path="object-assign/object-assign.d.ts" />
 /// <reference path="react/react-global.d.ts" />
+/// <reference path="radium/radium.d.ts" />
