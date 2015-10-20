@@ -1,6 +1,7 @@
-@mixin flexing {
+@mixin flexing () {
 	@include display-flex;
 	@include flex-direction(row);
 	@include justify-content(flex-start);
-	@include align-items(flext-start);
+	@include align-items(flex-start);
+	@include flex-wrap(wrap);
 }

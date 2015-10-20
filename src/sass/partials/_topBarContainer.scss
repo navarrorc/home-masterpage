@@ -35,7 +35,7 @@ ul.root.ms-core-listMenu-root.static > li:not(:nth-last-child(2))::after {
     margin: 0;
   }
   li.static.ms-verticalAlignTop.ms-listMenu-editLink.ms-navedit-editArea {
-    display: none;
+    //display: none;
   }
 
 
@@ -122,7 +122,7 @@ span.static.menu-item.ms-core-listMenu-item.ms-displayInline.ms-navedit-linkNode
     background-color: #fff;
   }
   a[title='Navigation'] {
-    display: none;
+    //display: none;
   }
 
   // Notifications

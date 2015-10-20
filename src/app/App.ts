@@ -1,15 +1,18 @@
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
 
-import {TopHeaderWidgets} from './components/topHeaderWidgets';
-import {NewsCarousel} from './components/newsCarousel';
-import {MainBanner} from './components/mainBanner';
-import SuiteBarTop = require('./components/suiteBarTop/_suiteBarTop');
+import {TopHeaderWidgets} from './components/TopHeaderWidgets';
+import {NewsCarousel} from './components/NewsCarousel';
+import {MainBanner} from './components/MainBanner';
+import SuiteBarTop = require('./components/suiteBarTop/SuiteBarTop');
 
 import actions = require('./actions');
 // import ChirpStore = require('./stores/chirps');
 // [ChirpStore]
 import {API} from './services/api';
+import {RssService} from './services/RSS';
+
+import {Reader} from './components/Reader';
 
 // CSS Dependencies
 /*
@@ -99,11 +102,12 @@ class RenderUI {
 		}
 		setSearchBoxPlaceHolderText() {
 			$(function () {
-					var value = $('div.ms-srch-sb.ms-srch-sb-border>input').val();
+					var value = $('#SearchBox input').val();
 			    if (value === "Search..." || value === "Search this site") {
-							$('div.ms-srch-sb.ms-srch-sb-border>input').val('');
+						$('#SearchBox input').removeAttr('value');
+						$('#SearchBox input').removeAttr('title');
 			    }
-				 $('div.ms-srch-sb.ms-srch-sb-border>input').attr('placeholder','Search Documents, Locations, or People');
+					$('#SearchBox input').attr('placeholder','Search Documents, Locations, or People');
 			})
 		}
 	}
@@ -117,23 +121,33 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
-		console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...');
+		console.info('test 1, 2, 3, 4...');
 		// debugger;
+
+		var reader = new Reader(null);
+		reader.show();
+
+		// testing out the rss node module
+		var rssService = new RssService();
+		rssService.fetch().then((data:any[])=>{
+		  console.log(JSON.stringify(data[0],null,4));
+		  console.log('length: ', data.length);
+		});
 
 
 		// Render the News Carousel on the Home Page
-		var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});
-		topHeaderWidgets.showComponent();
+		//var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});
+		//topHeaderWidgets.showComponent();
 
-		if ($('.newsCarousel').length){
-			/**
-			 * Only render for Home-Page Layout
-			 */
-			var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
-			newsCarousel.showComponent();
-			// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
-
-			var mainBanner = new MainBanner(null); // no properties being passed to the constructor
-			mainBanner.showComponent();
-		}
+		// if ($('.newsCarousel').length){
+		// 	/**
+		// 	 * Only render for Home-Page Layout
+		// 	 */
+		// 	var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
+		// 	newsCarousel.showComponent();
+		// 	// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+		//
+		// 	var mainBanner = new MainBanner(null); // no properties being passed to the constructor
+		// 	mainBanner.showComponent();
+		// }
 	});

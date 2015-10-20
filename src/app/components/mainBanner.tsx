@@ -18,7 +18,7 @@ export class MainBanner extends React.Component<any, any> {
   }
   showComponent() {
     React.render(
-      <MainBanner />
-      ,document.querySelector('.mainBanner'));
+      <MainBanner />,
+      document.querySelector('.mainBanner'));
   }
 }

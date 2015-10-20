@@ -1,7 +1,7 @@
-import api = require('../../services/dataService');
-import ProfileImage = require('./profileImage');
-import TopLinks = require('./topLinks');
-import helpers = require('../_helpers');
+import api = require('../../services/DataService');
+import ProfileImage = require('./ProfileImage');
+import TopLinks = require('./TopLinks');
+import helpers = require('../Helpers');
 
 //import React = require('react');
 

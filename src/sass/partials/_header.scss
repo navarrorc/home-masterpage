@@ -3,7 +3,12 @@
 
 	.notification { line-height: 44px; margin-right: 38px; }
 
-	#hdr-search-box-wrap { width: 350px; padding: 4px 0; }
+	#hdr-search-box-wrap {
+		width: 350px;
+		padding: 4px 0;
+
+		//img {max-width: none;} // RCN
+	}
 	#stock-ticker {
 		text-align: right; font: 16px/22px TradeGothic; color: $dark-stone-blue;
 
@@ -17,5 +22,15 @@
 			> div.show { display: block; }
 			> div.hide { display: none; }
 		}
+	}
+
+	.ms-srch-sb>input {
+		width: 320px;
+		font-size: 1em;
+	}
+
+	#SearchBox > div {
+		height: 34px;
+		border: 0;
 	}
 }

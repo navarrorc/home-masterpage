@@ -9,7 +9,7 @@ module.exports = exports = Object.create(require("./webpack.config.js"));
 exports.plugins = [];
 exports.plugins.push(new ExtractTextPlugin('styles.min.css'));
 exports.plugins = exports.plugins.concat(
-  new webpack.optimize.UglifyJsPlugin()
+  new webpack.optimize.UglifyJsPlugin({sourceMap: true})
   //new webpack.SourceMapDevToolPlugin({filename: remoteDir +'/bundle.min.js.map'})
 );
 exports.devtool = 'sourcemap';

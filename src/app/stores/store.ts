@@ -1,6 +1,6 @@
 import assign = require('object-assign');
 import {EventEmitter} from 'events';
-import {dispatcher} from '../dispatcher';
+import {dispatcher} from '../Dispatcher';
 
 var EventEmitterProto = EventEmitter.prototype;
 var CHANGE_EVENT = 'CHANGE';

@@ -1,6 +1,6 @@
-import {constants} from '../constants';
+import {constants} from '../Constants';
 //import {extend} from './store';
-import store = require('./store');
+import store = require('./Store');
 
 //export var ChirpStore = extend({
 var ChirpStore = exports = store.extend({

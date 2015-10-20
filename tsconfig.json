@@ -11,19 +11,21 @@
     },
     "filesGlob": [
         "./**/*.ts",
+        "./**/*.tsx",
         "../typings/**/*.d.ts",
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "src/app/actions.ts",
+        "src/app/Actions.ts",
         "src/app/App.ts",
-        "src/app/components/_helpers.ts",
-        "src/app/constants.ts",
-        "src/app/dispatcher.ts",
-        "src/app/services/api.ts",
-        "src/app/services/dataService.ts",
-        "src/app/stores/chirps.ts",
-        "src/app/stores/store.ts",
+        "src/app/components/Helpers.ts",
+        "src/app/Constants.ts",
+        "src/app/Dispatcher.ts",
+        "src/app/services/Api.ts",
+        "src/app/services/DataService.ts",
+        "src/app/services/RSS.ts",
+        "src/app/stores/Chirps.ts",
+        "src/app/stores/Store.ts",
         "typings/angularjs/angular.d.ts",
         "typings/chai/chai.d.ts",
         "typings/flux/flux.d.ts",
@@ -38,7 +40,14 @@
         "typings/react/react.d.ts",
         "typings/sharepoint/SharePoint.d.ts",
         "typings/sinon/sinon.d.ts",
-        "typings/tsd.d.ts"
+        "typings/tsd.d.ts",
+        "src/app/components/MainBanner.tsx",
+        "src/app/components/NewsCarousel.tsx",
+        "src/app/components/Reader.tsx",
+        "src/app/components/suiteBarTop/ProfileImage.tsx",
+        "src/app/components/suiteBarTop/SuiteBarTop.tsx",
+        "src/app/components/suiteBarTop/TopLinks.tsx",
+        "src/app/components/TopHeaderWidgets.tsx"
     ],
     "exclude": []
 }

@@ -1,0 +1,51 @@
+/** Trade Gothic **/
+@font-face {
+	font-family: 'TradeGothic';
+	src: url($baseUrl + '/fonts/2F4C1A_0_0.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'TradeGothic';
+	src: url($baseUrl + '/fonts/2F4C1A_1_0.woff') format('woff');
+	font-style: italic;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'TradeGothic';
+	src: url($baseUrl + '/fonts/2F4C1A_2_0.woff') format('woff');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: 'TradeGothic';
+	src: url($baseUrl + '/fonts/2F4C1A_3_0.woff') format('woff');
+	font-style: italic;
+	font-weight: bold;
+}
+
+/** Trade Gothic Condensed **/
+@font-face {
+	font-family: 'TradeGothicCondensed';
+	src: url($baseUrl + '/fonts/2F4C1B_0_0.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'TradeGothicCondensed';
+	src: url($baseUrl + '/fonts/2F4C1B_1_0.woff') format('woff');
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: 'TradeGothicCondensed';
+	src: url($baseUrl + '/fonts/2F4C1B_2_0.woff') format('woff');
+	font-style: italic;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'TradeGothicCondensed';
+	src: url($baseUrl + '/fonts/2F4C1B_3_0.woff') format('woff');
+	font-style: italic;
+	font-weight: bold;
+}

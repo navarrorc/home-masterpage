@@ -125,6 +125,14 @@ textarea {
     border-bottom: 0; }
 
 /*--Bootstrap Overrides */
+#s4-titlerow {
+  padding: 0;
+  height: 0; }
+
+.ms-srch-sb > .ms-srch-sb-searchLink {
+  height: 0;
+  width: 0; }
+
 .o365cs-base.o365cst.o365cs-topnavBGColor-2 {
   background-color: #000 !important; }
 
@@ -132,9 +140,6 @@ textarea {
   border-left: 0 !important; }
 
 span#fullscreenmodebox {
-  display: none; }
-
-a#O365_SubLink_ShellAboutMe {
   display: none; }
 
 @media only screen and (max-width: 600px) {
@@ -189,6 +194,134 @@ span.o365cs-nav-brandingText {
 .topLinks > li > a:hover {
   text-decoration: none; }
 
+@font-face {
+  font-family: 'rushnet';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/rushnet.woff?8ntyo6") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+.icon {
+  font-family: 'rushnet';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-document:before {
+  content: "\E800"; }
+
+.icon-search:before {
+  content: "\E801"; }
+
+.icon-check:before {
+  content: "\E600"; }
+
+.icon-checkbox-default:before {
+  content: "\E601"; }
+
+.icon-checkbox-hover:before {
+  content: "\E602"; }
+
+.icon-arrow-down:before {
+  content: "\E603"; }
+
+.icon-arrow-left:before {
+  content: "\E604"; }
+
+.icon-arrow-right:before {
+  content: "\E605"; }
+
+.icon-arrow-up:before {
+  content: "\E606"; }
+
+.icon-chevron-down:before {
+  content: "\E607"; }
+
+.icon-chevron-left:before {
+  content: "\E608"; }
+
+.icon-chevron-right:before {
+  content: "\E609"; }
+
+.icon-chevron-up:before {
+  content: "\E60A"; }
+
+.icon-close:before {
+  content: "\E60B"; }
+
+.icon-circle-empty:before {
+  content: "\E60C"; }
+
+.icon-circle-full:before {
+  content: "\E60D"; }
+
+.icon-facebook:before {
+  content: "\E60E"; }
+
+.icon-linkedin:before {
+  content: "\E60F"; }
+
+.icon-twitter:before {
+  content: "\E610"; }
+
+.icon-youtube:before {
+  content: "\E611"; }
+
+/** Trade Gothic **/
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_0_0.woff") format("woff");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_1_0.woff") format("woff");
+  font-style: italic;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_2_0.woff") format("woff");
+  font-style: normal;
+  font-weight: bold; }
+
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_3_0.woff") format("woff");
+  font-style: italic;
+  font-weight: bold; }
+
+/** Trade Gothic Condensed **/
+@font-face {
+  font-family: 'TradeGothicCondensed';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_0_0.woff") format("woff");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'TradeGothicCondensed';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_1_0.woff") format("woff");
+  font-style: normal;
+  font-weight: bold; }
+
+@font-face {
+  font-family: 'TradeGothicCondensed';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_2_0.woff") format("woff");
+  font-style: italic;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'TradeGothicCondensed';
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_3_0.woff") format("woff");
+  font-style: italic;
+  font-weight: bold; }
+
 body {
   font: 15px/21px TradeGothic, helvetica, arial, sans-serif;
   color: #060606;
@@ -201,7 +334,10 @@ a {
   border-bottom: dashed 1px;
   text-decoration: none; }
   a:hover {
-    color: #b4b4b4; }
+    color: #b4b4b4;
+    text-decoration: none; }
+  a:visited {
+    color: #8a8c95; }
   a[disabled], a.disabled {
     color: #adafba;
     color: #b4b4b4;
@@ -245,6 +381,9 @@ h1 {
     width: 24px;
     position: relative;
     margin: -30px 12px 0 0; }
+
+#SearchBox div > input {
+  height: 36px; }
 
 .counter {
   display: inline-block;
@@ -323,10 +462,13 @@ h1 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-align-items: flext-start;
-  -webkit-box-align: flext-start;
-      -ms-flex-align: flext-start;
-          align-items: flext-start; }
+  -webkit-align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 @media (min-width: 768px) {
   .container {
@@ -358,10 +500,13 @@ h1 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-align-items: flext-start;
-  -webkit-box-align: flext-start;
-      -ms-flex-align: flext-start;
-          align-items: flext-start; }
+  -webkit-align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .row {
   margin-right: -15px;
@@ -379,10 +524,13 @@ h1 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-align-items: flext-start;
-  -webkit-box-align: flext-start;
-      -ms-flex-align: flext-start;
-          align-items: flext-start; }
+  -webkit-align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
@@ -928,6 +1076,12 @@ h1 {
       display: block; }
     #hdr #stock-ticker #stock-symbols > div.hide {
       display: none; }
+  #hdr .ms-srch-sb > input {
+    width: 320px;
+    font-size: 1em; }
+  #hdr #SearchBox > div {
+    height: 34px;
+    border: 0; }
 
 #ftr {
   background: #111;

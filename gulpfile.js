@@ -29,8 +29,8 @@ function onBuild(done) {
 /**
 *Gulp Tasks
 **/
-gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
-//gulp.task('default', ['webpack:prod-watch'], function() {
+//gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
+gulp.task('default', ['webpack:prod-watch'], function() {
   nodemon({
     execMap: {
       js: 'node'
@@ -41,7 +41,7 @@ gulp.task('default', ['webpack:prod-watch','webpack:dev-watch'], function() {
     ext: 'noop'
   }).on('restart', function() {
     gulp.src('server.js')
-      .pipe(notify('Nodemon Reastarted!'));
+      .pipe(notify('Nodemon Restarted!'));
     //gutil.log('Restarted!');
   });
 });

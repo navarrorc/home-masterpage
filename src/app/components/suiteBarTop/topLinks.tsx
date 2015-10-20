@@ -1,5 +1,5 @@
-import api = require('../../services/dataService');
-import helpers = require('../_helpers');
+import api = require('../../services/DataService');
+import helpers = require('../Helpers');
 
 //import React = require('react');
 
@@ -56,12 +56,12 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
     }
     var liStyle = {
       display: 'inline',
-      marginRight: '15px',
-      fontSize: '.8em',
-      fontWeight: 700
+      marginRight: '15px'
     }
     var aStyle = {
-      color: '#fff'
+      color: '#fff',
+      fontSize: '.9em',
+      fontWeight: 500
     }
     var createLink = function(link: Link) {
       return (

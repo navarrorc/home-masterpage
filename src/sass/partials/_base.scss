@@ -4,7 +4,8 @@ body { font: 15px/21px $sans-serif; color: $black1;
 a {
 	font-weight: bold; font-style: italic; color: $light-stone-blue; border-bottom: dashed 1px; text-decoration: none;
 
-	&:hover { color: $pale-stone-blue; }
+	&:hover { color: $pale-stone-blue; text-decoration: none;}
+	&:visited { color: $light-stone-blue;} // RCN
 	&[disabled], &.disabled { color: #adafba; color: $pale-stone-blue; opacity: 0.5; pointer-events: none; }
 }
 strong, b { font-weight: bold; }
@@ -22,6 +23,9 @@ h1 {
 	height: 36px; background: $white; border: solid 1px $stone; font-size: 15px; color: $light-stone-blue; padding: 0 16px; width: 100%;
 
 	& + .icon-search { color: $stone; font-size: 24px; line-height: 1; float: right; width: 24px; position: relative; margin: -30px 12px 0 0; }
+}
+#SearchBox div>input {
+	height: 36px;
 }
 .counter {
 	display: inline-block; width: 24px; height: 24px; border-radius: 50%; color: $light-stone; line-height: 24px; text-align: center; font-size: 12px; background: $dark-stone-blue; font-weight: bold;
