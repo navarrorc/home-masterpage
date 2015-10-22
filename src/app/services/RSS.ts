@@ -29,7 +29,7 @@ export class RssService {
     feedparser.on('readable', function() {
       // This is where the action is!
       var stream = this
-        , meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
+        //, meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
         , item;
 
       while (item = stream.read()) {

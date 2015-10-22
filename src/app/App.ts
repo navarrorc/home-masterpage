@@ -121,7 +121,7 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
-		console.info('test 1, 2, 3, 4...');
+		console.info('test 1, 2, 3, 4, 5...');
 		// debugger;
 
 		var reader = new Reader(null);

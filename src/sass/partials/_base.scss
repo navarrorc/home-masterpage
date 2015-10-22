@@ -1,5 +1,6 @@
 body { font: 15px/21px $sans-serif; color: $black1;
-	 background: url($baseUrl	+ "/img/bg.png");
+	background: url($baseUrl	+ "/img/bg.png");
+  background-image: url($baseUrl	+ "/img/bg.png") !important;
 }
 a {
 	font-weight: bold; font-style: italic; color: $light-stone-blue; border-bottom: dashed 1px; text-decoration: none;

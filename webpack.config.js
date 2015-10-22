@@ -6,8 +6,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var node_modules_dir = path.join(__dirname, 'node_modules');
 
 var config = {
+  cache: true,
   context: path.resolve('./src/app'),
-  entry: './App', // App.ts
+  entry: {
+    app: './App.ts',
+    vendors: ['feedparser', 'request']
+  },
   output: {
     path: path.resolve('builds/dev'), // destination of bundle.js
     publicPath: '/builds/assets/',
@@ -31,11 +35,14 @@ var config = {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
   plugins: [
-    //new webpack.optimize.UglifyJsPlugin()
-    //new webpack.SourceMapDevToolPlugin({filename: './public/bundle.js.map'})
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js')
   ],
   module: {
+    // noParse: [
+    //   node_modules_dir + '/feedparser',
+    //   node_modules_dir + '/response'
+    // ],
     loaders: [
       { test: /\.json$/, loader: "json-loader" },
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
@@ -44,7 +51,7 @@ var config = {
         include: [
           path.resolve(__dirname, 'src/app')
         ],
-        exclude: /node_modules/,
+        exclude: node_modules_dir,
         loader: 'ts-loader'
       },
       /**
@@ -63,7 +70,7 @@ var config = {
         include: [
           path.resolve(__dirname, 'src/sass')
         ],
-        exclude: /node_modules/,
+        exclude: node_modules_dir,
         loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader?includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" + path.resolve(__dirname, "./mixins/app_mixins"))
       }
     ]

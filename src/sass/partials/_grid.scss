@@ -6,6 +6,7 @@
 
 	@include flexing();
 }
+/*
 @media (min-width: 768px) {
 	.container {
 		width: 750px;
@@ -16,6 +17,7 @@
 		width: 970px;
 	}
 }
+*/
 @media (min-width: 1200px) {
 	.container {
 		width: 1170px;
@@ -194,6 +196,7 @@
 .col-xs-offset-0 {
 	margin-left: 0;
 }
+/*
 @media (min-width: 768px) {
 	.col-sm-12 {
 		width: 100%;
@@ -659,3 +662,4 @@
 		margin-left: 0;
 	}
 }
+*/
