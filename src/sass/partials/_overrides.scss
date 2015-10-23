@@ -11,6 +11,8 @@
   img {max-width: none !important;}
   a {font-weight: 500; font-style: normal; border-bottom: 0;}
 
+  display:none;
+
 }
 
 /*--Bootstrap Overrides */
@@ -27,6 +29,10 @@
 
 #s4-bodyContainer {
     padding-bottom: 0;
+}
+
+#contentBox {
+  margin-right: 0 !important;
 }
 
 button {

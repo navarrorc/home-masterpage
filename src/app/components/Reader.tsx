@@ -79,11 +79,11 @@ class Link extends React.Component<any,any>{
   }
   render() {
     var _date = new Date(this.props.pubDate),
-        month = _date.getMonth(),
-        day = _date.getDay();
+        month = _date.getMonth() + 1, // return from 0 to 11
+        date = _date.getDate();
     return (
       <span className="title-wrap">
-        <a href={this.props.link} target="_blank" title={this.props.name}>{month}/{day} {this.props.name}</a>
+        <a href={this.props.link} target="_blank" title={this.props.name}>{month}/{date} {this.props.name}</a>
       </span>
     );
   }
