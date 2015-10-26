@@ -10,6 +10,8 @@ interface IConstant {
   FOLLOWED: string;
   UNFOLLOW: string;
   UNFOLLOWED: string;
+
+  GET_GROUPS: string;
 }
 
 export var constants: IConstant = {
@@ -24,5 +26,10 @@ export var constants: IConstant = {
   FOLLOWED: 'FOLLOWED',
 
   UNFOLLOW: 'UNFOLLOW',
-  UNFOLLOWED: 'UNFOLLOWED'
+  UNFOLLOWED: 'UNFOLLOWED',
+
+  //SP
+  GET_GROUPS: 'GET_GROUPS'
+
+
 };

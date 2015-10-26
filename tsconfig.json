@@ -10,8 +10,8 @@
         "sourceMap": true
     },
     "filesGlob": [
-        "./**/*.ts",
-        "./**/*.tsx",
+        "./**/**/*.ts",
+        "./**/**/*.tsx",
         "../typings/**/*.d.ts",
         "!./node_modules/**/*.ts"
     ],

@@ -6,19 +6,6 @@ export class DataService {
   }
   getSPUser() {
     var deferred = $.Deferred();
-    // SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{
-    //   var context = SP.ClientContext.get_current();
-    //   var oWeb = context.get_web();
-    //   var currentUser = oWeb.get_currentUser();
-    //   context.load(currentUser);
-    //   context.executeQueryAsync(()=>{
-    //     var user = currentUser;
-    //     deferred.resolve(user);
-    //   }, (sender, args)=>{
-    //     deferred.reject(sender,args);
-    //     console.info('Error: ' + args.get_message());
-    //   });
-    // });
     $.get(
       _spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Email",
       (data:any, status: string)=>{
@@ -43,5 +30,43 @@ export class DataService {
         deferred.reject("Ajax call failed in getTopLinks()");
       });
       return deferred.promise();
+  }
+  getGroups() {
+    var deferred = $.Deferred();
+
+    fetchCurrentUserId();
+
+    function fetchCurrentUserId() {
+      //var deferred = $.Deferred();
+      $.get(
+        _spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Id",
+        (data:any, status: string)=>{
+          //deferred.resolve(data);
+          fetchCurrentUsersGroups(data.Id);
+        }, 'json').fail((sender, args)=>{
+          //deferred.reject(sender, args);
+          console.error('Error: ' + args);
+        });
+      return deferred.promise();
+    }
+
+    function fetchCurrentUsersGroups(userId){
+      $.ajax({
+        url: _spPageContextInfo.webAbsoluteUrl + '/_api/web/GetUserById('+ userId +')/Groups',
+        headers: {"Accept": "application/json;odata=verbose"}
+      }).done((data:any)=>{
+        var _groups = [];
+        var results = data.d.results;
+        for (var i = 0; i < results.length; i++) {
+            _groups.push(results[i].Title);
+        }
+        deferred.resolve(_groups);
+      }).fail((jqHXR:any, textStatus:string)=>{
+        console.error('Error in fetchCurrentUsersGroups');
+        deferred.reject(textStatus);
+      })
+    }
+
+    return deferred.promise();
   }
 }

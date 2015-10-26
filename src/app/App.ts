@@ -9,10 +9,12 @@ import SuiteBarTop = require('./components/suiteBarTop/SuiteBarTop');
 import actions = require('./actions');
 // import ChirpStore = require('./stores/chirps');
 // [ChirpStore]
-import {API} from './services/api';
+//import {API} from './services/Api';
 import {RssService} from './services/RSS';
 
 import {Reader} from './components/Reader';
+
+import {DataService} from './services/DataService';
 
 // CSS Dependencies
 /*
@@ -110,6 +112,33 @@ class RenderUI {
 					$('#SearchBox input').attr('placeholder','Search Documents, Locations, or People');
 			})
 		}
+		showSharePointElements(){
+			// Display SP Elements if site Owner
+			$(()=>{
+				var service = new DataService();
+				var isOwner = false;
+				var re = /\bOwners\b/i; // Owners SP Group
+				service.getGroups().then((groups:string[])=>{
+					console.info(JSON.stringify(groups,null,4));
+					_.each(groups, (group)=>{
+						if (group.match(re)){
+							isOwner = true
+						}
+					});
+					if (isOwner){
+						// show SP elements
+						SP.SOD.executeOrDelayUntilScriptLoaded(() => {
+							var interval = setInterval(()=> { // wait 1 second before executing
+								if($('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').length){
+									$('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').attr('style', 'display: inline-block !important');
+									clearInterval(interval);
+								}
+							}, 1000);
+						}, 'sp.core.js');
+					}
+				});
+			})
+		}
 	}
 
 	var renderUI = new RenderUI();
@@ -117,6 +146,7 @@ class RenderUI {
 	renderUI.showProfileInfoInConsole();
 	renderUI.getUserGroups();
 	renderUI.setSearchBoxPlaceHolderText();
+	renderUI.showSharePointElements(); // only if site Owner
 
 	$(()=>{
 		// Render the SuiteBarTop Components

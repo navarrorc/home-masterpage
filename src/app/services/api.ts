@@ -9,7 +9,11 @@ export var API = {
   startFetchingChirps: function () {
     this.fetchChirps();
     return setInterval(this.fetchChirps, 1000);
-  }
+  },
+  // SP Groups for current logged in user
+  // fetchGroups: ()=> {
+  //     get(_spPageContextInfo.webAbsoluteUrl + "")
+  // }
 };
 
 function get(url:string) {
