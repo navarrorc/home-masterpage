@@ -15,11 +15,6 @@ class RssItems extends React.Component<any, any> {
     })
   }
   render() {
-    /*var scrollBars = {
-      position: 'relative',
-      height: '320px',
-      overflowY: 'scroll'
-    }*/
     return(
       <div>
         <h1 className="yellow">Press Coverage</h1>
@@ -47,32 +42,21 @@ class Post extends React.Component<any,any> {
     super(props);
   }
   render() {
+    var _pubDate = new Date(this.props.pubDate),
+                  _month = _pubDate.getMonth() + 1;
+    var currentDate = new Date(); // current date
+    var isCurrentMonth = (_month === currentDate.getMonth()+1);
     return (
-      <p className="news-link">
-        <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
-        <SourceTitle sourceTitle={this.props.sourceTitle}/>
-      </p>
+      <div>
+        <p className="news-link">
+          <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
+          { isCurrentMonth ? <NewTag /> : null}
+          <SourceTitle sourceTitle={this.props.sourceTitle}/>
+        </p>
+      </div>
     );
   }
 }
-
-/*Child Component, Leaf*/
-// class PubDate extends React.Component<any,any>{
-//   constructor(props:any){
-//     super(props);
-//   }
-//   render() {
-//     var _date = new Date(this.props.pubDate),
-//         month = _date.getMonth(),
-//         day = _date.getDay();
-//     var spanStyle = {
-//       marginRight: '5px'
-//     }
-//     return (
-//       <span style={spanStyle}>{month}/{day}</span>
-//     );
-//   }
-// }
 
 /*Child Component, Leaf*/
 class Link extends React.Component<any,any>{
@@ -80,14 +64,28 @@ class Link extends React.Component<any,any>{
     super(props);
   }
   render() {
-    var _date = new Date(this.props.pubDate),
-        month = _date.getMonth() + 1, // return from 0 to 11
-        date = _date.getDate();
+    var _pubDate = new Date(this.props.pubDate),
+        _month = _pubDate.getMonth() + 1, // return from 0 to 11
+        _day = _pubDate.getDate();
     return (
       <span className="title-wrap">
-        <a href={this.props.link} target="_blank" title={this.props.name}>{this.props.index+1} {month}/{date} {this.props.name}</a>
+        <a href={this.props.link} target="_blank" title={this.props.name}>{_month}/{_day} {this.props.name}</a>
       </span>
     );
+  }
+}
+
+class NewTag extends React.Component<any, any> {
+  constructor(props:any) {
+    super(props);
+  }
+  render() {
+    var spanStyle = {
+      marginRight: '5px'
+    }
+    return(
+        <span className="new-tag" style={spanStyle}>New</span>
+    )
   }
 }
 
@@ -104,7 +102,7 @@ class SourceTitle extends React.Component<any,any>{
 }
 
 /*Main App Component*/
-export class Reader extends React.Component<any, any> {
+export class PressCoverageReader extends React.Component<any, any> {
   constructor(props:any){
     super(props);
   }
@@ -115,7 +113,7 @@ export class Reader extends React.Component<any, any> {
   }
   show() {
     React.render(
-      <Reader />,
+      <PressCoverageReader />,
       document.getElementById('press-coverage')
     );
   }

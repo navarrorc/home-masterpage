@@ -10,9 +10,12 @@ import actions = require('./actions');
 // import ChirpStore = require('./stores/chirps');
 // [ChirpStore]
 //import {API} from './services/Api';
-import {RssService} from './services/RSS';
 
-import {Reader} from './components/Reader';
+//import {RssService} from './services/RSS';
+
+import {StockFeedService} from './services/StockFeed';
+
+import {PressCoverageReader} from './components/PressCoverageReader';
 
 import {DataService} from './services/DataService';
 
@@ -103,8 +106,18 @@ class RenderUI {
 		console.info('test 1, 2, 3, 4, 5...');
 		// debugger;
 
-		var reader = new Reader(null);
-		reader.show();
+		// testing stock feed
+		var stockFeed = new StockFeedService();
+		stockFeed.fetch().then((results)=>{
+			console.log(JSON.stringify(results,null,4));
+			_.each(results, (value:any, index)=>{
+				console.log(value);
+			})
+		})
+
+
+		var pressCoverageReader = new PressCoverageReader(null);
+		pressCoverageReader.show();
 
 		// Render the News Carousel on the Home Page
 		//var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});
