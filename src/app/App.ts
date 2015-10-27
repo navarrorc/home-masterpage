@@ -42,65 +42,12 @@ class RenderUI {
 						$('span.o365cs-nav-appTitle.o365cs-topnavText').removeAttr('style');
 						$('.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').removeAttr('style');
 
-						//$('span.o365cs-nav-brandingText').removeAttr('style'); // variation, needed for SPTestUser1@rush-enterprises.com
-						$('.o365cs-nav-centerAlign').html('Documents&nbsp;&nbsp; Locations&nbsp;&nbsp; People');
 						$('.o365cs-nav-centerAlign').attr('style', 'font-size:15px; color:#fff; text-align:right;');
 
 						clearInterval(interval);
 					}
 				}, 1000);
 			}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
-
-		}
-		showProfileInfoInConsole(){
-			jQuery(document).ready(function () {
-				SP.SOD.executeFunc('SP.js', 'SP.ClientContext', function() {
-					// Make sure PeopleManager is available
-					SP.SOD.executeFunc('userprofile', 'SP.UserProfiles.PeopleManager', function() {
-
-						var context = SP.ClientContext.get_current();
-						var peopleManager = new SP.UserProfiles.PeopleManager(context);
-						var personProperties = peopleManager.getMyProperties();
-						context.load(personProperties);
-						context.executeQueryAsync(function (sender, args) {
-							var properties = personProperties.get_userProfileProperties();
-							var messageText = "";
-							for (var key in properties) {
-								messageText += "\n[" + key + "]: \"" + properties[key] + "\"";
-							}
-							//console.info(messageText);
-						}, function (sender, args) { alert('Error: ' + args.get_message()); });
-
-					});
-				});
-			});
-		}
-		getUserGroups() {
-			jQuery(document).ready(function () {
-				//see: http://sharepoint.stackexchange.com/questions/101844/why-does-sp-js-load-only-when-i-am-editing-a-web-part-page
-				//see: http://blog.qumsieh.ca/2013/10/30/how-to-properly-reference-sp-js-in-a-master-page/
-
-				SP.SOD.executeFunc('sp.js', 'SP.ClientContext', ()=>{
-					var context = SP.ClientContext.get_current();
-					var oWeb = context.get_web();
-					var currentUser = oWeb.get_currentUser();
-					var allGroups = currentUser.get_groups();
-					//context.load(currentUser);
-					context.load(allGroups);
-					context.executeQueryAsync((sender, args)=>{
-						var groupsEnum = allGroups.getEnumerator();
-						//console.info('Groups for Current User');
-						var currentGroup:SP.Group;						while (groupsEnum.moveNext()){
-							// console.info(groupsEnum.get_current());
-							currentGroup = groupsEnum.get_current();
-							//console.info(currentGroup.get_loginName());
-						}
-
-					}, (sender, args)=>{
-						console.info('Error: ' + args.get_message());
-					});
-				});
-			});
 		}
 		setSearchBoxPlaceHolderText() {
 			$(function () {
@@ -130,10 +77,13 @@ class RenderUI {
 						SP.SOD.executeOrDelayUntilScriptLoaded(() => {
 							var interval = setInterval(()=> { // wait 1 second before executing
 								if($('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').length){
-									$('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').attr('style', 'display: inline-block !important');
+									$('.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').attr('style', 'display: inline-block');
+									$('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').attr('style', 'display: inline-block!important');
+									$('.o365cs-rsp-off .o365cs-rsp-off-hide').attr('style', 'display: none!important');
+									$('#s4-ribbonrow').attr('style', 'display: inline-block');
 									clearInterval(interval);
 								}
-							}, 1000);
+							}, 3000);
 						}, 'sp.core.js');
 					}
 				});
@@ -143,27 +93,18 @@ class RenderUI {
 
 	var renderUI = new RenderUI();
 	renderUI.setSiteTitle();
-	renderUI.showProfileInfoInConsole();
-	renderUI.getUserGroups();
 	renderUI.setSearchBoxPlaceHolderText();
 	renderUI.showSharePointElements(); // only if site Owner
 
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
+
 		console.info('test 1, 2, 3, 4, 5...');
 		// debugger;
 
 		var reader = new Reader(null);
 		reader.show();
-
-		// testing out the rss node module
-		var rssService = new RssService();
-		rssService.fetch().then((data:any[])=>{
-		  console.log(JSON.stringify(data[0],null,4));
-		  console.log('length: ', data.length);
-		});
-
 
 		// Render the News Carousel on the Home Page
 		//var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});

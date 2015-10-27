@@ -42,6 +42,12 @@ export function showComponents() {
         // see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
         clearInterval(interval);
       }
+      if ($('div.o365cs-me-tileimg').length) {
+        // Applys to Nana Aikins and Office 365 Administrators
+        React.render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
+        // see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+        clearInterval(interval);
+      }
     }, 1000);
   }, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
 }

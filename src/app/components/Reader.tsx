@@ -15,25 +15,27 @@ class RssItems extends React.Component<any, any> {
     })
   }
   render() {
-    var scrollBars = {
+    /*var scrollBars = {
       position: 'relative',
       height: '320px',
       overflowY: 'scroll'
-    }
+    }*/
     return(
-      <div style={scrollBars}>
+      <div>
         <h1 className="yellow">Press Coverage</h1>
         {this.state.items.map( (post, index ) => {
-          //console.log(JSON.stringify(post));
+          /*console.log(JSON.stringify(post,null,4));*/
           return (
             <Post key={index}
              name={post.title}
              pubDate={post.pubDate}
              link={post.link}
+             index={index}
              sourceTitle={post.source.title}
             />
           )
         })}
+        <div id="press-paging"></div>
        </div>
       );
   }
@@ -47,7 +49,7 @@ class Post extends React.Component<any,any> {
   render() {
     return (
       <p className="news-link">
-        <Link pubDate={this.props.pubDate} name={this.props.name} link={this.props.link}/>
+        <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
         <SourceTitle sourceTitle={this.props.sourceTitle}/>
       </p>
     );
@@ -83,7 +85,7 @@ class Link extends React.Component<any,any>{
         date = _date.getDate();
     return (
       <span className="title-wrap">
-        <a href={this.props.link} target="_blank" title={this.props.name}>{month}/{date} {this.props.name}</a>
+        <a href={this.props.link} target="_blank" title={this.props.name}>{this.props.index+1} {month}/{date} {this.props.name}</a>
       </span>
     );
   }
@@ -108,9 +110,7 @@ export class Reader extends React.Component<any, any> {
   }
   render() {
     return (
-      <div>
         <RssItems />
-      </div>
     );
   }
   show() {

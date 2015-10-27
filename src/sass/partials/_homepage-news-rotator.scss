@@ -1,8 +1,10 @@
 #news-rotator {
-	color: $white; margin-bottom: 30px; background: $black2;
+	color: $white; margin-bottom: 30px; background: $black2; @include flexing-equal-height(); margin-right: -15px; margin-left: -15px;
+
+	h1 { margin-bottom: 18px; }
 
 	.news-link {
-		display: block; color: $light-stone-blue; margin: 0 0 12px;
+		display: block; color: $light-stone-blue; margin: 0 0 10px; line-height: 20px;
 
 		.title-wrap { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
 		.new-tag { color: $black2; background: $dark-yellow; text-transform: uppercase; font: bold 12px/16px $sans-serif2; padding: 0 3px; display: inline-block; vertical-align: middle; }
@@ -28,5 +30,14 @@
 			a { border: 0; color: $yellow; float: left; width: 10px; height: 10px; line-height: 10px; font-size: 10px; margin-left: 10px; }
 		}
 		#news-rotator-active-arrow { position: absolute; top: 40px; left: 0; }
+	}
+	#press-coverage {
+		.news-link { display: none; }
+	}
+	#press-paging {
+		overflow: hidden; position: absolute; bottom: 10px;
+
+		a { border: 0; font-style: normal; border: solid 1px; float: left; height: 20px; line-height: 20px; width: 20px; text-align: center; margin-right: 5px; font-size: 11px; }
+		a.active { color: $pale-stone-blue; }
 	}
 }

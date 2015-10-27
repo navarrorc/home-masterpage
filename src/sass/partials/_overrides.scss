@@ -5,14 +5,21 @@
   img {max-width: none !important;}
   a {font-weight: 500; font-style: normal; border-bottom: 0;}
 }
-#s4-ribbonrow * {
-  box-sizing: content-box;
 
-  img {max-width: none !important;}
-  a {font-weight: 500; font-style: normal; border-bottom: 0;}
-
+#s4-ribbonrow {
   display:none; // TODO: turn on via SP permissions
+}
+  #s4-ribbonrow * {
+    box-sizing: content-box;
 
+    img {max-width: none !important;}
+    a {font-weight: 500; font-style: normal; border-bottom: 0;}
+  }
+    li.ms-cui-menusection-items a {font-weight: 500; font-style: normal;}
+
+.o365cs-base.o365cst.o365cs-nav-navMenu.popupShadow.removeFocusOutline.o365cs-newAL-off.o365cs-rsp-off a {
+  font-weight: 500;
+  font-style: normal;
 }
 
 .o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff {
