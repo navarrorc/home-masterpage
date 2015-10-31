@@ -13,9 +13,11 @@ import actions = require('./actions');
 
 //import {RssService} from './services/RSS';
 
-import {StockFeedService} from './services/StockFeed';
+// import {StockFeedService} from './services/StockFeed';
 
 import {PressCoverageReader} from './components/PressCoverageReader';
+
+import {StockTicker} from './components/StockTicker';
 
 import {DataService} from './services/DataService';
 
@@ -83,7 +85,7 @@ class RenderUI {
 									$('.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').attr('style', 'display: inline-block');
 									$('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').attr('style', 'display: inline-block!important');
 									$('.o365cs-rsp-off .o365cs-rsp-off-hide').attr('style', 'display: none!important');
-									$('#s4-ribbonrow').attr('style', 'display: inline-block');
+									$('#s4-ribbonrow').attr('style', 'display: inline');
 									clearInterval(interval);
 								}
 							}, 3000);
@@ -102,22 +104,42 @@ class RenderUI {
 	$(()=>{
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
+		// Display larger search icon
+		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
 		console.info('test 1, 2, 3, 4, 5...');
+
+		// $.ajax({
+		// 	url: 'https://rushnetapi.azurewebsites.net/api/news',
+		// 	//url: 'http://localhost:2331/api/test',
+		// 	dataType: 'json'
+		// }).done((data:any)=>{
+		// 		console.log(JSON.stringify(data,null,4));
+		// }).fail((jqHXR:JQueryXHR, textStatus:string, errorThrown:any)=>{
+		// 	console.error(jqHXR.responseText || textStatus);
+		// })
+
 		// debugger;
 
 		// testing stock feed
-		var stockFeed = new StockFeedService();
-		stockFeed.fetch().then((results)=>{
-			console.log(JSON.stringify(results,null,4));
-			_.each(results, (value:any, index)=>{
-				console.log(value);
-			})
-		})
+		// var stockFeed = new StockFeedService();
+		// stockFeed.fetch().then((results:any)=>{
+		// 	//console.log(JSON.stringify(results,null,4));
+		// 	_.each(results, (value:any, index)=>{
+		// 		console.log(value);
+		// 	})
+		// })
+		// stockFeed.fetch();
 
 
+		/* Render Press Coverage Component*/
 		var pressCoverageReader = new PressCoverageReader(null);
 		pressCoverageReader.show();
+
+		/*Render Stock Ticker*/
+		var stockTicker = new StockTicker(null);
+		stockTicker.show();
+
 
 		// Render the News Carousel on the Home Page
 		//var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});

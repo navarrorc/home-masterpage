@@ -10,18 +10,19 @@ var config = {
   context: path.resolve('./src/app'),
   entry: {
     app: './App.ts',
-    vendors: ['feedparser', 'request']
+    //vendors: ['feedparser', 'request']
+    vendors: []
   },
   output: {
     path: path.resolve('builds/dev'), // destination of bundle.js
     publicPath: '/builds/assets/',
     filename: 'bundle.js'
   },
-  node: { // this is for feedparser
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  },
+  // node: { // this is for feedparser
+  //   fs: 'empty',
+  //   net: 'empty',
+  //   tls: 'empty'
+  // },
   devServer: {
     contentBase: 'public'
   },

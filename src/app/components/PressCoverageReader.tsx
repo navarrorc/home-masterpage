@@ -1,4 +1,4 @@
-import {RssService} from '../services/RSS';
+import {PressService} from '../services/./PressCoverage';
 
 /*Parent Component*/
 class RssItems extends React.Component<any, any> {
@@ -7,7 +7,7 @@ class RssItems extends React.Component<any, any> {
     this.state = { items: [] }; // setting initial state
   }
   componentWillMount() {
-    var rss = new RssService();
+    var rss = new PressService();
     rss.fetch().then((data)=>{
       this.setState({
         items: data
@@ -23,10 +23,10 @@ class RssItems extends React.Component<any, any> {
           return (
             <Post key={index}
              name={post.title}
-             pubDate={post.pubDate}
+             pubDate={post.publishDate}
              link={post.link}
              index={index}
-             sourceTitle={post.source.title}
+             sourceTitle={post.source}
             />
           )
         })}
