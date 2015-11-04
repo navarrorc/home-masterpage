@@ -1,4 +1,5 @@
-var _url = 'https://rushnetapi.azurewebsites.net/api/news';
+import {config} from './Shared';
+var _url = config.api_url + '/news';
 
 export class PressService {
   fetch() {

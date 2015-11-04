@@ -33,6 +33,56 @@ a#O365_SubLink_ShellAboutMe {
 /*--Bootstrap Overrides */
 
 // RCN
+
+/*search*/
+.ms-srch-sb > .ms-srch-sb-navLink {
+  display:none;
+}
+.ms-srch-sb>input {
+  width: 305px;
+  //max-width: 350px;
+  font-size: 1em;
+  float: left;
+}
+.ms-srch-sb > .ms-srch-sb-searchLink {
+  height: 34px;
+  width: 36px;
+}
+#hdr-search-box-wrap img {
+  max-width: none;
+}
+#SearchBox > div {
+  height: 34px;
+  border: 0;
+}
+.ms-srch-sb-searchImg {
+  left: -53px;
+  top: -1px;
+  &:hover {
+      left: -1px;
+      top: -35px;
+  }
+}
+
+@media (max-width: 992px) {
+  #hdr .ms-srch-sb>input {
+    width: 195px;
+  }
+}
+
+.ms-srch-sb>input {
+  height: 32px;
+}
+.search-box-wrap .search-box {
+  padding: 0;
+}
+
+
+
+/*workspace*/
+#s4-workspace {
+  min-width: 768px;
+}
 #s4-titlerow {
   padding: 0;
   height: 0;

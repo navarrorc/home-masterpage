@@ -24,27 +24,10 @@
 		}
 	}
 
-	.ms-srch-sb > .ms-srch-sb-navLink {
-		display:none;
-	}
-	.ms-srch-sb>input {
-		width: 308px;
-		font-size: 1em;
-		float: left;
-	}
-	.ms-srch-sb > .ms-srch-sb-searchLink {
-		height: 34px;
-		width: 36px;
-	}
-	#hdr-search-box-wrap img {
-	  max-width: none;
-	}
-	#SearchBox > div {
-		height: 34px;
-		border: 0;
-	}
-	.ms-srch-sb-searchImg {
-		left: -53px;
-		top: -1px;
-	}
+
+}
+@media (max-width: 992px) {
+	#hdr #hdr-search-box-wrap { width: 240px; }
+	// TODO: reduce text size inside searchBox 'Search Documents, Locations, or People'
+	// TODO: Fix magnifying glass icon...
 }

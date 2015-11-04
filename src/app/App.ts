@@ -21,6 +21,9 @@ import {StockTicker} from './components/StockTicker';
 
 import {DataService} from './services/DataService';
 
+import {EventFeed} from './services/EventFeed';
+
+
 // CSS Dependencies
 /*
 	See webpack.config.js
@@ -54,16 +57,16 @@ class RenderUI {
 				}, 1000);
 			}, 'sp.core.js'); // Needed in order to properly override the suiteBarTop
 		}
-		setSearchBoxPlaceHolderText() {
-			$(function () {
-					var value = $('#SearchBox input').val();
-			    if (value === "Search..." || value === "Search this site") {
-						$('#SearchBox input').removeAttr('value');
-						$('#SearchBox input').removeAttr('title');
-			    }
-					$('#SearchBox input').attr('placeholder','Search Documents, Locations, or People');
-			})
-		}
+		// setSearchBoxPlaceHolderText() {
+		// 	$(function () {
+		// 			// var value = $('#SearchBox input').val();
+		// 	    // if (value === "Search..." || value === "Search this site") {
+		// 			// 	$('#SearchBox input').removeAttr('value');
+		// 			// 	$('#SearchBox input').removeAttr('title');
+		// 	    // }
+		// 			// $('#SearchBox input').attr('placeholder','Search Documents, Locations, or People');
+		// 	})
+		// }
 		showSharePointElements(){
 			// Display SP Elements if site Owner
 			$(()=>{
@@ -98,7 +101,7 @@ class RenderUI {
 
 	var renderUI = new RenderUI();
 	renderUI.setSiteTitle();
-	renderUI.setSearchBoxPlaceHolderText();
+	// renderUI.setSearchBoxPlaceHolderText();
 	renderUI.showSharePointElements(); // only if site Owner
 
 	$(()=>{
@@ -107,7 +110,25 @@ class RenderUI {
 		// Display larger search icon
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
-		console.info('test 1, 2, 3, 4, 5...');
+		console.info('test 1, 2, 3, 4, 5, 6, 7...');
+
+
+		function printPageDetails(pageItem)
+		{
+				console.log(pageItem);
+		    // console.log('Page Content: ' + pageItem.PublishingPageContent);
+		    // console.log('Page Title: ' + pageItem.Title);
+		    // console.log('Page Rollup Image ' + pageItem.PublishingRollupImage);
+		}
+
+		function logError(error){
+		    console.log(JSON.stringify(error));
+		}
+
+		var eventFeed = new EventFeed();
+		//console.log(_spPageContextInfo.webAbsoluteUrl);
+		eventFeed.getSearchResuls();
+		eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);
 
 		// $.ajax({
 		// 	url: 'https://rushnetapi.azurewebsites.net/api/news',
