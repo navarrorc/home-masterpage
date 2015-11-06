@@ -18,7 +18,7 @@ class StockSymbols extends React.Component<any, any> {
     return(
       <div>
         {this.state.items.map( (stock, index ) => {
-          console.log(JSON.stringify(stock,null,4));
+          //console.log(JSON.stringify(stock,null,4));
           return (
             <Stock key={index}
               ticker={stock.ticker}

@@ -19,9 +19,13 @@ import {PressCoverageReader} from './components/PressCoverageReader';
 
 import {StockTicker} from './components/StockTicker';
 
+import {Calendar} from './components/Calendar';
+
 import {DataService} from './services/DataService';
 
 import {EventFeed} from './services/EventFeed';
+
+
 
 
 // CSS Dependencies
@@ -74,7 +78,7 @@ class RenderUI {
 				var isOwner = false;
 				var re = /\bOwners\b/i; // Owners SP Group
 				service.getGroups().then((groups:string[])=>{
-					console.info(JSON.stringify(groups,null,4));
+					//console.info(JSON.stringify(groups,null,4));
 					_.each(groups, (group)=>{
 						if (group.match(re)){
 							isOwner = true
@@ -110,25 +114,36 @@ class RenderUI {
 		// Display larger search icon
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
-		console.info('test 1, 2, 3, 4, 5, 6, 7...');
+		//console.info('test 1, 2, 3, 4, 5, 6, 7...');
 
 
-		function printPageDetails(pageItem)
-		{
-				console.log(pageItem);
-		    // console.log('Page Content: ' + pageItem.PublishingPageContent);
-		    // console.log('Page Title: ' + pageItem.Title);
-		    // console.log('Page Rollup Image ' + pageItem.PublishingRollupImage);
-		}
-
-		function logError(error){
-		    console.log(JSON.stringify(error));
-		}
+		// function printPageDetails(pageItem)
+		// {
+		// 		console.log(pageItem);
+		//     // console.log('Page Content: ' + pageItem.PublishingPageContent);
+		//     // console.log('Page Title: ' + pageItem.Title);
+		//     // console.log('Page Rollup Image ' + pageItem.PublishingRollupImage);
+		// }
+		//
+		// function logError(error){
+		//     console.log(JSON.stringify(error));
+		// }
 
 		var eventFeed = new EventFeed();
 		//console.log(_spPageContextInfo.webAbsoluteUrl);
-		eventFeed.getSearchResuls();
-		eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);
+		// eventFeed.getSearchResults('Corporate Event');
+	  eventFeed.getSearchResults('Corporate Event').then((events)=>{
+		//	console.log(JSON.stringify(events,null,4));
+		});
+
+		//console.log(JSON.stringify(eventFeed.getSearchResultsMock(), null,4));
+		//eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);
+
+
+		var calendar = new Calendar(null);
+		calendar.showComponent();
+
+
 
 		// $.ajax({
 		// 	url: 'https://rushnetapi.azurewebsites.net/api/news',

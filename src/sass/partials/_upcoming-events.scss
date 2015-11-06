@@ -32,6 +32,17 @@
 }
 .events-list {
 	dt { font: bold 16px/22px TradeGothic; }
-	dd, a { font: 16px/22px TradeGothic; border: 0; color: $black1; }
+	dd, a { font: 16px/22px TradeGothic; border: 0; color: $black1; white-space: nowrap; @include ellipsis(); }
 	dd { margin-bottom: 16px; }
+}
+.events-paging {
+	float: right; overflow: hidden;
+
+	a {
+		font-size: 12px; line-height: 14px; border: 0; font-style: normal; color: $pale-stone-blue; float: left; padding: 0 3px;
+
+		.icon { font-size: 10px; line-height: 14px; }
+
+		&:hover, &.active { color: $light-stone-blue; }
+	}
 }
