@@ -114,7 +114,7 @@ class RenderUI {
 		// Display larger search icon
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
-		//console.info('test 1, 2, 3, 4, 5, 6, 7...');
+		// console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...');
 
 
 		// function printPageDetails(pageItem)
@@ -132,9 +132,9 @@ class RenderUI {
 		var eventFeed = new EventFeed();
 		//console.log(_spPageContextInfo.webAbsoluteUrl);
 		// eventFeed.getSearchResults('Corporate Event');
-	  eventFeed.getSearchResults('Corporate Event').then((events)=>{
-		//	console.log(JSON.stringify(events,null,4));
-		});
+	  // eventFeed.getSearchResults('Corporate Event').then((events)=>{
+		// //	console.log(JSON.stringify(events,null,4));
+		// });
 
 		//console.log(JSON.stringify(eventFeed.getSearchResultsMock(), null,4));
 		//eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);

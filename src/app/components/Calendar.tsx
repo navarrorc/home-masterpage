@@ -137,7 +137,7 @@ export class Calendar extends React.Component<any, any> {
     //var rushEvents = eventFeed.getSearchResultsMock();
 
 		eventFeed.getSearchResults('Corporate Event').then((events)=>{
-			console.log(JSON.stringify(events,null,4));
+			//console.log(JSON.stringify(events,null,4));
 			rushEvents = events;
 			calendar('#homepage-calendar', '#homepage-events-list', rushEvents);
 		});

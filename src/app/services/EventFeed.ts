@@ -8,46 +8,53 @@ export class EventFeed {
       'Title',
       'Path',
       'SPWebUrl',
-      'Event-Start-DateOWSDATE',
-      'Event-End-DateOWSDATE'
+      'rushEventStartDate',
+      'rushEventEndDate',
+      'rushDepartment', // i.e. IT, Marketing, Corporate Communications
+      'rushEventCategory', // i.e. All Hands Meeting, Potluck
+      'StartDate', // PublishingStartDate
+      'EndDate', // PublishingExpirationDate
+      'isGlobal' // 1 or 0
     ];
     var deferred = $.Deferred();
     var search = _url +
       "/_api/search/query?querytext='contenttype:" +
       contentType +"'&selectproperties='" +
-      selectProps.join(', ') + "'";
+      selectProps.join(', ') + "'&clienttype='WebService'";
 
     getJson(search, (data)=>{
       var _queryReponse = data.d.query;
       var searchResults = SearchResults(_queryReponse);
-      var _events = [];
-      var _sortedEvents = [];
+      var _events = [],
+          _sortedEvents = [];
+      //console.log(JSON.stringify(searchResults.items,null,4));
       _.each(searchResults.items, (event:any, index)=>{
         // get the events that have start date
-        if (event['Event-Start-DateOWSDATE']){
-          _events.push({
-            title: event.Title,
-            url: event.Path,
-            start: event['Event-Start-DateOWSDATE'],
-            end: event['Event-End-DateOWSDATE']
-          });
+        if (event.rushEventStartDate){
+          let publishStartDate = new Date(event.StartDate);
+          let publishExpirationDate = (event.EndDate) ? new Date(event.EndDate) : null;
+          let today = new Date();
+          if ( publishStartDate <= today && ( (publishExpirationDate >= today) || (publishExpirationDate === null) )  ) {
+            // where StartDate <= {Today} AND EndDate >= {Today} OR EndDate == null
+            _events.push({
+              title: event.Title,
+              url: event.Path,
+              pubStartDate: publishStartDate,
+              pubExpirationDate: publishExpirationDate,
+              start: event.rushEventStartDate,
+              end: event.rushEventEndDate
+            });
+          }
         }
       })
 
-      // function to_date(o) {
-      //     var parts = o.start.split('-');
-      //     o.start = new Date(parts[0], parts[1] - 1, parts[2]);
-      //     return o;
-      // }
-      // function desc_start_time(o) {
-      //     return -o.start.getTime();
-      // }
-      // _sortedEvents = _.chain(_events)
-      //                 .map(to_date)
-      //                 .sortBy(desc_start_time)
-      //                 .value();
-      //console.log(JSON.stringify(searchResults,null,4));
-      deferred.resolve(_events);
+      console.log(JSON.stringify(_events,null,4));
+
+      _sortedEvents = _.sortBy(_events, (event)=>{
+        return event.start;
+      })
+
+      deferred.resolve(_sortedEvents);
 
     }, (error)=>{
       console.log(JSON.stringify(error));
