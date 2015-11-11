@@ -140,8 +140,7 @@ class RenderUI {
 		//eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);
 
 
-		var calendar = new Calendar(null);
-		calendar.showComponent();
+
 
 
 
@@ -168,9 +167,15 @@ class RenderUI {
 		// stockFeed.fetch();
 
 
-		/* Render Press Coverage Component*/
-		var pressCoverageReader = new PressCoverageReader(null);
-		pressCoverageReader.show();
+		if ($('#press-coverage').length) {
+			// homepage of Intranet
+			var calendar = new Calendar(null); // TODO: only display on Intranet Homepage
+			calendar.showComponent();
+			/* Render Press Coverage Component*/
+			var pressCoverageReader = new PressCoverageReader(null); // TODO: only display on Intranet Homepage
+			pressCoverageReader.show();
+		}
+
 
 		/*Render Stock Ticker*/
 		var stockTicker = new StockTicker(null);
