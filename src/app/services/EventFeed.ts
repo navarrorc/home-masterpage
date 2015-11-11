@@ -19,7 +19,8 @@ export class EventFeed {
     var deferred = $.Deferred();
     var search = _url +
       "/_api/search/query?querytext='contenttype:" +
-      contentType +"'&selectproperties='" +
+      contentType +
+      "'&selectproperties='" +
       selectProps.join(', ') + "'&clienttype='WebService'";
 
     getJson(search, (data)=>{

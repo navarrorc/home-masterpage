@@ -114,9 +114,12 @@ div.o365cs-me-tile-nophoto-username-container {
 	display: block !important;
 }
 
-span.o365cs-nav-brandingText {
-	font-family: "Times New Roman", Times, Serif !important;
+span.o365cs-nav-brandingText h1 {
+	//font-family: "warnock-pro-display", "Times New Roman", Times, Serif !important;
   font-size: 30px !important;
+  color: #fff !important;
+  font-weight: normal;
+  margin: 0;
 }
 
 // .o365cs-me-tileview-container::after	{

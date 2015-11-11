@@ -46,7 +46,7 @@ class RenderUI {
 						$('#O365_MainLink_Logo').attr('style', 'visibility: visible');
 						$('#O365_MainLink_Logo').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
 
-						$('span.o365cs-nav-brandingText').html('RushNet'); // Add Intranet Name
+						$('span.o365cs-nav-brandingText').html('<h1>RushNet</h1>'); // Add Intranet Name
 						$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible;');
 
 						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
@@ -129,7 +129,7 @@ class RenderUI {
 		//     console.log(JSON.stringify(error));
 		// }
 
-		var eventFeed = new EventFeed();
+		// var eventFeed = new EventFeed();
 		//console.log(_spPageContextInfo.webAbsoluteUrl);
 		// eventFeed.getSearchResults('Corporate Event');
 	  // eventFeed.getSearchResults('Corporate Event').then((events)=>{
