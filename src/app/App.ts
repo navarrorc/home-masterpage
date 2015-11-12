@@ -114,58 +114,6 @@ class RenderUI {
 		// Display larger search icon
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
-		// console.info('test 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...');
-
-
-		// function printPageDetails(pageItem)
-		// {
-		// 		console.log(pageItem);
-		//     // console.log('Page Content: ' + pageItem.PublishingPageContent);
-		//     // console.log('Page Title: ' + pageItem.Title);
-		//     // console.log('Page Rollup Image ' + pageItem.PublishingRollupImage);
-		// }
-		//
-		// function logError(error){
-		//     console.log(JSON.stringify(error));
-		// }
-
-		// var eventFeed = new EventFeed();
-		//console.log(_spPageContextInfo.webAbsoluteUrl);
-		// eventFeed.getSearchResults('Corporate Event');
-	  // eventFeed.getSearchResults('Corporate Event').then((events)=>{
-		// //	console.log(JSON.stringify(events,null,4));
-		// });
-
-		//console.log(JSON.stringify(eventFeed.getSearchResultsMock(), null,4));
-		//eventFeed.getPublishingPage('https://rushenterprises.sharepoint.com/sites/authoring/HR', 'Pages', 'CorporateArticleTest',['PublishingRollupImage','PublishingPageImage'],printPageDetails,logError);
-
-
-
-
-
-
-		// $.ajax({
-		// 	url: 'https://rushnetapi.azurewebsites.net/api/news',
-		// 	//url: 'http://localhost:2331/api/test',
-		// 	dataType: 'json'
-		// }).done((data:any)=>{
-		// 		console.log(JSON.stringify(data,null,4));
-		// }).fail((jqHXR:JQueryXHR, textStatus:string, errorThrown:any)=>{
-		// 	console.error(jqHXR.responseText || textStatus);
-		// })
-
-		// debugger;
-
-		// testing stock feed
-		// var stockFeed = new StockFeedService();
-		// stockFeed.fetch().then((results:any)=>{
-		// 	//console.log(JSON.stringify(results,null,4));
-		// 	_.each(results, (value:any, index)=>{
-		// 		console.log(value);
-		// 	})
-		// })
-		// stockFeed.fetch();
-
 
 		if ($('#press-coverage').length) {
 			// homepage of Intranet
@@ -182,19 +130,4 @@ class RenderUI {
 		stockTicker.show();
 
 
-		// Render the News Carousel on the Home Page
-		//var topHeaderWidgets = new TopHeaderWidgets({updates: 10, alerts: 3});
-		//topHeaderWidgets.showComponent();
-
-		// if ($('.newsCarousel').length){
-		// 	/**
-		// 	 * Only render for Home-Page Layout
-		// 	 */
-		// 	var newsCarousel = new NewsCarousel({imgUrl: _spPageContextInfo.webAbsoluteUrl +'/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png'});
-		// 	newsCarousel.showComponent();
-		// 	// see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
-		//
-		// 	var mainBanner = new MainBanner(null); // no properties being passed to the constructor
-		// 	mainBanner.showComponent();
-		// }
 	});
