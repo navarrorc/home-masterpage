@@ -17,13 +17,27 @@ export class DataService {
       });
     return deferred.promise();
   }
-  getTopLinks() {
+  getListItems(site:string, listName:string, listColumns:string[]) {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/rushnet/_api/web/Lists/GetByTitle('TopLinks')/items?$select=Title,ID,Url",
+      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
       (data:any)=>{
-        //console.info('data.value', data.value);
+        //console.info('data.value', JSON.stringify(data.value,null,4));
+        deferred.resolve(data.value);
+      }, 'json').fail((sender, args)=>{
+        console.error(args, 'status:', sender.status,'$.get() in getTopLinks() failed!');
+        deferred.reject("Ajax call failed in getTopLinks()");
+      });
+      return deferred.promise();
+  }
+  getListItemsWithFilter(site:string, listName: string, listColumns:string[], filter: string){
+    // use jquery to call the REST endpoint
+    var deferred = $.Deferred();
+    $.get(
+      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',')+"&$filter="+filter,
+      (data:any)=>{
+        //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve(data.value);
       }, 'json').fail((sender, args)=>{
         console.error(args, 'status:', sender.status,'$.get() in getTopLinks() failed!');

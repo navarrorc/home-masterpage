@@ -1,0 +1,16 @@
+#alerts {
+	margin-top: -29px; margin-bottom: 16px;
+
+	.alert {
+		background: $yellow; padding: 6px 25px; color: $rust; display: table; margin-right: 15px; margin-left: 15px;
+
+		a { color: $rust; border: 0; font-style: normal; }
+		.message, .close-link { display: table-cell; vertical-align: middle; }
+		.message { width: 99%; }
+		.close-link { width: 1%; padding-left: 10px; }
+
+		&:first-child { padding-top: 12px; }
+		&:last-child { padding-bottom: 12px; }
+	}
+
+}

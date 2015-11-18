@@ -32,7 +32,8 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
        * Calling Data Service
        */
       var service = new api.DataService();
-      service.getTopLinks().then((data:any)=>{
+      var listColumns = ['Title','Id', 'Url'];
+      service.getListItems('rushnet', 'TopLinks', listColumns).then((data:any)=>{
         // console.info(data);
         var temp: Link[];
         temp = [];

@@ -49,7 +49,7 @@ export class EventFeed {
         }
       })
 
-      console.log(JSON.stringify(_events,null,4));
+      //console.log(JSON.stringify(_events,null,4));
 
       _sortedEvents = _.sortBy(_events, (event)=>{
         return event.start;

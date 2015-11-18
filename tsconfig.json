@@ -52,7 +52,8 @@
         "./src/app/components/suiteBarTop/ProfileImage.tsx",
         "./src/app/components/suiteBarTop/SuiteBarTop.tsx",
         "./src/app/components/suiteBarTop/TopLinks.tsx",
-        "./src/app/components/TopHeaderWidgets.tsx"
+        "./src/app/components/TopHeaderWidgets.tsx",
+        "./src/app/components/HR-HelpLinks.tsx"
     ],
     "exclude": []
 }

@@ -126,7 +126,6 @@ interface calendarProps {
 }
 
 export class Calendar extends React.Component<any, any> {
-  private foo: number;
   constructor(props:any){
     super(props);
   }

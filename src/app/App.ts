@@ -25,7 +25,9 @@ import {DataService} from './services/DataService';
 
 import {EventFeed} from './services/EventFeed';
 
+import {AlertsToasterMessage} from './components/AlertsToasterMessage';
 
+// import {HelpLinkList} from './components/HR-HelpLinks';
 
 
 // CSS Dependencies
@@ -115,13 +117,25 @@ class RenderUI {
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
 
-		if ($('#press-coverage').length) {
+		if ($('#rushnet-homepage').length) {
 			// homepage of Intranet
-			var calendar = new Calendar(null); // TODO: only display on Intranet Homepage
+			var calendar = new Calendar(null);
 			calendar.showComponent();
 			/* Render Press Coverage Component*/
-			var pressCoverageReader = new PressCoverageReader(null); // TODO: only display on Intranet Homepage
+			var pressCoverageReader = new PressCoverageReader(null);
 			pressCoverageReader.show();
+
+			var alerts = new AlertsToasterMessage(null);
+			alerts.showComponent();
+
+
+		}
+
+		if ($('#hr-benefits').length) {
+			// Code that targets the hr-benefits page goes here
+			// var helpLinks = new HelpLinkList(null);
+			// helpLinks.showComponent();
+
 		}
 
 
