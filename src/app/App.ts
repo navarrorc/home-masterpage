@@ -1,7 +1,6 @@
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
 
-import {TopHeaderWidgets} from './components/TopHeaderWidgets';
 import {NewsCarousel} from './components/NewsCarousel';
 import {MainBanner} from './components/MainBanner';
 import SuiteBarTop = require('./components/suiteBarTop/SuiteBarTop');
@@ -26,8 +25,11 @@ import {DataService} from './services/DataService';
 import {EventFeed} from './services/EventFeed';
 
 import {AlertsToasterMessage} from './components/AlertsToasterMessage';
+import {AlertsNotification} from './components/AlertsNotification';
 
-// import {HelpLinkList} from './components/HR-HelpLinks';
+import {HelpLinkList} from './components/HR/HR-HelpLinks';
+
+import {BenefitsTeam} from './components/HR/BenefitsTeam';
 
 
 // CSS Dependencies
@@ -117,25 +119,31 @@ class RenderUI {
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
 
+		// ReactJS Component that will be render on the MasterPage
+		var alertsMessages = new AlertsToasterMessage(null);
+		alertsMessages.showComponent();
+
+		var alertsNotificationWidget = new AlertsNotification(null);
+		alertsNotificationWidget.showComponent();
+
+
+
 		if ($('#rushnet-homepage').length) {
-			// homepage of Intranet
+			// Only on homepage of Intranet
 			var calendar = new Calendar(null);
 			calendar.showComponent();
-			/* Render Press Coverage Component*/
+
 			var pressCoverageReader = new PressCoverageReader(null);
 			pressCoverageReader.show();
-
-			var alerts = new AlertsToasterMessage(null);
-			alerts.showComponent();
-
-
 		}
 
 		if ($('#hr-benefits').length) {
 			// Code that targets the hr-benefits page goes here
-			// var helpLinks = new HelpLinkList(null);
-			// helpLinks.showComponent();
+			var helpLinks = new HelpLinkList(null);
+			helpLinks.showComponent();
 
+			var benefits = new BenefitsTeam(null);
+			benefits.showComponent();
 		}
 
 

@@ -2,8 +2,9 @@
 // Webpack for Production (minified)
 // remote server location
 //var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Prod homepage
-var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/dev/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Dev homepage
-//var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/hr/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Prod HR
+//var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/dev/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Dev homepage
+var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/hr/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Prod HR
+//var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/newshub/_catalogs/masterpage/_Rushnet/home-masterpage/assets'; // Prod NewsHub
 var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 

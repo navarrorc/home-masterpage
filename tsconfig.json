@@ -36,6 +36,7 @@
         "./typings/lodash/lodash.d.ts",
         "./typings/microsoft-ajax/microsoft.ajax.d.ts",
         "./typings/mocha/mocha.d.ts",
+        "./typings/moment/moment.d.ts",
         "./typings/node/node.d.ts",
         "./typings/object-assign/object-assign.d.ts",
         "./typings/radium/radium.d.ts",
@@ -44,16 +45,21 @@
         "./typings/sharepoint/SharePoint.d.ts",
         "./typings/sinon/sinon.d.ts",
         "./typings/tsd.d.ts",
+        "./src/app/components/AlertsNotification.tsx",
+        "./src/app/components/AlertsToasterMessage.tsx",
         "./src/app/components/Calendar.tsx",
+        "./src/app/components/HR/BenefitsTeam.tsx",
+        "./src/app/components/HR/HR-HelpLinks.tsx",
         "./src/app/components/MainBanner.tsx",
         "./src/app/components/NewsCarousel.tsx",
         "./src/app/components/PressCoverageReader.tsx",
         "./src/app/components/StockTicker.tsx",
         "./src/app/components/suiteBarTop/ProfileImage.tsx",
         "./src/app/components/suiteBarTop/SuiteBarTop.tsx",
-        "./src/app/components/suiteBarTop/TopLinks.tsx",
-        "./src/app/components/TopHeaderWidgets.tsx",
-        "./src/app/components/HR-HelpLinks.tsx"
+        "./src/app/components/suiteBarTop/TopLinks.tsx"
     ],
-    "exclude": []
+    "exclude": [],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }

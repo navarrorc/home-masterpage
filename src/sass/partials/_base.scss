@@ -29,6 +29,12 @@ h1 {
 h2 { font: bold 18px/26px $serif; color: $black2; }
 h3 { font-weight: bold; line-height: 30px; font-size: 16px; }
 h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black1; }
+h5 {
+	font: 18px/24px $serif; color: $dark-stone-blue;
+
+	&.executive-subtitle { margin-top: -22px; margin-bottom: 22px; }
+}
+h6 { font-weight: bold; }
 
 /* Global re-useable styles */
 .search-box-wrap {
@@ -68,12 +74,26 @@ h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black
 		p { margin-bottom: 10px; }
 	}
 
+	ul {
+		li { margin-bottom: 10px; }
+	}
 	p { margin-bottom: 27px; }
 	.accordion-header {
 		overflow: hidden;
 
 		> * { float: left; }
 		a { float: right; border: 0; line-height: 30px; }
+	}
+	.panel-paging {
+		float: right; overflow: hidden;
+
+		a {
+			font-size: 12px; line-height: 14px; border: 0; font-style: normal; color: $pale-stone-blue; float: left; padding: 0 3px;
+
+			.icon { font-size: 10px; line-height: 14px; }
+
+			&:hover, &.active { color: $light-stone-blue; }
+		}
 	}
 
 	> *:last-child { margin-bottom: 0; }
@@ -129,7 +149,12 @@ h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black
 
 	&:hover { color: $black1; background: $stone; }
 }
-.btn { padding: 0 20px; border: solid 1px $dark-brown; background: $brown; font: bold 16px/42px $sans-serif; color: $yellow; @include text-shadow(0 1px 0 0 rgb(52, 50, 40)); display: inline-block; text-align: center; white-space: nowrap; }
+.btn {
+	padding: 0 20px; border: solid 1px $dark-brown; background: $brown; font: bold 16px/42px $sans-serif; color: $yellow !important; @include text-shadow(0 1px 0 0 rgb(52, 50, 40)); display: inline-block; text-align: center; white-space: nowrap;
+
+	&.btn-block { width: 100%; }
+	&:hover { color: $dark-yellow; }
+}
 .benefits-contact {
 	padding-top: 10px; overflow: hidden; margin-bottom: 20px;
 
@@ -207,7 +232,7 @@ h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black
 
 	q, blockquote { border-left: solid 6px $dark-yellow; display: block; margin-bottom: 20px; padding-left: 20px; font: bold 23px/32px $serif; }
 	ul, ol {
-		margin-bottom: 20px; padding-left: 26px; list-style: inside none;
+		margin-bottom: 20px; padding-left: 26px; list-style: outside none;
 
 		ul, ol { margin-bottom: 0; }
 	}
@@ -293,6 +318,66 @@ h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black
 		}
 	}
 }
+.tabs {
+	.tab-list {
+		overflow: hidden;
+
+		.tab {
+			float: left; background: $stone; line-height: 50px; padding: 0 20px; margin: 3px 3px 0 0; border: 0; color: $black1; font-style: normal;
+
+			&.active { background: $light-stone; border-top: solid 3px $dark-yellow; margin-top: 0; }
+		}
+	}
+	.tab-group { background: $light-stone; padding: 30px; }
+}
+.feature-story {
+	position: relative; width: 100%; margin-bottom: 30px;
+
+	.feature-story-image { display: block; width: 100%; }
+	.feature-story-title {
+		background: rgba($grey2, 0.9); overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%;
+
+		.feature-story-title-label { color: $light-grey; margin: 0; float: left; font-weight: normal; max-width: calc(100% - 80px); }
+		.feature-story-title-link { white-space: nowrap; position: absolute; line-height: 14px; }
+	}
+
+	&.big-feature {
+		.feature-story-title {
+			padding: 20px 30px;
+
+			.feature-story-title-link { bottom: 26px; right: 30px; }
+		}
+	}
+	&.small-feature {
+		.feature-story-title {
+			padding: 12px 24px;
+
+			.feature-story-title-label { font-weight: bold; }
+			.feature-story-title-link { bottom: 14px; right: 24px; }
+		}
+	}
+}
+.number-list { list-style: decimal outside none; margin-left: 20px; }
+.message {
+	margin-bottom: 20px;
+
+	.message-image { display: block; width: 100%; margin-bottom: 15px; }
+	.message-info {
+		.message-title { font-style: normal; border: 0; color: $black1; display: block; margin-bottom: 15px; }
+		.message-date { background: $dark-yellow; color: $black1; font: bold 12px/24px $sans-serif; padding: 0 7px; display: inline-block; }
+	}
+}
+.executive-nav {
+	background: $light-stone; padding: 10px 0; margin-bottom: 20px;
+
+	a {
+		display: block; border: 0; font-style: normal; padding: 10px 40px; border-right: solid 6px transparent;
+
+		&.active, &:hover { border-right-color: $dark-yellow; color: $grey3; }
+	}
+}
+
+#back-to-top { position: fixed; bottom: 40px; right: 40px; border: 0; font-style: 0; color: $black1; background: $dark-yellow; width: 40px; height: 40px; line-height: 40px; text-align: center; display: none; }
 
 @media (max-width: 992px) {
 	.filter-group {
@@ -313,5 +398,23 @@ h4 { font: bold 14px/30px $sans-serif2; text-transform: uppercase; color: $black
 				.icon { float: left; margin-right: 10px; line-height: 26px; }
 			}
 		}
+	}
+}
+@media (min-width: 992px) {
+	.message {
+		&.small {
+			overflow: hidden;
+
+			.message-image { float: left; width: 115px; margin-right: 20px; margin-bottom: 0; }
+			.message-info {
+				float: left; width: calc(100% - 135px);
+
+				.message-title { margin-bottom: 10px; }
+			}
+		}
+	}
+
+	#back-to-top {
+		&.show { @include opacity(1.0); display: block; }
 	}
 }

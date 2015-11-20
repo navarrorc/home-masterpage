@@ -1,5 +1,8 @@
 import {PressService} from '../services/./PressCoverage';
 
+declare var $: any;
+
+
 /*Parent Component*/
 class RssItems extends React.Component<any, any> {
   constructor(props:any){
@@ -52,6 +55,7 @@ class Post extends React.Component<any,any> {
           <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
           { isCurrentMonth ? <NewTag /> : null}
           <SourceTitle sourceTitle={this.props.sourceTitle}/>
+
         </p>
       </div>
     );
@@ -63,13 +67,18 @@ class Link extends React.Component<any,any>{
   constructor(props:any){
     super(props);
   }
+  componentDidMount(){
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  }
   render() {
     var _pubDate = new Date(this.props.pubDate),
         _month = _pubDate.getMonth() + 1, // return from 0 to 11
         _day = _pubDate.getDate();
     return (
-      <span className="title-wrap">
-        <a href={this.props.link} target="_blank" title={this.props.name}>{_month}/{_day} {this.props.name}</a>
+      <span className="title-wrap" data-toggle="tooltip" data-placement="right" title={this.props.name}>
+        <a href={this.props.link} target="_blank" >{_month}/{_day} {this.props.name}</a>
       </span>
     );
   }
