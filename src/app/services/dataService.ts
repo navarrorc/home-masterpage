@@ -40,7 +40,7 @@ export class DataService {
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve(data.value);
       }, 'json').fail((sender, args)=>{
-        console.error(args, 'status:', sender.status,'$.get() in getTopLinks() failed!');
+        console.error(args, 'status:', sender.status,'$.get() in getListItemsWithFilter() failed!');
         deferred.reject("Ajax call failed in getTopLinks()");
       });
       return deferred.promise();

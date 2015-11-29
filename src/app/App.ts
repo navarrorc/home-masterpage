@@ -14,8 +14,6 @@ import actions = require('./actions');
 
 // import {StockFeedService} from './services/StockFeed';
 
-import {PressCoverageReader} from './components/PressCoverageReader';
-
 import {StockTicker} from './components/StockTicker';
 
 import {Calendar} from './components/Calendar';
@@ -27,9 +25,14 @@ import {EventFeed} from './services/EventFeed';
 import {AlertsToasterMessage} from './components/AlertsToasterMessage';
 import {AlertsNotification} from './components/AlertsNotification';
 
+import {MegaMenu} from './components/MegaMenu';
+
+import {FAQLinkList} from './components/FAQLinks';
+
 import {HelpLinkList} from './components/HR/HR-HelpLinks';
 
 import {BenefitsTeam} from './components/HR/BenefitsTeam';
+
 
 
 // CSS Dependencies
@@ -119,22 +122,27 @@ class RenderUI {
 		$('.ms-srch-sb > .ms-srch-sb-searchLink > img').addClass('ms-srch-sbLarge-searchImg');
 
 
-		// ReactJS Component that will be render on the MasterPage
+		// ReactJS Component that will be rendered on the MasterPage
 		var alertsMessages = new AlertsToasterMessage(null);
 		alertsMessages.showComponent();
 
 		var alertsNotificationWidget = new AlertsNotification(null);
 		alertsNotificationWidget.showComponent();
 
-
+		var menu = new MegaMenu(null);
+		menu.showComponent();
 
 		if ($('#rushnet-homepage').length) {
 			// Only on homepage of Intranet
 			var calendar = new Calendar(null);
 			calendar.showComponent();
 
-			var pressCoverageReader = new PressCoverageReader(null);
-			pressCoverageReader.show();
+			var faqLinks = new FAQLinkList(null);
+			faqLinks.showComponent();
+
+			var newsCarousel = new NewsCarousel(null);
+			newsCarousel.showComponent();
+
 		}
 
 		if ($('#hr-benefits').length) {

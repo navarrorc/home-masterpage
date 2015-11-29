@@ -3,19 +3,55 @@
 
 	h1 { margin-bottom: 20px; color: $dark-yellow; }
 	#coin-wrap {
-		padding-right: 48px;
+		padding-right: 48px; position: relative;
 
-		img { display: block; width: 100%; }
+		img {
+			display: block;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding: 0 48px 0 15px;
+		}
 	}
 	#links-list {
 		a { color: $white; border: 0; font-style: normal; margin-bottom: 20px; float: left; clear: left; }
 	}
 	#social-link-list {
 		a {
-			border: 0; color: $black2; background: $light-stone-blue; display: block; border-radius: 50%; width: 28px; height: 28px; text-align: center; float: left; margin-right: 24px;
+			border: 0; color: $black2; background: $light-stone-blue; display: block; border-radius: 50%; width: 42px; height: 42px; text-align: center; float: left; margin: 0 10px 10px 0;
 
 			&:hover { background: $pale-stone-blue; }
-			i { display: block; line-height: 28px; }
+			i { display: block; line-height: 42px; }
+		}
+	}
+}
+
+#footer-container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+
+	@include flexing-equal-height();
+}
+
+@media (min-width: 768px) {
+	#footer-container { width: 750px; }
+}
+@media (min-width: 992px) {
+	#footer-container { width: 970px; }
+}
+@media (min-width: 1200px) {
+	#footer-container { width: 1170px; }
+}
+
+@media (max-width: 992px) {
+	#ftr {
+		#coin-wrap {
+			padding-right: 15px;
+
+			img { padding-right: 15px; }
 		}
 	}
 }

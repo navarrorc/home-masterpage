@@ -9,7 +9,7 @@ function alerts () {
 		$(this).parent().parent().remove();
 
 		if ($('.alert').length === 0)
-			$('#alerts').remove();
+			$('#alerts').empty();
 
 		return false;
 	});
@@ -35,7 +35,8 @@ export class AlertsToasterMessage extends React.Component<any, any> {
         'Publish_x0020_End_x0020_Date',
         'Title'
       ];
-      var filter = 'Active eq 1';
+			var today = new Date()
+			var filter = "(Publish_x0020_Date le datetime'" + today.toISOString() + "' and (Publish_x0020_End_x0020_Date ge datetime'" + today.toISOString() +"' or Publish_x0020_End_x0020_Date eq null)) and Active eq 1";
       service.getListItemsWithFilter('rushnet', 'Helpdesk Alerts', listColumns,filter).then((data:any)=>{
         // console.info(data);
         var temp = [];
@@ -53,26 +54,25 @@ export class AlertsToasterMessage extends React.Component<any, any> {
         this.setState({
             alerts: temp
         });
-        alerts(); // call function
+        alerts(); // call function, wire up events on the alerts elements
       });
     }
   }
   render() {
-
     var createAlert = function(alert:any, index:number) {
       // var date = new Date(alert.created);
       var formatedDateTime = moment(alert.created).format('LLL');  // November 18, 2015 4:34 PM (see: http://momentjs.com/)
       return (
-        <div className="alert" key={index}>
-          <div className="message"><strong>{alert.title}:</strong> {alert.message} -- {alert.postedBy} ({formatedDateTime})  </div>
-          <div className="close-link">
-            <a href=""><i className="icon icon-close"></i></a>
-          </div>
-        </div>
+	        <div className="alert" key={index}>
+	          <div className="message"><strong>{alert.title}:</strong> {alert.message} -- {alert.postedBy} ({formatedDateTime})  </div>
+	          <div className="close-link">
+	            <a href=""><i className="icon icon-close"></i></a>
+	          </div>
+	        </div>
       );
     };
     return (
-      <div>
+      <div style={{width: '100%'}}>
         {this.state.alerts.map(createAlert, this)}
       </div>
     )

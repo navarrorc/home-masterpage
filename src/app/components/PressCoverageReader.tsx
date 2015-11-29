@@ -19,11 +19,12 @@ class RssItems extends React.Component<any, any> {
   }
   render() {
     return(
-      <div>
+      <div id="press-coverage" className="col-xs-12 col-md-3">
         <h1 className="yellow">Press Coverage</h1>
         {this.state.items.map( (post, index ) => {
           /*console.log(JSON.stringify(post,null,4));*/
           return (
+
             <Post key={index}
              name={post.title}
              pubDate={post.publishDate}
@@ -55,7 +56,6 @@ class Post extends React.Component<any,any> {
           <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
           { isCurrentMonth ? <NewTag /> : null}
           <SourceTitle sourceTitle={this.props.sourceTitle}/>
-
         </p>
       </div>
     );
@@ -67,17 +67,12 @@ class Link extends React.Component<any,any>{
   constructor(props:any){
     super(props);
   }
-  componentDidMount(){
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  }
   render() {
     var _pubDate = new Date(this.props.pubDate),
         _month = _pubDate.getMonth() + 1, // return from 0 to 11
         _day = _pubDate.getDate();
     return (
-      <span className="title-wrap" data-toggle="tooltip" data-placement="right" title={this.props.name}>
+      <span className="title-wrap">
         <a href={this.props.link} target="_blank" >{_month}/{_day} {this.props.name}</a>
       </span>
     );
@@ -122,7 +117,7 @@ export class PressCoverageReader extends React.Component<any, any> {
   }
   show() {
     React.render(
-      <PressCoverageReader />,
+      <PressCoverageReader id={this.props.dataId} className={this.props.dataClass} />,
       document.getElementById('press-coverage')
     );
   }

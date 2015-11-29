@@ -23,9 +23,14 @@
 					}
 					h2 { padding: 0 20px; }
 					&:first-child {
-						border-right: solid 1px $stone;
+						//border-right: solid 1px $stone;
 
 						a:hover, a.active { background: $black1; }
+					}
+				}
+				.link-group1 {
+					&:first-child {
+						border-right: solid 1px $stone;
 					}
 				}
 			}

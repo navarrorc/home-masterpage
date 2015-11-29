@@ -5,6 +5,10 @@
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
+.grey-text { color: $light-stone-blue; }
+.yellow-text { color: $dark-yellow; }
+.red-text { color: $red; }
+
 .clearfix:before, .clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
@@ -14,7 +18,30 @@
 .hide { display: none; }
 .show { display: block; }
 
+.margin-bottom-0 { margin-bottom: 0; }
+.margin-bottom-10 { margin-bottom: 10px; }
 .margin-bottom-20 { margin-bottom: 20px; }
 .margin-bottom-30 { margin-bottom: 30px; }
 
 .margin-right-30 { margin-right: 30px; }
+
+// .equal-heights {
+// 	@include flexing-equal-height();
+
+// 	// .row { height: 100%; }
+// }
+
+.col-xs-hide { display: none; }
+.col-xs-show { display: block; }
+@media (min-width: 768px) {
+	.col-sm-hide { display: none; }
+	.col-sm-show { display: block; }
+}
+@media (min-width: 992px) {
+	.col-md-hide { display: none; }
+	.col-md-show { display: block; }
+}
+@media (min-width: 1200px) {
+	.col-lg-hide { display: none; }
+	.col-lg-show { display: block; }
+}

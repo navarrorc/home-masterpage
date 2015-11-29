@@ -29,13 +29,8 @@ export class HelpLinkList extends React.Component<any, any> {
   }
   render(){
     var generateHelpLink = function(link:HelpLink, index:number){
-      var navigate = function(){
-        var target = link.isNewWindow ? "_blank" : "_self";
-        window.open(link.href, target);
-      }
-
       return (
-        <a className="row-link" onClick={navigate} key={index} >
+        <a className="row-link" href={link.href} target={link.isNewWindow ? "_blank" : "_self"} key={index} >
           {link.title}<i className="icon icon-arrow-right"></i>
         </a>
       );

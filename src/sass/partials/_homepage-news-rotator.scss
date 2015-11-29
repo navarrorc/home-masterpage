@@ -1,5 +1,8 @@
-#news-rotator {
-	color: $white; margin-bottom: 30px; background: $black2; @include flexing-equal-height(); margin-right: -15px; margin-left: -15px;
+// #news-rotator {
+#news-rotator > div {
+	color: $white; margin-bottom: 30px; margin-right: -15px; margin-left: -15px;
+	display: flex;
+	flex-wrap: wrap;
 
 	h1 { margin-bottom: 18px; }
 
@@ -12,13 +15,13 @@
 		&.active .title-wrap a { color: $pale-stone-blue; }
 	}
 
-	#news-stories, #press-coverage { padding-top: 15px; }
+	#news-stories, #press-coverage { padding-top: 15px; background: $black2; overflow: hidden; }
 	#images-rotator {
-		position: relative;
+		position: relative; background: $black2;
 
 		#images-rotator-images {
-			img {
-				display: none; overflow: hidden; width: 100%;
+			.news-image {
+				position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage') no-repeat center; background-size: cover; display: none;
 
 				&.hide { display: hidden; }
 				&.show { display: block; }
@@ -35,9 +38,18 @@
 		.news-link { display: none; }
 	}
 	#press-paging {
-		overflow: hidden; position: absolute; bottom: 10px;
+		overflow: hidden;
+		// position: absolute;
+		position: relative;
+		// bottom: 10px;
+		bottom: 5px;
 
 		a { border: 0; font-style: normal; border: solid 1px; float: left; height: 20px; line-height: 20px; width: 20px; text-align: center; margin-right: 5px; font-size: 11px; }
 		a.active { color: $pale-stone-blue; }
 	}
+}
+
+@media (max-width: 992px) {
+	#news-stories, #images-rotator { margin-bottom: 30px; }
+	#press-coverage { padding-bottom: 40px; }
 }
