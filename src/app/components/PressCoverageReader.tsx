@@ -115,10 +115,10 @@ export class PressCoverageReader extends React.Component<any, any> {
         <RssItems />
     );
   }
-  show() {
-    React.render(
-      <PressCoverageReader id={this.props.dataId} className={this.props.dataClass} />,
-      document.getElementById('press-coverage')
-    );
-  }
+  // show() {
+  //   React.render(
+  //     <PressCoverageReader id={this.props.dataId} className={this.props.dataClass} />,
+  //     document.getElementById('press-coverage')
+  //   );
+  // }
 }

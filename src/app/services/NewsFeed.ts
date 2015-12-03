@@ -1,5 +1,7 @@
 import {getJson, SearchResults} from './Shared';
-var _url = 'https://rushenterprises.sharepoint.com/sites/authoring';
+var _url = 'https://rushenterprises.sharepoint.com/sites/authoring/communications';
+var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
+var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
 
 
 export class NewsFeed {
@@ -12,16 +14,29 @@ export class NewsFeed {
       'StartDate ', // publishing start date
       'EndDate', // publishing end date
       'PublishingRollupImageOWSIMGE',
-      'isGlobal' // 1 or 0
+      'isGlobal', // 1 or 0
+      'listItemId',
+      'owstaxidNewsCategory'
+
     ];
     var deferred = $.Deferred();
-    var search = _url +
+    // var search = _url +
+    //   "/_api/search/query?querytext='contenttype:" +
+    //   "\"" + contentType + "\"" + // sourrounded by double quotes
+    //   " ListId:" + listId +
+    //   "'&rowlimit=5" +
+    //   "'&selectproperties='" +
+    //   selectProps.join(', ') + "'&refinementfilters='isGlobal:true'&clienttype='WebService'";
+    //TODO, come back and fix url
+    var url1 = "https://rushenterprises.sharepoint.com";
+    var search = url1 +
       "/_api/search/query?querytext='contenttype:" +
-      contentType +
-      "'&rowlimit=5" +
+      "\"" + contentType + "\"" + // sourrounded by double quotes
+      " SPSiteUrl:" + spSiteUrl +
+      " ListId:" + listId +
       "'&selectproperties='" +
-      selectProps.join(', ') + "'&refinementfilters='isGlobal:true'&clienttype='WebService'";
-
+      selectProps.join(', ') + "'&refinementfilters='isGlobal:true'&sourceid='32b9aef8-f8ed-4e70-9425-5be165962a4d'&clienttype='WebService'";
+    console.log("search:", search);
     getJson(search, (data)=>{
       var _queryReponse = data.d.query;
       var searchResults = SearchResults(_queryReponse);
@@ -37,7 +52,8 @@ export class NewsFeed {
             // where StartDate <= {Today} AND EndDate >= {Today} OR EndDate == null
             _articles.push({
               title: article.Title,
-              url: article.Path,
+              //url: article.Path,
+              url: 'https://rushenterprises.sharepoint.com/sites/newshub/company-news/' + article.owstaxidNewsCategory + '/' + article.listItemId + '/' + article.Title,
               pubStartDate: article.ArticleStartDateOWSDATE,
               image: article.PublishingRollupImageOWSIMGE
             });
@@ -48,7 +64,7 @@ export class NewsFeed {
       _sortedArticles = _.sortByOrder(_articles, ['pubStartDate'],['desc']);
       // data = _.sortByOrder(data, ['Position'], ['asc']);
 
-
+      //console.log(JSON.stringify(_sortedArticles,null,4));
       deferred.resolve(_sortedArticles);
 
     }, (error)=>{

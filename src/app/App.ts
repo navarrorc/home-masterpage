@@ -3,6 +3,7 @@
 
 import {NewsCarousel} from './components/NewsCarousel';
 import {MainBanner} from './components/MainBanner';
+import {FooterLinks} from './components/FooterLinks';
 import SuiteBarTop = require('./components/suiteBarTop/SuiteBarTop');
 
 import actions = require('./actions');
@@ -131,6 +132,9 @@ class RenderUI {
 
 		var menu = new MegaMenu(null);
 		menu.showComponent();
+
+		var footer = new FooterLinks(null);
+		footer.showComponent();
 
 		if ($('#rushnet-homepage').length) {
 			// Only on homepage of Intranet

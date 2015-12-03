@@ -3,15 +3,10 @@ import {NewsFeed} from '../services/NewsFeed';
 
 declare var $: any;
 
-
 /*Parent Component*/
 class NewsItems extends React.Component<any, any> {
   constructor(props:any){
     super(props);
-    // this.state = {items: []}; // setting initial state
-  }
-  componentWillMount() {
-    // fetch data here
   }
   render() {
     return (
@@ -32,7 +27,7 @@ class NewsItems extends React.Component<any, any> {
   }
 }
 
-/*Child and Parent Component */
+/*Child and Parent Component of NewsItems*/
 class Post extends React.Component<any,any> {
   constructor(props:any){
     super(props);
@@ -53,7 +48,7 @@ class Post extends React.Component<any,any> {
   }
 }
 
-/*Child Component, Leaf*/
+/*Child Component of NewsItems*/
 class Link extends React.Component<any,any>{
   constructor(props:any){
     super(props);
@@ -70,6 +65,7 @@ class Link extends React.Component<any,any>{
   }
 }
 
+/*Child Component of NewsItems*/
 class NewTag extends React.Component<any, any> {
   constructor(props:any) {
     super(props);
@@ -84,38 +80,32 @@ class NewTag extends React.Component<any, any> {
   }
 }
 
+/*Parent Component*/
 class NewsImages extends React.Component<any, any> {
   constructor(props:any){
     super(props);
-    this.state = {items: []}; // setting initial state
-    // this.foo = 42;
-    //this.props.imgUrl = 'https://rushenterprises.sharepoint.com/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/Page-Layouts/images/newsCarousel.png';
-    //props.age = 32;
-   //props.name = 'Roberto';
-
   }
   render() {
     var generateImage = function(image, index){
       return (
-        <img className="news-image" src={image} alt="Rusty"></img>
+        <img key={index} className="news-image" src={image} alt=""></img>
       )
     }
     var generateRotatorNav = function(image, index){
       if(index === 0) {
-        // first image
+        // first image only
         return (
-          <a href="">
+          <a key={index} href="">
             <i className="icon icon-circle-full"></i>
           </a>
         )
       } else {
         return (
-          <a href="">
+          <a key={index} href="">
             <i className="icon icon-circle-empty"></i>
           </a>
         )
       }
-
     }
     return (
       <div id="images-rotator" className="col-xs-8 col-md-6">
@@ -134,36 +124,6 @@ class NewsImages extends React.Component<any, any> {
 
 /*Main App Component*/
 export class NewsCarousel extends React.Component<any, any> {
-  // images = [
-  //   '/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rusty.jpg',
-  //   '/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rusty.jpg',
-  //   '/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rusty.jpg',
-  //   // '/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rusty.jpg',
-  //   // '/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rusty.jpg',
-  // ];
-  //
-  // // name={post.title}
-  // // pubDate={post.publishDate}
-  // // link={post.link}
-  // // index={index}
-  //
-  // newsStories = [
-  //   {
-  //     title: 'A message from a Chairman 10/3 A message from a Chairman1',
-  //     publishDate: new Date(),
-  //     link: '#'
-  //   },
-  //   {
-  //     title: 'A message from a Chairman 10/3 A message from a Chairman2',
-  //     publishDate: new Date(),
-  //     link: '#'
-  //   },
-  //   {
-  //     title: 'A message from a Chairman 10/3 A message from a Chairman3',
-  //     publishDate: new Date(),
-  //     link: '#'
-  //   }
-  // ];
   constructor(props:any){
     super(props);
     this.state = { items: [], images: [] }; // setting initial state
@@ -172,24 +132,18 @@ export class NewsCarousel extends React.Component<any, any> {
     var newsStories = [];
     var images = []
     var news = new NewsFeed();
-    news.getSearchResults('Rush Article').then((data:any[])=>{
-
-      //console.log(JSON.stringify(data,null,4));
+    news.getSearchResults('Corporate Article').then((data:any[])=>{
       data.map((article, index)=>{
-        // console.log(article);
         newsStories.push({
           title: article.title,
           publishDate: article.pubStartDate,
           link: article.url
         });
         var imageString = article.image;
-        // console.log(imageString);
         var myRegexp = /src="((?:[A-Za-z0-9-._~!$&'()*+?/,;=:@]|%[0-9a-fA-F]{2})*(?:(?:[A-Za-z0-9-._~!$&'()*+,;=:@]|%[0-9a-fA-F]{2})*)*)/g;
         var match = myRegexp.exec(imageString);
-        console.log(match);
         var imageUrl = match[1];
         images.push(imageUrl);
-        console.log(imageUrl);
       })
 
       this.setState({
@@ -197,12 +151,8 @@ export class NewsCarousel extends React.Component<any, any> {
         images: images
       })
     })
-
-
   }
   render() {
-    // console.log(JSON.stringify(this.state.items,null,4));
-    // console.log(JSON.stringify(this.state.images,null,4));
     return (
       <div>
         <NewsItems items={this.state.items} />

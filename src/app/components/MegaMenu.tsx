@@ -19,16 +19,6 @@ interface MegaMenuLink{
   departments:Department[]
 }
 
-function JsonToConsole(temp:any){
-  var jsonString:string = JSON.stringify(temp);
-  while(jsonString.length > 300)
-  {
-    //console.info(jsonString.substr(0,300));
-    jsonString = jsonString.substr(300);
-  }
-  //console.info(jsonString);
-}
-
 function mega_menu () {
 	var $anchors = $('#mega-menu a[data-group]'),
 		is_tablet = false;
@@ -230,8 +220,6 @@ export class MegaMenu extends React.Component<any, any> {
       menu: temp
     });
 
-    JsonToConsole(temp);
-
     mega_menu();
     });
   }
@@ -242,7 +230,7 @@ export class MegaMenu extends React.Component<any, any> {
       counter++;
       var className = counter == 1 ? "active" : "";
       return (
-        <div>
+        <div key={index}>
           {counter == 1 ? <li></li> : <li className="divider"></li>}
           <li key={index}>
             <a href={link.href} target={link.isNewWindow ? "_blank" : "_self"} className={className} >{link.title}</a>

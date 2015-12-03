@@ -30,7 +30,7 @@ export class BenefitsTeam extends React.Component<any, any> {
       this.setState({
           team: temp
       });
-      
+
         $(function () {
           $('[data-toggle="tooltip"]').tooltip()
         })
@@ -46,7 +46,9 @@ export class BenefitsTeam extends React.Component<any, any> {
   					<span className="number">{member.phone}</span>
   				</span>
   				<span className="location">
-  					<span data-toggle="tooltip" data-placement="right" title={member.popup}>{member.region}</span>
+            {member.popup == null || member.popup.length == 0
+  					? <span data-toggle="tooltip" data-placement="right" title={member.popup}>{member.region}</span>
+            : <a data-toggle="tooltip" data-placement="right" title={member.popup}>{member.region}</a>}
   				</span>
   			</div>
       );

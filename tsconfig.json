@@ -50,6 +50,7 @@
         "./src/app/components/AlertsToasterMessage.tsx",
         "./src/app/components/Calendar.tsx",
         "./src/app/components/FAQLinks.tsx",
+        "./src/app/components/FooterLinks.tsx",
         "./src/app/components/HR/BenefitsTeam.tsx",
         "./src/app/components/HR/HR-HelpLinks.tsx",
         "./src/app/components/MainBanner.tsx",

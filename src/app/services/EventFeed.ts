@@ -1,5 +1,5 @@
 import {getJson, SearchResults} from './Shared';
-var _url = 'https://rushenterprises.sharepoint.com/sites/authoring';
+var _url = 'https://rushenterprises.sharepoint.com';
 
 
 export class EventFeed {
@@ -17,12 +17,17 @@ export class EventFeed {
       'isGlobal' // 1 or 0
     ];
     var deferred = $.Deferred();
+    // var search = _url +
+    //   "/_api/search/query?querytext='contenttype:" +
+    //   contentType +
+    //   "'&selectproperties='" +
+    //   selectProps.join(', ') + "'&clienttype='WebService'";
     var search = _url +
       "/_api/search/query?querytext='contenttype:" +
-      contentType +
+      "\"" + contentType + "\"" + // sourrounded by double quotes
       "'&selectproperties='" +
-      selectProps.join(', ') + "'&clienttype='WebService'";
-
+      selectProps.join(', ') + "'&refinementfilters='isGlobal:true'&sourceid='32b9aef8-f8ed-4e70-9425-5be165962a4d'&clienttype='WebService'";
+    //console.log("EventFeed Url", search);
     getJson(search, (data)=>{
       var _queryReponse = data.d.query;
       var searchResults = SearchResults(_queryReponse);

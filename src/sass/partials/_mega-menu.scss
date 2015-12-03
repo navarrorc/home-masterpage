@@ -1,5 +1,6 @@
 #mega-menu-wrap {
 	background: $black1; color: #fff; margin-bottom: 45px; position: relative;
+	z-index: 99; // RCN
 
 	&.no-bg { background: none; }
 	#mega-menu {

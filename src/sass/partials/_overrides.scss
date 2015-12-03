@@ -112,3 +112,14 @@ button {
 // .ms-searchCenter-result-main, .ms-searchCenter-refinement {
 //   visibility: hidden;
 // }
+
+/*Tim's Webparts*/
+// title for webparts on home page, applying Warnock pro font from projekt 202
+.ms-webpart-titleText span{
+  font: bold 23px/29px $serif; color: $dark-stone-blue; margin-bottom: 22px;
+}
+
+/*People Search*/
+#UserPersonaContainer img {
+	max-width: inherit;
+}
