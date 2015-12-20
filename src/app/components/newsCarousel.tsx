@@ -15,7 +15,7 @@ class NewsItems extends React.Component<any, any> {
         {this.props.items.map( (post, index ) => {
             return (
               <Post key={index}
-               name={post.title}
+               name= {post.byLine}
                pubDate={post.publishDate}
                link={post.link}
                index={index}
@@ -33,15 +33,21 @@ class Post extends React.Component<any,any> {
     super(props);
   }
   render() {
-    var _pubDate = new Date(this.props.pubDate),
-                  _month = _pubDate.getMonth() + 1;
+    var _pubDate = (this.props.pubDate)? new Date(this.props.pubDate) : null;
+    if (_pubDate){
+      var _month = _pubDate.getMonth() + 1,
+      _day = _pubDate.getDate();
+    }
     var currentDate = new Date(); // current date
     var isCurrentMonth = (_month === currentDate.getMonth()+1);
+
+    var month_day = (_month) ?_month + '/' + _day : null;
+
     return (
       <div>
         <p className="news-link">
-          <Link pubDate={this.props.pubDate} index={this.props.index} name={this.props.name} link={this.props.link}/>
-          { isCurrentMonth ? <NewTag /> : null}
+          <Link index={this.props.index} name={this.props.name} link={this.props.link}/>
+          <span style={{fontWeight: 'bold'}}>{month_day}</span> { isCurrentMonth ? <NewTag /> : null}
         </p>
       </div>
     );
@@ -54,12 +60,10 @@ class Link extends React.Component<any,any>{
     super(props);
   }
   render() {
-    var _pubDate = new Date(this.props.pubDate),
-        _month = _pubDate.getMonth() + 1, // return from 0 to 11
-        _day = _pubDate.getDate();
+
     return (
       <span className="title-wrap">
-        <a href={this.props.link} target="_blank" >{_month}/{_day} {this.props.name}</a>
+        <a href={this.props.link}> {this.props.name}</a>
       </span>
     );
   }
@@ -115,7 +119,7 @@ class NewsImages extends React.Component<any, any> {
         <div id="images-rotator-nav">
           {this.props.images.map(generateRotatorNav, this)}
         </div>
-        <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/news-rotator-active-arrow.png" id="news-rotator-active-arrow"></img>
+        <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/img/news-rotator-active-arrow.png" id="news-rotator-active-arrow"></img>
       </div>
     )
   }
@@ -136,6 +140,7 @@ export class NewsCarousel extends React.Component<any, any> {
       data.map((article, index)=>{
         newsStories.push({
           title: article.title,
+          byLine: article.byLine,
           publishDate: article.pubStartDate,
           link: article.url
         });
@@ -146,6 +151,13 @@ export class NewsCarousel extends React.Component<any, any> {
         images.push(imageUrl);
       })
 
+      //TODO: fix this, temporary for now
+      newsStories.push({
+        title: 'View All',
+        byLine: 'View All',
+        publishDate: null,
+        link: 'https://rushenterprises.sharepoint.com/sites/newshub',
+      })
       this.setState({
         items: newsStories,
         images: images

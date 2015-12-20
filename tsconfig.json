@@ -37,7 +37,6 @@
         "./typings/lodash/lodash.d.ts",
         "./typings/microsoft-ajax/microsoft.ajax.d.ts",
         "./typings/mocha/mocha.d.ts",
-        "./typings/moment/moment.d.ts",
         "./typings/node/node.d.ts",
         "./typings/object-assign/object-assign.d.ts",
         "./typings/radium/radium.d.ts",

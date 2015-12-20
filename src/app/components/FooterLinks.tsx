@@ -11,15 +11,18 @@ export class FooterLinks extends React.Component<any, any> {
     super(props);
     this.state = {
       column1: [],
-      column2: []
+      column2: [],
+      social: []
     };
   }
   componentDidMount() {
     var service = new api.DataService();
     var listColumns = ['Title','Url','Opens_New_Window','Position','Column'];
+    var temp1: FooterLink[] = [];
+    var temp2: FooterLink[] = [];
+    var socialTemp:any = {};
+
     service.getListItems('rushnet', 'Footer_Links', listColumns).then((data:any)=>{
-      var temp1: FooterLink[] = [];
-      var temp2: FooterLink[] = [];
 
       data = _.sortByOrder(data, ['Position'], ['asc']);
 
@@ -31,10 +34,34 @@ export class FooterLinks extends React.Component<any, any> {
           temp2.push({title: n.Title, href: n.Url, isNewWindow: n.Opens_New_Window});
       });
 
-      this.setState({
-          column1: temp1,
-          column2: temp2
+      if(typeof(socialTemp.facebook) != undefined)
+        this.setState({
+            column1: temp1,
+            column2: temp2,
+            social: socialTemp
+        });
+    });
+
+    var listColumns2 = ['Title','Url'];
+    service.getListItems('rushnet', 'Social_Links', listColumns2).then((data:any)=>{
+
+      _.map(data, (n:any) =>{
+        if(n.Title == "facebook")
+          socialTemp.facebook = n.Url;
+        else if(n.Title == "LinkedIn")
+          socialTemp.LinkedIn = n.Url;
+        else if(n.Title == "Twitter")
+          socialTemp.Twitter = n.Url;
+        else if(n.Title == "Youtube")
+          socialTemp.Youtube = n.Url;
       });
+
+      if(temp1.length > 0)
+        this.setState({
+            column1: temp1,
+            column2: temp2,
+            social: socialTemp
+        });
     });
   }
   render(){
@@ -42,7 +69,7 @@ export class FooterLinks extends React.Component<any, any> {
       <div>
         <div id="footer-container" className="clearfix">
           <div id="coin-wrap" className="col-xs-4">
-            <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/home-masterpage/img/rush-coin-footer.png" alt="Rush Coin" />
+            <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/img/rush-coin-footer.png" alt="Rush Coin" />
           </div>
           <div id="navigation-links" className="col-xs-5">
             <h1>About</h1>
@@ -61,12 +88,12 @@ export class FooterLinks extends React.Component<any, any> {
           </div>
           <div id="footer-information" className="col-xs-3">
             <h1>Information</h1>
-            <p><strong>IT Service Desk 800-459-HELP</strong></p>
+            <p><strong>IT Service Desk 888-758-HELP</strong></p>
             <nav id="social-link-list">
-              <a href=""><i className="icon icon-facebook"></i></a>
-              <a href=""><i className="icon icon-linkedin"></i></a>
-              <a href=""><i className="icon icon-youtube"></i></a>
-              <a href=""><i className="icon icon-twitter"></i></a>
+              <a href={this.state.social.facebook} target="_blank"><i className="icon icon-facebook"></i></a>
+              <a href={this.state.social.LinkedIn} target="_blank"><i className="icon icon-linkedin"></i></a>
+              <a href={this.state.social.Youtube} target="_blank"><i className="icon icon-youtube"></i></a>
+              <a href={this.state.social.Twitter} target="_blank"><i className="icon icon-twitter"></i></a>
             </nav>
           </div>
         </div>

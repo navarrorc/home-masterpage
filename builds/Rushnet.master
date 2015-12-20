@@ -52,13 +52,13 @@
 		<SharePoint:CssRegistration Name="Themable/corev15.css" runat="server" />
 
 		<!-- ===== STARTER: Custom CSS  =================================================================================================== -->
-    <%--<SharePoint:CssRegistration ID="CssRegistration1" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/css/bootstrap.min.css %&gt;" runat="server" after="SharepointCssFile" />--%>
-    <SharePoint:CssRegistration ID="CssRegistration3" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/assets/styles.min.css %&gt;" runat="server" after="SharepointCssFile" />
+    <%--<SharePoint:CssRegistration ID="CssRegistration1" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/css/bootstrap.min.css %&gt;" runat="server" after="SharepointCssFile" />--%>
+    <SharePoint:CssRegistration ID="CssRegistration3" name="&lt;% $SPUrl:~sitecollection/_catalogs/masterpage/_Rushnet/assets/styles.min.css %&gt;" runat="server" after="SharepointCssFile" />
 
 		<!-- ===== STARTER: Custom JAVASCRIPT  =================================================================================================== -->
-		<SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/lib/jquery-1.11.3.min.js" runat="server" Localizable="false" />
-    <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/lib/react.min.js" runat="server" Localizable="false" />
-    <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/lib/lodash.min.js" runat="server" Localizable="false" />
+		<SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/lib/jquery-1.11.3.min.js" runat="server" Localizable="false" />
+    <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/lib/react.min.js" runat="server" Localizable="false" />
+    <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/lib/lodash.min.js" runat="server" Localizable="false" />
 
 	</head>
 
@@ -189,7 +189,7 @@
 	<!--<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>-->
 	<!-- <script type="text/javascript" src="/sites/rushnet/_layouts/15/sp.runtime.js"></script> -->
 	<!-- <script type="text/javascript" src="/sites/rushnet/_layouts/15/sp.js"></script> -->
-  <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/home-masterpage/assets/bundle.min.js" runat="server" Localizable="false" />
+  <SharePoint:ScriptLink language="javascript" name="~sitecollection/_catalogs/masterpage/_Rushnet/assets/bundle.min.js" runat="server" Localizable="false" />
 
 
   <div style="display:none">

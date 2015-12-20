@@ -1,0 +1,5 @@
+.location-logos-table {
+	.logo-row { display: table; width: 100%; table-layout: fixed; margin: 0 -10px; }
+	.logo-row div { display: table-cell; text-align: center; vertical-align: middle; width: 33.3333333333%; padding: 10px; }
+	.logo-row div img { display: block; margin: 0 auto; }
+}

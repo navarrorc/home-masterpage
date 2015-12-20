@@ -33,12 +33,15 @@ function calendar (calendar_id, events_list_id, rushEvents) {
 
 		for (var i = 0, l = client_events.length; i < l; i++) {
 			var e = client_events[i],
-				date_title = moment(e.start).format('MMMM D');
+				date_title = moment(e.start).format('MMMM D'),
+				startDay = e.start.format('D'),
+				endDay = e.end.format('D');
 
-			if ('end' in e && e.end !== null)
+			if ( ('end' in e && e.end !== null) && (startDay != endDay) )
+				// console.log('e.start:', e.start.format('D'),' e.end:', e.end.format('D'));
 				date_title += ' - ' + moment(e.end).format('D');
 
-			event_list_html.push('<dt>', date_title, '</dt>', '<dd><a href="'+ e.url +'" target="_blank">', e.title, '</a></dd>');
+			event_list_html.push('<dt>', date_title, '</dt>', '<dd><a href="'+ e.url +'" title="'+e.title+'">', e.title, '</a></dd>');
 
 			if ('end' in e && e.end !== null) {
 				var diff = moment(e.end).diff(e.start, 'days');

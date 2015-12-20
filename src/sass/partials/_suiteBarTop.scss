@@ -120,6 +120,7 @@ span.o365cs-nav-brandingText h1 {
   color: #fff !important;
   font-weight: normal;
   margin: 0;
+  //margin-top: 8px;
 }
 
 // .o365cs-me-tileview-container::after	{
@@ -166,4 +167,14 @@ span.o365cs-nav-brandingText h1 {
 **/
 .topLinks > li > a:hover {
   text-decoration: none;
+}
+
+/**
+** brandingText
+**/
+a.o365cs-nav-appTitle.o365cs-topnavText.o365button {
+  margin-top:11px;
+}
+a#O365_MainLink_Logo {
+  margin-top: 2px;
 }

@@ -99,7 +99,9 @@ class RenderUI {
 								if($('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').length){
 									$('.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').attr('style', 'display: inline-block');
 									$('.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff').attr('style', 'display: inline-block!important');
-									$('.o365cs-rsp-off .o365cs-rsp-off-hide').attr('style', 'display: none!important');
+									//$('.o365cs-rsp-off .o365cs-rsp-off-hide').attr('style', 'display: none!important');
+									$('.o365cs-rsp-off-hide').attr('style', 'display: none!important');
+									$('.o365cs-rsp-m-hide').attr('style', 'display: none!important');
 									$('#s4-ribbonrow').attr('style', 'display: inline');
 									clearInterval(interval);
 								}

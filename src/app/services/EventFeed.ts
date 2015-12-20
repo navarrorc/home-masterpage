@@ -1,6 +1,10 @@
 import {getJson, SearchResults} from './Shared';
 var _url = 'https://rushenterprises.sharepoint.com';
+var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
+var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
+var eventRootUrl = 'https://rushenterprises.sharepoint.com/sites/eventshub/events/';
 
+declare var moment: any;
 
 export class EventFeed {
   getSearchResults(contentType){
@@ -14,52 +18,58 @@ export class EventFeed {
       'rushEventCategory', // i.e. All Hands Meeting, Potluck
       'StartDate', // PublishingStartDate
       'EndDate', // PublishingExpirationDate
-      'isGlobal' // 1 or 0
+      'isGlobal', // 1 or 0
+      'owstaxIdEventCategory',
+      'listItemId',
+      // 'refinablestring99'
+      //'rfEventStartDate'
     ];
     var deferred = $.Deferred();
-    // var search = _url +
-    //   "/_api/search/query?querytext='contenttype:" +
-    //   contentType +
-    //   "'&selectproperties='" +
-    //   selectProps.join(', ') + "'&clienttype='WebService'";
     var search = _url +
       "/_api/search/query?querytext='contenttype:" +
       "\"" + contentType + "\"" + // sourrounded by double quotes
-      "'&selectproperties='" +
-      selectProps.join(', ') + "'&refinementfilters='isGlobal:true'&sourceid='32b9aef8-f8ed-4e70-9425-5be165962a4d'&clienttype='WebService'";
+      " SPSiteUrl:" + spSiteUrl +
+      " ListId:" + listId +
+      "'&trimduplicates=false" +
+      "&rowlimit=100" +
+      "&selectproperties='" + selectProps.join(', ')  + "'"
+      "&refinementfilters='isGlobal:true'"
+      //"&sortlist='refinablestring99:ascending'" + // TODO: this does not have any effect, needs to be fixed
+      //"&sourceid='32b9aef8-f8ed-4e70-9425-5be165962a4d'" +
+      "&clienttype='WebService'";
     //console.log("EventFeed Url", search);
     getJson(search, (data)=>{
       var _queryReponse = data.d.query;
       var searchResults = SearchResults(_queryReponse);
       var _events = [],
           _sortedEvents = [];
+      //console.log('Number of items:',searchResults.items.length);
       //console.log(JSON.stringify(searchResults.items,null,4));
       _.each(searchResults.items, (event:any, index)=>{
         // get the events that have start date
         if (event.rushEventStartDate){
-          let publishStartDate = new Date(event.StartDate);
-          let publishExpirationDate = (event.EndDate) ? new Date(event.EndDate) : null;
-          let today = new Date();
-          if ( publishStartDate <= today && ( (publishExpirationDate >= today) || (publishExpirationDate === null) )  ) {
-            // where StartDate <= {Today} AND EndDate >= {Today} OR EndDate == null
+          let publishStartDate = (event.StartDate) ? moment(event.StartDate) : null;
+          let timeZoneOffset = new Date().getTimezoneOffset();
+          let publishExpirationDate = (event.EndDate) ? moment(event.EndDate) : null;
+          let today = moment();
+          if ( (publishStartDate <= today || publishStartDate === null) && (publishExpirationDate >= today || publishExpirationDate === null)  ) {
+              // Note: this seems to also validate when the publishStartDate is null, no need to explicitely check for that.
+              // where StartDate <= {Today} OR is null AND EndDate >= {Today} OR is null
             _events.push({
-              title: event.Title,
-              url: event.Path,
-              pubStartDate: publishStartDate,
-              pubExpirationDate: publishExpirationDate,
-              start: event.rushEventStartDate,
-              end: event.rushEventEndDate
+              title:  event.Title,
+              url: eventRootUrl + event.owstaxIdEventCategory + '/' + event.listItemId + '/' + event.Title,
+              start: moment(event.rushEventStartDate).local(),
+              end: moment(event.rushEventEndDate).local()
             });
           }
         }
       })
 
-      //console.log(JSON.stringify(_events,null,4));
-
+      // console.log(JSON.stringify(_events,null,4));
       _sortedEvents = _.sortBy(_events, (event)=>{
         return event.start;
       })
-
+      //console.log(JSON.stringify(_sortedEvents,null,4));
       deferred.resolve(_sortedEvents);
 
     }, (error)=>{

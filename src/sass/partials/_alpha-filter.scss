@@ -1,0 +1,11 @@
+#alpha-filter {
+	margin: 0 -2px 30px; overflow: hidden;
+
+	.letter-wrap {
+		width: calc(100% / 26); float: left; padding: 0 2px;
+
+		a { border: 0; background: $light-stone-blue; color: $light-stone; font-style: normal; font-size: 15px; text-transform: uppercase; font: bold 15px/26px $sans-serif2; display: block; text-align: center; }
+		a:hover { background: $pale-stone-blue; }
+		a.active { background: $black2; }
+	}
+}

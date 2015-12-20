@@ -11,6 +11,7 @@ a {
 	&:hover { text-decoration: none; } // RCN
 	&:visited { color: $light-stone-blue;} // RCN
 	&[disabled], &.disabled { color: #adafba; color: $pale-stone-blue; opacity: 0.5; pointer-events: none; }
+	&.row-link:visited { color:$black1; }
 }
 strong, b { font-weight: bold; }
 em, i { font-style: italic; }

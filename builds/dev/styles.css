@@ -203,7 +203,7 @@ span.o365cs-nav-brandingText {
 
 @font-face {
   font-family: 'rushnet';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/rushnet.woff?8ntyo6") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/rushnet.woff?8ntyo6") format("woff");
   font-weight: normal;
   font-style: normal; }
 
@@ -299,58 +299,58 @@ span.o365cs-nav-brandingText {
 /** Trade Gothic **/
 @font-face {
   font-family: 'TradeGothic';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_0_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1A_0_0.woff") format("woff");
   font-style: normal;
   font-weight: normal; }
 
 @font-face {
   font-family: 'TradeGothic';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_1_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1A_1_0.woff") format("woff");
   font-style: italic;
   font-weight: normal; }
 
 @font-face {
   font-family: 'TradeGothic';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_2_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1A_2_0.woff") format("woff");
   font-style: normal;
   font-weight: bold; }
 
 @font-face {
   font-family: 'TradeGothic';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1A_3_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1A_3_0.woff") format("woff");
   font-style: italic;
   font-weight: bold; }
 
 /** Trade Gothic Condensed **/
 @font-face {
   font-family: 'TradeGothicCondensed';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_0_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1B_0_0.woff") format("woff");
   font-style: normal;
   font-weight: normal; }
 
 @font-face {
   font-family: 'TradeGothicCondensed';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_1_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1B_1_0.woff") format("woff");
   font-style: normal;
   font-weight: bold; }
 
 @font-face {
   font-family: 'TradeGothicCondensed';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_2_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1B_2_0.woff") format("woff");
   font-style: italic;
   font-weight: normal; }
 
 @font-face {
   font-family: 'TradeGothicCondensed';
-  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/fonts/2F4C1B_3_0.woff") format("woff");
+  src: url("/sites/rushnet/_catalogs/masterpage/_RushNet/fonts/2F4C1B_3_0.woff") format("woff");
   font-style: italic;
   font-weight: bold; }
 
 body {
   font: 15px/21px TradeGothic, helvetica, arial, sans-serif;
   color: #060606;
-  background: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/img/bg.png");
-  background-image: url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/img/bg.png") !important; }
+  background: url("/sites/rushnet/_catalogs/masterpage/_RushNet/img/bg.png");
+  background-image: url("/sites/rushnet/_catalogs/masterpage/_RushNet/img/bg.png") !important; }
 
 a {
   font-weight: bold;
@@ -1359,7 +1359,7 @@ h1 {
       line-height: 28px; }
 
 #home-banner {
-  background: #060606 url("/sites/rushnet/_catalogs/masterpage/_RushNet/home-masterpage/img/homepage-hero.png") no-repeat center;
+  background: #060606 url("/sites/rushnet/_catalogs/masterpage/_RushNet/img/homepage-hero.png") no-repeat center;
   height: 324px; }
 
 #news-rotator {

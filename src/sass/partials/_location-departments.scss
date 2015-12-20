@@ -1,0 +1,13 @@
+#location-departments {
+	padding: 15px 30px 10px;
+
+	.card-wraps {
+		@include flexing-equal-height();
+
+		.card {
+			width: calc(50% - 15px); margin-left: 15px;
+
+			&:first-child { margin-left: 0; margin-right: 15px; }
+		}
+	}
+}
