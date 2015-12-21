@@ -4,7 +4,7 @@ var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
 var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
 var eventRootUrl = 'https://rushenterprises.sharepoint.com/sites/eventshub/events/';
 
-declare var moment: any;
+//declare var moment: any;
 
 export class EventFeed {
   getSearchResults(contentType){

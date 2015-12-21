@@ -46,11 +46,26 @@ class Post extends React.Component<any,any> {
     super(props);
   }
   render() {
-    var _pubDate = new Date(this.props.pubDate),
-                  _month = _pubDate.getMonth() + 1,
-                  _day = _pubDate.getDate();
-    var currentDate = new Date(); // current date
-    var isCurrentMonth = (_month === currentDate.getMonth()+1);
+    // var _pubDate = new Date(this.props.pubDate),
+    //               _month = _pubDate.getMonth() + 1,
+    //               _day = _pubDate.getDate();
+    // var currentDate = new Date(); // current date
+    // var isCurrentMonth = (_month === currentDate.getMonth()+1);
+    var pubDate = (this.props.pubDate)? moment(new Date(this.props.pubDate)) : null;
+
+    if (pubDate){
+      var month =  pubDate.format('MM');
+      var day = pubDate.format('DD');
+    }
+    var now = moment(new Date()); // current date
+    var dayDiff = now.diff(pubDate, 'days')+1; //include the start
+    let isNew = false;
+    if (dayDiff <= 7) {
+      isNew = true;
+      // press coverage is considered NEW if it's 7 days old
+    }
+
+    var month_day = (month)? month + '/' + day : null;
 
     var noWrap = {
       whiteSpace: 'nowrap',
@@ -61,7 +76,7 @@ class Post extends React.Component<any,any> {
       <div>
         <p className="news-link" style={noWrap}>
           <Link index={this.props.index} name={this.props.name} link={this.props.link}/>
-          <span style={{fontWeight: 'bold'}}>{_month}/{_day}</span> { isCurrentMonth ? <NewTag /> : null}
+          <span style={{fontWeight: 'bold'}}>{month_day}</span> { isNew ? <NewTag /> : null}
           <SourceTitle sourceTitle={this.props.sourceTitle}/>
         </p>
       </div>

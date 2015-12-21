@@ -15,6 +15,10 @@
         "../typings/**/*.d.ts",
         "!./node_modules/**/*.ts"
     ],
+    "exclude": [],
+    "atom": {
+        "rewriteTsconfig": true
+    },
     "files": [
         "./src/app/Actions.ts",
         "./src/app/App.ts",
@@ -37,6 +41,8 @@
         "./typings/lodash/lodash.d.ts",
         "./typings/microsoft-ajax/microsoft.ajax.d.ts",
         "./typings/mocha/mocha.d.ts",
+        "./typings/moment/moment-node.d.ts",
+        "./typings/moment/moment.d.ts",
         "./typings/node/node.d.ts",
         "./typings/object-assign/object-assign.d.ts",
         "./typings/radium/radium.d.ts",
@@ -60,9 +66,5 @@
         "./src/app/components/suiteBarTop/ProfileImage.tsx",
         "./src/app/components/suiteBarTop/SuiteBarTop.tsx",
         "./src/app/components/suiteBarTop/TopLinks.tsx"
-    ],
-    "exclude": [],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    ]
 }
