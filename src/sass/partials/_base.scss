@@ -7,9 +7,11 @@ body { font: 15px/21px $sans-serif; color: $black1;
 a {
 	font-weight: bold; font-style: italic; color: $light-stone-blue; border-bottom: dashed 1px; text-decoration: none;
 
-	&:hover { color: $pale-stone-blue; }
-	&:hover { text-decoration: none; } // RCN
 	&:visited { color: $light-stone-blue;} // RCN
+	&:hover { text-decoration: none; } // RCN
+
+
+	&:hover { color: $pale-stone-blue; }
 	&[disabled], &.disabled { color: #adafba; color: $pale-stone-blue; opacity: 0.5; pointer-events: none; }
 	&.row-link:visited { color:$black1; }
 }
