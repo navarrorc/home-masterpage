@@ -1,12 +1,26 @@
 import {PressCoverageReader} from './PressCoverageReader';
 import {NewsFeed} from '../services/NewsFeed';
+import helpers = require('./Helpers');
+
 
 declare var $: any;
 
+var $anchors,
+    $images,
+    $arrow,
+    $links;
+
 /*Parent Component*/
 class NewsItems extends React.Component<any, any> {
+
   constructor(props:any){
     super(props);
+  }
+  componentWillMount() {
+    // $anchors = $('#images-rotator-nav a');
+    // $images = $('#images-rotator-images .news-image');
+    // $arrow = $('#news-rotator-active-arrow');
+    // $links = $('#news-stories .news-link');
   }
   render() {
     return (
@@ -29,8 +43,30 @@ class NewsItems extends React.Component<any, any> {
 
 /*Child and Parent Component of NewsItems*/
 class Post extends React.Component<any,any> {
+
   constructor(props:any){
     super(props);
+  }
+  handleHover(){
+    var $this = $(this),
+        //index = this.$anchors.index($this),
+        index = $this[0].props.index,
+        $active_link = $links.eq(index),
+        top = $active_link.position().top + ($active_link.height() / 2) - ($arrow.height() / 2);
+
+    //console.log('index', index);
+    // console.log($this[0].props.index);
+  //  console.log($active_link);
+
+    if (index != 5){
+      $links.removeClass('active').eq(index).addClass('active');
+
+      $anchors.find('.icon').removeClass('icon-circle-full').addClass('icon-circle-empty');
+      $anchors.eq(index).find('.icon').toggleClass('icon-circle-empty icon-circle-full');
+      $images.removeClass('show').addClass('hide').eq(index).toggleClass('hide show');
+      $arrow.css({ top: top });
+    }
+
   }
   render() {
     var pubDate = (this.props.pubDate)? moment(new Date(this.props.pubDate)) : null;
@@ -51,8 +87,8 @@ class Post extends React.Component<any,any> {
 
     return (
       <div>
-        <p className="news-link">
-          <Link index={this.props.index} name={this.props.name} link={this.props.link}/>
+        <p className="news-link" onMouseEnter={this.handleHover.bind(this)}  >
+          <Link index={this.props.index} name={this.props.name} link={this.props.link} />
           <span style={{fontWeight: 'bold'}}>{month_day}</span> { isNew ? <NewTag /> : null}
         </p>
       </div>
@@ -62,11 +98,12 @@ class Post extends React.Component<any,any> {
 
 /*Child Component of NewsItems*/
 class Link extends React.Component<any,any>{
+
   constructor(props:any){
     super(props);
   }
-  render() {
 
+  render() {
     return (
       <span className="title-wrap">
         <a href={this.props.link}> {this.props.name}</a>
@@ -169,6 +206,22 @@ export class NewsCarousel extends React.Component<any, any> {
         images: images
       })
     })
+  }
+  componentDidMount() {
+    // having to do this due to the fact that images take more time to load and we need to wait until
+    // they have been fully rendered on the page.
+    var interval = setInterval(()=> {
+      if (helpers.isMounted(this)){
+        if ($('#images-rotator-images').length) {
+          $anchors = $('#images-rotator-nav a');
+          $images = $('#images-rotator-images .news-image');
+          $arrow = $('#news-rotator-active-arrow');
+          $links = $('#news-stories .news-link');
+          // console.log('$images:', $images);
+          clearInterval(interval);
+        }
+      }
+    },1000);
   }
   render() {
     return (
