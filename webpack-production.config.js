@@ -1,8 +1,8 @@
 /*Config for Production*/
 // Webpack for Production (minified)
 // remote server location
-//var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets'; // PROD homepage
-var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/dev/_catalogs/masterpage/_Rushnet/assets'; // Dev homepage
+var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets'; // PROD homepage
+//var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/dev/_catalogs/masterpage/_Rushnet/assets'; // Dev homepage
 //var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/test/_catalogs/masterpage/_Rushnet/assets'; // Test homepage
 //var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/hr/_catalogs/masterpage/_Rushnet/assets'; // Prod HR
 //var remoteDir = '//rushenterprises.sharepoint.com@SSL/sites/newshub/_catalogs/masterpage/_Rushnet/assets'; // Prod NewsHub

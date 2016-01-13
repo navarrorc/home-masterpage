@@ -1,0 +1,9 @@
+#location-details-info-panel {
+	background: $light-stone; padding: 30px; margin-bottom: 30px;
+
+	#location-details-info {
+		background: $white; border: solid 1px $stone; padding: 15px 24px; line-height: 24px;
+
+		a { border: 0; }
+	}
+}

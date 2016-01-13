@@ -1,3 +1,6 @@
+declare var unescape: any;
+declare var escape: any;
+
 // Internal Helpers Functions
 function convertRowsToObjects(itemRows) {
   var items = [];
@@ -44,3 +47,7 @@ export function getJson(endpointUri, success, error)
 export var config = {
     api_url: 'https://rushnet-api.azurewebsites.net/api'
 };
+
+export function getQueryStringValue (key) {
+      return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+}

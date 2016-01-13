@@ -1,0 +1,12 @@
+#profile-detail-header {
+	overflow: hidden;
+
+	h1 { float: left; }
+	#profile-status-icon {
+		float: left; line-height: 29px; margin-left: 10px; font-size: 20px; position: relative; height: 29px; width: 20px;
+
+		.icon { position: absolute; top: 0; width: 20px; height: 29px; text-align: center; line-height: 29px; }
+		.icon:first-child { @include opacity(0.2); }
+		.icon:last-child { font-size: 14px; }
+	}
+}

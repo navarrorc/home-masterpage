@@ -34,6 +34,16 @@ import {HelpLinkList} from './components/HR/HR-HelpLinks';
 
 import {BenefitsTeam} from './components/HR/BenefitsTeam';
 
+import {Department} from './components/SearchLocation/Department';
+import {Managers} from './components/SearchLocation/Managers';
+import {InfoPanel} from './components/SearchLocation/InfoPanel';
+import {ServicePanel} from './components/SearchLocation/Services';
+import {BrandPanel} from './components/SearchLocation/Brands';
+
+// import {UserProfile} from './services/UserProfile';
+import {PersonDetails} from './components/SearchPersonDetail/PersonDetails';
+
+
 
 
 // CSS Dependencies
@@ -158,6 +168,30 @@ class RenderUI {
 
 			var benefits = new BenefitsTeam(null);
 			benefits.showComponent();
+		}
+
+		if ($('#RushSearchLocationDetail').length) {
+			var info = new InfoPanel(null);
+			info.showComponent();
+
+			var department = new Department(null);
+			department.showComponent();
+
+			var managers = new Managers(null);
+			managers.showComponent();
+
+			var services = new ServicePanel(null);
+			services.showComponent();
+
+			var brands = new BrandPanel(null);
+			brands.showComponent();
+		}
+
+		if ($('#RushSearchPersonDetail').length) {
+			// var profile = new UserProfile();
+			// profile.getSPUserProfile();
+			var profile = new PersonDetails(null);
+			profile.showComponent();
 		}
 
 

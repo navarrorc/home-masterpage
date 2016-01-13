@@ -1,0 +1,20 @@
+#org-chart {
+	background: $light-stone; margin-bottom: 30px;
+
+	.section-title { background: $stone; color: $white; font: bold 14px/23px $sans-serif2; text-transform: uppercase; padding: 0 30px; }
+	.org-member {
+		padding: 0 30px; line-height: 48px; position: relative;
+
+		.tree-bracket {
+			height: 48px; border-left: solid 1px $dark-yellow; float: left; margin-right: 10px; margin-left: -15px;
+
+			div { height: 1px; background: $dark-yellow; width: 40px; margin-top: 24px; }
+		}
+		.status { font-size: 11px; line-height: 48px; position: absolute; left: 15px; @include translateX(-50%); }
+
+		&.last-member {
+			.tree-bracket { height: 25px; }
+		}
+		&.odd { background: $lighter-stone; }
+	}
+}

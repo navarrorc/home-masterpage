@@ -199,7 +199,7 @@ export class NewsCarousel extends React.Component<any, any> {
         title: 'View All',
         byLine: 'View All',
         publishDate: null,
-        link: 'https://rushenterprises.sharepoint.com/sites/newshub',
+        link: 'https://rushenterprises.sharepoint.com/sites/newshub/company-news',
       })
       this.setState({
         items: newsStories,

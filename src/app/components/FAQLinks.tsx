@@ -56,7 +56,7 @@ export class FAQLinkList extends React.Component<any, any> {
 
     return (
       	<div className="panel clearfix">
-      		<h1>Frequently Asked Questions</h1>
+      		<h1>Frequent Requests</h1>
       		<div className="faq-link-list-wrap">
       			<ul className="faq-link-list" id="column1">
       				{this.state.column1.map(generateFAQLink, this)}

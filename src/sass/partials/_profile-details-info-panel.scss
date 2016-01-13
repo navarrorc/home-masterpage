@@ -1,0 +1,15 @@
+#profile-details-info-panel {
+	background: $light-stone; padding: 30px; margin-bottom: 30px;
+	@include flexing-equal-height();
+
+	#profile-image-status {
+		background: $white; border: solid 1px $stone; text-align: center; padding: 15px 24px; width: calc(35% - 32px); font-size: 12px; color: $light-stone-blue; line-height: 24px; margin-right: 32px;
+
+		img { display: block; margin: 0 auto; }
+	}
+	#profile-contact-info {
+		background: $white; border: solid 1px $stone; padding: 15px 24px; line-height: 24px; width: calc(65% - 32px); margin-left: 32px;
+
+		a { border: 0; }
+	}
+}

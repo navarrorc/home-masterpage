@@ -233,7 +233,7 @@ export class MegaMenu extends React.Component<any, any> {
         <div key={index}>
           {counter == 1 ? <li></li> : <li className="divider"></li>}
           <li key={index}>
-            <a href={link.href} target={link.isNewWindow ? "_blank" : "_self"} className={className} >{link.title}</a>
+            <a href={link.href} target={link.isNewWindow ? "_blank" : "_self"} >{link.title}</a>
             {link.children.length > 0 ? <SubMenu menu={link.children} options={link.departments} /> : ""}
           </li>
         </div>

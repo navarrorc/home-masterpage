@@ -130,5 +130,24 @@ button {
   border-spacing: 0px !important;
 }
 .ms-webpartzone-cell {
-  margin: 0px !important;   
+  margin: 0px !important;
+}
+
+// First Letter of the first paragraph, use for publishing pages --Timothy Blankenship
+.large-first-character p:first-child::first-letter
+{
+       font:bold 56px/1 "warnock-pro-display", helvetica, times new roman, serif;
+       color:#eeb111;
+       float:left;
+       margin:0 5px 0 0;
+}
+
+// Article Quotes, block with vertial orange line
+q
+{
+    border-left: 6px solid #EEB111;
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    font: bold 23px/32px "warnock-pro-display",helvetica,times new roman,serif;
 }

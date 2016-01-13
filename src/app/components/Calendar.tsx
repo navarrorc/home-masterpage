@@ -78,7 +78,7 @@ function events_paging () {
 			$list = $('#' + $events_paging.data('for-list') + ' .events-list > *'),
 			page_count = Math.ceil($list.length / 2 / per_page);
 
-		$events_paging.html('<a href=""><i class="icon icon-chevron-right"></i></a>').show();
+		$events_paging.html('<a id="chevron" href=""><i class="icon icon-chevron-right"></i></a>').show();
 
 		for (var i = Math.ceil($list.length / 2 / per_page); i > 0; i--) {
 			var attr = (i === 1) ? ' class="active"' : '';
@@ -90,32 +90,39 @@ function events_paging () {
 			$events_paging.hide();
 		}
 
-		after_click($list, -1, per_page * 2);
+		after_click($list, 0);
 
 		$events_paging.on('click', 'a', function () {
 			var $this = $(this),
 				$links = $events_paging.find('a'),
 				index = $links.index($this);
 
-			if ($this.is(':last-child'))
+			if ($this.is(':last-child')){
 				index = $links.index($links.filter('.active')) + 1;
+			}
 
 			if (index >= $links.length - 1)
-				index = 0;
+				index = $links.length - 2;
 
 			$links.removeClass('active').eq(index).addClass('active');
 
-			after_click($list, (index * per_page * 2) - 1, (index + 1) * per_page * 2);
+			if(index >= $links.length - 2 /*last page + chevron*/)
+				$('#chevron').hide();
+			else
+				$('#chevron').show();
+
+			after_click($list, index);
 
 			return false;
 		});
 	});
 
-	function after_click ($list, from_index, to_index) {
+	function after_click ($list, index){
 		$list.each(function (i) {
-			if (i > from_index && i < to_index) {
+			if (i >= (index * 5) * 2 && i < ((index + 1) * 5) * 2) {
 				$(this).show();
-			} else {
+			}
+			else {
 				$(this).hide();
 			}
 		});
@@ -153,7 +160,7 @@ export class Calendar extends React.Component<any, any> {
 				<div className="col-xs-4">
 					<div id="homepage-events-list"></div>
 					<div className="events-paging" data-for-list="homepage-events-list">
-						<a href=""><i className="icon icon-chevron-right"></i></a>
+						<a id="chevron" href=""><i className="icon icon-chevron-right"></i></a>
 					</div>
 				</div>
       </div>
