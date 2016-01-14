@@ -5,6 +5,31 @@ declare var window: any;
 //https://rushenterprises.sharepoint.com/_layouts/15/userphoto.aspx
 
 export class UserProfile {
+  getProfileProperty(email:string, properties:string[]){
+    var deferred = $.Deferred();
+    var requestHeaders = {
+      "Accept": "application/json;odata=verbose"
+    };
+    //_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|navarroaburr@rushenterprises.com'&$select=DisplayName,Title,Email
+    let _url = _spPageContextInfo.webAbsoluteUrl + "/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|" + email + "'&$select=" + properties.join(',');
+    console.log(_url);
+    jQuery.ajax({
+      // _api/SP.UserProfiles.PeopleManager/GetUserProfilePropertyFor(accountName=@v,propertyName='LastName')?@v='i:0%23.f|membership|vardhaman@siteurl.onmicrosoft.com'
+      url:_url,
+      type:"GET",
+      contentType : "application/json;odata=verbose",
+      headers: requestHeaders,
+      success:function(data){
+        //console.log(JSON.stringify(data.d.GetUserProfilePropertyFor,null,4));
+        deferred.resolve(data.d);
+      },
+      error:function(jqxr,errorCode,errorThrown){
+        console.log(jqxr.responseText);
+        deferred.reject("Ajax call failed in UserProfile");
+      }
+    });
+    return deferred.promise();
+  }
   getSPUserProfileData(email:string) {
     // let email = getQueryStringValue('email');
     // var firstName,
@@ -71,29 +96,6 @@ export class UserProfile {
           console.log(jqxr.responseText);
           deferred.reject("Ajax call failed in UserProfile");
         }
-      });
-      return deferred.promise();
-    }
-    function getProfileProperty(email:string, property:string){
-      var deferred = $.Deferred();
-      var requestHeaders = {
-      	"Accept": "application/json;odata=verbose",
-      	"X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
-      };
-      jQuery.ajax({
-        // _api/SP.UserProfiles.PeopleManager/GetUserProfilePropertyFor(accountName=@v,propertyName='LastName')?@v='i:0%23.f|membership|vardhaman@siteurl.onmicrosoft.com'
-        url:_spPageContextInfo.webAbsoluteUrl + "/_api/SP.UserProfiles.PeopleManager/GetUserProfilePropertyFor(accountName=@v,propertyName='"+property+"')?@v='i:0%23.f|membership|" + email + "'",
-      	type:"GET",
-      	contentType : "application/json;odata=verbose",
-      	headers: requestHeaders,
-      	success:function(data){
-      		//console.log(JSON.stringify(data.d.GetUserProfilePropertyFor,null,4));
-          deferred.resolve(data.d.GetUserProfilePropertyFor);
-      	},
-      	error:function(jqxr,errorCode,errorThrown){
-      		console.log(jqxr.responseText);
-          deferred.reject("Ajax call failed in UserProfile");
-      	}
       });
       return deferred.promise();
     }
