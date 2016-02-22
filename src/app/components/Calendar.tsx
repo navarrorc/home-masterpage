@@ -159,6 +159,7 @@ export class Calendar extends React.Component<any, any> {
         </div>
 				<div className="col-xs-4">
 					<div id="homepage-events-list"></div>
+					<div style={{float:"left"}}><a href="https://rushenterprises.sharepoint.com/sites/eventshub/events">View All</a></div>
 					<div className="events-paging" data-for-list="homepage-events-list">
 						<a id="chevron" href=""><i className="icon icon-chevron-right"></i></a>
 					</div>

@@ -188,9 +188,11 @@ export class NewsCarousel extends React.Component<any, any> {
           link: article.url
         });
         var imageString = article.image;
-        var myRegexp = /src="((?:[A-Za-z0-9-._~!$&'()*+?/,;=:@]|%[0-9a-fA-F]{2})*(?:(?:[A-Za-z0-9-._~!$&'()*+,;=:@]|%[0-9a-fA-F]{2})*)*)/g;
+        //console.log(article.image);
+        var myRegexp = /src="((?:[A-Za-z0-9-._~!$&'()*+/,;=:@]|%[0-9a-fA-F]{2})*(?:(?:[A-Za-z0-9-._~!$&'()*+,;=:@\[\]]|%[0-9a-fA-F]{2})*)*)/g;
         var match = myRegexp.exec(imageString);
         var imageUrl = match[1];
+        //console.log(imageUrl);
         images.push(imageUrl);
       })
 

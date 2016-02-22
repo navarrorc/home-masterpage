@@ -46,6 +46,7 @@ export function showComponents() {
         // Applys to Nana Aikins and Office 365 Administrators
         React.render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
         // see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
+
         clearInterval(interval);
       }
     }, 1000);

@@ -69,7 +69,7 @@ export class FooterLinks extends React.Component<any, any> {
       <div>
         <div id="footer-container" className="clearfix">
           <div id="coin-wrap" className="col-xs-4">
-            <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/img/rush-coin-footer.png" alt="Rush Coin" />
+            <img src="/sites/rushnet/_catalogs/masterpage/_Rushnet/img/rush-coin-footer.jpg" alt="Rush Coin" />
           </div>
           <div id="navigation-links" className="col-xs-5">
             <h1>About</h1>

@@ -26,6 +26,7 @@ function mega_menu () {
 	window_size_changed();
 
 	$anchors.on('click', function () {
+    if(typeof($(this).attr('href')) != "undefined" && $(this).attr('href').length > 5) return; //arbitrary such as 'http:'
 		$anchors.removeClass('active');
 		$(this).addClass('active');
 
@@ -122,6 +123,7 @@ function mega_menu () {
 }
 
 export class MegaMenu extends React.Component<any, any> {
+  menuLinks: MegaMenuLink[] = [];
   constructor(props: any){
     super(props);
     this.state = {
@@ -131,96 +133,124 @@ export class MegaMenu extends React.Component<any, any> {
   componentDidMount() {
     var service = new api.DataService();
     var listColumns = ['Title','Url','Opens_New_Window','Position','LinkID','ParentID','Tier','Column_Title'];
-    service.getListItems('rushnet', 'Mega_Menu', listColumns).then((data:any)=>{
-      var temp: MegaMenuLink[] = [];
+    var temp:any[] = [];
+    var processResults = function(data:any, mainObject:MegaMenu) {
+        var tempLinks:MegaMenuLink[] = [];
+        data = _.sortByOrder(data, ['Tier','Column_Title','Position'], ['asc','asc','asc']);
+        //sort puts NULL at bottom of list
 
-      data = _.sortByOrder(data, ['Tier','Column_Title','Position'], ['asc','asc','asc']);
-      //sort puts NULL at bottom of list
-
-      // map data from Ajax call to fit the Link type [{title: 'link', id: 1}, ...]
-      //for(var j = data.length - 1; j > 0; j--)
-      for(var j = 0; j < data.length; j++)
-      {
-        var wasAdded = false;
-        var link =
+        // map data from Ajax call to fit the Link type [{title: 'link', id: 1}, ...]
+        for(var j = 0; j < data.length; j++)
         {
-          title: data[j].Title,
-          href: data[j].Url,
-          isNewWindow: data[j].Opens_New_Window,
-          column: data[j].Position,
-          linkID: data[j].LinkID,
-          parentID: data[j].ParentID,
-          tier: data[j].Tier,
-          columnTitle: data[j].Column_Title == null ? "": data[j].Column_Title,
-          children: [],
-          departments: []
-        };
+          var wasAdded = false;
+          var link =
+          {
+            title: data[j].Title,
+            href: data[j].Url,
+            isNewWindow: data[j].Opens_New_Window,
+            column: data[j].Position,
+            linkID: data[j].LinkID,
+            parentID: data[j].ParentID,
+            tier: data[j].Tier,
+            columnTitle: data[j].Column_Title == null ? "": data[j].Column_Title,
+            children: [],
+            departments: []
+          };
 
-        //search top to bottom, left to right
-        var topLevel = null;
-        var addToMenu = function(currentCollection:MegaMenuLink[])
-        {
-          if(currentCollection.length > 0 && !wasAdded)
-          //sort puts NULL at bottom of list
-            for(var i = 0; i < currentCollection.length; i++)
-            {
-              if(currentCollection[i].tier == 1)
-                topLevel = currentCollection[i];
-              if(currentCollection[i].linkID == link.parentID)
+          //search top to bottom, left to right
+          var topLevel = null;
+          var addToMenu = function(currentCollection:MegaMenuLink[])
+          {
+            if(currentCollection.length > 0 && !wasAdded)
+            //sort puts NULL at bottom of list
+              for(var i = 0; i < currentCollection.length; i++)
               {
-                wasAdded = true;
-                if(link.tier == 1 || link.tier == 2)
-                  currentCollection[i].children.push(link);
-                else if(topLevel.departments.length == 0)
+                if(currentCollection[i].tier == 1)
+                  topLevel = currentCollection[i];
+                if(currentCollection[i].linkID == link.parentID)
                 {
-                  var newDepartment = {
-                    title: link.columnTitle,
-                    parentGroup: link.parentID,
-                    children: []
-                  };
-                  newDepartment.children.push(link);
-                  topLevel.departments.push(newDepartment);
+                  wasAdded = true;
+                  if(link.tier == 1 || link.tier == 2)
+                    currentCollection[i].children.push(link);
+                  else if(topLevel.departments.length == 0)
+                  {
+                    var newDepartment = {
+                      title: link.columnTitle,
+                      parentGroup: link.parentID,
+                      children: []
+                    };
+                    newDepartment.children.push(link);
+                    topLevel.departments.push(newDepartment);
+                  }
+                  else
+                  {
+                    wasAdded = false;
+                    for(var k = 0; k < topLevel.departments.length; k++)
+                      if(topLevel.departments[k].title == link.columnTitle)
+                      {
+                        wasAdded = true;
+                        topLevel.departments[k].children.push(link);
+                        return;
+                      }
+
+                      if(!wasAdded)
+                      {
+                        wasAdded = true;
+                        var newDepartment = {
+                          title: link.columnTitle,
+                          parentGroup: link.parentID,
+                          children: []
+                        };
+                        newDepartment.children.push(link);
+                        topLevel.departments.push(newDepartment);
+                      }
+                    }
                 }
                 else
-                {
-                  wasAdded = false;
-                  for(var k = 0; k < topLevel.departments.length; k++)
-                    if(topLevel.departments[k].title == link.columnTitle)
-                    {
-                      wasAdded = true;
-                      topLevel.departments[k].children.push(link);
-                      return;
-                    }
-
-                    if(!wasAdded)
-                    {
-                      wasAdded = true;
-                      var newDepartment = {
-                        title: link.columnTitle,
-                        parentGroup: link.parentID,
-                        children: []
-                      };
-                      newDepartment.children.push(link);
-                      topLevel.departments.push(newDepartment);
-                    }
-                  }
+                  addToMenu(currentCollection[i].children);
               }
-              else
-                addToMenu(currentCollection[i].children);
+          }
+
+          addToMenu(tempLinks);
+
+          if(!wasAdded)
+            tempLinks.push(link);
+        };
+
+        for(var j = 0; j < tempLinks.length; j++) {
+          //tier 2
+          var reOrder:any[] = _.sortBy(tempLinks[j].children, function (item) { return item.title.toLowerCase(); });
+          tempLinks[j].children = reOrder;
+
+          //tier 3
+          for(var y = 0; y < tempLinks[j].departments.length; y++) {
+            for(var z = 0; z < tempLinks[j].departments[y].children.length; z++) {
+              var reOrderChildren:any[] = _.sortBy(tempLinks[j].departments[y].children, function (item) { return item.title.toLowerCase(); });
+              tempLinks[j].departments[y].children = reOrderChildren;
             }
+          }
         }
 
-        addToMenu(temp);
+        mainObject.setState({
+            menu: tempLinks
+        })
 
-        if(!wasAdded)
-          temp.push(link);
-      };
+        mega_menu();
+    }
+    var processNextLink = function (values:any[], nextLink:string, mainObject:MegaMenu){
+      for(var i = 0; i < values.length; i++)
+        temp.push(values[i]);
 
-    this.setState({
-      menu: temp
-    });
+      if(typeof(nextLink) != "undefined")
+        service.getListItemsWithPagingLink(nextLink).then((nextData:any)=>{
+          processNextLink(nextData.values, nextData.nextLink, mainObject);
+        })
+      else
+        processResults(temp, mainObject);
+    }
 
-    mega_menu();
+    service.getListItemsWithPaging('rushnet', 'Mega_Menu', listColumns).then((data:any)=>{
+      processNextLink(data.values, data.nextLink, this);
     });
   }
 
@@ -266,7 +296,7 @@ class SubMenu extends React.Component<any, any> {
     var generateSecondaryGroup = function(subMenu:MegaMenuLink, index:number){
       counter++;
       return (
-        <a href="" data-group={subMenu.linkID} className={counter == 0 ? "active" : ""} key={index}>{subMenu.title}</a>
+        <a href={subMenu.href} data-group={subMenu.linkID} className={counter == 0 ? "active" : ""} target={subMenu.isNewWindow ? "_blank" : "_self"} key={index}>{subMenu.title}</a>
       );
     }
 

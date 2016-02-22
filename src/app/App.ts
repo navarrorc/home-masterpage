@@ -39,12 +39,14 @@ import {Managers} from './components/SearchLocation/Managers';
 import {InfoPanel} from './components/SearchLocation/InfoPanel';
 import {ServicePanel} from './components/SearchLocation/Services';
 import {BrandPanel} from './components/SearchLocation/Brands';
+import {Hours} from './components/SearchLocation/Hours';
 
 // import {UserProfile} from './services/UserProfile';
 import {PersonDetails} from './components/SearchPersonDetail/PersonDetails';
 
+import {PreviewHome} from './components/PreviewHome';
 
-
+import {PreviewArticle} from './components/PreviewArticle';
 
 // CSS Dependencies
 /*
@@ -74,6 +76,7 @@ class RenderUI {
 
 						$('.o365cs-nav-centerAlign').attr('style', 'font-size:15px; color:#fff; text-align:right;');
 
+						$('span.o365cs-nav-brandingText').parent().attr('style', 'vertical-align: bottom; margin-bottom: 4px;'); // Tim
 						clearInterval(interval);
 					}
 				}, 1000);
@@ -185,6 +188,9 @@ class RenderUI {
 
 			var brands = new BrandPanel(null);
 			brands.showComponent();
+
+			var hours = new Hours(null);
+			hours.showComponent();
 		}
 
 		if ($('#RushSearchPersonDetail').length) {
@@ -194,10 +200,19 @@ class RenderUI {
 			profile.showComponent();
 		}
 
+		if ($('#ArticleList').length) {
+			var preview = new PreviewHome(null);
+			preview.showComponent();
+		}
+
+		if ($('#PreviewContent').length) {
+			var article = new PreviewArticle(null);
+			article.showComponent();
+		}
+
 
 		/*Render Stock Ticker*/
 		var stockTicker = new StockTicker(null);
 		stockTicker.show();
-
 
 	});

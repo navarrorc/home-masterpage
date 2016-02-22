@@ -120,6 +120,7 @@ export class PersonDetails extends React.Component<any, any> {
     let manager = {};
     let email = getQueryStringValue('email').toLowerCase();
     let profile = new UserProfile();
+    let picUrl = '';
     profile.getSPUserProfileData(email).then((data:any)=>{
       let userProfileProperties = data.UserProfileProperties.results;
       let managerID = _.filter(userProfileProperties, function(p:any) { return p.Key === 'Manager'; })[0].Value;
@@ -129,12 +130,14 @@ export class PersonDetails extends React.Component<any, any> {
       let directReports = data.DirectReports.results; // array
       let fName = _.filter(userProfileProperties, function(p:any) { return p.Key === 'FirstName'; })[0].Value;
       let lName = _.filter(userProfileProperties, function(p:any) { return p.Key === 'LastName'; })[0].Value;
-      let picUrl = (data.PictureUrl !== null)? data.PictureUrl :'/_layouts/15/userphoto.aspx/PersonPlaceholder.96x96x32.png';
+      //let picUrl = (data.PictureUrl !== null)? data.PictureUrl :'/_layouts/15/userphoto.aspx/PersonPlaceholder.96x96x32.png';
       let title = _.filter(userProfileProperties, function(p:any) { return p.Key === 'Title'; })[0].Value;
       let location = _.filter(userProfileProperties, function(p:any) { return p.Key === 'SPS-Department'; })[0].Value;
       let phoneNumber = _.filter(userProfileProperties, function(p:any) { return p.Key === 'WorkPhone'; })[0].Value;
 
-      picUrl = picUrl.split('?')[0]; // split and then return the first item in the array
+      picUrl = 'https://rushenterprises.sharepoint.com/sites/rushnet/_layouts/15/userphoto.aspx?size=M&accountname=' + email;
+      phoneNumber = phoneNumber.substr(0, 3) + '-' + phoneNumber.substr(3, 3) + '-' + phoneNumber.substr(6,4);
+      // picUrl.split('?')[0]; // split and then return the first item in the array
       // person properties
       properties = {
         firstName: fName,
@@ -181,7 +184,7 @@ export class PersonDetails extends React.Component<any, any> {
       filteredDirectReports = _.remove(directReports, (r:string)=>{
         return (r.indexOf('svc.') > -1) !== true; // does not contain the "svc." acccounts
       })
-      console.log(filteredDirectReports);
+      //console.log(filteredDirectReports);
       _.map(filteredDirectReports, (data:string,index)=>{
         tempDirectReports.push({
           displayName: data.split('|')[2], // return just the email part
@@ -196,67 +199,20 @@ export class PersonDetails extends React.Component<any, any> {
         peers: tempPeers,
         directReports: tempDirectReports
       })
-
-      // Getting manager's data
-      // let selectProperties = [
-      //   'DisplayName',
-      //   'Title',
-      //   'Email'
-      // ]
-      // profile.getProfileProperty(managerEmail, selectProperties).then((data:any)=>{
-      //   //console.log('DisplayName', data.DisplayName);
-      //   let fName = data.DisplayName.split('[')[0].split(',')[1].trim(); // just extracting the first name
-      //   let lName = data.DisplayName.split('[')[0].split(',')[0].trim(); // just extracting the last name
-      //   let title = data.Title;
-      //   let email = data.Email;
-      //   let mgr = {firstName: fName, lastName: lName, title: title, email: email};
-      //   this.setState({
-      //     manager: mgr
-      //   })
-      // })
-
-      // Getting extended managers data
-      // let extManagers = [];
-      // extManagers = _.remove(extendedManagers, (m)=>{
-      //   return m !== managerID; // remove the entry for the person's manager
-      // })
-      // console.log(extManagers);
-      // for (let i = 0; i < extManagers.length; i++) {
-      //     // extManagers[i];
-      //     let email = extManagers[i].split('|')[2]
-      //     // console.log(email);
-      //     profile.getProfileProperty(email, selectProperties).then((data:any)=>{
-      //       let array = [];
-      //       let fName = data.DisplayName.split('[')[0].split(',')[1].trim(); // just extracting the first name
-      //       let lName = data.DisplayName.split('[')[0].split(',')[0].trim(); // just extracting the last name
-      //       let title = data.Title;
-      //       let email = data.Email;
-      //       let mgr = {firstName: fName, lastName: lName, title: title, email: email};
-      //       array.push(mgr);
-      //       console.log(mgr);
-      //       this.setState({
-      //         extendedManagers: array
-      //       })
-      //     });
-      // }
     })
   }
   componentDidMount() {
   }
   render() {
-    console.log('in render method');
+    //console.log('in render method');
+    var styles = {
+      paddingLeft: 0
+    }
     return (
       <div>
         <HeaderDetails userDetails={this.state.profileProperties} />
-        <div className="col-xs-12 col-md-9">
+        <div className="col-xs-12 col-md-9" style={styles}>
           <AdditionalDetails userDetails={this.state.profileProperties} />
-          <OrgChart
-            userDetails={this.state.profileProperties}
-            manager={this.state.manager}
-            extendedManagers={this.state.extendedManagers}
-            peers={this.state.peers}
-            directReports={this.state.directReports}
-          />
         </div>
       </div>
     );

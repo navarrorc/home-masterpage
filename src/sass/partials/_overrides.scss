@@ -26,7 +26,7 @@
   display: none !important; // TODO: turn on via SP permissions
 }
 
-a#O365_SubLink_ShellAboutMe {
+a#O365_SubLink_ShellAboutMe, a#O365_SubLink_ViewAccount, a#O365_SubLink_SuiteMenu_zz4_ID_PersonalizePage  {
   display:none; // TODO: turn on via SP permissions
 }
 
@@ -149,5 +149,67 @@ q
     display: block;
     margin-bottom: 20px;
     padding-left: 20px;
-    font: bold 23px/32px "warnock-pro-display",helvetica,times new roman,serif;
+    font: bold 23px/32px "warnock-pro-display",helvetica,"times new roman",serif;
+}
+
+.large-first-character  p span:first-child::first-letter {
+    font: bold 56px/1 "warnock-pro-display", "times new roman", serif;
+    color: #eeb111;
+    float: left;
+    margin: 0 5px 0 0; }
+
+.large-first-character span:first-child::first-letter {
+    font: bold 56px/1 "warnock-pro-display", "times new roman", serif;
+    color: #eeb111;
+    float: left;
+    margin: 0 5px 0 0; }
+
+/**
+** brandingText
+**/
+a.o365cs-nav-appTitle.o365cs-topnavText.o365button {
+  margin-top: 11px;
+  vertical-align: bottom;
+  margin-bottom: 4px;}
+
+
+  /////////////////////////////////////News Article Preview
+
+  #overlay{
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    background-color: hsla(42, 30%, 28%, 0.45);
+    height: 143px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font: 45px bolder;
+    font-family: $sans-serif;
+  }
+
+  // targets location details page
+  .mapFlex {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+
+// hides unwanted hyperlinks that could take users to unstyled pages
+div.ms-srch-hover-actions {
+	display:none !important;
+}
+div[id*='ChangedBy'] {
+               display: none !important;
+}
+
+// Disables anchor tags for Audio and Video root categories in the newshub setSiteTitle
+a[href="/sites/newshub/video-casts"], a[href="/sites/newshub/audio-casts"] {
+  pointer-events: none;
+  cursor: default;
 }

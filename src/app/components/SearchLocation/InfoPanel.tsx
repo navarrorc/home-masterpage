@@ -92,7 +92,7 @@ export class InfoPanel extends React.Component<any, any> {
   }
   createPhoneEntry(entry:PhoneEntry, index:number){
     if(entry.ldPhoneType.toUpperCase().indexOf('FAX') > -1)
-      <div key={index}><strong>{entry.ldPhoneType}:</strong> {entry.ldLocationPhone}</div>
+      return <div key={index}><strong>{entry.ldPhoneType}:</strong> {entry.ldLocationPhone}</div>
     else
       return <div key={index}><strong>{entry.ldPhoneType}:</strong> {entry.ldLocationPhone}</div>
   }
@@ -101,7 +101,7 @@ export class InfoPanel extends React.Component<any, any> {
     var addressLine = this.state.location.ldLocationAddress + ", " + this.state.location.ldLocationCity + ", " + this.state.location.ldState + " " + this.state.location.ldLocationZip;
     setTimeout(google_maps, 500);
     return (
-      <div  className="col-xs-12" style={{display:"flex", flexWrap:"wrap", paddingLeft:"0px", paddingRight:"0px"}}>
+      <div  className="col-xs-12 mapFlex">
         <div className="col-xs-12">
           <h1>{this.state.location.Title}</h1>
         </div>

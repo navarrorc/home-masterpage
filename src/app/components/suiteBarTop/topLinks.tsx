@@ -57,7 +57,7 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
     }
     var liStyle = {
       display: 'inline',
-      marginRight: '15px'
+      marginRight: '40px'
     }
     var aStyle = {
       color: '#fff',
