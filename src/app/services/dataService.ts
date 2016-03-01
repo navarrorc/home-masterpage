@@ -1,8 +1,11 @@
 export class DataService {
+  baseUrl: string;
   constructor(message?: string){
     // if (message){
     //   //console.info(message);
     // }
+    let absUrl = _spPageContextInfo.webAbsoluteUrl;
+    this.baseUrl = absUrl.substr(0, absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/
   }
   getSPUser() {
     var deferred = $.Deferred();
@@ -18,10 +21,11 @@ export class DataService {
     return deferred.promise();
   }
   getListItems(site:string, listName:string, listColumns:string[]) {
+
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
+      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve(data.value);
@@ -35,7 +39,7 @@ export class DataService {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',') + "&$top=200",
+      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',') + "&$top=200",
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve(data.value);
@@ -49,7 +53,7 @@ export class DataService {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items(" + itemId + ")?$select=" + listColumns.join(','),
+      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items(" + itemId + ")?$select=" + listColumns.join(','),
       (data:any)=>{
         // console.info('data', JSON.stringify(data.value,null,4));
         deferred.resolve(data);
@@ -63,7 +67,7 @@ export class DataService {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',')+"&$filter="+filter,
+      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',')+"&$filter="+filter,
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve(data.value);
@@ -77,7 +81,7 @@ export class DataService {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
-      "https://rushenterprises.sharepoint.com/sites/" + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
+      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve({ values: data.value, nextLink: data["odata.nextLink"] });

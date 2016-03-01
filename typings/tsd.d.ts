@@ -11,6 +11,5 @@
 /// <reference path="flux/flux.d.ts" />
 /// <reference path="object-assign/object-assign.d.ts" />
 /// <reference path="react/react-global.d.ts" />
-/// <reference path="radium/radium.d.ts" />
 /// <reference path="moment/moment-node.d.ts" />
 /// <reference path="moment/moment.d.ts" />
