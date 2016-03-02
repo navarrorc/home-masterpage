@@ -1,4 +1,4 @@
-import {config} from './Shared';
+import {config} from './shared';
 var _url = config.api_url + '/news';
 
 export class PressService {

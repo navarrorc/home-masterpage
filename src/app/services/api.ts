@@ -1,4 +1,4 @@
-import actions = require('../Actions');
+import actions = require('../actions');
 
 export var API = {
   fetchChirps: ()=> {

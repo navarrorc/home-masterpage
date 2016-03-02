@@ -1,12 +1,23 @@
-import {getJson, SearchResults} from './Shared';
-var _url = 'https://rushenterprises.sharepoint.com';
-var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
-var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
-var eventRootUrl = 'https://rushenterprises.sharepoint.com/sites/eventshub/events/';
+import {getJson, SearchResults} from './shared';
+// var _url = 'https://rushenterprises.sharepoint.com';
+// var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
+//var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
+var listId = 'e1fa0831-d6fc-4857-8c04-c02e76fd8254'
+// var eventRootUrl = 'https://rushenterprises.sharepoint.com/sites/eventshub/events/';
 
 //declare var moment: any;
 
 export class EventFeed {
+  baseUrl: string;
+  eventRootUrl: string;
+  spSiteUrl: string;
+  constructor(){
+    let absUrl = _spPageContextInfo.webAbsoluteUrl;
+
+    this.baseUrl = absUrl.substr(0, absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/
+    this.eventRootUrl = this.baseUrl + 'sites/eventshub/events/';
+    this.spSiteUrl = this.baseUrl + 'authoring';
+  }
   getSearchResults(contentType){
     var selectProps = [
       'Title',
@@ -25,10 +36,10 @@ export class EventFeed {
       //'rfEventStartDate'
     ];
     var deferred = $.Deferred();
-    var search = _url +
+    var search = this.baseUrl + "rushnet" +
       "/_api/search/query?querytext='contenttype:" +
       "\"" + contentType + "\"" + // sourrounded by double quotes
-      " SPSiteUrl:" + spSiteUrl +
+      " SPSiteUrl:" + this.spSiteUrl +
       " ListId:" + listId +
       "'&trimduplicates=false" +
       "&rowlimit=100" +
@@ -44,7 +55,7 @@ export class EventFeed {
       var _events = [],
           _sortedEvents = [];
       //console.log('Number of items:',searchResults.items.length);
-      //console.log(JSON.stringify(searchResults.items,null,4));
+      console.log(JSON.stringify(searchResults.items,null,4));
       _.each(searchResults.items, (event:any, index)=>{
         // get the events that have start date
         if (event.rushEventStartDate){
@@ -57,7 +68,7 @@ export class EventFeed {
               // where StartDate <= {Today} OR is null AND EndDate >= {Today} OR is null
             _events.push({
               title:  event.Title,
-              url: eventRootUrl + event.owstaxIdEventCategory + '/' + event.listItemId + '/' + event.Title,
+              url: this.eventRootUrl + event.owstaxIdEventCategory + '/' + event.listItemId + '/' + event.Title,
               start: moment(event.rushEventStartDate).local(),
               end: moment(event.rushEventEndDate).local()
             });
@@ -65,7 +76,7 @@ export class EventFeed {
         }
       })
 
-      // console.log(JSON.stringify(_events,null,4));
+      //console.log(JSON.stringify(_events,null,4));
       _sortedEvents = _.sortBy(_events, (event)=>{
         return event.start;
       })

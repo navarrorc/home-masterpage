@@ -1,4 +1,4 @@
-import api = require('../../services/DataService');
+import api = require('../../services/data-service');
 
 declare var $: any;
 

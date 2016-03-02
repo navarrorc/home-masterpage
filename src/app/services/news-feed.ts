@@ -1,4 +1,4 @@
-import {getJson, SearchResults} from './Shared';
+import {getJson, SearchResults} from './shared';
 var url = "https://rushenterprises.sharepoint.com";
 var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
 var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';

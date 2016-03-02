@@ -1,6 +1,6 @@
-import {PressCoverageReader} from './PressCoverageReader';
-import {NewsFeed} from '../services/NewsFeed';
-import helpers = require('./Helpers');
+import {PressCoverageReader} from './press-coverage-reader';
+import {NewsFeed} from '../services/news-feed';
+import helpers = require('./helpers');
 
 
 declare var $: any;

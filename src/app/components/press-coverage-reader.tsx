@@ -1,4 +1,4 @@
-import {PressService} from '../services/./PressCoverage';
+import {PressService} from '../services/press-coverage';
 
 declare var $: any;
 

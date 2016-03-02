@@ -1,5 +1,5 @@
-import api = require('../../services/DataService');
-import helpers = require('../Helpers');
+import api = require('../../services/data-service');
+import helpers = require('../helpers');
 
 //import React = require('react');
 

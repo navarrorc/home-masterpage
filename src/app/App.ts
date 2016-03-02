@@ -1,10 +1,10 @@
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
 
-import {NewsCarousel} from './components/NewsCarousel';
-import {MainBanner} from './components/MainBanner';
-import {FooterLinks} from './components/FooterLinks';
-import SuiteBarTop = require('./components/suiteBarTop/SuiteBarTop');
+import {NewsCarousel} from './components/news-carousel';
+import {MainBanner} from './components/main-banner';
+import {FooterLinks} from './components/footer-links';
+import SuiteBarTop = require('./components/suite-bar-top/suite-bar-top');
 
 import actions = require('./actions');
 // import ChirpStore = require('./stores/chirps');
@@ -15,38 +15,38 @@ import actions = require('./actions');
 
 // import {StockFeedService} from './services/StockFeed';
 
-import {StockTicker} from './components/StockTicker';
+import {StockTicker} from './components/stock-ticker';
 
-import {Calendar} from './components/Calendar';
+import {Calendar} from './components/calendar';
 
-import {DataService} from './services/DataService';
+import {DataService} from './services/data-service';
 
-import {EventFeed} from './services/EventFeed';
+import {EventFeed} from './services/event-feed';
 
-import {AlertsToasterMessage} from './components/AlertsToasterMessage';
-import {AlertsNotification} from './components/AlertsNotification';
+import {AlertsToasterMessage} from './components/alerts-toaster-message';
+import {AlertsNotification} from './components/alerts-notification';
 
-import {MegaMenu} from './components/MegaMenu';
+import {MegaMenu} from './components/mega-menu';
 
-import {FAQLinkList} from './components/FAQLinks';
+import {FAQLinkList} from './components/faq-links';
 
-import {HelpLinkList} from './components/HR/HR-HelpLinks';
+import {HelpLinkList} from './components/HR/help-links';
 
-import {BenefitsTeam} from './components/HR/BenefitsTeam';
+import {BenefitsTeam} from './components/HR/benefits-team';
 
-import {Department} from './components/SearchLocation/Department';
-import {Managers} from './components/SearchLocation/Managers';
-import {InfoPanel} from './components/SearchLocation/InfoPanel';
-import {ServicePanel} from './components/SearchLocation/Services';
-import {BrandPanel} from './components/SearchLocation/Brands';
-import {Hours} from './components/SearchLocation/Hours';
+import {Department} from './components/search-location/department';
+import {Managers} from './components/search-location/managers';
+import {InfoPanel} from './components/search-location/info-panel';
+import {ServicePanel} from './components/search-location/services';
+import {BrandPanel} from './components/search-location/brands';
+import {Hours} from './components/search-location/hours';
 
 // import {UserProfile} from './services/UserProfile';
-import {PersonDetails} from './components/SearchPersonDetail/PersonDetails';
+import {PersonDetails} from './components/search-person-detail/person-details';
 
-import {PreviewHome} from './components/PreviewHome';
+import {PreviewHome} from './components/preview-home';
 
-import {PreviewArticle} from './components/PreviewArticle';
+import {PreviewArticle} from './components/preview-article';
 
 // CSS Dependencies
 /*

@@ -1,4 +1,4 @@
-import api = require('../../services/DataService');
+import api = require('../../services/data-service');
 
 interface EmployeeEntry{
   ldEmployeePhone:string,
@@ -8,7 +8,7 @@ interface EmployeeEntry{
   ldEmployeeEmail:string
 }
 
-export class Department extends React.Component<any, any> {
+export class Managers extends React.Component<any, any> {
   constructor(props: any){
     super(props);
     this.state = {
@@ -29,11 +29,8 @@ export class Department extends React.Component<any, any> {
 
     service.getListItemsWithFilter('rushnet', 'LocationEmployee', listColumns, 'ldBranchCode eq ' + branchCode).then((data:any)=>{
 
-      // map data from Ajax call to fit the Link type [{title: 'link', ld: 1}, ...]
+      // map data from Ajax call to fit the Link type [{title: 'link', id: 1}, ...]
       _.map(data,(n:any)=>{
-        if(n.ldRole.toUpperCase().indexOf("REGIONAL") == -1
-            && n.ldRole.toUpperCase().indexOf("DISTRICT") == -1
-            && n.ldRole.toUpperCase().indexOf("GENERAL") == -1)
         temp.push(
           {
             ldEmployeePhone: n.ldEmployeePhone,
@@ -44,46 +41,38 @@ export class Department extends React.Component<any, any> {
           });
       });
 
-      this.setState({
-          employee: temp
-      });
+      if(typeof(socialTemp.facebook) != undefined)
+        this.setState({
+            employee: temp
+        });
     });
   }
-  createCardWrap(index:number){
-    if(index % 2 == 1) return;
-    return(
-      <div className="card-wraps" key={index}>
-      {this.createCard(this.state.employee[index])}
-      {this.createCard(this.state.employee[index + 1])}
-      </div>
-    )
-  }
-  createCard(employee:EmployeeEntry){
-    if(employee == null) return <div></div>
+  createManager(employee:EmployeeEntry, index:number){
+    if(employee.ldRole.toUpperCase().indexOf("REGIONAL") == -1
+        && employee.ldRole.toUpperCase().indexOf("DISTRICT") == -1
+        && employee.ldRole.toUpperCase().indexOf("GENERAL") == -1)
+         return;
+
     return (
-      <div className="card">
-        <strong>{employee.ldEmployeeName}</strong>
-        <br />
-        <em>{employee.ldRole}</em>
-        <br />
-        <a href={"mailto:" + employee.ldEmployeeEmail + "rushenterprises.com"}>{employee.ldEmployeeEmail}rushenterprises.com</a>
-        <br />
-        <em>{employee.ldEmployeePhone}</em>
+      <div className="col-xs-6" key={index}>
+        <strong>{employee.ldEmployeeName},</strong> {employee.ldRole} - <a href={"mailto:" + employee.ldEmployeeEmail + "rushenterprises.com"}>{employee.ldEmployeeEmail}rushenterprises.com</a>
       </div>
     )
   }
   render(){
     return (
-      <div>
-        {this.state.employee.map( (department, index) => {
-          return this.createCardWrap(index)
-        })}
-      </div>
+      <div className="card">
+				<div className="row">
+          {this.state.employee.map( (data, index) => {
+            return this.createManager(data, index)
+          })}
+				</div>
+			</div>
     )
   }
   showComponent() {
     React.render(
-      <Department />,
-      document.getElementById('location-departments'));
+      <Managers />,
+      document.getElementById('Managers'));
   }
 }

@@ -1,3 +1,5 @@
+import {EventFeed} from '../services/event-feed';
+
 declare var $: any;
 declare var moment: any;
 
@@ -128,8 +130,6 @@ function events_paging () {
 		});
 	}
 }
-
-import {EventFeed} from '../services/EventFeed';
 
 interface calendarProps {
   // TODO: create properties for CalendarBanner Component to use

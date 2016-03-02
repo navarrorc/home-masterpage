@@ -1,6 +1,6 @@
-import api = require('../services/DataService');
-import helpers = require('./Helpers');
-import {AlertsToasterMessage} from './AlertsToasterMessage';
+import api = require('../services/data-service');
+import helpers = require('./helpers');
+import {AlertsToasterMessage} from './alerts-toaster-message';
 
 function renderAlertsMessages () {
   var alertsMessages = new AlertsToasterMessage(null);

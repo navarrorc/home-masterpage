@@ -1,5 +1,5 @@
-import {getQueryStringValue} from '../services/Shared';
-import {DataService} from '../services/DataService';
+import {getQueryStringValue} from '../services/shared';
+import {DataService} from '../services/data-service';
 
 /*Parent Component*/
 class ArticleList extends React.Component<any, any> {

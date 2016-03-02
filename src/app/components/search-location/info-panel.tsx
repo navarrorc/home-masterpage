@@ -1,4 +1,4 @@
-import api = require('../../services/DataService');
+import api = require('../../services/data-service');
 declare var google_maps: any;
 
 interface LocationEntry{

@@ -1,5 +1,5 @@
-import {dispatcher} from './Dispatcher';
-import {constants} from './Constants';
+import {dispatcher} from './dispatcher';
+import {constants} from './constants';
 
 Object.keys(constants).forEach((key:string) => {
     var funcName = key.split('_').map((word:string, i:number)=>{

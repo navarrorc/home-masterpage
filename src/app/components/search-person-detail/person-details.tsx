@@ -1,5 +1,5 @@
-import {getQueryStringValue} from '../../services/Shared';
-import {UserProfile} from '../../services/UserProfile';
+import {getQueryStringValue} from '../../services/shared';
+import {UserProfile} from '../../services/user-profile';
 
 /*Parent Component*/
 class HeaderDetails extends React.Component<any, any> {

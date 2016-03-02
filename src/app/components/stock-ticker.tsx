@@ -1,4 +1,4 @@
-import {StockFeedService} from '../services/StockFeed';
+import {StockFeedService} from '../services/stock-feed';
 
 /*Parent Component*/
 class StockSymbols extends React.Component<any, any> {
