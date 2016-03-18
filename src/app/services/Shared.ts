@@ -44,8 +44,11 @@ export function getJson(endpointUri, success, error)
     });
 }
 
+declare var _spPageContextInfo:any; // SharePoint 2013 global object
 export var config = {
-    api_url: 'https://rushnet-api.azurewebsites.net/api'
+    api_url: 'https://rushnet-api.azurewebsites.net/api',
+    abs_url: _spPageContextInfo.webAbsoluteUrl
+    
 };
 
 export function getQueryStringValue (key) {

@@ -1,6 +1,7 @@
 import api = require('../services/data-service');
 import helpers = require('./helpers');
 import {AlertsToasterMessage} from './alerts-toaster-message';
+import {config} from '../services/shared';
 
 function renderAlertsMessages () {
   var alertsMessages = new AlertsToasterMessage(null);
@@ -8,7 +9,8 @@ function renderAlertsMessages () {
 }
 
 function getAlertsCount () {
-  var service = new api.DataService();
+  let abs_url = config.abs_url;
+  var service = new api.DataService(abs_url);
   var listColumns = [
     'ID',
     'Active',

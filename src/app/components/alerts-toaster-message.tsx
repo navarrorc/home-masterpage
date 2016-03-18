@@ -1,5 +1,6 @@
 import api = require('../services/data-service');
 import helpers = require('./helpers');
+import {config} from '../services/shared';
 
 declare var moment: any;
 
@@ -24,7 +25,8 @@ export class AlertsToasterMessage extends React.Component<any, any> {
   componentDidMount() {
     if (helpers.isMounted(this)){
       // Calling Data Service
-      var service = new api.DataService();
+      let abs_url = config.abs_url;
+      var service = new api.DataService(abs_url);
       var listColumns = [
         'ID',
         'Active',

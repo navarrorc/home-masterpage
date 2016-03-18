@@ -15,10 +15,10 @@
       "commit": "5f480287834a2615274eea31574b713e64decf17"
     },
     "sinon/sinon.d.ts": {
-      "commit": "5f480287834a2615274eea31574b713e64decf17"
+      "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
     },
     "chai/chai.d.ts": {
-      "commit": "5f480287834a2615274eea31574b713e64decf17"
+      "commit": "2f47c75835b837777a85287611703d683b0aaa83"
     },
     "sharepoint/SharePoint.d.ts": {
       "commit": "6f6e5c7dd9effe21fee14eb65fe340ecbbc8580a"
@@ -49,6 +49,24 @@
     },
     "moment/moment-node.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+    },
+    "q/Q.d.ts": {
+      "commit": "ca92a5b250433c38230b5f4138b36453862342bf"
+    },
+    "promises-a-plus/promises-a-plus.d.ts": {
+      "commit": "2f47c75835b837777a85287611703d683b0aaa83"
+    },
+    "chai-as-promised/chai-as-promised.d.ts": {
+      "commit": "2f47c75835b837777a85287611703d683b0aaa83"
+    },
+    "assertion-error/assertion-error.d.ts": {
+      "commit": "2f47c75835b837777a85287611703d683b0aaa83"
+    },
+    "nock/nock.d.ts": {
+      "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "expect/expect.d.ts": {
+      "commit": "ce8ae773688d2244ba11fdf3378fcd68f773e1c4"
     }
   }
 }

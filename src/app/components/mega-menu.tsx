@@ -1,4 +1,5 @@
 import api = require('../services/data-service');
+import {config} from '../services/shared';
 
 interface Department{
   title:string,
@@ -131,7 +132,8 @@ export class MegaMenu extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    var service = new api.DataService();
+    let abs_url = config.abs_url;
+    var service = new api.DataService(abs_url);
     var listColumns = ['Title','Url','Opens_New_Window','Position','LinkID','ParentID','Tier','Column_Title'];
     var temp:any[] = [];
     var processResults = function(data:any, mainObject:MegaMenu) {

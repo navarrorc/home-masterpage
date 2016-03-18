@@ -9,7 +9,7 @@ var config = {
   cache: true,
   context: path.resolve('./src/app'),
   entry: {
-    app: './App.ts',
+    app: './app.ts',
     //vendors: ['feedparser', 'request']
     vendors: []
   },

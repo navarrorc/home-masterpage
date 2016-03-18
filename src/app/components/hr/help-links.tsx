@@ -1,4 +1,5 @@
 import api = require('../../services/data-service');
+import {config} from '../../services/shared';
 
 interface HelpLink{
   title:string,
@@ -12,7 +13,8 @@ export class HelpLinkList extends React.Component<any, any> {
     this.state = {links: []};
   }
   componentDidMount() {
-    var service = new api.DataService();
+    let abs_url = config.abs_url;
+    var service = new api.DataService(abs_url);
     var listColumns = ['Title','Url','Opens_New_Window'];
     service.getListItems('hr', 'Help Links', listColumns).then((data:any)=>{
       var temp: HelpLink[] = [];

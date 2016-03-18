@@ -1,5 +1,6 @@
 import api = require('../../services/data-service');
 import helpers = require('../helpers');
+import {config} from '../../services/shared';
 
 //import React = require('react');
 
@@ -31,7 +32,8 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
       /**
        * Calling Data Service
        */
-      var service = new api.DataService();
+      let abs_url = config.abs_url; // for sharepoint site
+      var service = new api.DataService(abs_url);
       var listColumns = ['Title','Id', 'Url'];
       service.getListItems('rushnet', 'TopLinks', listColumns).then((data:any)=>{
         // console.info(data);

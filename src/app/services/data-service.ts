@@ -1,24 +1,36 @@
-export class DataService {
+// declare var _spPageContextInfo:any;
+export class DataService { 
   baseUrl: string;
-  constructor(message?: string){
-    // if (message){
-    //   //console.info(message);
-    // }
-    let absUrl = _spPageContextInfo.webAbsoluteUrl;
-    this.baseUrl = absUrl.substr(0, absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/
+  absUrl: string;
+  constructor(url:string){
+    // interface Layout {
+    //   webAbsoluteUrl: string;
+    // } 
+    // var _spPageContextInfo: Layout = { webAbsoluteUrl:''};
+        
+    //let absUrl = _spPageContextInfo.webAbsoluteUrl;
+    this.absUrl = url;
+    this.baseUrl = this.absUrl.substr(0, this.absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/   
   }
   getSPUser() {
-    var deferred = $.Deferred();
+    var deferred = Q.defer();   
+    //console.log(this.absUrl);
     $.get(
-      _spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Email",
-      (data:any, status: string)=>{
-        //console.info('User Email:', data);
+      this.absUrl + "/_api/Web/CurrentUser?$select=Email",      
+      (data:any, status: string)=>{ 
+        console.log('data', data);       
         deferred.resolve(data);
-      }, 'json').fail((sender, args)=>{
-        deferred.reject(sender, args);
-        console.info('Error: ' + args.get_message());
+      }, 'json').fail((error)=>{        
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);              
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`);
       });
-    return deferred.promise();
+    // $.get(
+    //   this.absUrl + "/_api/Web/CurrentUser?$select=Email",      
+    //   cb, 'json').fail((error)=>{        
+    //     deferred.reject(`error! ${JSON.stringify(error,null,4)}`);              
+    //     //console.log(`Error: ${JSON.stringify(error,null,4)}`);
+    //   });
+    return deferred.promise;
   }
   getListItems(site:string, listName:string, listColumns:string[]) {
 
@@ -49,7 +61,7 @@ export class DataService {
       });
       return deferred.promise();
   }
-  getSingleListItem(site:string, listName:string, listColumns:string[], itemId:number) {
+  getSingleListItem(site:string, listName:string, listColumns:string[], itemId:number) {   
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
@@ -63,7 +75,7 @@ export class DataService {
       });
       return deferred.promise();
   }
-  getListItemsWithFilter(site:string, listName: string, listColumns:string[], filter: string){
+  getListItemsWithFilter(site:string, listName: string, listColumns:string[], filter: string){    
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
     $.get(
@@ -113,7 +125,7 @@ export class DataService {
     function fetchCurrentUserId() {
       //var deferred = $.Deferred();
       $.get(
-        _spPageContextInfo.webAbsoluteUrl + "/_api/Web/CurrentUser?$select=Id",
+        this.absUrl + "/_api/Web/CurrentUser?$select=Id",
         (data:any, status: string)=>{
           //deferred.resolve(data);
           fetchCurrentUsersGroups(data.Id);
@@ -126,7 +138,7 @@ export class DataService {
 
     function fetchCurrentUsersGroups(userId){
       $.ajax({
-        url: _spPageContextInfo.webAbsoluteUrl + '/_api/web/GetUserById('+ userId +')/Groups',
+        url: this.absUrl + '/_api/web/GetUserById('+ userId +')/Groups',
         headers: {"Accept": "application/json;odata=verbose"}
       }).done((data:any)=>{
         var _groups = [];

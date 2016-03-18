@@ -1,5 +1,6 @@
 import {getQueryStringValue} from '../services/shared';
 import {DataService} from '../services/data-service';
+import {config} from '../services/shared';
 
 /*Parent Component*/
 class Preview extends React.Component<any, any> {
@@ -61,7 +62,8 @@ export class PreviewArticle extends React.Component<any, any> {
   }
   componentWillMount() {
     let articleId = getQueryStringValue('articleId');
-    let service = new DataService();
+    let abs_url = config.abs_url;
+    let service = new DataService(abs_url);
     let fields = [
       'Id',
       'Title',

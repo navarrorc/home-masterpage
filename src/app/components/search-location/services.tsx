@@ -1,4 +1,5 @@
 import api = require('../../services/data-service');
+import {config} from '../../services/shared';
 
 interface ServiceEntry{
   ldBranchCode:string,
@@ -15,7 +16,8 @@ export class ServicePanel extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    var service = new api.DataService();
+    let abs_url = config.abs_url;
+    var service = new api.DataService(abs_url);
     var listColumns = ['ldBranchCode','ldLocationService0'];
     var tempOne:ServiceEntry[] = [];
     var tempTwo:ServiceEntry[] = [];

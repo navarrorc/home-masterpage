@@ -1,4 +1,5 @@
 import api = require('../../services/data-service');
+import {config} from '../../services/shared';
 
 interface EmployeeEntry{
   ldEmployeePhone:string,
@@ -16,7 +17,8 @@ export class Department extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    var service = new api.DataService();
+    let abs_url = config.abs_url;
+    var service = new api.DataService(abs_url);
     var listColumns = ['ldEmployeePhone','ldEmployeeName','ldRole','ldBranchCode','ldEmployeeEmail'];
     var temp: EmployeeEntry[] = [];
     var socialTemp:any = {};

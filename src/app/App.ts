@@ -1,6 +1,6 @@
 //$ = jQuery = require('jquery'); // see cory's course on pluralsight
 // [$]
-
+import {config} from './services/shared';
 import {NewsCarousel} from './components/news-carousel';
 import {MainBanner} from './components/main-banner';
 import {FooterLinks} from './components/footer-links';
@@ -30,9 +30,9 @@ import {MegaMenu} from './components/mega-menu';
 
 import {FAQLinkList} from './components/faq-links';
 
-import {HelpLinkList} from './components/HR/help-links';
-
-import {BenefitsTeam} from './components/HR/benefits-team';
+// HR Site
+import {HelpLinkList} from './components/hr/help-links';
+import {BenefitsTeam} from './components/hr/benefits-team';
 
 import {Department} from './components/search-location/department';
 import {Managers} from './components/search-location/managers';
@@ -47,6 +47,10 @@ import {PersonDetails} from './components/search-person-detail/person-details';
 import {PreviewHome} from './components/preview-home';
 
 import {PreviewArticle} from './components/preview-article';
+
+import {KnowRush} from './components/get-to-know-rush';
+// import {} from './services/DataService'; //TODO: remove after testing
+
 
 // CSS Dependencies
 /*
@@ -95,7 +99,8 @@ class RenderUI {
 		showSharePointElements(){
 			// Display SP Elements if site Owner
 			$(()=>{
-				var service = new DataService();
+        let abs_url = config.abs_url;
+				var service = new DataService(abs_url);
 				var isOwner = false;
 				var re = /\bOwners\b/i; // Owners SP Group
 				service.getGroups().then((groups:string[])=>{
@@ -161,6 +166,22 @@ class RenderUI {
 
 			var newsCarousel = new NewsCarousel(null);
 			newsCarousel.showComponent();
+      
+      var knowRush = new KnowRush(null);
+      knowRush.showComponent();
+      
+      // var columns = [
+      //   'Publish_x0020_Start_x0020_Date',
+      //   'Publish_x0020_End_x0020_Date',
+      //   'EncodedAbsUrl',
+      //   'ArticleURL'
+      // ];
+      // var service = new DataService();
+      // service.getListItems('rushnet','GetToKnowRushEnterprises', columns).then((data)=>{
+      //   console.log(JSON.stringify(data,null,4));
+      // });
+      
+      
 
 		}
 

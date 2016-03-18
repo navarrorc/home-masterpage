@@ -2,7 +2,7 @@ import {getJson, SearchResults} from './shared';
 // var _url = 'https://rushenterprises.sharepoint.com';
 // var spSiteUrl = 'https://rushenterprises.sharepoint.com/sites/authoring'
 //var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
-var listId = 'e1fa0831-d6fc-4857-8c04-c02e76fd8254'
+//var listId = 'e1fa0831-d6fc-4857-8c04-c02e76fd8254'
 // var eventRootUrl = 'https://rushenterprises.sharepoint.com/sites/eventshub/events/';
 
 //declare var moment: any;
@@ -15,7 +15,7 @@ export class EventFeed {
     let absUrl = _spPageContextInfo.webAbsoluteUrl;
 
     this.baseUrl = absUrl.substr(0, absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/
-    this.eventRootUrl = this.baseUrl + 'sites/eventshub/events/';
+    this.eventRootUrl = this.baseUrl + 'eventshub/events/';
     this.spSiteUrl = this.baseUrl + 'authoring';
   }
   getSearchResults(contentType){
@@ -23,13 +23,13 @@ export class EventFeed {
       'Title',
       'Path',
       'SPWebUrl',
-      'rushEventStartDate',
-      'rushEventEndDate',
-      'rushDepartment', // i.e. IT, Marketing, Corporate Communications
-      'rushEventCategory', // i.e. All Hands Meeting, Potluck
-      'StartDate', // PublishingStartDate
-      'EndDate', // PublishingExpirationDate
-      'isGlobal', // 1 or 0
+      'Event-Start-DateOWSDATE',
+      'Event-End-DateOWSDATE',
+      //'owstaxIdRush-Department', // i.e. IT, Marketing, Corporate Communications
+      //'rushEventCategory', // i.e. All Hands Meeting, Potluck
+      'PublishingStartDateOWSDATE',
+      'PublishingExpirationDateOWSDATE',
+      'GlobalOWSBOOL', // 1 or 0
       'owstaxIdEventCategory',
       'listItemId',
       // 'refinablestring99'
@@ -40,7 +40,7 @@ export class EventFeed {
       "/_api/search/query?querytext='contenttype:" +
       "\"" + contentType + "\"" + // sourrounded by double quotes
       " SPSiteUrl:" + this.spSiteUrl +
-      " ListId:" + listId +
+      //" ListId:" + listId +
       "'&trimduplicates=false" +
       "&rowlimit=100" +
       "&selectproperties='" + selectProps.join(', ')  + "'"
@@ -55,13 +55,16 @@ export class EventFeed {
       var _events = [],
           _sortedEvents = [];
       //console.log('Number of items:',searchResults.items.length);
-      console.log(JSON.stringify(searchResults.items,null,4));
+      //console.log(JSON.stringify(searchResults.items,null,4));
+      // searchResults.items.forEach((item)=>{
+      //   console.log(item.owstaxIdEventCategory);
+      // })
       _.each(searchResults.items, (event:any, index)=>{
         // get the events that have start date
-        if (event.rushEventStartDate){
-          let publishStartDate = (event.StartDate) ? moment(event.StartDate) : null;
+        if (event['Event-Start-DateOWSDATE']){
+          let publishStartDate = (event.PublishingStartDateOWSDATE) ? moment(event.PublishingStartDateOWSDATE) : null;
           let timeZoneOffset = new Date().getTimezoneOffset();
-          let publishExpirationDate = (event.EndDate) ? moment(event.EndDate) : null;
+          let publishExpirationDate = (event.PublishingExpirationDateOWSDATE) ? moment(event.PublishingExpirationDateOWSDATE) : null;
           let today = moment();
           if ( (publishStartDate <= today || publishStartDate === null) && (publishExpirationDate >= today || publishExpirationDate === null)  ) {
               // Note: this seems to also validate when the publishStartDate is null, no need to explicitely check for that.
@@ -69,8 +72,8 @@ export class EventFeed {
             _events.push({
               title:  event.Title,
               url: this.eventRootUrl + event.owstaxIdEventCategory + '/' + event.listItemId + '/' + event.Title,
-              start: moment(event.rushEventStartDate).local(),
-              end: moment(event.rushEventEndDate).local()
+              start: moment(event['Event-Start-DateOWSDATE']).local(),
+              end: moment(event['Event-End-DateOWSDATE']).local()
             });
           }
         }

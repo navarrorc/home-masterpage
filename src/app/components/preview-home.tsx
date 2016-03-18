@@ -1,5 +1,6 @@
 import {getQueryStringValue} from '../services/shared';
 import {DataService} from '../services/data-service';
+import {config} from '../services/shared';
 
 /*Parent Component*/
 class ArticleList extends React.Component<any, any> {
@@ -41,7 +42,8 @@ export class PreviewHome extends React.Component<any, any> {
 
   }
   componentWillMount() {
-    let service = new DataService();
+    let abs_url = config.abs_url
+    let service = new DataService(abs_url);
     let fields = [
       'Id',
       'FileLeafRef',

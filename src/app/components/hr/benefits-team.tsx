@@ -1,4 +1,5 @@
 import api = require('../../services/data-service');
+import {config} from '../../services/shared';
 
 declare var $: any;
 
@@ -15,7 +16,8 @@ export class BenefitsTeam extends React.Component<any, any> {
     this.state = {team: []};
   }
   componentDidMount() {
-    var service = new api.DataService();
+    let abs_url = config.abs_url;
+    var service = new api.DataService(abs_url);
     var listColumns = ['Title','Telephone','Region','Popup'];
     service.getListItems('hr', 'Benefits Team', listColumns).then((data:any)=>{
       var temp: member[] = [];
