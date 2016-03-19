@@ -12,7 +12,7 @@ module.exports = function (config) {
             'test/lib/jquery.min.js',
             'test/lib/q.js',                    
             'test/lib/sinon.js',                    
-            'test/*-test.ts'            
+            'test/**/*Tests.ts'            
         ],
         
       	preprocessors: {

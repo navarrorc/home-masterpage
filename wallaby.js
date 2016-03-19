@@ -54,10 +54,10 @@ module.exports = function (w) {
       //{"pattern": "test/*Tests.ts", load: false},      
       // {"pattern": "test/*Tests.js", load: false},      
       //{"pattern": "test/*spec.ts", load: false},      
-      {"pattern": "test/*-test.ts", load: false}      
+      {"pattern": "test/**/*Tests.ts", load: false}      
     ],
     
-    debug: true,
+    debug: false,
     
     postprocessor: wallabyPostprocessor,
     

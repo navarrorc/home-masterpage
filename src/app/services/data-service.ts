@@ -2,64 +2,52 @@
 export class DataService { 
   baseUrl: string;
   absUrl: string;
-  constructor(url:string){
-    // interface Layout {
-    //   webAbsoluteUrl: string;
-    // } 
-    // var _spPageContextInfo: Layout = { webAbsoluteUrl:''};
-        
-    //let absUrl = _spPageContextInfo.webAbsoluteUrl;
+  constructor(url:string){    
     this.absUrl = url;
     this.baseUrl = this.absUrl.substr(0, this.absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/   
   }
   getSPUser() {
-    var deferred = Q.defer();   
-    //console.log(this.absUrl);
+    let deferred = Q.defer();   
+    let url = this.absUrl + "/_api/Web/CurrentUser?$select=Email";
+    //console.log('url:', url); 
     $.get(
-      this.absUrl + "/_api/Web/CurrentUser?$select=Email",      
+      url,      
       (data:any, status: string)=>{ 
-        console.log('data', data);       
+        //console.log('data', data);       
         deferred.resolve(data);
       }, 'json').fail((error)=>{        
-        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);              
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);                      
         //console.log(`Error: ${JSON.stringify(error,null,4)}`);
       });
-    // $.get(
-    //   this.absUrl + "/_api/Web/CurrentUser?$select=Email",      
-    //   cb, 'json').fail((error)=>{        
-    //     deferred.reject(`error! ${JSON.stringify(error,null,4)}`);              
-    //     //console.log(`Error: ${JSON.stringify(error,null,4)}`);
-    //   });
     return deferred.promise;
   }
-  getListItems(site:string, listName:string, listColumns:string[]) {
-
-    // use jquery to call the REST endpoint
-    var deferred = $.Deferred();
+  getListItems(site:string, listName:string, listColumns:string[]) {    
+    var deferred = Q.defer();
     $.get(
       this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
       (data:any)=>{
-        //console.info('data.value', JSON.stringify(data.value,null,4));
+        //console.log('data', JSON.stringify(data,null,4));        
         deferred.resolve(data.value);
-      }, 'json').fail((sender, args)=>{
-        console.error(args, 'status:', sender.status,'$.get() in getListItems() failed!');
-        deferred.reject("Ajax call failed in getTopLinks()");
+      }, 'json').fail((error)=>{
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`);        
       });
-      return deferred.promise();
+      return deferred.promise;
   }
   getListItemsTop200(site:string, listName:string, listColumns:string[]) {
     // use jquery to call the REST endpoint
-    var deferred = $.Deferred();
+    var deferred = Q.defer()
     $.get(
       this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',') + "&$top=200",
       (data:any)=>{
-        //console.info('data.value', JSON.stringify(data.value,null,4));
+        //console.info('data.value Count', data.value.length);
         deferred.resolve(data.value);
-      }, 'json').fail((sender, args)=>{
-        console.error(args, 'status:', sender.status,'$.get() in getListItems() failed!');
-        deferred.reject("Ajax call failed in getTopLinks()");
+      }, 'json').fail((error)=>{
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`);      
+        
       });
-      return deferred.promise();
+      return deferred.promise;
   }
   getSingleListItem(site:string, listName:string, listColumns:string[], itemId:number) {   
     // use jquery to call the REST endpoint
