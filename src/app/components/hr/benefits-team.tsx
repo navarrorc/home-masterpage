@@ -16,8 +16,8 @@ export class BenefitsTeam extends React.Component<any, any> {
     this.state = {team: []};
   }
   componentDidMount() {
-    let abs_url = config.abs_url;
-    var service = new api.DataService(abs_url);
+    //let abs_url = config.abs_url;
+    var service = new api.DataService();
     var listColumns = ['Title','Telephone','Region','Popup'];
     service.getListItems('hr', 'Benefits Team', listColumns).then((data:any)=>{
       var temp: member[] = [];

@@ -16,8 +16,8 @@ export class BrandPanel extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    let abs_url = config.abs_url;
-    var service = new api.DataService(abs_url);
+    //let abs_url = config.abs_url;
+    var service = new api.DataService();
     var listColumns = ['ldBranchCode','ldBrandName','BrandImageId'];
     var temp:BrandEntry[] = [];
 

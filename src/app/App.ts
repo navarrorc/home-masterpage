@@ -49,6 +49,7 @@ import {PreviewHome} from './components/preview-home';
 import {PreviewArticle} from './components/preview-article';
 
 import {KnowRush} from './components/get-to-know-rush';
+import {CSI} from './components/csi';
 // import {} from './services/DataService'; //TODO: remove after testing
 
 
@@ -99,8 +100,8 @@ class RenderUI {
 		showSharePointElements(){
 			// Display SP Elements if site Owner
 			$(()=>{
-        let abs_url = config.abs_url;
-				var service = new DataService(abs_url);
+        //let abs_url = config.abs_url;
+				var service = new DataService();
 				var isOwner = false;
 				var re = /\bOwners\b/i; // Owners SP Group
 				service.getGroups().then((groups:string[])=>{
@@ -169,6 +170,9 @@ class RenderUI {
       
       var knowRush = new KnowRush(null);
       knowRush.showComponent();
+      
+      var csi = new CSI(null);
+      csi.showComponent();
       
       // var columns = [
       //   'Publish_x0020_Start_x0020_Date',

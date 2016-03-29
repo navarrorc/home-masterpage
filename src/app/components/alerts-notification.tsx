@@ -9,8 +9,8 @@ function renderAlertsMessages () {
 }
 
 function getAlertsCount () {
-  let abs_url = config.abs_url;
-  var service = new api.DataService(abs_url);
+  //let abs_url = config.abs_url;
+  var service = new api.DataService();
   var listColumns = [
     'ID',
     'Active',

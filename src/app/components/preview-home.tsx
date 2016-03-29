@@ -42,8 +42,8 @@ export class PreviewHome extends React.Component<any, any> {
 
   }
   componentWillMount() {
-    let abs_url = config.abs_url
-    let service = new DataService(abs_url);
+    //let abs_url = config.abs_url
+    let service = new DataService();
     let fields = [
       'Id',
       'FileLeafRef',

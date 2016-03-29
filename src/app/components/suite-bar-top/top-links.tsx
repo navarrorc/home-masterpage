@@ -32,8 +32,8 @@ class TopLinks extends React.Component<topLinksProps, globalLinksState> {
       /**
        * Calling Data Service
        */
-      let abs_url = config.abs_url; // for sharepoint site
-      var service = new api.DataService(abs_url);
+      //let abs_url = config.abs_url; // for sharepoint site
+      var service = new api.DataService();
       var listColumns = ['Title','Id', 'Url'];
       service.getListItems('rushnet', 'TopLinks', listColumns).then((data:any)=>{
         // console.info(data);

@@ -62,8 +62,8 @@ export class PreviewArticle extends React.Component<any, any> {
   }
   componentWillMount() {
     let articleId = getQueryStringValue('articleId');
-    let abs_url = config.abs_url;
-    let service = new DataService(abs_url);
+    //let abs_url = config.abs_url;
+    let service = new DataService();
     let fields = [
       'Id',
       'Title',

@@ -2,7 +2,7 @@ declare var unescape: any;
 declare var escape: any;
 
 // Internal Helpers Functions
-function convertRowsToObjects(itemRows) {
+function convertRowsToObjects(itemRows) {  
   var items = [];
   //foreach row in the result set
   for (var i = 0; i < itemRows.length; i++) {
@@ -44,13 +44,14 @@ export function getJson(endpointUri, success, error)
     });
 }
 
-declare var _spPageContextInfo:any; // SharePoint 2013 global object
-export var config = {
+export var config = {   
     api_url: 'https://rushnet-api.azurewebsites.net/api',
-    abs_url: _spPageContextInfo.webAbsoluteUrl
-    
+    //abs_url: 'https://rushnetrcn.sharepoint.com/sites/rushnet',
+    // abs_url: 'https://rushenterprises.sharepoint.com/sites/rushnet',
 };
 
 export function getQueryStringValue (key) {
-      return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+      return unescape(window.location.search.replace(
+        new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + 
+            "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 }

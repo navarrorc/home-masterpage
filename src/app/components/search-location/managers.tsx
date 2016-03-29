@@ -17,8 +17,8 @@ export class Managers extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    let abs_url = config.abs_url;
-    var service = new api.DataService(abs_url);
+    //let abs_url = config.abs_url;
+    var service = new api.DataService();
     var listColumns = ['ldEmployeePhone','ldEmployeeName','ldRole','ldBranchCode','ldEmployeeEmail'];
     var temp: EmployeeEntry[] = [];
     var socialTemp:any = {};

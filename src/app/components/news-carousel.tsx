@@ -2,7 +2,6 @@ import {PressCoverageReader} from './press-coverage-reader';
 import {NewsFeed} from '../services/news-feed';
 import helpers = require('./helpers');
 
-
 declare var $: any;
 
 var $anchors,
@@ -201,7 +200,7 @@ export class NewsCarousel extends React.Component<any, any> {
         title: 'View All',
         byLine: 'View All',
         publishDate: null,
-        link: 'https://rushenterprises.sharepoint.com/sites/newshub/company-news',
+        link: '/sites/newshub/company-news',
       })
       this.setState({
         items: newsStories,

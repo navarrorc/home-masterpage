@@ -1,21 +1,13 @@
 import {getJson, SearchResults} from './shared';
 
-var listId = 'EE91A8C9-62E1-4024-83ED-1B312ED2BDA6';
-var articleRootUrl = '/sites/newshub/company-news/';
+let articleRootUrl = '/sites/newshub/company-news';
 
 export class NewsFeed {
-  baseUrl: string;
-  eventRootUrl: string;
-  spSiteUrl: string;
   constructor() {
-    let absUrl = _spPageContextInfo.webAbsoluteUrl;
-
-    this.baseUrl = absUrl.substr(0, absUrl.lastIndexOf("/") + 1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/
-    this.eventRootUrl = this.baseUrl + 'eventshub/events/';
-    this.spSiteUrl = this.baseUrl + 'authoring';
   }  
-  getSearchResults(contentType){
-    // will return on 5 records, see the &rowlimit=5
+  getSearchResults(contentType:string){
+    var deferred = Q.defer();    
+    // will return on 5 records, &rowlimit=5
     var selectProps = [
       'Title',
       'RefinableDate00', // mapped to ows_q_DATE_ArticleStartDate crawled property
@@ -27,17 +19,15 @@ export class NewsFeed {
       'owstaxidNewsCategory',
       'ArticleByLineOWSTEXT',
     ];
-    var deferred = $.Deferred();
-    var search = this.baseUrl + "rushnet" +
-      "/_api/search/query?querytext='contenttype:" +
-      "\"" + contentType + "\"" + // sourrounded by double quotes
-      " SPSiteUrl:" + this.spSiteUrl + "'" +
-      "&rowlimit=5" +
-      "&selectproperties='" + selectProps.join(', ') + "'" +
-      "&refinementfilters='GlobalOWSBOOL:true'" +
-      "&sortlist='RefinableDate00:descending'" + // mapped to ows_q_DATE_ArticleStartDate
-      "&clienttype='WebService'";
-    //console.log("search:", search);    
+    
+    var search = `/sites/rushnet/_api/search/
+      query?querytext='contenttype:"${contentType}"'      
+      &rowlimit=5
+      &selectproperties='${selectProps.join(', ')}'
+      &refinementfilters='GlobalOWSBOOL:true'
+      &sortlist='RefinableDate00:descending'
+      &clienttype='WebService'`;
+      //console.log("search:", search);    
 
     getJson(search, (data)=>{
       var _queryReponse = data.d.query,
@@ -55,7 +45,7 @@ export class NewsFeed {
             _articles.push({
               title: article.Title,
               byLine: (article.ArticleByLineOWSTEXT === null) ? '[no byline found]' : article.ArticleByLineOWSTEXT,
-              url: articleRootUrl + article.owstaxidNewsCategory + '/' + article.listItemId + '/' + article.Title,
+              url: `${articleRootUrl}/${article.owstaxidNewsCategory}/${article.listItemId}/${article.Title}`,
               pubStartDate: article.RefinableDate00,
               image: article.PublishingRollupImageOWSIMGE
             });
@@ -67,11 +57,10 @@ export class NewsFeed {
       deferred.resolve(_articles);
 
     }, (error)=>{
-      console.log(JSON.stringify(error));
-      deferred.reject(error);
+      deferred.reject(`error! ${JSON.stringify(error,null,4)}`); 
+      //console.log(`Error: ${JSON.stringify(error,null,4)}`);                     
     });
 
-    return deferred.promise();
+    return deferred.promise;
   }
-
 }

@@ -33,8 +33,8 @@ export class InfoPanel extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    let abs_url = config.abs_url;
-    var service = new api.DataService(abs_url);
+    //let abs_url = config.abs_url;
+    var service = new api.DataService();
     var listColumns = ['Title','ldBranchCode','ldLocationAddress','ldLocationAddress1','ldLocationCity','ldLocationName','ldLocationZip',
                        'ldLocationService','ldLocationType','ldState','ldLocationMainPhone','ldLocationFax','ldLocationTollfree'];
     var locationTemp:LocationEntry = null;

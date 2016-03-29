@@ -1,14 +1,14 @@
 // declare var _spPageContextInfo:any;
 export class DataService { 
-  baseUrl: string;
-  absUrl: string;
-  constructor(url:string){    
-    this.absUrl = url;
-    this.baseUrl = this.absUrl.substr(0, this.absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/   
+  // baseUrl: string;
+  // absUrl: string;
+  constructor(){    
+    // this.absUrl = url;
+    // this.baseUrl = this.absUrl.substr(0, this.absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/   
   }
   getSPUser() {
     let deferred = Q.defer();   
-    let url = this.absUrl + "/_api/Web/CurrentUser?$select=Email";
+    let url = "/sites/rushnet/_api/Web/CurrentUser?$select=Email";
     //console.log('url:', url); 
     $.get(
       url,      
@@ -22,9 +22,10 @@ export class DataService {
     return deferred.promise;
   }
   getListItems(site:string, listName:string, listColumns:string[]) {    
-    var deferred = Q.defer();
-    $.get(
-      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
+    let deferred = Q.defer();
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}`; 
+    $.get(     
+      url,
       (data:any)=>{
         //console.log('data', JSON.stringify(data,null,4));        
         deferred.resolve(data.value);
@@ -37,23 +38,26 @@ export class DataService {
   getListItemsTop200(site:string, listName:string, listColumns:string[]) {
     // use jquery to call the REST endpoint
     var deferred = Q.defer()
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}&$top=200`;    
     $.get(
-      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',') + "&$top=200",
+      //this.baseUrl + site  + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',') + "&$top=200",
+      url,
       (data:any)=>{
         //console.info('data.value Count', data.value.length);
         deferred.resolve(data.value);
       }, 'json').fail((error)=>{
         deferred.reject(`error! ${JSON.stringify(error,null,4)}`);
-        //console.log(`Error: ${JSON.stringify(error,null,4)}`);      
-        
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`); 
       });
       return deferred.promise;
   }
   getSingleListItem(site:string, listName:string, listColumns:string[], itemId:number) {   
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items(${itemId})?$select=${listColumns.join(',')}`;  
     $.get(
-      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items(" + itemId + ")?$select=" + listColumns.join(','),
+      //this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items(" + itemId + ")?$select=" + listColumns.join(','),
+      url,
       (data:any)=>{
         // console.info('data', JSON.stringify(data.value,null,4));
         deferred.resolve(data);
@@ -64,24 +68,27 @@ export class DataService {
       return deferred.promise();
   }
   getListItemsWithFilter(site:string, listName: string, listColumns:string[], filter: string){    
-    // use jquery to call the REST endpoint
-    var deferred = $.Deferred();
+    var deferred = Q.defer();
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}&$filter=${filter}`;
+    //console.log(`url: ${url}`);  
     $.get(
-      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(',')+"&$filter="+filter,
+      url,
       (data:any)=>{
-        //console.info('data.value', JSON.stringify(data.value,null,4));
+        //console.log(JSON.stringify(data,null,4));
         deferred.resolve(data.value);
-      }, 'json').fail((sender, args)=>{
-        console.error(args, 'status:', sender.status,'$.get() in getListItemsWithFilter() failed!');
-        deferred.reject("Ajax call failed in getTopLinks()");
+      }, 'json').fail((error)=>{
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`);
       });
-      return deferred.promise();
+      return deferred.promise;
   }
   getListItemsWithPaging(site:string, listName:string, listColumns:string[]) {
     // use jquery to call the REST endpoint
     var deferred = $.Deferred();
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}`; 
     $.get(
-      this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
+      //this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
+      url,
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve({ values: data.value, nextLink: data["odata.nextLink"] });
@@ -93,7 +100,7 @@ export class DataService {
   }
   getListItemsWithPagingLink(nextLink:string) {
     // use jquery to call the REST endpoint
-    var deferred = $.Deferred();
+    var deferred = $.Deferred();    
     $.get(
       nextLink,
       (data:any)=>{
@@ -113,7 +120,7 @@ export class DataService {
     function fetchCurrentUserId() {
       //var deferred = $.Deferred();
       $.get(
-        this.absUrl + "/_api/Web/CurrentUser?$select=Id",
+        "/sites/rushnet/_api/Web/CurrentUser?$select=Id",
         (data:any, status: string)=>{
           //deferred.resolve(data);
           fetchCurrentUsersGroups(data.Id);
@@ -124,9 +131,9 @@ export class DataService {
       return deferred.promise();
     }
 
-    function fetchCurrentUsersGroups(userId){
+    function fetchCurrentUsersGroups(userId:string){
       $.ajax({
-        url: this.absUrl + '/_api/web/GetUserById('+ userId +')/Groups',
+        url: '/sites/rushnet/_api/web/GetUserById('+ userId +')/Groups',
         headers: {"Accept": "application/json;odata=verbose"}
       }).done((data:any)=>{
         var _groups = [];

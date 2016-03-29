@@ -33,7 +33,7 @@ var config = {
   devtool: 'eval-source-map',
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js','.json']
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),
@@ -43,16 +43,30 @@ var config = {
     // noParse: [
     //   node_modules_dir + '/feedparser',
     //   node_modules_dir + '/response'
-    // ],
+    // ],    
     loaders: [
-      { test: /\.json$/, loader: "json-loader" },
+      /**
+      * Json
+      **/
+      { 
+        test: /\.json$/,         
+        include: [
+          path.resolve(__dirname, "src/app")
+        ],
+        //exclude: [/node_modules/, /test/],
+        loader: "json-loader"
+         
+      },
+      /**
+      * TypeScript
+      **/
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       {
         test: /\.tsx?$/,
         include: [
-          path.resolve(__dirname, 'src/app')
+          path.resolve(__dirname, "src/app")
         ],
-        exclude: node_modules_dir,
+        //exclude: [/node_modules/, /test/],
         loader: 'ts-loader'
       },
       /**
@@ -69,9 +83,9 @@ var config = {
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, 'src/sass')
+          path.resolve(__dirname, "src/sass")
         ],
-        exclude: node_modules_dir,
+        //exclude: node_modules_dir,
         loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader?includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" + path.resolve(__dirname, "./mixins/app_mixins"))
       }
     ]

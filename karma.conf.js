@@ -10,14 +10,24 @@ module.exports = function (config) {
 
         files: [  
             'test/lib/jquery.min.js',
+            'test/lib/react.js',
+            'test/lib/lodash.js',
             'test/lib/q.js',                    
-            'test/lib/sinon.js',                    
-            'test/**/*Tests.ts'            
+            'test/lib/sinon.js',
+            'test/lib/SharePoint_Globals.js',                   
+            'test/test_index.js'            
         ],
+        
+        client: {
+          mocha: {
+            reporter: 'html'            
+          }
+        },
         
       	preprocessors: {
           // add preprocessors 
-			    '**/*.ts?(x)': ['webpack']			    
+			    //'**/*.ts?(x)': ['webpack', 'sourcemap']
+          'test/test_index.js': ['webpack', 'sourcemap']			    
 		    },
         
         // babelPreprocessor: {
@@ -29,16 +39,24 @@ module.exports = function (config) {
         
         webpack: {
           // webpack configuration  
-          resolve: {
-            // Add `.ts` and `.tsx` as a resolvable extension.
-            extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
-          },        
-          devtool: 'eval-source-map',
+          // cache: true,
+          // context: path.resolve('./test'),
           // output: {
+          //   //path: path.resolve('./test'),
           //   filename: 'bundle.js'
           // },
+          resolve: {
+            // Add `.ts` and `.tsx` as a resolvable extension.
+            extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json']
+          },        
+          //devtool: 'eval-source-map',
+          devtool: 'inline-source-map',          
           module: {
             loaders: [
+              { 
+                test: /\.json$/, 
+                exclude: node_modules_dir,                
+                loader: 'json-loader' },    
               { 
                 test: /\.tsx?$/, 
                 exclude: node_modules_dir,
@@ -61,7 +79,15 @@ module.exports = function (config) {
         },      
         
         //reporters: ['progress'],
-        reporters: ['mocha'],
+        reporters: ['mocha', 'coverage'],
+        
+        coverageReporter: {
+          dir: 'coverage/',
+          reporters: [
+            { type: 'lcovonly', subdir: '.', file: 'lcov.info' },
+            { type: 'html', subdir: 'html' }
+          ]
+        },
         
         // plugins: [
         //   'karma-webpack',
@@ -78,7 +104,7 @@ module.exports = function (config) {
         logLevel: config.LOG_INFO,
 
 //        browsers: ['PhantomJS', 'Chrome', 'IE']
-        browsers: ['PhantomJS'],
+        browsers: ['PhantomJS', 'Chrome'],
         customLaunchers: {
           IE10: {
             base: 'IE',

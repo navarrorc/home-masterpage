@@ -18,8 +18,8 @@ export class FAQLinkList extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    let abs_url = config.abs_url;
-    var service = new api.DataService(abs_url);
+    //let abs_url = config.abs_url;
+    var service = new api.DataService();
     var listColumns = ['Title','Url','Opens_New_Window','Position'];
     service.getListItems('rushnet', 'FAQs', listColumns).then((data:any)=>{
       var temp1: FAQLink[] = [];

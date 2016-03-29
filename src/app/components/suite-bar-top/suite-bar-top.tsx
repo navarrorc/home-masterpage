@@ -13,7 +13,7 @@ class SuiteBarTop extends React.Component<any, any> {
   }
   componentDidMount(){
     // async call
-    var service = new api.DataService('fetching data from myService');
+    var service = new api.DataService();
     service.getSPUser()
       .then((data: any)=>{
          var email = data.Email;

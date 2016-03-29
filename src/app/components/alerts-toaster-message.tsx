@@ -25,8 +25,8 @@ export class AlertsToasterMessage extends React.Component<any, any> {
   componentDidMount() {
     if (helpers.isMounted(this)){
       // Calling Data Service
-      let abs_url = config.abs_url;
-      var service = new api.DataService(abs_url);
+      //let abs_url = config.abs_url;
+      var service = new api.DataService();
       var listColumns = [
         'ID',
         'Active',

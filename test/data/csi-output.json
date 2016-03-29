@@ -1,0 +1,14 @@
+{
+    "odata.metadata": "https://rushnetrcn.sharepoint.com/sites/rushnet/_api/$metadata#SP.ListData.…=Publish_x0020_Start_x0020_Date,Publish_x0020_End_x0020_Date,EncodedAbsUrl",
+    "value": [
+        {
+            "odata.type": "SP.Data.CSIItem",
+            "odata.id": "8554c906-1e36-4ee2-940d-9940c2700b91",
+            "odata.etag": "\"4\"",
+            "odata.editLink": "Web/Lists(guid'7d89688c-d29a-4e5e-a9cd-319d4b61bb98')/Items(18)",
+            "Publish_x0020_Start_x0020_Date": "2016-03-10T06:00:00Z",
+            "Publish_x0020_End_x0020_Date": null,
+            "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/rushnet/CSI/8057-1215%20RushNet%20grapics_Customer%20Satisfaction%20Index%202-1-164.png"
+        }
+    ]
+}

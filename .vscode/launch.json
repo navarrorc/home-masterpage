@@ -1,0 +1,19 @@
+// Not working quite right yet
+// {
+// "version": "0.2.0",
+// "configurations": [
+//     {
+//         "name": "Launch",
+//         "type": "chrome",
+//         "request": "launch",
+//         "url": "http://localhost:9876/debug.html",
+//         "runtimeArgs": [
+//             "--new-window", 
+//             "--user-data-dir=C:/dev/", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+//             "--remote-debugging-port=9222" //Open in port 9222 (standard chrome debug port)
+//         ],
+//         "webRoot": "${workspaceRoot}/test", //The directory that contains js, ts and map files
+//         "sourceMaps": true
+//     }
+//   ]
+// }

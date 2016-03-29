@@ -1,5 +1,4 @@
 import {DataService} from '../services/data-service'
-import {config} from '../services/shared';
 
 /*Parent Component*/
 class Image extends React.Component<any, any> {
@@ -9,12 +8,12 @@ class Image extends React.Component<any, any> {
   render() {
     return(
       <div className="panel clearfix" style={{height:"352px"}}>
-        	<h1>Get To Know Rush Enterprises</h1>
+        <h1>Customer Satisfaction Index</h1>
         <div className="">          
           <div className="content">          
-            <a href={this.props.item.articleURL} style={{borderBottom:"none"}}>
-              <img src={this.props.item.imageURL} style={{maxWidth:"none"}}></img>
-            </a>            
+            <img src={this.props.item.imageURL} 
+                  style={{maxWidth:"none"}}>
+            </img>
           </div>
         </div>
        </div>
@@ -23,7 +22,7 @@ class Image extends React.Component<any, any> {
 }
 
 /*Main App Component*/
-export class KnowRush extends React.Component<any, any> {
+export class CSI extends React.Component<any, any> {
   constructor(props:any){
     super(props);
     this.state = { item:{} }; // setting initial state
@@ -33,15 +32,14 @@ export class KnowRush extends React.Component<any, any> {
     var columns = [
       'Publish_x0020_Start_x0020_Date',
       'Publish_x0020_End_x0020_Date',
-      'EncodedAbsUrl',
-      'ArticleURL'
+      'EncodedAbsUrl'
     ];
     var today = new Date();
     var filter = `((Publish_x0020_Start_x0020_Date le datetime'${today.toISOString()}') 
                   and (Publish_x0020_End_x0020_Date ge datetime'${today.toISOString()}' 
                   or Publish_x0020_End_x0020_Date eq null))`; // today >= start-date AND (today <= end-date OR end-date == null) 
     var service = new DataService();
-    service.getListItemsWithFilter('rushnet','GetToKnowRushEnterprises', columns, filter).then((data:any[])=>{
+    service.getListItemsWithFilter('rushnet','CSI', columns, filter).then((data:any[])=>{
       //console.log(JSON.stringify(data,null,4));          
       var activeImage = {};            
       
@@ -51,8 +49,7 @@ export class KnowRush extends React.Component<any, any> {
       activeImage = {
         start: start,
         end: end,
-        imageURL: data[0].EncodedAbsUrl,
-        articleURL: data[0].ArticleURL
+        imageURL: data[0].EncodedAbsUrl
       }  
       //console.log(JSON.stringify(activeImage,null,4));
       this.setState({
@@ -63,14 +60,14 @@ export class KnowRush extends React.Component<any, any> {
   render() {
     return (
         <div>
-            <Image item={this.state.item}  />          
+          <Image item={this.state.item}  />
         </div>
     );
   }
   showComponent() {
     React.render(
-      <KnowRush />,
-      document.getElementById('knowRush')
+      <CSI />,
+      document.getElementById('csi')
     );
   }
 }
