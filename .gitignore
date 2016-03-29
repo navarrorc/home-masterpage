@@ -4,6 +4,7 @@ builds/development/css
 builds/production
 ssl/*.pfx
 typings
+coverage
 
 # Ignore Visual Studio  Project #
 ###################
