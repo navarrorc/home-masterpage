@@ -6,7 +6,7 @@ var bannerData = require('./data/home-banner-output');
 import {HomeBanner} from '../src/app/components/home-banner';
 
 
-describe('Home Banner', function(){
+xdescribe('Home Banner', function(){
   var server;
   
   beforeEach(function(){
@@ -29,21 +29,21 @@ describe('Home Banner', function(){
     server.restore();
   });
   
-  it('should render one <img>', function(done){
-    let csi = this.component; 
-    let image = this.renderedDOM(csi).querySelectorAll('img');
-    expect(image.length).to.equal(1);    
+  // it('should render one <img>', function(done){
+  //   let csi = this.component; 
+  //   let image = this.renderedDOM(csi).querySelectorAll('img');
+  //   expect(image.length).to.equal(1);    
     
-    // let interval = setInterval( ()=>{
-    //   if (image[0].src !== ''){
-    //     console.log(image[0].src);  
-    //     // expect(image[0].src).to.equal('https://rushnetrcn.sharepoint.com/sites/rushnet/CSI/8057-1215%20RushNet%20grapics_Customer%20Satisfaction%20Index%202-1-164.png');      
-    //     clearInterval(interval);
-    //   }       
-    // }, 1)
+  //   // let interval = setInterval( ()=>{
+  //   //   if (image[0].src !== ''){
+  //   //     console.log(image[0].src);  
+  //   //     // expect(image[0].src).to.equal('https://rushnetrcn.sharepoint.com/sites/rushnet/CSI/8057-1215%20RushNet%20grapics_Customer%20Satisfaction%20Index%202-1-164.png');      
+  //   //     clearInterval(interval);
+  //   //   }       
+  //   // }, 1)
     
-    server.respond();    
-    done();
-  }); 
+  //   server.respond();    
+  //   done();
+  // }); 
   
 })
