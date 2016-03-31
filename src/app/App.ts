@@ -50,6 +50,8 @@ import {PreviewArticle} from './components/preview-article';
 
 import {KnowRush} from './components/get-to-know-rush';
 import {CSI} from './components/csi';
+import {Spotlight} from './components/spotlight';
+import {HomeBanner} from './components/home-banner';
 // import {} from './services/DataService'; //TODO: remove after testing
 
 
@@ -174,6 +176,12 @@ class RenderUI {
       var csi = new CSI(null);
       csi.showComponent();
       
+      let spotlight = new Spotlight(null);
+      spotlight.showComponent();
+      
+      let banner = new HomeBanner(null);
+      banner.showComponent();    
+           
       // var columns = [
       //   'Publish_x0020_Start_x0020_Date',
       //   'Publish_x0020_End_x0020_Date',

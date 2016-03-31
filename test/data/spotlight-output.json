@@ -1,0 +1,16 @@
+{
+  "odata.metadata": "https://rushnetrcn.sharepoint.com/sites/rushnet/_api/$metadata#SP.ListData.SpotlightListItems&$select=Publish_x0020_Start_x0020_Date,Publish_x0020_End_x0020_Date,Title,Message,Url",
+  "value": [
+    {
+      "odata.type": "SP.Data.SpotlightListItem",
+      "odata.id": "ab7abb16-d8fa-4010-aa34-e733d2c14236",
+      "odata.etag": "\"7\"",
+      "odata.editLink": "Web/Lists(guid'48624c06-2ad2-4d69-afa1-9c0aff137587')/Items(1)",
+      "Title": "Company Fuel Cards",
+      "Message": "Use of company fuel cards is for company business-related purposes only.  Use of company fuel cards is restricted to company and inventory vehicles.  Any unauthorized use of company fuel card is strictly prohibited.  A location’s General Manager is always responsible for supervising fuel cards issued to their location, ensuring the cards are not improperly distributed and confirming all purchases are documented with purchase receipt, amount, date, time and vehicle odometer reading.",
+      "Url": "#",
+      "Publish_x0020_Start_x0020_Date": "2016-03-31T05:00:00Z",
+      "Publish_x0020_End_x0020_Date": null
+    }
+  ]
+}

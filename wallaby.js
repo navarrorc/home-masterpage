@@ -51,9 +51,8 @@ module.exports = function (w) {
       {"pattern": "test/lib/SharePoint_Globals.js", "instrument": false},      
       
       
-      {"pattern": "src/app/**/*.ts", load: false},
-      {"pattern": "src/app/**/*.tsx", load: false},
-      {"pattern": "test/sut/**/*.ts", load: false},
+      {"pattern": "src/app/**/*.ts?(x)", load: false},
+      {"pattern": "test/sut/**/*.ts?(x)", load: false},
       {"pattern": "test/data/*.json", load: false}    
       //{"pattern": "test/sut/*.js", load: true},      
     ],

@@ -29,7 +29,7 @@ describe('Customer Satisfaction Index', function(){
     server.restore();
   });
   
-  it('should render one <img> in the CSI component', function(done){
+  it('should render one <img>', function(done){
     let csi = this.component; 
     let image = this.renderedDOM(csi).querySelectorAll('img');
     expect(image.length).to.equal(1);    

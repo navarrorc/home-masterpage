@@ -2,7 +2,7 @@ var expect:Chai.ExpectStatic = require('chai').expect;
 import {NewsFeed} from '../src/app/services/news-feed';
 var newsData = require('./data/news-articles.json'); 
 
-describe('HomePage News Carousel', function(){
+describe('News Carousel', function(){
   var server;
   
   beforeEach(function(){

@@ -1,0 +1,14 @@
+{
+  "odata.metadata": "https://rushnetrcn.sharepoint.com/sites/rushnet/_api/$metadata#SP.ListData.Home_x0020_BannersItems&$select=Publish_x0020_Start_x0020_Date,Publish_x0020_End_x0020_Date,EncodedAbsUrl",
+  "value": [
+    {
+      "odata.type": "SP.Data.Home_x0020_BannersItem",
+      "odata.id": "23efffe6-6876-4c3c-be69-eeb4f4371a3b",
+      "odata.etag": "\"2\"",
+      "odata.editLink": "Web/Lists(guid'856b462d-4b7f-4f44-b3b1-a480236f3c5d')/Items(3)",
+      "Publish_x0020_Start_x0020_Date": "2016-03-31T05:00:00Z",
+      "Publish_x0020_End_x0020_Date": null,
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/rushnet/Home%20Banners/homepage-hero.jpg"
+    }
+  ]
+}
