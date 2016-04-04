@@ -1,0 +1,1806 @@
+{
+  "odata.metadata": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/_api/$metadata#SP.ListData.DocumentsItems&$select=EncodedAbsUrl,Group,Classification,Created",
+  "odata.nextLink": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/_api/web/Lists/GetByTitle('Documents')/items?%24skiptoken=Paged%3dTRUE%26p_SortBehavior%3d0%26p_ID%3d100&%24select=EncodedAbsUrl%2cGroup%2cClassification%2cCreated",
+  "value": [
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "68ecf0e1-0576-4648-af43-8a65c63528b5",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(1)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/AIG-Lexington%20Rate%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f00f65a1-f715-4630-9673-8353a3a94800",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(2)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CEI%20purchase%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "773d00ec-61de-4d4f-b8c6-737ff3c5cbca",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(3)",
+      "Created": "2016-01-21T00:25:14Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Blue%20Bell%20Ice%20Cream%2010-1-2013.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "6df46bf6-8d57-4ec0-a86a-549423981e3f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(4)",
+      "Created": "2016-01-21T00:25:06Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Central%20Refrigerated%209-26-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "fb2a584f-805b-49f5-a948-cf3fa77a7f31",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(5)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "16",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 16
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Champion%20Tire%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "1b71079f-bc84-4b1b-8d54-479260ed6b8e",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(6)",
+      "Created": "2016-01-21T00:25:18Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "16",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 16
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CCM%20Corporate%20Claims%20Management%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "347b0e8e-756e-4000-aec1-f08fddb2608a",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(7)",
+      "Created": "2016-01-21T00:25:13Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "16",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 16
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Bush%20Leasing%20Data%20Sheet.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "4655b56a-e8b6-44d5-884b-2b1c48118a74",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(8)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "11",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 11
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Altom%20Transport%20National%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "be9ab5a5-7bc4-44be-8ce9-c74e5006d896",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(9)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "11",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 11
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Body%20Insurance%20Agreement%20Account%20information.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f2e1ea2f-0a83-4aeb-9f79-d5deed4561bf",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(10)",
+      "Created": "2016-01-21T00:25:15Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Celadon%20Trucking%209-26-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "5402767e-157a-4e10-ae00-57d9a373e097",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(11)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Canal%20Insurance%20Rate%20Agreement%202011.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "729db036-d100-4276-9652-8fe21cac75d0",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(12)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Baylor%20Trucking%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "bb369824-f006-4e65-bd07-966903690336",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(13)",
+      "Created": "2016-01-21T00:25:18Z",
+      "Group": {
+        "Label": "12",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 12
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Arnold%20Transportation%20-%20B%20PM.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "a101681b-f6d2-47f2-82d8-d1433295af93",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(14)",
+      "Created": "2016-01-21T00:25:19Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Bennett%20Rush%20Program%206-1-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "191c281a-99d3-48df-bd1f-9e6946b3fe6f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(15)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "12",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 12
+      },
+      "Classification": {
+        "Label": "17",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 17
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Carolina%20Casualty%20Approved%20Insurance%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "cbdc8f82-1836-496a-a333-508dd44e3f50",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(16)",
+      "Created": "2016-01-21T00:25:20Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Anheuser%20Busch-8-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "e325ace4-417a-448a-a3f5-f9ba24a17e58",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(17)",
+      "Created": "2016-01-21T00:25:12Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Alamo%20program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f3fe9fa4-78cf-4aec-8c89-dd916c5deff7",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(18)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CEI%20Fleet%20Repair%20%20Procedures.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "86fed2ad-2cfb-4ca5-b95f-6725fd0086f2",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(19)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Central%20Transport%20Program%206-15-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "99f506a9-df95-4144-9694-431561197191",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(20)",
+      "Created": "2016-01-21T00:25:23Z",
+      "Group": {
+        "Label": "10",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 10
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Action%20Fleet%20Management%20RTC%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f7c4c6ec-78f3-48f3-85cf-5feb8c91508f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(21)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Champion%20A%20Service.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "905d2bab-13b4-41bf-a027-124dbed337bd",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(22)",
+      "Created": "2016-01-21T00:25:20Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Andrews%20Logistics%20Program%20UPDATED%20031715.docx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c594da88-6d06-43e1-a685-085cb542fb8f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(23)",
+      "Created": "2016-01-21T16:19:38Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Celadon%20Trans_agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "4e0e4a5c-d626-46a5-9337-87007728ffee",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(24)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CEI%20Estimate%20Guidelines.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "8a153105-1a86-48ed-ab0a-28340fdee03d",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(25)",
+      "Created": "2016-01-21T00:25:06Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Aim%20Nationalease%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "43ead731-9cd8-422f-953e-6f25bd67b035",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(26)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Central%20Refrigerated.doc.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "e693aa79-f0e6-4254-8c9e-4536fa00ab4a",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(27)",
+      "Created": "2016-01-21T00:25:17Z",
+      "Group": {
+        "Label": "11",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 11
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Badger%20Daylighting%20UPDATED%20071315.docx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "00641542-f754-4014-864e-ca030589597e",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(28)",
+      "Created": "2016-01-21T00:25:10Z",
+      "Group": {
+        "Label": "11",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 11
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Cardinal%20Logistics.Greatwide%20Program_Final.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "183328fc-acda-48ef-8753-a44ef375e5b9",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(29)",
+      "Created": "2016-01-21T00:25:16Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Champion%20B%20Service.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "2e2de07f-c77a-42bb-9be1-4b15da06784c",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(30)",
+      "Created": "2016-01-21T00:25:14Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Averitt%20National%20Agreement%202016.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "46868de9-6a91-4307-9ab6-2362bd75da3c",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(31)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Chartis%202011%20rates.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c2232cee-b242-4609-b121-3889cbcaf230",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(32)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Chartis%20Truck%20Direct-Assignment%20Sheet.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "de7049f8-8888-4502-95cb-cee3978d0a35",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(33)",
+      "Created": "2016-01-21T00:25:30Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Cypress%20Truck%20Lines%207-1-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "13a1807e-d3d1-4b11-928b-04e2baa5d9a2",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(34)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/EMC%20Insurance%20Standerdized%20Pricing%202011.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "bd10ec7a-82ab-4e55-a6c1-3be00929f943",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(35)",
+      "Created": "2016-01-21T00:25:31Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Dayton%20Freight%20Program%207-10-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "7d9bd917-1f20-4b34-8f6a-7bae5ac8bb80",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(36)",
+      "Created": "2016-01-21T00:25:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Dillon%20Transport%20Program%2010-1-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c8a05020-0456-44c3-a14e-16409c604093",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(37)",
+      "Created": "2016-01-21T00:25:24Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Conway%20Freight%20data%20Sheet.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "b93a345a-4451-488f-afff-64f424383b03",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(38)",
+      "Created": "2016-01-21T00:25:31Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Dickinson%20Fleet%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "9fca70f3-75c2-4703-ac4c-f5cc73f79055",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(39)",
+      "Created": "2016-01-21T00:25:23Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CMC-Cal%20Ark%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c71b2697-71c6-47c1-af3c-839d7ab400ea",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(40)",
+      "Created": "2016-01-21T16:19:33Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Chartis%20Direct%20Repair%20Shop%20Process%20Procedures%20Responsibilities.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "4bc3dff6-dd7f-42f0-8e33-60ed14e96570",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(41)",
+      "Created": "2016-01-21T00:25:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Cheeseman%20National%20Program%204-1-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "dbadff2c-d195-4ada-85a8-7c0be2690216",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(42)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CTCM-OOIDA%20signed%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "39d10205-63dc-471d-bb80-074c9b37b144",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(43)",
+      "Created": "2016-01-21T00:25:29Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/CR%20England%20Program%20Details.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "1d98eacd-7501-4939-8969-d81aa130e86f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(44)",
+      "Created": "2016-01-21T00:25:27Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Cowan%20Systems%20National%20Program%205-1-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "8515451e-d9eb-41e4-9f21-853f44935453",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(45)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Chartis%20Direct%20Repair%20Process%20Overview.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "9a8c1c2f-750a-40a9-9868-afa52f048478",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(46)",
+      "Created": "2016-01-21T00:25:40Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Enterprises%20Transportation.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "742da30d-4b0d-491e-9fc9-1d768ed541bf",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(47)",
+      "Created": "2016-01-21T00:25:33Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Dupre%20Logistics%20LLC%20%20120214.docx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "3b787368-02d3-4d2d-8093-9ccfa89ccb5e",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(48)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Essex%20Rate%20agreement%202011.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "94374ef1-b594-417c-a9c9-8f328716d9bd",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(49)",
+      "Created": "2016-01-21T16:19:33Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Essex%20Repair%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f9dd724f-6349-4fc8-b5de-0e6b9f386ce1",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(50)",
+      "Created": "2016-01-21T00:25:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/DPF%20cleaning%20levels%20%26%20pricing_2015.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "4c7b1f51-456b-4a1f-b6ac-d77e47f59f92",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(51)",
+      "Created": "2016-01-21T00:25:38Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Estenson%20Logistics%20program%2012-1-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "649d2e9b-69dc-4c06-b218-3ff8108038b9",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(52)",
+      "Created": "2016-01-21T00:25:30Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Con-way%20Truckload%206-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "aefe91c6-20a9-4a5c-9b06-2151e3c3ab95",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(53)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Great%20West%20Insurance.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "581e1375-4af6-47e8-b7c7-389ada3328b6",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(54)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Great%20West%202011%20rates.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "49d89f73-e7b4-4df2-9b71-c2ddf28481cf",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(55)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Great%20AmericanAPPRAISAL%20AGREEEMENT1.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "cecbdaf5-a235-4d1d-9849-5889ecc59cc8",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(56)",
+      "Created": "2016-01-21T16:19:37Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Fleet%20Response%20Rate%20Agreement%202011.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "a3b7eaad-59b5-4d45-97a3-838eb039c796",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(57)",
+      "Created": "2016-01-21T16:19:37Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Fleet%20Priorty%20Services%20Direction%20to%20Pay.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "5f794d5b-c23a-4d37-bb2c-85a9d2feb585",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(58)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Great%20AmericanRig%20Ready%20SHOP%20PROCEDURES.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "506a04ef-1736-4b5b-baef-e2dba4b59902",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(59)",
+      "Created": "2016-01-21T00:25:43Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Falcon%20Transport%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "612494cd-498a-4f3a-b166-3ed407515c5f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(60)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Great%20American%20approved%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "bd7c2aac-a702-4623-ad85-0964db80b71a",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(61)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Fleet%20Priority%20Services%20Approved%20Rate%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "0fdc6577-dbac-452b-8f78-db3649071dbf",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(62)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Gallagher%20Bassett%20Signed%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "3b0e0c36-802b-4e66-8817-3bc434735d5e",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(63)",
+      "Created": "2016-01-21T00:25:39Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/First%20Fleet%20program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "09df9e80-6f27-4b9f-a8d4-378dc5b0dac1",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(64)",
+      "Created": "2016-01-21T00:25:42Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/FEDEX%20Freight%20National%20Acct%20Profile.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "80b4d9ca-1143-4bd4-ab3c-2e3a5683aebb",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(65)",
+      "Created": "2016-01-21T16:19:39Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Federated%20Insurance%20Approved%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "8a0b64d3-700d-42ac-a297-cc2b01f21cf2",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(66)",
+      "Created": "2016-01-21T00:25:43Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Gemini%20Motor%20Transport.docx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "b6c9ea35-aa0d-42e4-a2e8-e10b7f65eee0",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(67)",
+      "Created": "2016-01-21T16:19:38Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Fed%20X%20Serivce%20and%20Body%20Shop%20Agreement%2009%2005%2007.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "ad9ca654-d08c-47f1-8e4e-d50498b36ddb",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(68)",
+      "Created": "2016-01-21T00:25:42Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Freymiller-D%26M%20Services%20Data%20Sheet%208-5-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "ab5d9c09-f1ec-4a16-b06a-dd84067daa27",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(69)",
+      "Created": "2016-01-21T00:25:43Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Gibson%20Energy%20011215.docx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "7cbf2871-7f90-4162-b22b-2255c1a2f6f1",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(70)",
+      "Created": "2016-01-21T16:19:33Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Hanover%20Insurance%20signed%20agreement.tif"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "76ce1c0d-e40c-4018-9809-fbcc44799543",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(71)",
+      "Created": "2016-01-21T00:25:46Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/High%20Sierra%20Energy.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "2f01f89b-ab20-438c-a7a9-ace0cd48c716",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(72)",
+      "Created": "2016-01-21T16:19:35Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Harco%20Rate%20Agreement%202011.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "61d25852-0365-42ff-9a90-5e8b0d88898f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(73)",
+      "Created": "2016-01-21T00:25:46Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/HEB%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c3c8f598-5324-408e-b02e-23581335befd",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(74)",
+      "Created": "2016-01-21T00:25:46Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Halliburton%20Energy%207-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f8d52643-70e3-44c8-9c71-fc21a47e2ec0",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(75)",
+      "Created": "2016-01-21T00:25:48Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Hogan%20Motor%20Leasing%20Program%2012-15-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "ee112ec5-3462-4e1a-9a12-c7b7d2c4e001",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(76)",
+      "Created": "2016-01-21T00:25:44Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Groendyke%20Program%2011-1-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "0b19fa7e-dbad-4a4a-afca-9abd078dfbf1",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(77)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Harco%20agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c3512ad5-07ac-44a6-b606-e5ed7f35de11",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(78)",
+      "Created": "2016-01-21T00:26:27Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Masco%20Contractors%209-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "d114751f-83db-4e91-a572-36356dc917f7",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(79)",
+      "Created": "2016-01-21T00:26:02Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/JB%20Hunt%20Program%205-15-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "401af3d0-2c81-4a8f-8bb8-22ea0acbaa8e",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(80)",
+      "Created": "2016-01-21T00:26:31Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/May%20Trucking%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "5cb2e4d6-1130-4ee3-8499-9622e7e1b78a",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(81)",
+      "Created": "2016-01-21T00:25:51Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Interstate%20Distributor%208-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "7dbad6a1-fe49-4c32-917a-03f105719e79",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(82)",
+      "Created": "2016-01-21T00:25:52Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/JB%20Hunt%20%20P.O.%20Process%20(Colburn).pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "a73dc870-e4aa-4145-b536-0389d5ddc724",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(83)",
+      "Created": "2016-01-21T00:26:07Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/L%20%26%20F%20Dist-Favorite%20Brands%20Data%20Sheet%20(Recovered).pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "516445d4-503f-47c7-908f-c6b01398c111",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(84)",
+      "Created": "2016-01-21T00:26:02Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/JB%20Hunt%20Owner%20Op%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "e79de495-acec-4723-a1f1-7d854bd61974",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(85)",
+      "Created": "2016-01-21T16:19:38Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/OneBeacon%20Approved%20Rate%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "32c61bef-5aa2-4ce8-bf72-2ec0ceba59b2",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(86)",
+      "Created": "2016-01-21T00:26:26Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Martin%20Marietta%20Program%206-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "b2449091-f1e2-41a2-b82f-b51626f23d91",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(87)",
+      "Created": "2016-01-21T00:26:28Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Melton%20Trucklines%20Program%2010-29-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "13b857b7-38bf-40cf-ab65-ea6ce4f32cf1",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(88)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/PHH%20Arval%20Agreement.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "62817b9f-cdc2-421b-8406-218dc17c7af8",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(89)",
+      "Created": "2016-01-21T00:26:06Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/John%20Christner%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "6620a87c-7cc9-4d37-9ded-666a86d63873",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(90)",
+      "Created": "2016-01-21T00:26:05Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Kenan%20Advantage%20program%205-27-14.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "bda8138e-181c-4b85-80af-4707a9d840a7",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(91)",
+      "Created": "2016-01-21T16:36:04Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "18",
+        "TermGuid": "836de633-02df-4361-92f4-0f9d59e281fe",
+        "WssId": 18
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Mission%20Petroleum.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "06d86db2-fb13-49af-b7ae-6cb942df0577",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(92)",
+      "Created": "2016-01-21T00:25:51Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Indian%20River%20Transport%20Program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "2aff7140-d21a-4042-bc4c-27b16a50d400",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(93)",
+      "Created": "2016-01-21T00:27:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Owner%20Operator-Parts%20and%20Service%20ID%20Card%20Program.pptx"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "15823dbb-435b-4bc6-834e-4a6a19817e3d",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(94)",
+      "Created": "2016-01-21T16:19:34Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/NTHECC%20Agreed%20Pricing%202008.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "c4bcc937-74e1-4286-af9a-d0bcbfe58877",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(95)",
+      "Created": "2016-01-21T16:19:36Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/NTHECC%20%20Adjusters%20(3).pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "02565c52-c72f-4f9f-9cb2-6a433706485c",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(96)",
+      "Created": "2016-01-21T00:26:22Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Lonestar%20Transport%209-12.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f010a8db-2777-4088-bc9f-23108e309ae4",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(97)",
+      "Created": "2016-01-21T00:26:39Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Pilot-Flying%20J%20program.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "f285539d-916b-497a-824d-194782b06aae",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(98)",
+      "Created": "2016-01-21T00:26:32Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Nesco%20Sales%20program%208-15-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "993e6ec7-0c05-4d8a-a8e6-24851746d94f",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(99)",
+      "Created": "2016-01-21T00:26:05Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "13",
+        "TermGuid": "83cf5496-08a3-4843-b390-29635e1b8ffd",
+        "WssId": 13
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Knight%20Transportation%20Program%2010-21-13.pdf"
+    },
+    {
+      "odata.type": "SP.Data.DocumentsItem",
+      "odata.id": "5ab626f0-b91c-45d2-94a1-f4345aa54406",
+      "odata.etag": "\"4\"",
+      "odata.editLink": "Web/Lists(guid'964fe3d9-06b5-4357-96ba-069ece086e14')/Items(100)",
+      "Created": "2016-01-21T16:19:37Z",
+      "Group": {
+        "Label": "8",
+        "TermGuid": "c55f82e8-ca96-4a52-bcf0-6fad46dc3346",
+        "WssId": 8
+      },
+      "Classification": {
+        "Label": "14",
+        "TermGuid": "2d6c28a2-dd4e-4c4d-889b-ac68090ec30b",
+        "WssId": 14
+      },
+      "EncodedAbsUrl": "https://rushnetrcn.sharepoint.com/sites/Documents/nationalaccounts/Documents/Kemper%20Specialty%20Approved%20Rate%20Agreement.pdf"
+    }
+  ]
+}

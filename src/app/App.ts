@@ -55,6 +55,30 @@ import {HomeBanner} from './components/home-banner';
 // import {} from './services/DataService'; //TODO: remove after testing
 
 
+//*****TEST********//
+var getTerm = function (id) {
+  var scriptbase = _spPageContextInfo.webServerRelativeUrl + "/_layouts/15/";      
+
+  function getTerm()
+  {
+      var context = SP.ClientContext.get_current();         
+      var taxSession = SP.Taxonomy.TaxonomySession.getTaxonomySession(context);  
+      var term=taxSession.getTerm(id);
+      context.load(term);
+      context.executeQueryAsync(function() {
+            console.log(term.get_name());
+          },
+          function() {
+            console.log('failed!');
+          });
+  }
+
+  $.getScript(scriptbase + "SP.Taxonomy.js", getTerm);   
+  
+};
+//********TEST*******//
+
+
 // CSS Dependencies
 /*
 	See webpack.config.js
@@ -139,7 +163,17 @@ class RenderUI {
 	// renderUI.setSearchBoxPlaceHolderText();
 	renderUI.showSharePointElements(); // only if site Owner
 
-	$(()=>{
+	$(()=>{   
+    
+    //****TEST*****//
+    let termId = '83cf5496-08a3-4843-b390-29635e1b8ffd';
+    //TermGuid=83cf5496-08a3-4843-b390-29635e1b8ffd
+    getTerm(termId);  
+    
+    //TermGuid=2d6c28a2-dd4e-4c4d-889b-ac68090ec30b 
+    //TermGuid=c55f82e8-ca96-4a52-bcf0-6fad46dc3346
+    //************//
+    
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();
 		// Display larger search icon
@@ -191,10 +225,8 @@ class RenderUI {
       // var service = new DataService();
       // service.getListItems('rushnet','GetToKnowRushEnterprises', columns).then((data)=>{
       //   console.log(JSON.stringify(data,null,4));
-      // });
-      
-      
-
+      // });        
+            
 		}
 
 		if ($('#hr-benefits').length) {
