@@ -6,6 +6,31 @@ export class DataService {
     // this.absUrl = url;
     // this.baseUrl = this.absUrl.substr(0, this.absUrl.lastIndexOf("/")+1); // includes forward slash e.g. https://rushnetrcn.sharepoint.com/sites/   
   }
+  
+  getTermName(id) {
+    let deferred = Q.defer();   
+    let scriptbase = _spPageContextInfo.webServerRelativeUrl + "/_layouts/15/";      
+
+    function getTerm()
+    {
+        var context = SP.ClientContext.get_current();         
+        var taxSession = SP.Taxonomy.TaxonomySession.getTaxonomySession(context);  
+        var term=taxSession.getTerm(id);
+        context.load(term);
+        context.executeQueryAsync(function() {
+          // console.log(term.get_name());
+          deferred.resolve(term.get_name());
+        },
+        function(error) {
+          deferred.reject(`error! ${JSON.stringify(error,null,4)}`);                      
+          //console.log(`Error: ${JSON.stringify(error,null,4)}`);
+        });
+    }
+
+    $.getScript(scriptbase + "SP.Taxonomy.js", getTerm);   
+    return deferred.promise;
+  };
+  
   getSPUser() {
     let deferred = Q.defer();   
     let url = "/sites/rushnet/_api/Web/CurrentUser?$select=Email";
@@ -70,7 +95,7 @@ export class DataService {
   getListItemsWithFilter(site:string, listName: string, listColumns:string[], filter: string){    
     var deferred = Q.defer();
     let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}&$filter=${filter}`;
-    //console.log(`url: ${url}`);  
+    // console.log(`url: ${url}`);  
     $.get(
       url,
       (data:any)=>{
@@ -84,19 +109,19 @@ export class DataService {
   }
   getListItemsWithPaging(site:string, listName:string, listColumns:string[]) {
     // use jquery to call the REST endpoint
-    var deferred = $.Deferred();
-    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}`; 
+    var deferred = Q.defer();
+    let url = `/sites/${site}/_api/web/Lists/GetByTitle('${listName}')/items?$select=${listColumns.join(',')}&$top=200`; 
     $.get(
       //this.baseUrl + site + "/_api/web/Lists/GetByTitle('" + listName + "')/items?$select=" + listColumns.join(','),
       url,
       (data:any)=>{
         //console.info('data.value', JSON.stringify(data.value,null,4));
         deferred.resolve({ values: data.value, nextLink: data["odata.nextLink"] });
-      }, 'json').fail((sender, args)=>{
-        console.error(args, 'status:', sender.status,'$.get() in getListItems() failed!');
-        deferred.reject("Ajax call failed in getTopLinks()");
+      }, 'json').fail((error)=>{
+        deferred.reject(`error! ${JSON.stringify(error,null,4)}`);
+        //console.log(`Error: ${JSON.stringify(error,null,4)}`);
       });
-      return deferred.promise();
+      return deferred.promise;
   }
   getListItemsWithPagingLink(nextLink:string) {
     // use jquery to call the REST endpoint

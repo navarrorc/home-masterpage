@@ -52,6 +52,8 @@ import {KnowRush} from './components/get-to-know-rush';
 import {CSI} from './components/csi';
 import {Spotlight} from './components/spotlight';
 import {HomeBanner} from './components/home-banner';
+import {DocumentCenter} from './components/document-center';
+import {DocCenter_BPCForecast} from './components/document-centers/bpc-forecast';
 // import {} from './services/DataService'; //TODO: remove after testing
 
 
@@ -164,15 +166,20 @@ class RenderUI {
 	renderUI.showSharePointElements(); // only if site Owner
 
 	$(()=>{   
-    
-    //****TEST*****//
-    let termId = '83cf5496-08a3-4843-b390-29635e1b8ffd';
-    //TermGuid=83cf5496-08a3-4843-b390-29635e1b8ffd
-    getTerm(termId);  
-    
-    //TermGuid=2d6c28a2-dd4e-4c4d-889b-ac68090ec30b 
-    //TermGuid=c55f82e8-ca96-4a52-bcf0-6fad46dc3346
-    //************//
+    let pathname = window.location.pathname.toLowerCase();
+		//console.log(`pathame: ${pathname}`);
+
+    // Documents/nationalaccounts site
+    if(pathname.indexOf('/documents/nationalaccounts') > 0) {
+      let doc = new DocumentCenter(null);
+      doc.showComponent();
+    }
+
+		// BPC Forecast Document Library		
+		if(pathname.indexOf('/documents/finance/pages/bpc-forecast') > 0) {
+			let doc = new DocCenter_BPCForecast(null);
+			doc.showComponent();
+		}
     
 		// Render the SuiteBarTop Components
 		SuiteBarTop.showComponents();

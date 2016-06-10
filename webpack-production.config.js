@@ -17,7 +17,7 @@ module.exports = exports = Object.create(require("./webpack.config.js"));
 exports.plugins = [];
 exports.plugins.push(new ExtractTextPlugin('styles.min.css'));
 exports.plugins = exports.plugins.concat(
-  //new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
+  new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
   new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.min.js')
 );
 exports.devtool = 'sourcemap';

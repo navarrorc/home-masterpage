@@ -47,6 +47,7 @@ class Post extends React.Component<any,any> {
     super(props);
   }
   handleHover(){
+    //console.log('inside handleHover');
     var $this = $(this),
         //index = this.$anchors.index($this),
         index = $this[0].props.index,
@@ -54,12 +55,12 @@ class Post extends React.Component<any,any> {
         top = $active_link.position().top + ($active_link.height() / 2) - ($arrow.height() / 2);
 
     //console.log('index', index);
-    // console.log($this[0].props.index);
-  //  console.log($active_link);
+    //console.log($this[0].props.index);
+    //console.log($active_link);
 
     if (index != 5){
+      // not the 'View All' Link
       $links.removeClass('active').eq(index).addClass('active');
-
       $anchors.find('.icon').removeClass('icon-circle-full').addClass('icon-circle-empty');
       $anchors.eq(index).find('.icon').toggleClass('icon-circle-empty icon-circle-full');
       $images.removeClass('show').addClass('hide').eq(index).toggleClass('hide show');
@@ -103,9 +104,10 @@ class Link extends React.Component<any,any>{
   }
 
   render() {
+    let name = this.props.name;
     return (
       <span className="title-wrap">
-        <a href={this.props.link}> {this.props.name}</a>
+        <a href={this.props.link} id={name==='View All'?'view_all':''}> {this.props.name}</a>
       </span>
     );
   }
@@ -133,9 +135,16 @@ class NewsImages extends React.Component<any, any> {
   }
   render() {
     var generateImage = function(image, index){
-      return (
-        <img key={index} className="news-image" src={image} alt=""></img>
-      )
+      if(index===0) {
+        // first image only
+        return (
+          <img key={index} className="news-image show" src={image} alt=""></img>          
+        )
+      } else {
+        return (
+          <img key={index} className="news-image" src={image} alt=""></img>
+        )
+      }
     }
     var generateRotatorNav = function(image, index){
       if(index === 0) {
@@ -210,18 +219,19 @@ export class NewsCarousel extends React.Component<any, any> {
   }
   componentDidMount() {
     // having to do this due to the fact that images take more time to load and we need to wait until
-    // they have been fully rendered on the page.
-    var interval = setInterval(()=> {
+    // they have been fully rendered on the page.       
+    let interval_links = setInterval(()=>{
       if (helpers.isMounted(this)){
-        if ($('#images-rotator-images').length) {
-          $anchors = $('#images-rotator-nav a');
+        if ($('#view_all').length) {
+          //console.log('#view_all is ready!');
           $images = $('#images-rotator-images .news-image');
-          $arrow = $('#news-rotator-active-arrow');
+          $anchors = $('#images-rotator-nav a');
+          $arrow = $('#news-rotator-active-arrow');          
           $links = $('#news-stories .news-link');
           // console.log('$images:', $images);
-          clearInterval(interval);
+          clearInterval(interval_links);
         }
-      }
+      }      
     },1000);
   }
   render() {

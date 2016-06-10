@@ -42,10 +42,12 @@ export class Spotlight extends React.Component<any, any> {
       'Url'
     ];
     let today = new Date();
+    today.setHours(0,0,0,0); // get rid of the hours, minutes, seconds and milliseconds
     let filter = `((Publish_x0020_Start_x0020_Date le datetime'${today.toISOString()}') 
                   and (Publish_x0020_End_x0020_Date ge datetime'${today.toISOString()}' 
                   or Publish_x0020_End_x0020_Date eq null))`; // today >= start-date AND (today <= end-date OR end-date == null)    
     let service = new DataService();
+    
     service.getListItemsWithFilter('rushnet','Spotlight', columns,filter).then((data:any[])=>{
       let shorten_message = shorten(data[0].Message, 215);
       let spotlight = {
@@ -54,7 +56,7 @@ export class Spotlight extends React.Component<any, any> {
         url: data[0].Url
       };
       
-      // console.log('DATA ', JSON.stringify(data,null,4));
+      // console.log('DATA ', JSON.stringify(data,null,4)); // comment after testing
       this.setState({
         item: spotlight
       })

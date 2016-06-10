@@ -1,6 +1,6 @@
-import {getQueryStringValue} from '../services/shared';
+//import {getQueryStringValue} from '../services/shared';
 import {DataService} from '../services/data-service';
-import {config} from '../services/shared';
+//import {config} from '../services/shared';
 
 /*Parent Component*/
 class ArticleList extends React.Component<any, any> {
@@ -36,11 +36,54 @@ class ArticleList extends React.Component<any, any> {
 
 /*Main App Component*/
 export class PreviewHome extends React.Component<any, any> {
+  isMore:boolean;
+  items;
   constructor(props:any){
     super(props);
+    this.isMore=true;
+    this.items = [];
     this.state = {articleList: []}; // setting initial state
 
   }
+  
+  processResults() {
+    let temp = [];
+    let totalItems = this.items.length; 
+    console.log(`total items ${totalItems}`)
+    let sortedList = [];
+
+    _.map(this.items,(article:any, index)=>{
+      temp.push({
+        id: article.Id,
+        title: article.Title,
+        createdOn: moment(article.Created),
+        file: article.FileLeafRef
+      })
+    })
+
+    sortedList = _.sortBy(temp, (a:any)=>{
+      return a.createdOn;
+    }).reverse();
+    //console.log(JSON.stringify(this.items,null,4));
+    this.setState({articleList: sortedList});
+       
+  }
+  
+  processNextLink(values:any[], nextLink:string) {
+    _.each(values, (o)=>{ this.items.push(o); })
+
+    if(nextLink) {
+      //console.log('getting more data');
+      let service = new DataService();     
+      service.getListItemsWithPagingLink(nextLink).then((nextData:any)=>{
+          this.processNextLink(nextData.values, nextData.nextLink);
+        })
+    } else { 
+      //console.log('total items: ',this.items.length);
+      this.processResults();
+    }    
+  }  
+  
   componentWillMount() {
     //let abs_url = config.abs_url
     let service = new DataService();
@@ -51,29 +94,35 @@ export class PreviewHome extends React.Component<any, any> {
       'Created'
       // 'PublishingPageContent'
     ]
-    let theList = [];
-    let sortedList = [];
-    service.getListItemsTop200('authoring/communications', 'Pages',fields).then((data:any)=>{
-      //console.log(JSON.stringify(data,null,4));
+    //let theList = [];
+    //let sortedList = [];
+    
+    service.getListItemsWithPaging('authoring/communications', 'Pages', fields).then((data:any)=>{
+      this.processNextLink(data.values, data.nextLink);      
+    })    
+    
+    
+    // service.getListItemsTop200('authoring/communications', 'Pages',fields).then((data:any)=>{
+    //   //console.log(JSON.stringify(data,null,4));
 
-      _.map(data,(article:any, index)=>{
-            theList.push({
-              id: article.Id,
-              title: article.Title,
-              createdOn: moment(article.Created),
-              file: article.FileLeafRef
-            })
-      })
+    //   _.map(data,(article:any, index)=>{
+    //         theList.push({
+    //           id: article.Id,
+    //           title: article.Title,
+    //           createdOn: moment(article.Created),
+    //           file: article.FileLeafRef
+    //         })
+    //   })
 
-      sortedList = _.sortBy(theList, (a)=>{
-        return a.createdOn;
-      }).reverse();
-      // console.log(JSON.stringify(theList,null,4));
-      this.setState({articleList: sortedList});
-      // this.setState({
-      //   articleList: theList
-      // });
-    })
+    //   sortedList = _.sortBy(theList, (a)=>{
+    //     return a.createdOn;
+    //   }).reverse();
+    //   // console.log(JSON.stringify(theList,null,4));
+    //   this.setState({articleList: sortedList});
+    //   // this.setState({
+    //   //   articleList: theList
+    //   // });
+    // })
 
   }
   componentDidMount() {
@@ -81,7 +130,7 @@ export class PreviewHome extends React.Component<any, any> {
   render() {
 
     return (
-      <div>
+      <div>        
         <ArticleList list={this.state.articleList} />
       </div>
     );

@@ -35,6 +35,7 @@ export class CSI extends React.Component<any, any> {
       'EncodedAbsUrl'
     ];
     var today = new Date();
+    today.setHours(0,0,0,0); // get rid of the hours, minutes, seconds and milliseconds
     var filter = `((Publish_x0020_Start_x0020_Date le datetime'${today.toISOString()}') 
                   and (Publish_x0020_End_x0020_Date ge datetime'${today.toISOString()}' 
                   or Publish_x0020_End_x0020_Date eq null))`; // today >= start-date AND (today <= end-date OR end-date == null) 
