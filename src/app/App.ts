@@ -97,12 +97,12 @@ class RenderUI {
 					if ($('#O365_MainLink_Logo').length) {
 						$('#O365_MainLink_Logo').html('<a href="/sites/rushnet"><img src="/sites/rushnet/SiteAssets/rushlogo.PNG" class="companyLogo"></a>');
 						$('#O365_MainLink_Logo').attr('style', 'visibility: visible');
-						$('#O365_MainLink_Logo').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
+						$('#O365_MainLink_Logo').attr('href', '/sites/rushnet');
 
 						$('span.o365cs-nav-brandingText').html('<h1>RushNet</h1>'); // Add Intranet Name
 						$('span.o365cs-nav-brandingText').attr('style', 'visibility: visible;');
 
-						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', 'https://rushenterprises.sharepoint.com/sites/rushnet');
+						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').attr('href', '/sites/rushnet');
 						$('a.o365cs-nav-appTitle.o365cs-topnavText.o365button').removeAttr('style');
 						$('span.o365cs-nav-appTitle.o365cs-topnavText').removeAttr('style');
 						$('.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide').removeAttr('style');
