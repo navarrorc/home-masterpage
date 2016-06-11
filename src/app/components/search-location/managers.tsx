@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import {config} from '../../services/shared';
 
@@ -73,7 +75,7 @@ export class Managers extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <Managers />,
       document.getElementById('Managers'));
   }

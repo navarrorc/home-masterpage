@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {StockFeedService} from '../services/stock-feed';
 
 /*Parent Component*/
@@ -79,7 +81,7 @@ export class StockTicker extends React.Component<any, any> {
     );
   }
   show() {
-    React.render(
+    render(
       <StockTicker />,
       document.getElementById('stock-ticker')
     );

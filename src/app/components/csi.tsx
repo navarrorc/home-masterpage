@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 
 /*Parent Component*/
@@ -66,7 +68,7 @@ export class CSI extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <CSI />,
       document.getElementById('csi')
     );

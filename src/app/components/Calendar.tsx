@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {EventFeed} from '../services/event-feed';
 
 declare var $: any;
@@ -168,7 +170,7 @@ export class Calendar extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <Calendar />,
       document.getElementById('fullCalendar'));
   }

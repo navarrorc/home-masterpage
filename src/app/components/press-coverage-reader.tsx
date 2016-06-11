@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {PressService} from '../services/press-coverage';
 
 declare var $: any;
@@ -135,7 +137,7 @@ export class PressCoverageReader extends React.Component<any, any> {
     );
   }
   // show() {
-  //   React.render(
+  //   render(
   //     <PressCoverageReader id={this.props.dataId} className={this.props.dataClass} />,
   //     document.getElementById('press-coverage')
   //   );

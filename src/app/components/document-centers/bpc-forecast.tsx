@@ -1,3 +1,6 @@
+import * as React from 'react';
+import { render } from 'react-dom';
+
 import {DataService} from '../../services/data-service'
 declare var unescape:any;
 /*Parent Component*/
@@ -73,7 +76,7 @@ class Results extends React.Component<any, any> {
     }
     
     let generateResult = function(items, key) {
-      let sortedItems = _.sortByOrder(items,['created'],['desc']);
+      let sortedItems = _.orderBy(items,['created'],['desc']);
       // console.log(`sortedItems ${JSON.stringify(sortedItems,null,4)}`);
       //console.log(key);
       return (
@@ -249,7 +252,7 @@ export class DocCenter_BPCForecast extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <DocCenter_BPCForecast/>,
       document.getElementById('doc-results-bpcforecast')
     );

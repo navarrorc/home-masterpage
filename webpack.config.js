@@ -4,46 +4,43 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var node_modules_dir = path.join(__dirname, 'node_modules');
+var remoteDirDEV = '//rushnetrcn.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets/DEV'; // Dev Rushnet
 
 var config = {
+  // debug: true,
   cache: true,
+  // noInfo: false,
+  devtool: 'source-map',
   context: path.resolve('./src/app'),
   entry: {
-    app: './app.ts',
-    //vendors: ['feedparser', 'request']
-    vendors: []
+   // https://github.com/github/fetch Promise and fetch for older browsers (IE 11)
+    // app: ['es6-promise','whatwg-fetch','./app'], // app.ts?x
+    app: ['./app'], // app.ts?x
+    vendor: [
+        'react', 
+        'react-dom',
+        'lodash',
+        'q',
+      ]
   },
+  target: 'web',
   output: {
-    path: path.resolve('builds/dev'), // destination of bundle.js
-    publicPath: '/builds/assets/',
+    path: remoteDirDEV, //path.resolve('builds/dev'), // destination of bundle.js
+    // publicPath: '/builds/assets/', // not used
     filename: 'bundle.js'
   },
-  // node: { // this is for feedparser
-  //   fs: 'empty',
-  //   net: 'empty',
-  //   tls: 'empty'
-  // },
   devServer: {
     contentBase: 'public'
   },
-  /**
-  * Turn on sourcemap
-  **/
-  //devtool: 'source-map',
-  devtool: 'eval-source-map',
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js','.json']
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js')
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendors.js')
   ],
-  module: {
-    // noParse: [
-    //   node_modules_dir + '/feedparser',
-    //   node_modules_dir + '/response'
-    // ],    
+  module: {       
     loaders: [
       /**
       * Json
@@ -69,14 +66,6 @@ var config = {
         //exclude: [/node_modules/, /test/],
         loader: 'ts-loader'
       },
-      /**
-      * CSS
-      **/
-      // {
-      //   test: /\.css$/,
-      //   exclude: /node_modules/,
-      //   loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader')
-      // },
       /**
       * SCSS
       **/

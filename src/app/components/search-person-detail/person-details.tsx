@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {getQueryStringValue} from '../../services/shared';
 import {UserProfile} from '../../services/user-profile';
 
@@ -218,7 +220,7 @@ export class PersonDetails extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <PersonDetails />,
       document.getElementById('profileData')
     );
