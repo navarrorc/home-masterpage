@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../services/data-service');
 import helpers = require('./helpers');
 import {AlertsToasterMessage} from './alerts-toaster-message';
@@ -60,7 +62,7 @@ export class AlertsNotification extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <AlertsNotification />,
       document.getElementById('alerts-notification'));
   }

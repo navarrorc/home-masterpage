@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import helpers = require('../helpers');
 import {config} from '../../services/shared';

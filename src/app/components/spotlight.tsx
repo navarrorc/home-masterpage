@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 
 function shorten(text, maxLength) {
@@ -70,7 +72,7 @@ export class Spotlight extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <Spotlight />,
       document.getElementById('spotlight')
     );

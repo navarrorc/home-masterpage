@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 //import {getQueryStringValue} from '../services/shared';
 import {DataService} from '../services/data-service';
 //import {config} from '../services/shared';
@@ -136,7 +138,7 @@ export class PreviewHome extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <PreviewHome />,
       document.getElementById('ArticleList')
     );

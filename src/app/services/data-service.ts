@@ -1,3 +1,5 @@
+import * as Q from 'q';
+
 // declare var _spPageContextInfo:any;
 export class DataService { 
   // baseUrl: string;

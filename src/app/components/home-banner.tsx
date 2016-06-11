@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 
 /*Parent Component*/
@@ -54,7 +56,7 @@ export class HomeBanner extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <HomeBanner />,
       document.getElementById('home-banner')
     );

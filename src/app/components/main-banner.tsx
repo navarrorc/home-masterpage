@@ -1,4 +1,5 @@
-//import React = require('react');
+import * as React from 'react';
+import { render } from 'react-dom';
 
 interface bannerProps {
   // TODO: create properties for MainBanner Component to use
@@ -17,7 +18,7 @@ export class MainBanner extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <MainBanner />,
       document.querySelector('.mainBanner'));
   }

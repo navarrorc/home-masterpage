@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import {config} from '../../services/shared';
 
@@ -10,7 +12,7 @@ export class BenefitsTeam extends React.Component<any, any> {
     var service = new api.DataService();
     var listColumns = ['Title','Telephone','Region','Popup', 'Classification_List', 'Domain'];
     service.getListItems('hr', 'Benefits Team', listColumns).then((data:any)=>{
-      // console.info(JSON.stringify(data));
+      console.info(JSON.stringify(data));
 
       let grouped = _.groupBy(data, 'Classification_List');
 
@@ -56,7 +58,7 @@ export class BenefitsTeam extends React.Component<any, any> {
     </div>
   }
   showComponent() {
-    React.render(
+    render(
       <BenefitsTeam />,
       document.getElementById('benefitsTeam'));
   }

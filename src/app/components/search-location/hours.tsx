@@ -14,6 +14,8 @@ interface EntryHours{
   ldEndTime:string
 }
 
+import * as React from 'react';
+import { render } from 'react-dom';
 export class Hours extends React.Component<any, any> {
   constructor(props: any){
     super(props);
@@ -35,7 +37,7 @@ export class Hours extends React.Component<any, any> {
 
     service.getListItemsWithFilter('rushnet', 'LocationHours', listColumns, 'ldBranchCode eq ' + branchCode).then((data:any)=>{
 
-      data = _.sortByOrder(data, ['ldLocationService'], ['asc']);
+      data = _.orderBy(data, ['ldLocationService'], ['asc']);
       // map data from Ajax call to fit the Link type [{title: 'link', ld: 1}, ...]
       var index:number = -1;
       var lastService:string = '';
@@ -107,7 +109,7 @@ export class Hours extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <Hours />,
       document.getElementById('location-hours'));
   }

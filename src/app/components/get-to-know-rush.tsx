@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 import {config} from '../services/shared';
 
@@ -69,7 +71,7 @@ export class KnowRush extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <KnowRush />,
       document.getElementById('knowRush')
     );

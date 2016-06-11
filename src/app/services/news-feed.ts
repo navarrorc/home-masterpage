@@ -1,3 +1,4 @@
+import * as Q from 'q';
 import {getJson, SearchResults} from './shared';
 
 let articleRootUrl = '/sites/newshub/company-news';

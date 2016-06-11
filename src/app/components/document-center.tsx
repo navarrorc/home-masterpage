@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 declare var unescape:any;
 /*Parent Component*/
@@ -73,7 +75,7 @@ class Results extends React.Component<any, any> {
     }
     
     let generateResult = function(items, key) {
-      let sortedItems = _.sortByOrder(items,['name'],['asc']);
+      let sortedItems = _.orderBy(items,['name'],['asc']);
       //console.log(key);
       return (
         <div className="col-xs-6">
@@ -126,7 +128,7 @@ export class DocumentCenter extends React.Component<any, any> {
       let classificationMap = [];
       let tempArray;
 
-      let unique = _.uniq(this.items, (x:any)=>{
+      let unique = _.uniqBy(this.items, (x:any)=>{
           return x.Classification.TermGuid;                 
       })
       let count = 0;
@@ -164,7 +166,7 @@ export class DocumentCenter extends React.Component<any, any> {
               });
               
               // if (index == totalItems - 1) {
-                let sorted = _.sortByOrder(temp, ['classificationName'], ['asc']);
+                let sorted = _.orderBy(temp, ['classificationName'], ['asc']);
                 let grouped = _.groupBy(sorted, 'classificationName');
                 /***Ready to setState ***/
                 this.setState({
@@ -229,7 +231,7 @@ export class DocumentCenter extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <DocumentCenter />,
       document.getElementById('doc-results')
     );

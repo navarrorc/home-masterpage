@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../services/data-service');
 import {config} from '../services/shared';
 
@@ -26,7 +28,7 @@ export class FooterLinks extends React.Component<any, any> {
 
     service.getListItems('rushnet', 'Footer_Links', listColumns).then((data:any)=>{
 
-      data = _.sortByOrder(data, ['Position'], ['asc']);
+      data = _.orderBy(data, ['Position'], ['asc']);
 
       // map data from Ajax call to fit the Link type [{title: 'link', id: 1}, ...]
       _.map(data,(n:any)=>{
@@ -103,7 +105,7 @@ export class FooterLinks extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <FooterLinks />,
       document.getElementById('ftr'));
   }

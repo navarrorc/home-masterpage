@@ -54,32 +54,6 @@ import {Spotlight} from './components/spotlight';
 import {HomeBanner} from './components/home-banner';
 import {DocumentCenter} from './components/document-center';
 import {DocCenter_BPCForecast} from './components/document-centers/bpc-forecast';
-// import {} from './services/DataService'; //TODO: remove after testing
-
-
-//*****TEST********//
-var getTerm = function (id) {
-  var scriptbase = _spPageContextInfo.webServerRelativeUrl + "/_layouts/15/";      
-
-  function getTerm()
-  {
-      var context = SP.ClientContext.get_current();         
-      var taxSession = SP.Taxonomy.TaxonomySession.getTaxonomySession(context);  
-      var term=taxSession.getTerm(id);
-      context.load(term);
-      context.executeQueryAsync(function() {
-            console.log(term.get_name());
-          },
-          function() {
-            console.log('failed!');
-          });
-  }
-
-  $.getScript(scriptbase + "SP.Taxonomy.js", getTerm);   
-  
-};
-//********TEST*******//
-
 
 // CSS Dependencies
 /*
