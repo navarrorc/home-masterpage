@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import {DataService} from '../services/data-service'
+import {DataService} from '../services/data-service';
+import { fileImages } from '../services/shared';
 declare var unescape:any;
 /*Parent Component*/
 class Parent extends React.Component<any, any> {
@@ -47,12 +48,13 @@ class Results extends React.Component<any, any> {
       //console.log(pieces);
       let fileExtension = pieces[pieces.length-1];
       //console.log(fileExtension);
-      let fileImages = [
-        {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
-        {key: 'docx', value:'_layouts/15/images/icdocx.png'},
-        {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
-        {key: 'pptx', value: '/_layouts/15/images/icpptx.png'}
-      ]      
+      // let fileImages = [
+      //   {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
+      //   {key: 'docx', value:'_layouts/15/images/icdocx.png'},
+      //   {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
+      //   {key: 'pptx', value: '/_layouts/15/images/icpptx.png'},
+      //   {key: 'xlsm', value: '/_layouts/15/images/icxlsm.png'}
+      // ]      
       
       let imageUrl;
       _.each(fileImages, (i)=>{
