@@ -19,6 +19,7 @@ var config = {
     vendor: [
         'react', 
         'react-dom',
+        'react-modal',
         'lodash',
         'q',
       ]
