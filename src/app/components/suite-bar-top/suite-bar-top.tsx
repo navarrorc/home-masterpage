@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import ProfileImage = require('./profile-image');
 import TopLinks = require('./top-links');
@@ -37,14 +39,14 @@ export function showComponents() {
   SP.SOD.executeOrDelayUntilScriptLoaded(() => {
     var interval = setInterval(()=> { // wait 1 second before executing
       if ($('div.o365cs-me-tile-nophoto-username-container').length) {
-        React.render(<SuiteBarTop />, document.querySelector('div.o365cs-me-tile-nophoto-username-container'));
-        React.render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
+        render(<SuiteBarTop />, document.querySelector('div.o365cs-me-tile-nophoto-username-container'));
+        render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
         // see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
         clearInterval(interval);
       }
       if ($('div.o365cs-me-tileimg').length) {
         // Applys to Nana Aikins and Office 365 Administrators
-        React.render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
+        render(<TopLinks />, document.querySelector('div.o365cs-nav-centerAlign'));
         // see: http://stackoverflow.com/questions/25773668/react-js-render-components-at-different-locations
 
         clearInterval(interval);

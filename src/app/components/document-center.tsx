@@ -1,4 +1,7 @@
-import {DataService} from '../services/data-service'
+import * as React from 'react';
+import { render } from 'react-dom';
+import {DataService} from '../services/data-service';
+import { fileImages } from '../services/shared';
 declare var unescape:any;
 /*Parent Component*/
 class Parent extends React.Component<any, any> {
@@ -45,12 +48,13 @@ class Results extends React.Component<any, any> {
       //console.log(pieces);
       let fileExtension = pieces[pieces.length-1];
       //console.log(fileExtension);
-      let fileImages = [
-        {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
-        {key: 'docx', value:'_layouts/15/images/icdocx.png'},
-        {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
-        {key: 'pptx', value: '/_layouts/15/images/icpptx.png'}
-      ]      
+      // let fileImages = [
+      //   {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
+      //   {key: 'docx', value:'_layouts/15/images/icdocx.png'},
+      //   {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
+      //   {key: 'pptx', value: '/_layouts/15/images/icpptx.png'},
+      //   {key: 'xlsm', value: '/_layouts/15/images/icxlsm.png'}
+      // ]      
       
       let imageUrl;
       _.each(fileImages, (i)=>{
@@ -73,7 +77,7 @@ class Results extends React.Component<any, any> {
     }
     
     let generateResult = function(items, key) {
-      let sortedItems = _.sortByOrder(items,['name'],['asc']);
+      let sortedItems = _.orderBy(items,['name'],['asc']);
       //console.log(key);
       return (
         <div className="col-xs-6">
@@ -126,7 +130,7 @@ export class DocumentCenter extends React.Component<any, any> {
       let classificationMap = [];
       let tempArray;
 
-      let unique = _.uniq(this.items, (x:any)=>{
+      let unique = _.uniqBy(this.items, (x:any)=>{
           return x.Classification.TermGuid;                 
       })
       let count = 0;
@@ -164,7 +168,7 @@ export class DocumentCenter extends React.Component<any, any> {
               });
               
               // if (index == totalItems - 1) {
-                let sorted = _.sortByOrder(temp, ['classificationName'], ['asc']);
+                let sorted = _.orderBy(temp, ['classificationName'], ['asc']);
                 let grouped = _.groupBy(sorted, 'classificationName');
                 /***Ready to setState ***/
                 this.setState({
@@ -229,7 +233,7 @@ export class DocumentCenter extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <DocumentCenter />,
       document.getElementById('doc-results')
     );

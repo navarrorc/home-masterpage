@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import {config} from '../../services/shared';
 
@@ -45,7 +47,7 @@ export class HelpLinkList extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <HelpLinkList />,
       document.getElementById('helpLinkList'));
   }

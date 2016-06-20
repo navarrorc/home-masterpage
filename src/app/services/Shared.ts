@@ -55,3 +55,11 @@ export function getQueryStringValue (key) {
         new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + 
             "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 }
+
+export var fileImages = [
+        {key: 'pdf', value:'/_layouts/15/images/lg_icpdf.png'},
+        {key: 'docx', value:'_layouts/15/images/lg_icdocx.png'},
+        {key: 'xlsx', value: '_layouts/15/images/lg_icxlsx.png'},
+        {key: 'pptx', value: '/_layouts/15/images/lg_icpptx.png'},
+        {key: 'xlsm', value: '/_layouts/15/images/lg_icxlsm.png'}
+]

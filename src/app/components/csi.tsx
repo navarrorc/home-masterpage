@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../services/data-service'
 
 /*Parent Component*/
@@ -6,12 +8,14 @@ class Image extends React.Component<any, any> {
     super(props);
   }
   render() {
+    let title = this.props.item.title,
+        imageURL = this.props.item.imageURL;
     return(
       <div className="panel clearfix" style={{height:"352px"}}>
-        <h1>Customer Satisfaction Index</h1>
+        <h1>{title}</h1>
         <div className="">          
           <div className="content">          
-            <img src={this.props.item.imageURL} 
+            <img src={imageURL} 
                   style={{maxWidth:"none"}}>
             </img>
           </div>
@@ -32,7 +36,8 @@ export class CSI extends React.Component<any, any> {
     var columns = [
       'Publish_x0020_Start_x0020_Date',
       'Publish_x0020_End_x0020_Date',
-      'EncodedAbsUrl'
+      'EncodedAbsUrl',
+      'Title_Text'
     ];
     var today = new Date();
     today.setHours(0,0,0,0); // get rid of the hours, minutes, seconds and milliseconds
@@ -48,6 +53,7 @@ export class CSI extends React.Component<any, any> {
       let start = new Date(data[0].Publish_x0020_Start_x0020_Date),
           end = data[0].Publish_x0020_End_x0020_Date?new Date(data[0].Publish_x0020_End_x0020_Date):null;
       activeImage = {
+        title: data[0].Title_Text,
         start: start,
         end: end,
         imageURL: data[0].EncodedAbsUrl
@@ -66,7 +72,7 @@ export class CSI extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <CSI />,
       document.getElementById('csi')
     );

@@ -5,10 +5,13 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-    "jquery/jquery.d.ts": {
-      "commit": "5f480287834a2615274eea31574b713e64decf17"
+    "react/react.d.ts": {
+      "commit": "1315d46f8066eec8c197914da88e98629ebc2254"
     },
-    "angularjs/angular.d.ts": {
+    "react/react-dom.d.ts": {
+      "commit": "816f03f3e4a97c0f4b5dd12bb1302a1d3b8b9f7c"
+    },
+    "jquery/jquery.d.ts": {
       "commit": "5f480287834a2615274eea31574b713e64decf17"
     },
     "mocha/mocha.d.ts": {
@@ -26,22 +29,13 @@
     "microsoft-ajax/microsoft.ajax.d.ts": {
       "commit": "6f6e5c7dd9effe21fee14eb65fe340ecbbc8580a"
     },
-    "react/react.d.ts": {
-      "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
-    },
     "node/node.d.ts": {
       "commit": "09e37435ffb2c56a6f908081194a74756f24f99d"
-    },
-    "lodash/lodash.d.ts": {
-      "commit": "ffceea9dd124d277c4597c7bd12930666ec074c5"
     },
     "flux/flux.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
     },
     "object-assign/object-assign.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
-    },
-    "react/react-global.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
     },
     "moment/moment.d.ts": {
@@ -67,6 +61,12 @@
     },
     "expect/expect.d.ts": {
       "commit": "ce8ae773688d2244ba11fdf3378fcd68f773e1c4"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "f481e77dfca5a146db1b4f5f20f15929b30c8729"
+    },
+    "react-modal/react-modal.d.ts": {
+      "commit": "1315d46f8066eec8c197914da88e98629ebc2254"
     }
   }
 }

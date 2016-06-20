@@ -1,5 +1,9 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {DataService} from '../../services/data-service'
+import { fileImages } from '../../services/shared';
 declare var unescape:any;
+
 /*Parent Component*/
 class Parent extends React.Component<any, any> {
   constructor(props:any){
@@ -45,12 +49,13 @@ class Results extends React.Component<any, any> {
       //console.log(pieces);
       let fileExtension = pieces[pieces.length-1];
       //console.log(fileExtension);
-      let fileImages = [
-        {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
-        {key: 'docx', value:'_layouts/15/images/icdocx.png'},
-        {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
-        {key: 'pptx', value: '/_layouts/15/images/icpptx.png'}
-      ]      
+      // let fileImages = [
+      //   {key: 'pdf', value:'/_layouts/15/images/icpdf.png'},
+      //   {key: 'docx', value:'_layouts/15/images/icdocx.png'},
+      //   {key: 'xlsx', value: '_layouts/15/images/icxlsx.png'},
+      //   {key: 'pptx', value: '/_layouts/15/images/icpptx.png'},
+      //   {key: 'xlsm', value: '/_layouts/15/images/icxlsm.png'}
+      // ]      
       
       let imageUrl;
       _.each(fileImages, (i)=>{
@@ -73,7 +78,7 @@ class Results extends React.Component<any, any> {
     }
     
     let generateResult = function(items, key) {
-      let sortedItems = _.sortByOrder(items,['created'],['desc']);
+      let sortedItems = _.orderBy(items,['created'],['desc']);
       // console.log(`sortedItems ${JSON.stringify(sortedItems,null,4)}`);
       //console.log(key);
       return (
@@ -249,7 +254,7 @@ export class DocCenter_BPCForecast extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <DocCenter_BPCForecast/>,
       document.getElementById('doc-results-bpcforecast')
     );

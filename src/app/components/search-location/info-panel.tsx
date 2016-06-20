@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import api = require('../../services/data-service');
 import {config} from '../../services/shared';
 declare var google_maps: any;
@@ -124,7 +126,7 @@ export class InfoPanel extends React.Component<any, any> {
     )
   }
   showComponent() {
-    React.render(
+    render(
       <InfoPanel />,
       document.getElementById('InfoPanel'));
   }

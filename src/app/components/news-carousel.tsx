@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { render } from 'react-dom';
 import {PressCoverageReader} from './press-coverage-reader';
 import {NewsFeed} from '../services/news-feed';
 import helpers = require('./helpers');
@@ -244,7 +246,7 @@ export class NewsCarousel extends React.Component<any, any> {
     );
   }
   showComponent() {
-    React.render(
+    render(
       <NewsCarousel />,
       document.getElementById('news-rotator')
     );
