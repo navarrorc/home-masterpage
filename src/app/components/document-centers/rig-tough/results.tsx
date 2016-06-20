@@ -13,10 +13,10 @@ const customStyles = {
         border: 'solid 2px red',
         width:0,
         height:0,
-        // top               : 0,
-        // left              : 0,
-        // right             : 0,
-        // bottom            : 0,
+        top               : 0,
+        left              : 0,
+        right             : 0,
+        bottom            : 0,
         backgroundColor   : 'rgba(255, 255, 255, 0.75)',
         zIndex: 100,       
     },
@@ -27,15 +27,28 @@ const customStyles = {
             bottom                : 'auto',
             marginRight           : '-50%',
             transform             : 'translate(25%, -90%)',
-            backgroundColor: 'transparent',
-            border: 0
+            backgroundColor: 'rgba(220, 220, 220, 0.74902)',
+            // padding: 0,
+            overflowY:'hidden',
+            overflowX:'hidden',
+            border: 0,
+            borderRadius:16
+            //border:  '1px solid #ccc',
         }
 }
+
+/**
+ * detect IE
+ * This returns true for any version of Internet Explorer
+ */
+function isIE(userAgent=navigator.userAgent) {
+  return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
+}
+
 
 /***
  * Child Component
  */
-
 interface StateValues{
   isModalOpen?: boolean,
   isImageReady?: boolean,
@@ -48,32 +61,45 @@ export class Results extends React.Component<any, StateValues> {
     constructor(props:any) {
         super(props);
         this.state = { isModalOpen: false, isImageReady: false, isImageLoadingError: false };
-        
-        /* Do the binding here to gain performance by Cory House (Pluralsight)*/
-        this.handleItemClick = this.handleItemClick.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
-        this.imageLoaded = this.imageLoaded.bind(this);
-        this.imageLoadError = this.imageLoadError.bind(this);
     }
 
     /**
      * Events Handlers
+     * Using Arrow functions to avoid having to bind 'this'
      */
-    handleItemClick(document) {      
-        this.setState({
-            isModalOpen: true,
-            isImageReady: false,
-            document
-        })
-    }
-    handleMouseEnter(document, evt) {
-        // console.log(evt);
+    handleItemClick = (evt, document) => {      
         let mouseX = evt.clientX,
             mouseY = evt.clientY;
+        // console.log(mouseX, mouseY);
         
-        console.log(mouseX, mouseY);
+        if (this.state.isModalOpen && _.isEqual(document, this.state.document)){
+            this.setState( {
+                // isImageReady: true,
+                mouseX,
+                mouseY
+            })
+            return;
+        }
+
+        this.setState( {
+            isModalOpen: true,
+            isImageReady: false, // TODO: fix!
+            isImageLoadingError: false,
+            document,
+            mouseX,
+            mouseY
+        })
+        // console.log(evt);
+        evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
+    }
+    handleMouseEnter = (evt, document)=> {
+        if (isIE())
+            return;
         
+        let mouseX = evt.clientX,
+            mouseY = evt.clientY;
+        // console.log(mouseX, mouseY);
+ 
         this.setState( {
             isModalOpen: true,
             isImageReady: false,
@@ -83,21 +109,26 @@ export class Results extends React.Component<any, StateValues> {
             mouseY
         })
     }
-    handleMouseLeave(){
+    handleMouseLeave = () => {
+        this.setState( {
+            isModalOpen: false,
+            isImageReady: false, // TODO: fix!
+            isImageLoadingError: false,
+        })
+    }
+    handleModalRequestClose = () => {
         this.setState({ isModalOpen:false })
     }
-    handleModalRequestClose(){
-        this.setState({ isModalOpen:false })
-    }
-    handleCloseModalClick() {
+    handleCloseModalClick = (evt) => {
         this.setState({ isModalOpen: false });
+        evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
     }
-    imageLoaded() {
-        console.log('image loaded!');
+    imageLoaded = () => {
+        // console.log('image loaded!');
         this.setState({ isImageReady: true })
     }
-    imageLoadError() {
-        console.log('image load error!');
+    imageLoadError = () => {
+        // console.log('image load error!');
         this.setState({ isImageReady:true, isImageLoadingError:true })
     }
     /**
@@ -108,9 +139,26 @@ export class Results extends React.Component<any, StateValues> {
             return null
         
         let ready = this.state.isImageReady;
-        return <div style={{ textAlign: 'center', position:'absolute', top:200,left:74 }}>
-                    <i className="fa fa-spinner fa-pulse" style={{ display: ready? 'none': 'inline-block' , textAlign: 'center', width: '1.28571429em', fontSize: '3em' }}></i>
-                    <span style={{ display: 'block' }}>{ready ? '' : 'Generating Preview...'}</span>
+        return <div style={{ 
+                        display:'flex',
+                        flexDirection:'column',
+                        justifyContent:'center',
+                        alignItems: 'center',
+                        position:'absolute', 
+                        top:67,
+                        left:23,
+                        width:'84%',
+                        height:'78%',
+                        borderBottomLeftRadius:3,
+                        borderBottomRightRadius:3,
+                        backgroundColor:'rgba(255, 255, 255, 1)' 
+                    }}>
+                    <i className="fa fa-spinner fa-pulse" style={{ 
+                        textAlign: 'center',
+                        display: 'inline-block' , 
+                        width: '1.28571429em', 
+                        fontSize: '2em' 
+                    }}></i>
                 </div>
     }
     renderNoPreviewAvailable(){
@@ -118,8 +166,25 @@ export class Results extends React.Component<any, StateValues> {
             return null
         
         let imageError = this.state.isImageLoadingError;
-        return <div style={{ textAlign: 'center', position:'absolute', top:200,left:74}}>
-                    <span style={{ display: 'block' }}>{imageError? 'No preview available.': ''}</span>
+        return <div style={{ 
+            	            display:'flex',
+                            flexDirection:'column',
+                            justifyContent:'center',
+                            alignItems: 'center',
+                            position:'absolute', 
+                            top:67,
+                            left:23,
+                            width:'84%',
+                            height:'78%',
+                            backgroundColor:'rgba(255, 255, 255, 1)',
+                            //height:348,
+                            //width:248,
+                            borderBottomLeftRadius:3,
+                            borderBottomRightRadius:3
+                    }}>
+                    <span style={{ 
+                        display: 'block' 
+                    }}>No preview available.</span>
                 </div>
 
     }
@@ -154,51 +219,49 @@ export class Results extends React.Component<any, StateValues> {
         let tempX = mouseX - bodyOffsets.left;
         let tempY = mouseY - bodyOffsets.top;
         setTimeout( ()=>{
-            console.log('inside setTimeout()');
             /**jQuery */
             // TODO: get rid of this and find a better Reactive way.
             $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
         },100);
 
         return <div>                
-                <div style={
-                    {
-                        backgroundColor: '#000', 
-                        color: '#fff', 
+                <div style={{
+                        backgroundColor: '#ccc', 
+                        color: '#000', 
                         textAlign:'center',
+                        border: '1px solid #ccc',
                         borderTopLeftRadius: 3, 
-                        borderTopRightRadius: 3
-                    }
-                }>
+                        borderTopRightRadius: 3,
+                    }}>
                     <strong>{name}</strong>
                 </div>                
                 <div>
                     {this.renderSpinner()}
                     {this.renderNoPreviewAvailable()}
                     <img onLoad={this.imageLoaded} onError={this.imageLoadError} 
-                        style={
-                            {
-                                backgroundColor: '#000',
-                                border: 'solid 2px #000', 
-                                borderTop: 0,
+                        style={{
+                                backgroundColor: '#fff',
+                                border: '1px solid #ccc', 
+                                // borderTop: 0,
                                 minHeight:350, 
                                 minWidth:250,
+                                maxWidth:270,
                                 borderBottomLeftRadius: 3, 
                                 borderBottomRightRadius: 3
-                            }
-                        }
-                     src={strDocUrl} alt="Preview Image" />
+                        }}
+                     src={strDocUrl} alt="Preview Image" />                     
                 </div>   
-                <div style={{height:36}}></div>           
             </div>
+
+            // <div style={{height:36}}></div> 
         // return <div>
         //         <h2 style={{textAlign:'center'}}>{name}</h2>
         //         <div id="OpenRelativeCard" style={{margintLeft: 10}}>
         //             <iframe src={strDocUrl} id="LSViewDocInTask" style={{width:700, height:800}}></iframe>
         //         </div>
-        //         <button type="button" onClick={this.handleCloseModalClick.bind(this)}>
-        //             Close
-        //         </button>
+                    // <button type="button" onClick={this.handleCloseModalClick}>
+                    //     Close
+                    // </button>
         //     </div>
     }
 
@@ -259,14 +322,12 @@ export class Results extends React.Component<any, StateValues> {
                 <div className="row margin-bottom-20">
                     {_.map(groupedItems, this.generateResult) }
                 </div>
-                <Modal isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose.bind(this)}
+                <Modal ref="modal" isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose}
                     style={customStyles} >                    
                     {this.renderModal()}
-                    
-                    <div className="hover-arrow"></div>
-                    
                 </Modal>
             </div>
+            //<div className="hover-arrow"></div>
     }
 }
 
@@ -282,13 +343,13 @@ interface PropsValue {
     onMouseLeave:any
 }
 const PreviewButton = (props: PropsValue) => {
-    let handleClick = () => {
+    let handleClick = (evt) => {
         if (props.onClick) {
             let document = {
                 name: props.fullName,
                 url: props.fileUrl
             }
-            props.onClick(document);
+            props.onClick(evt,document);
         }
     }
 
@@ -298,7 +359,7 @@ const PreviewButton = (props: PropsValue) => {
                 name: props.fullName,
                 url: props.fileUrl
             }
-            props.onMouseEnter(document,evt);
+            props.onMouseEnter(evt,document);
         }
     }
 
@@ -310,8 +371,15 @@ const PreviewButton = (props: PropsValue) => {
     
     return	<div style={{ display:'inline-block', marginRight:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
                 <a title={props.fullName} style={{border:0, color:'#000'}} href="#">
-                    <img style={{ position: 'relative', top: 5, marginRight: 2 }} src={props.imageUrl}></img>
+                    <img style={{ 
+                            position: 'relative', 
+                            top: 5, 
+                            marginRight: 2 
+                        }} 
+                        src={props.imageUrl}>
+                    </img>
                 </a>
+                <i className="fa fa-search doc-preview-icon" aria-hidden="true"></i>
         </div>    
 
     // return	<div style={{ display:'inline-block', marginLeft:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>

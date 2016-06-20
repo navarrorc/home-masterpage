@@ -42,31 +42,9 @@
 
 @import "partials/overrides";
 
-
-// .hover-arrowBorder
-// {
-//     border-width:15px;
-//     border-style:solid;
-//     /* [ReplaceColor(themeColor:"DialogBorder")] */ border-color:#d1d1d1 transparent transparent transparent;
-//     height:0px;
-//     width:0px;
-//     position:fixed;
-//     left:100px;
-//     // z-index:100;
-//     bottom: -30px;
-//     //transform: translate(0, 1460%);
-// }
-
-.hover-arrow
-{
-    border-width:15px;
-    border-style:solid;
-    border-color:#000 transparent transparent transparent;
-    height:0px;
-    width:0px;
-    position:absolute;
-    left:130px;
-    // z-index:100;
-    bottom: 32px;
-    //transform: translate(0, 1460%);
+.doc-preview-icon {
+    position: absolute;
+    left: 56px;
+    cursor: pointer;
+    background-color: #fff;
 }
