@@ -9,95 +9,260 @@ declare var unescape: any;
 
 const customStyles = {
     overlay : {
-        position          : 'absolute',
+        // position          : 'absolute',
+        border: 'solid 2px red',
+        width:0,
+        height:0,
         top               : 0,
         left              : 0,
         right             : 0,
         bottom            : 0,
         backgroundColor   : 'rgba(255, 255, 255, 0.75)',
-        //backgroundColor: 'red',
-        zIndex: 100
+        zIndex: 100,       
     },
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    }
+    content : {    
+            top                   : -500,
+            left                  : -500,
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(25%, -90%)',
+            backgroundColor: 'rgba(220, 220, 220, 0.74902)',
+            // padding: 0,
+            overflowY:'hidden',
+            overflowX:'hidden',
+            border: 0,
+            borderRadius:16
+            //border:  '1px solid #ccc',
+        }
 }
+
+/**
+ * detect IE
+ * This returns true for any version of Internet Explorer
+ */
+function isIE(userAgent=navigator.userAgent) {
+  return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
+}
+
 
 /***
  * Child Component
  */
-// export const Results = (props)=> {
-export class Results extends React.Component<any, any> {
+interface StateValues{
+  isModalOpen?: boolean,
+  isImageReady?: boolean,
+  isImageLoadingError?: boolean,
+  document?: {name:string, url:string},
+  mouseX?: number,
+  mouseY?: number 
+}
+export class Results extends React.Component<any, StateValues> {
     constructor(props:any) {
         super(props);
-        //this.state = { modalIsOpen: false }
-        this.state = {};
-        
-        /* Do the binding here to gain performance by Cory House (Pluralsight)*/
-        this.handleItemClick = this.handleItemClick.bind(this);
+        this.state = { isModalOpen: false, isImageReady: false, isImageLoadingError: false };
     }
 
     /**
      * Events Handlers
+     * Using Arrow functions to avoid having to bind 'this'
      */
-    handleItemClick(document) {
-        // console.log(evt);
-        // let xPosition = evt.clientX,
-        //     yPosition = evt.clientY;
+    handleItemClick = (evt, document) => {      
+        let mouseX = evt.clientX,
+            mouseY = evt.clientY;
+        // console.log(mouseX, mouseY);
         
+        if (this.state.isModalOpen && _.isEqual(document, this.state.document)){
+            this.setState( {
+                // isImageReady: true,
+                mouseX,
+                mouseY
+            })
+            return;
+        }
+
         this.setState( {
             isModalOpen: true,
-            document
+            isImageReady: false, // TODO: fix!
+            isImageLoadingError: false,
+            document,
+            mouseX,
+            mouseY
+        })
+        // console.log(evt);
+        evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
+    }
+    handleMouseEnter = (evt, document)=> {
+        if (isIE())
+            return;
+        
+        let mouseX = evt.clientX,
+            mouseY = evt.clientY;
+        // console.log(mouseX, mouseY);
+ 
+        this.setState( {
+            isModalOpen: true,
+            isImageReady: false,
+            isImageLoadingError: false,
+            document,
+            mouseX,
+            mouseY
         })
     }
-    handleModalRequestClose(){
+    handleMouseLeave = () => {
+        this.setState( {
+            isModalOpen: false,
+            isImageReady: false, // TODO: fix!
+            isImageLoadingError: false,
+        })
+    }
+    handleModalRequestClose = () => {
         this.setState({ isModalOpen:false })
     }
-    handleCloseModalClick() {
+    handleCloseModalClick = (evt) => {
         this.setState({ isModalOpen: false });
+        evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
+    }
+    imageLoaded = () => {
+        // console.log('image loaded!');
+        this.setState({ isImageReady: true })
+    }
+    imageLoadError = () => {
+        // console.log('image load error!');
+        this.setState({ isImageReady:true, isImageLoadingError:true })
     }
     /**
      * Methods
      */
+    renderSpinner() {
+        if (this.state.isImageReady)
+            return null
+        
+        let ready = this.state.isImageReady;
+        return <div style={{ 
+                        display:'flex',
+                        flexDirection:'column',
+                        justifyContent:'center',
+                        alignItems: 'center',
+                        position:'absolute', 
+                        top:67,
+                        left:23,
+                        width:'84%',
+                        height:'78%',
+                        borderBottomLeftRadius:3,
+                        borderBottomRightRadius:3,
+                        backgroundColor:'rgba(255, 255, 255, 1)' 
+                    }}>
+                    <i className="fa fa-spinner fa-pulse" style={{ 
+                        textAlign: 'center',
+                        display: 'inline-block' , 
+                        width: '1.28571429em', 
+                        fontSize: '2em' 
+                    }}></i>
+                </div>
+    }
+    renderNoPreviewAvailable(){
+        if (!this.state.isImageLoadingError)
+            return null
+        
+        let imageError = this.state.isImageLoadingError;
+        return <div style={{ 
+            	            display:'flex',
+                            flexDirection:'column',
+                            justifyContent:'center',
+                            alignItems: 'center',
+                            position:'absolute', 
+                            top:67,
+                            left:23,
+                            width:'84%',
+                            height:'78%',
+                            backgroundColor:'rgba(255, 255, 255, 1)',
+                            //height:348,
+                            //width:248,
+                            borderBottomLeftRadius:3,
+                            borderBottomRightRadius:3
+                    }}>
+                    <span style={{ 
+                        display: 'block' 
+                    }}>No preview available.</span>
+                </div>
+
+    }
     renderModal() {
         if (!this.state.isModalOpen) {
             return null;
         }
-        let name = this.state.document.name;
-        let url = this.state.document.url;
 
-        // let encodedUri = encodeURI(url);
-        // console.log(encodedUri);
+        let absoluteUrl = _spPageContextInfo.webAbsoluteUrl;
+        let name = this.state.document.name;
+        let url = encodeURI(this.state.document.url);
         
         let pieces = name.split('.');
-        let fileExtension = pieces[pieces.length-1];
-        //console.log(fileExtension);
+        //let fileExtension = pieces[pieces.length-1];
 
-        if (fileExtension=='doc' || fileExtension=='docx' || fileExtension=='xls' || fileExtension=='xlsx' ) {
-            /**TODO: make this strDocUrl more dynamic, do not hardcode the /sites/documents/marketing/ */
-            var strDocUrl = `/sites/documents/marketing/_layouts/15/WopiFrame.aspx?sourcedoc=${url}&action=embedview`;
-        } 
-        else {
-            var strDocUrl = `${url}`;
-        } 
-        
-        //console.log(strDocUrl);
-        
+        let strDocUrl = `${absoluteUrl}/_layouts/15/getpreview.ashx?path=${url}`;
 
-        return <div>
-                <h2 style={{textAlign:'center'}}>{name}</h2>
-                <div id="OpenRelativeCard" style={{margintLeft: 10}}>
-                    <iframe src={strDocUrl} id="LSViewDocInTask" style={{width:700, height:800}}></iframe>
-                </div>
-                <button type="button" onClick={this.handleCloseModalClick.bind(this)}>
-                    Close
-                </button>
+        // if (<fileExt></fileExt>ension=='doc' || fileExtension=='docx' || fileExtension=='xls' || fileExtension=='xlsx' ) {
+        //     /**TODO: make this strDocUrl more dynamic, do not hardcode the /sites/documents/marketing/ */
+        //     var strDocUrl = `${absoluteUrl}/_layouts/15/WopiFrame.aspx?sourcedoc=${url}&action=embedview`;
+        // } 
+        // else {
+        //     var strDocUrl = `${url}`;
+        // } 
+
+        // console.log(strDocUrl);
+        
+        let mouseX = this.state.mouseX,
+            mouseY = this.state.mouseY;
+
+        let bodyOffsets = window.document.body.getBoundingClientRect();
+        let tempX = mouseX - bodyOffsets.left;
+        let tempY = mouseY - bodyOffsets.top;
+        setTimeout( ()=>{
+            /**jQuery */
+            // TODO: get rid of this and find a better Reactive way.
+            $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
+        },100);
+
+        return <div>                
+                <div style={{
+                        backgroundColor: '#ccc', 
+                        color: '#000', 
+                        textAlign:'center',
+                        border: '1px solid #ccc',
+                        borderTopLeftRadius: 3, 
+                        borderTopRightRadius: 3,
+                    }}>
+                    <strong>{name}</strong>
+                </div>                
+                <div>
+                    {this.renderSpinner()}
+                    {this.renderNoPreviewAvailable()}
+                    <img onLoad={this.imageLoaded} onError={this.imageLoadError} 
+                        style={{
+                                backgroundColor: '#fff',
+                                border: '1px solid #ccc', 
+                                // borderTop: 0,
+                                minHeight:350, 
+                                minWidth:250,
+                                maxWidth:270,
+                                borderBottomLeftRadius: 3, 
+                                borderBottomRightRadius: 3
+                        }}
+                     src={strDocUrl} alt="Preview Image" />                     
+                </div>   
             </div>
+
+            // <div style={{height:36}}></div> 
+        // return <div>
+        //         <h2 style={{textAlign:'center'}}>{name}</h2>
+        //         <div id="OpenRelativeCard" style={{margintLeft: 10}}>
+        //             <iframe src={strDocUrl} id="LSViewDocInTask" style={{width:700, height:800}}></iframe>
+        //         </div>
+                    // <button type="button" onClick={this.handleCloseModalClick}>
+                    //     Close
+                    // </button>
+        //     </div>
     }
 
     getItem = (item, index) => {
@@ -116,13 +281,16 @@ export class Results extends React.Component<any, any> {
         
         return <div className="document-accordion-group" key={index}>
                 <div>
-                    <img style={{ position: 'relative', top: 5, marginRight: 2 }} src={imageUrl}></img>
-                    <a href={fileUrl}  target="_blank">{fullName}</a>
                     <PreviewButton 
                         fullName = {fullName}
                         fileUrl = {fileUrl}
-                        onClick = {this.handleItemClick }
-                    />
+                        imageUrl = {imageUrl}
+                        onClick = {this.handleItemClick }  
+                        onMouseEnter = {this.handleMouseEnter }                      
+                        onMouseLeave = {this.handleMouseLeave }                      
+                    />                    
+                    <a href={fileUrl}  target="_blank">{fullName}</a>
+                    
                 </div>
             </div>
     }
@@ -154,37 +322,74 @@ export class Results extends React.Component<any, any> {
                 <div className="row margin-bottom-20">
                     {_.map(groupedItems, this.generateResult) }
                 </div>
-                <Modal isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose.bind(this)}
-                    style={customStyles} >
+                <Modal ref="modal" isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose}
+                    style={customStyles} >                    
                     {this.renderModal()}
                 </Modal>
             </div>
+            //<div className="hover-arrow"></div>
     }
 }
 
 /***
  * Child Component (stateless)
  */
-const PreviewButton = (props) => {
-
-    let handleClick = () => {
+interface PropsValue {
+    fullName:string, 
+    fileUrl:string,
+    imageUrl:string,
+    onClick:any,
+    onMouseEnter:any,
+    onMouseLeave:any
+}
+const PreviewButton = (props: PropsValue) => {
+    let handleClick = (evt) => {
         if (props.onClick) {
             let document = {
                 name: props.fullName,
                 url: props.fileUrl
             }
-            props.onClick(document);
+            props.onClick(evt,document);
         }
     }
 
-    return	<div style={{ display:'inline-block', marginLeft:10 }} onClick={handleClick}>
-                <a className="ms-lstItmLinkAnchor ms-ellipsis-a" title="Open Preview dialog for selected item"
-                style={{border:0}} href="#">
-                <img className="ms-ellipsis-icon" 
-                    style={{maxWidth:'none'}} 
-                    src="/_layouts/15/images/spcommon.png?rev=43" 
-                    alt="Open Preview"/>
+    let handleMouseEnter = (evt) => {
+        if (props.onMouseEnter) {
+            let document = {
+                name: props.fullName,
+                url: props.fileUrl
+            }
+            props.onMouseEnter(evt,document);
+        }
+    }
+
+    let handleMouseLeave = () => {
+        if (props.onMouseLeave) {
+            props.onMouseLeave();
+        }
+    }
+    
+    return	<div style={{ display:'inline-block', marginRight:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
+                <a title={props.fullName} style={{border:0, color:'#000'}} href="#">
+                    <img style={{ 
+                            position: 'relative', 
+                            top: 5, 
+                            marginRight: 2 
+                        }} 
+                        src={props.imageUrl}>
+                    </img>
                 </a>
-        </div>
+                <i className="fa fa-search doc-preview-icon" aria-hidden="true"></i>
+        </div>    
+
+    // return	<div style={{ display:'inline-block', marginLeft:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
+    //             <a className="ms-lstItmLinkAnchor ms-ellipsis-a" title="Open Preview dialog for selected item"
+    //             style={{border:0}} href="#">
+    //             <img className="ms-ellipsis-icon" 
+    //                 style={{maxWidth:'none'}} 
+    //                 src="/_layouts/15/images/spcommon.png?rev=43" 
+    //                 alt="Open Preview"/>
+    //             </a>
+    //     </div>
 
 }
