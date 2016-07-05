@@ -50,7 +50,6 @@ export class Results extends React.Component<any, StateValues> {
         // console.log('rendering all results...');        
         return <div id="nanoGallery">
                 {_.map(items, this.generateResult)}
-                {console.log('all results where rendered!!!')}
             </div>
     }
 }
