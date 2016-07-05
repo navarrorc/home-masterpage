@@ -55,6 +55,7 @@ import {HomeBanner} from './components/home-banner';
 import {DocumentCenter} from './components/document-center';
 import {DocCenter_BPCForecast} from './components/document-centers/bpc-forecast';
 import { DocCenter_RigTough } from './components/document-centers/rig-tough';
+import { DocCenter_WasteExpo } from './components/document-centers/waste-expo';
 
 // CSS Dependencies
 /*
@@ -151,6 +152,13 @@ $(()=>{
 		let doc = new DocCenter_RigTough(null);
 		doc.showComponent();
 	}
+
+	if ( pathname.indexOf('/documents/marketing/pages/waste-expo-photos-2016') > 0 ) {
+		let doc = new DocCenter_WasteExpo(null);
+		doc.showComponent();
+	}
+
+
 	/********************END*************************/
 
 	// Render the SuiteBarTop Components

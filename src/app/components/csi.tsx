@@ -37,7 +37,7 @@ export class CSI extends React.Component<any, any> {
       'Publish_x0020_Start_x0020_Date',
       'Publish_x0020_End_x0020_Date',
       'EncodedAbsUrl',
-      'Title_Text'
+      'Headline'
     ];
     var today = new Date();
     today.setHours(0,0,0,0); // get rid of the hours, minutes, seconds and milliseconds
@@ -53,7 +53,7 @@ export class CSI extends React.Component<any, any> {
       let start = new Date(data[0].Publish_x0020_Start_x0020_Date),
           end = data[0].Publish_x0020_End_x0020_Date?new Date(data[0].Publish_x0020_End_x0020_Date):null;
       activeImage = {
-        title: data[0].Title_Text,
+        title: data[0].Headline,
         start: start,
         end: end,
         imageURL: data[0].EncodedAbsUrl

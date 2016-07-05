@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import * as _ from 'lodash';
 import api = require('../services/data-service');
 import {config} from '../services/shared';
 

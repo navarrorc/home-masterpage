@@ -6,22 +6,21 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var node_modules_dir = path.join(__dirname, 'node_modules');
 var remoteDirDEV = '//rushnetrcn.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets/DEV'; // Dev Rushnet
 
-var config = {
-  // debug: true,
-  cache: true,
-  // noInfo: false,
-  devtool: 'source-map',
+module.exports = {
+  debug: false,
+  devtool: 'sourcemap',
+  noInfo: true,  
   context: path.resolve('./src/app'),
   entry: {
    // https://github.com/github/fetch Promise and fetch for older browsers (IE 11)
     // app: ['es6-promise','whatwg-fetch','./app'], // app.ts?x
     app: ['./app'], // app.ts?x
-    vendor: [
-        'react', 
+    vendors: [
+        'react', // v15.0.2
         'react-dom',
         'react-modal',
-        'lodash',
-        'q',
+        'lodash', // v4.13.1
+        'q', // v1.4.1
       ]
   },
   target: 'web',
@@ -39,7 +38,7 @@ var config = {
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendors.js')
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendors', /* filename= */'vendors.js')
   ],
   module: {       
     loaders: [
@@ -82,4 +81,4 @@ var config = {
   }
 }
 
-module.exports = config;
+

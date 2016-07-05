@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as Q from 'q';
 import { render } from 'react-dom';
 import {DataService} from '../../services/data-service'
 import { fileImages } from '../../services/shared';

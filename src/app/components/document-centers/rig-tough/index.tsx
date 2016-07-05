@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as Q from 'q';
 import { DataService } from '../../../services/data-service'
 import { Parent } from './parent';
 import { Results } from './results';
