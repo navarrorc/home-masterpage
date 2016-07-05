@@ -83,7 +83,7 @@ export class Results extends React.Component<any, StateValues> {
             document,
             mouseX,
             mouseY
-        })
+        })        
     }
     handleMouseLeave = () => {
         this.setState( {
@@ -136,34 +136,13 @@ export class Results extends React.Component<any, StateValues> {
 
         let absoluteUrl = _spPageContextInfo.webAbsoluteUrl;
         let name = this.state.document.name;
-        let url = encodeURI(this.state.document.url);
+        let url = this.state.document.url;
+        let docLibraryUrl = url.replace(name,''); // .../sites/Documents/Marketing/Rig Tough/
         
-        let pieces = name.split('.');
-        //let fileExtension = pieces[pieces.length-1];
-
-        let strDocUrl = `${absoluteUrl}/_layouts/15/getpreview.ashx?path=${url}`;
-
-        // if (<fileExt></fileExt>ension=='doc' || fileExtension=='docx' || fileExtension=='xls' || fileExtension=='xlsx' ) {
-        //     /**TODO: make this strDocUrl more dynamic, do not hardcode the /sites/documents/marketing/ */
-        //     var strDocUrl = `${absoluteUrl}/_layouts/15/WopiFrame.aspx?sourcedoc=${url}&action=embedview`;
-        // } 
-        // else {
-        //     var strDocUrl = `${url}`;
-        // } 
-
-        // console.log(strDocUrl);
-        
-        let mouseX = this.state.mouseX,
-            mouseY = this.state.mouseY;
-
-        let bodyOffsets = window.document.body.getBoundingClientRect();
-        let tempX = mouseX - bodyOffsets.left;
-        let tempY = mouseY - bodyOffsets.top;
-        setTimeout( ()=>{
-            /**jQuery */
-            // TODO: get rid of this and find a better Reactive way.
-            $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
-        },100);
+        // encodes the following characters: , / ? : @ & = + $ #
+        // some file names can contain the: +
+        let encodedUrl = docLibraryUrl + encodeURIComponent(name); // see: https://goo.gl/j90OLQ
+        let strDocUrl = `${absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodedUrl}`;
 
         return <div>                
                 <div styleName="doc-title-div">
@@ -174,22 +153,17 @@ export class Results extends React.Component<any, StateValues> {
                     {this.renderNoPreviewAvailable()}
                     <img onLoad={this.imageLoaded} onError={this.imageLoadError} 
                         styleName="doc-preview-image"
-                        
-                        
                          src={strDocUrl} alt="Preview Image" />                     
-                </div>   
-            </div>
-
-            // <div style={{height:36}}></div> 
-        // return <div>
-        //         <h2 style={{textAlign:'center'}}>{name}</h2>
-        //         <div id="OpenRelativeCard" style={{margintLeft: 10}}>
-        //             <iframe src={strDocUrl} id="LSViewDocInTask" style={{width:700, height:800}}></iframe>
-        //         </div>
-                    // <button type="button" onClick={this.handleCloseModalClick}>
-                    //     Close
-                    // </button>
-        //     </div>
+                </div>                   
+            </div>    
+    }
+    positionModal(mouseX, mouseY) {       
+        let bodyOffsets = window.document.body.getBoundingClientRect();
+        let tempX = mouseX - bodyOffsets.left;
+        let tempY = mouseY - bodyOffsets.top;
+        /**jQuery */
+        // TODO: get rid of this and find a better Reactive way.
+        $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
     }
 
     getItem = (item, index) => {
@@ -238,6 +212,8 @@ export class Results extends React.Component<any, StateValues> {
         let totalItems = this.props.totalItems;
         let ready = this.props.ready;
         let groupedItems = this.props.groupedItems;
+        let mouseX = this.state.mouseX,
+            mouseY = this.state.mouseY;
         
         return <div>
                 <h2 className="margin-bottom-30">Documents {(totalItems) ? `(${totalItems})` : ''}</h2>
@@ -251,7 +227,8 @@ export class Results extends React.Component<any, StateValues> {
                 </div>
                 <Modal ref="modal" isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose}
                     style={customStyles} >                    
-                    {this.renderModal()}
+                    {this.renderModal()}                    
+                    {this.positionModal(mouseX, mouseY)}
                 </Modal>
             </div>
     }
@@ -304,16 +281,6 @@ PreviewButton = (props: PropsValue) => {
                     </a>
                     <i className={iconCssClasses} styleName='preview-icon' aria-hidden="true" />
             </div>    
-
-    // return	<div style={{ display:'inline-block', marginLeft:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
-    //             <a className="ms-lstItmLinkAnchor ms-ellipsis-a" title="Open Preview dialog for selected item"
-    //             style={{border:0}} href="#">
-    //             <img className="ms-ellipsis-icon" 
-    //                 style={{maxWidth:'none'}} 
-    //                 src="/_layouts/15/images/spcommon.png?rev=43" 
-    //                 alt="Open Preview"/>
-    //             </a>
-    //     </div>
 
 }
 //see: https://github.com/gajus/react-css-modules#loops-and-child-components
