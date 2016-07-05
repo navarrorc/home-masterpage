@@ -3,25 +3,26 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var node_modules_dir = path.join(__dirname, 'node_modules');
 var remoteDirDEV = '//rushnetrcn.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets/DEV'; // Dev Rushnet
 
-var config = {
-  // debug: true,
+var autoprefixer = require('autoprefixer');
+
+module.exports = {
+  debug: false,
   cache: true,
-  // noInfo: false,
-  devtool: 'source-map',
+  devtool: 'sourcemap',
+  noInfo: true,  
   context: path.resolve('./src/app'),
   entry: {
    // https://github.com/github/fetch Promise and fetch for older browsers (IE 11)
     // app: ['es6-promise','whatwg-fetch','./app'], // app.ts?x
     app: ['./app'], // app.ts?x
-    vendor: [
-        'react', 
+    vendors: [
+        'react', // v15.0.2
         'react-dom',
         'react-modal',
-        'lodash',
-        'q',
+        'lodash', // v4.13.1
+        'q', // v1.4.1
       ]
   },
   target: 'web',
@@ -39,7 +40,7 @@ var config = {
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendors.js')
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendors', /* filename= */'vendors.js')
   ],
   module: {       
     loaders: [
@@ -73,13 +74,22 @@ var config = {
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, "src/sass")
+          path.resolve(__dirname, "src/sass"),
+          path.resolve(__dirname, "src/app")
         ],
-        //exclude: node_modules_dir,
-        loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader?includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" + path.resolve(__dirname, "./mixins/app_mixins"))
+        // exclude: node_modules_dir,
+        // exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?includePaths[]=' 
+            + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" 
+            + path.resolve(__dirname, "./mixins/app_mixins"))       
       }
     ]
+  },
+  postcss: function () {
+    return [autoprefixer]; // https://github.com/postcss/postcss-loader
   }
 }
 
-module.exports = config;
+

@@ -2,52 +2,26 @@
 import * as React from 'react';
 import { fileImages } from '../../../services/shared';
 import { findDOMNode } from 'react-dom';
+import { customStyles } from './modal-styles';
 
-var Modal = require('react-modal');
+const Modal = require('react-modal');
+const classNames = require('classnames');
+const CSSModules = require('react-css-modules');
+const styles = require('./rig-tough.scss');
 
 declare var unescape: any;
-
-const customStyles = {
-    overlay : {
-        // position          : 'absolute',
-        border: 'solid 2px red',
-        width:0,
-        height:0,
-        top               : 0,
-        left              : 0,
-        right             : 0,
-        bottom            : 0,
-        backgroundColor   : 'rgba(255, 255, 255, 0.75)',
-        zIndex: 100,       
-    },
-    content : {    
-            top                   : -500,
-            left                  : -500,
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(25%, -90%)',
-            backgroundColor: 'rgba(220, 220, 220, 0.74902)',
-            // padding: 0,
-            overflowY:'hidden',
-            overflowX:'hidden',
-            border: 0,
-            borderRadius:16
-            //border:  '1px solid #ccc',
-        }
-}
 
 /**
  * detect IE
  * This returns true for any version of Internet Explorer
  */
 function isIE(userAgent=navigator.userAgent) {
-  return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
+  return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1;
 }
 
 
 /***
- * Child Component
+ * Results Component
  */
 interface StateValues{
   isModalOpen?: boolean,
@@ -57,6 +31,8 @@ interface StateValues{
   mouseX?: number,
   mouseY?: number 
 }
+
+@CSSModules(styles, {errorWhenNotFound: true, allowMultiple: true})
 export class Results extends React.Component<any, StateValues> {
     constructor(props:any) {
         super(props);
@@ -107,7 +83,7 @@ export class Results extends React.Component<any, StateValues> {
             document,
             mouseX,
             mouseY
-        })
+        })        
     }
     handleMouseLeave = () => {
         this.setState( {
@@ -139,53 +115,18 @@ export class Results extends React.Component<any, StateValues> {
             return null
         
         let ready = this.state.isImageReady;
-        return <div style={{ 
-                        display:'flex',
-                        flexDirection:'column',
-                        justifyContent:'center',
-                        alignItems: 'center',
-                        position:'absolute', 
-                        top:67,
-                        left:23,
-                        width:'84%',
-                        height:'78%',
-                        borderBottomLeftRadius:3,
-                        borderBottomRightRadius:3,
-                        backgroundColor:'rgba(255, 255, 255, 1)' 
-                    }}>
-                    <i className="fa fa-spinner fa-pulse" style={{ 
-                        textAlign: 'center',
-                        display: 'inline-block' , 
-                        width: '1.28571429em', 
-                        fontSize: '2em' 
-                    }}></i>
+        return <div styleName="results-spinner-div">
+                    <i className="fa fa-spinner fa-pulse" style={{ fontSize: '2em' }} />
                 </div>
     }
-    renderNoPreviewAvailable(){
+    renderNoPreviewAvailable() {
         if (!this.state.isImageLoadingError)
             return null
         
         let imageError = this.state.isImageLoadingError;
-        return <div style={{ 
-            	            display:'flex',
-                            flexDirection:'column',
-                            justifyContent:'center',
-                            alignItems: 'center',
-                            position:'absolute', 
-                            top:67,
-                            left:23,
-                            width:'84%',
-                            height:'78%',
-                            backgroundColor:'rgba(255, 255, 255, 1)',
-                            //height:348,
-                            //width:248,
-                            borderBottomLeftRadius:3,
-                            borderBottomRightRadius:3
-                    }}>
-                    <span style={{ 
-                        display: 'block' 
-                    }}>No preview available.</span>
-                </div>
+        return <div styleName="results-noPreview">
+                    <span>No preview available.</span>
+               </div>
 
     }
     renderModal() {
@@ -195,74 +136,34 @@ export class Results extends React.Component<any, StateValues> {
 
         let absoluteUrl = _spPageContextInfo.webAbsoluteUrl;
         let name = this.state.document.name;
-        let url = encodeURI(this.state.document.url);
+        let url = this.state.document.url;
+        let docLibraryUrl = url.replace(name,''); // .../sites/Documents/Marketing/Rig Tough/
         
-        let pieces = name.split('.');
-        //let fileExtension = pieces[pieces.length-1];
-
-        let strDocUrl = `${absoluteUrl}/_layouts/15/getpreview.ashx?path=${url}`;
-
-        // if (<fileExt></fileExt>ension=='doc' || fileExtension=='docx' || fileExtension=='xls' || fileExtension=='xlsx' ) {
-        //     /**TODO: make this strDocUrl more dynamic, do not hardcode the /sites/documents/marketing/ */
-        //     var strDocUrl = `${absoluteUrl}/_layouts/15/WopiFrame.aspx?sourcedoc=${url}&action=embedview`;
-        // } 
-        // else {
-        //     var strDocUrl = `${url}`;
-        // } 
-
-        // console.log(strDocUrl);
-        
-        let mouseX = this.state.mouseX,
-            mouseY = this.state.mouseY;
-
-        let bodyOffsets = window.document.body.getBoundingClientRect();
-        let tempX = mouseX - bodyOffsets.left;
-        let tempY = mouseY - bodyOffsets.top;
-        setTimeout( ()=>{
-            /**jQuery */
-            // TODO: get rid of this and find a better Reactive way.
-            $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
-        },100);
+        // encodes the following characters: , / ? : @ & = + $ #
+        // some file names can contain the: +
+        let encodedUrl = docLibraryUrl + encodeURIComponent(name); // see: https://goo.gl/j90OLQ
+        let strDocUrl = `${absoluteUrl}/_layouts/15/getpreview.ashx?path=${encodedUrl}`;
 
         return <div>                
-                <div style={{
-                        backgroundColor: '#ccc', 
-                        color: '#000', 
-                        textAlign:'center',
-                        border: '1px solid #ccc',
-                        borderTopLeftRadius: 3, 
-                        borderTopRightRadius: 3,
-                    }}>
+                <div styleName="doc-title-div">
                     <strong>{name}</strong>
                 </div>                
                 <div>
                     {this.renderSpinner()}
                     {this.renderNoPreviewAvailable()}
                     <img onLoad={this.imageLoaded} onError={this.imageLoadError} 
-                        style={{
-                                backgroundColor: '#fff',
-                                border: '1px solid #ccc', 
-                                // borderTop: 0,
-                                minHeight:350, 
-                                minWidth:250,
-                                maxWidth:270,
-                                borderBottomLeftRadius: 3, 
-                                borderBottomRightRadius: 3
-                        }}
-                     src={strDocUrl} alt="Preview Image" />                     
-                </div>   
-            </div>
-
-            // <div style={{height:36}}></div> 
-        // return <div>
-        //         <h2 style={{textAlign:'center'}}>{name}</h2>
-        //         <div id="OpenRelativeCard" style={{margintLeft: 10}}>
-        //             <iframe src={strDocUrl} id="LSViewDocInTask" style={{width:700, height:800}}></iframe>
-        //         </div>
-                    // <button type="button" onClick={this.handleCloseModalClick}>
-                    //     Close
-                    // </button>
-        //     </div>
+                        styleName="doc-preview-image"
+                         src={strDocUrl} alt="Preview Image" />                     
+                </div>                   
+            </div>    
+    }
+    positionModal(mouseX, mouseY) {       
+        let bodyOffsets = window.document.body.getBoundingClientRect();
+        let tempX = mouseX - bodyOffsets.left;
+        let tempY = mouseY - bodyOffsets.top;
+        /**jQuery */
+        // TODO: get rid of this and find a better Reactive way.
+        $('.ReactModal__Content--after-open').css({'top':tempY,'left':tempX}).fadeIn('slow');
     }
 
     getItem = (item, index) => {
@@ -287,7 +188,7 @@ export class Results extends React.Component<any, StateValues> {
                         imageUrl = {imageUrl}
                         onClick = {this.handleItemClick }  
                         onMouseEnter = {this.handleMouseEnter }                      
-                        onMouseLeave = {this.handleMouseLeave }                      
+                        onMouseLeave = {this.handleMouseLeave }  
                     />                    
                     <a href={fileUrl}  target="_blank">{fullName}</a>
                     
@@ -311,6 +212,8 @@ export class Results extends React.Component<any, StateValues> {
         let totalItems = this.props.totalItems;
         let ready = this.props.ready;
         let groupedItems = this.props.groupedItems;
+        let mouseX = this.state.mouseX,
+            mouseY = this.state.mouseY;
         
         return <div>
                 <h2 className="margin-bottom-30">Documents {(totalItems) ? `(${totalItems})` : ''}</h2>
@@ -324,15 +227,15 @@ export class Results extends React.Component<any, StateValues> {
                 </div>
                 <Modal ref="modal" isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose}
                     style={customStyles} >                    
-                    {this.renderModal()}
+                    {this.renderModal()}                    
+                    {this.positionModal(mouseX, mouseY)}
                 </Modal>
             </div>
-            //<div className="hover-arrow"></div>
     }
 }
 
 /***
- * Child Component (stateless)
+ * Preview Button Component (stateless)
  */
 interface PropsValue {
     fullName:string, 
@@ -342,7 +245,9 @@ interface PropsValue {
     onMouseEnter:any,
     onMouseLeave:any
 }
-const PreviewButton = (props: PropsValue) => {
+
+let PreviewButton;  // CSSModules() used after this component declaration, see below!
+PreviewButton = (props: PropsValue) => {
     let handleClick = (evt) => {
         if (props.onClick) {
             let document = {
@@ -368,28 +273,15 @@ const PreviewButton = (props: PropsValue) => {
             props.onMouseLeave();
         }
     }
-    
-    return	<div style={{ display:'inline-block', marginRight:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
-                <a title={props.fullName} style={{border:0, color:'#000'}} href="#">
-                    <img style={{ 
-                            position: 'relative', 
-                            top: 5, 
-                            marginRight: 2 
-                        }} 
-                        src={props.imageUrl}>
-                    </img>
-                </a>
-                <i className="fa fa-search doc-preview-icon" aria-hidden="true"></i>
-        </div>    
-
-    // return	<div style={{ display:'inline-block', marginLeft:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
-    //             <a className="ms-lstItmLinkAnchor ms-ellipsis-a" title="Open Preview dialog for selected item"
-    //             style={{border:0}} href="#">
-    //             <img className="ms-ellipsis-icon" 
-    //                 style={{maxWidth:'none'}} 
-    //                 src="/_layouts/15/images/spcommon.png?rev=43" 
-    //                 alt="Open Preview"/>
-    //             </a>
-    //     </div>
+    let iconCssClasses = classNames('fa','fa-search');
+    return	<div styleName='preview-div' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} 
+                onClick={handleClick}>
+                    <a title={props.fullName} styleName='preview-anchor' href='#'>
+                        <img styleName='preview-image' src={props.imageUrl} />
+                    </a>
+                    <i className={iconCssClasses} styleName='preview-icon' aria-hidden="true" />
+            </div>    
 
 }
+//see: https://github.com/gajus/react-css-modules#loops-and-child-components
+PreviewButton = CSSModules(PreviewButton, styles);

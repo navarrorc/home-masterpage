@@ -17,12 +17,12 @@ exports.plugins = exports.plugins.concat(
   }),
   new webpack.optimize.UglifyJsPlugin({
       compress:{
-        warnings: true
+        warnings: false
       }
   }),
   new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js')
 );
-exports.devtool = ''; // no sourcemaps
+//exports.devtool = ''; // no sourcemaps
 exports.output = Object.create(
   {
     path: remoteDir,
