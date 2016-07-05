@@ -8,7 +8,8 @@
         "removeComments": true,
         "jsx": "react",
         "sourceMap": true,
-        "allowJs": true
+        "allowJs": true,
+        "experimentalDecorators": true
     },
     "exclude": [
       "node_modules"

@@ -3,11 +3,13 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var node_modules_dir = path.join(__dirname, 'node_modules');
 var remoteDirDEV = '//rushnetrcn.sharepoint.com@SSL/sites/rushnet/_catalogs/masterpage/_Rushnet/assets/DEV'; // Dev Rushnet
+
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   debug: false,
+  cache: true,
   devtool: 'sourcemap',
   noInfo: true,  
   context: path.resolve('./src/app'),
@@ -72,12 +74,21 @@ module.exports = {
       {
         test: /\.scss$/,
         include: [
-          path.resolve(__dirname, "src/sass")
+          path.resolve(__dirname, "src/sass"),
+          path.resolve(__dirname, "src/app")
         ],
-        //exclude: node_modules_dir,
-        loader: ExtractTextPlugin.extract('style-loader','css-loader!autoprefixer-loader!sass-loader?includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" + path.resolve(__dirname, "./mixins/app_mixins"))
+        // exclude: node_modules_dir,
+        // exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?includePaths[]=' 
+            + path.resolve(__dirname, "./node_modules/compass-mixins/lib") + "&includePaths[]=" 
+            + path.resolve(__dirname, "./mixins/app_mixins"))       
       }
     ]
+  },
+  postcss: function () {
+    return [autoprefixer]; // https://github.com/postcss/postcss-loader
   }
 }
 

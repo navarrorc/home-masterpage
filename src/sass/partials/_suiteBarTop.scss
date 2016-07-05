@@ -1,14 +1,14 @@
-div#s4-ribbonrow {
-  //display: none;
-}
+// div#s4-ribbonrow {
+//   //display: none;
+// }
 
-#s4-titlerow {
-  //display: block !important;
-}
+// #s4-titlerow {
+//   //display: block !important;
+// }
 
-.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff {
-  //display: none !important;
-}
+// .o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff {
+//   //display: none !important;
+// }
 .o365cs-base.o365cst.o365cs-topnavBGColor-2 {
   // setting the color of the suiteBarTop
   background-color: #000 !important;
@@ -20,9 +20,9 @@ span#fullscreenmodebox {
   display:none;
 }
 
-a#O365_SubLink_ShellAboutMe {
-  //display:none;
-}
+// a#O365_SubLink_ShellAboutMe {
+//   //display:none;
+// }
 
 
 // declaration of "Suite bar to text icon"
@@ -56,66 +56,67 @@ a#O365_SubLink_ShellAboutMe {
         //     // â€¦ add the correct Office 365 icon
         //     content: '\E055';
         // }
-				display:none;
+        display:none;
     }
     // Change "Sites" label to logo
-    .o365cs-nav-appTitle.o365cs-topnavText.o365button {
-            // include mixin and
-        // @include sbTextToIcon {
-        //     // add the correct Sites icon
-        //     content: '\E022';
-        // }
+    // .o365cs-nav-appTitle.o365cs-topnavText.o365button {
+    //         // include mixin and
+    //     // @include sbTextToIcon {
+    //     //     // add the correct Sites icon
+    //     //     content: '\E022';
+    //     // }
+    // }
+    .o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+      display: none;
     }
-		.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
-			display: none;
-		}
 
-		.o365cs-nav-centerAlign {
-			padding: 0;
-		}
+    .o365cs-nav-centerAlign {
+      padding: 0;
+    }
 
-		// .o365cs-nav-header16{
-		// 	.o365cs-nav-notificationTrayContainer {
-		// 		// remove fixed width of notification tray
-		// 		min-width: 0 !important;
-		// 		width: auto !important;
-		// 	}
-		// }
+    // .o365cs-nav-header16{
+    // 	.o365cs-nav-notificationTrayContainer {
+    // 		// remove fixed width of notification tray
+    // 		min-width: 0 !important;
+    // 		width: auto !important;
+    // 	}
+    // }
 }
 
 @media only screen and (max-width: 480px)
-                   and (orientation: portrait) {
+                  and (orientation: portrait) {
     .o365cs-nav-headerRegion {
         display: none !important;
     }
-		// .o365cs-nav-header16 .o365cs-nav-o365Branding{
+    // .o365cs-nav-header16 .o365cs-nav-o365Branding{
     //     padding: 0px 15px !important;
     // }
-		.o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff,
-		button.o365cs-nav-item.o365cs-nav-button.ms-fcl-w.o365cs-me-nav-item.o365button.ms-bgc-tdr-h {
-			display: none !important;
-		}
+    .o365cs-nav-topItem.o365cs-rsp-tn-hideIfAffordanceOff,
+    button.o365cs-nav-item.o365cs-nav-button.ms-fcl-w.o365cs-me-nav-item.o365button.ms-bgc-tdr-h {
+      display: none !important;
+    }
 
 }
+
 .companyLogo {
-	width: 60px;
-	height: 40px;
-	padding-top: 3px;
+  width: 60px;
+  height: 40px;
+  padding-top: 3px;
 }
 #O365_MainLink_Logo,
 span.o365cs-nav-brandingText,
 div.o365cs-me-tile-nophoto-username-container {
-	visibility: hidden;
+  visibility: hidden;
 }
 .o365cs-nav-centerAlign {
-	padding-right: 10px;
+  padding-right: 10px;
 }
 .o365cs-me-tileview-container {
-	display: block !important;
+  display: block !important;
 }
 
 span.o365cs-nav-brandingText h1 {
-	//font-family: "warnock-pro-display", "Times New Roman", Times, Serif !important;
+  //font-family: "warnock-pro-display", "Times New Roman", Times, Serif !important;
   font-size: 30px !important;
   color: #fff !important;
   font-weight: normal;
@@ -142,24 +143,24 @@ span.o365cs-nav-brandingText h1 {
 // .o365cs-me-tile-nophoto-username-container {
 // 	padding: 0;
 // }
-	.profileImage {
-		width: 42px;
-		height: 42px;
-		border-radius: 50%;
-		padding-top: 0;
+  .profileImage {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    padding-top: 0;
     //visibility: hidden;
-	}
-	.wf-o365-downcarat:before {
-	//	color: #fff;
-	}
+  }
+  // .wf-o365-downcarat:before {
+  // //	color: #fff;
+  // }
 
-	.o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
-		display:none;
-	}
+  .o365cs-nav-topItem.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+    display:none;
+  }
 
-	.o365cs-nav-topItem.o365cs-nav-o365Branding.o365cs-rsp-tn-hideIfAffordanceOn {
-		padding-right: 10px;
-	}
+  .o365cs-nav-topItem.o365cs-nav-o365Branding.o365cs-rsp-tn-hideIfAffordanceOn {
+    padding-right: 10px;
+  }
 
 
 /**
@@ -178,3 +179,4 @@ a.o365cs-nav-appTitle.o365cs-topnavText.o365button {
 a#O365_MainLink_Logo {
   margin-top: 2px;
 }
+

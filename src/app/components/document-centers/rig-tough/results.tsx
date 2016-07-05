@@ -2,52 +2,26 @@
 import * as React from 'react';
 import { fileImages } from '../../../services/shared';
 import { findDOMNode } from 'react-dom';
+import { customStyles } from './modal-styles';
 
-var Modal = require('react-modal');
+const Modal = require('react-modal');
+const classNames = require('classnames');
+const CSSModules = require('react-css-modules');
+const styles = require('./rig-tough.scss');
 
 declare var unescape: any;
-
-const customStyles = {
-    overlay : {
-        // position          : 'absolute',
-        border: 'solid 2px red',
-        width:0,
-        height:0,
-        top               : 0,
-        left              : 0,
-        right             : 0,
-        bottom            : 0,
-        backgroundColor   : 'rgba(255, 255, 255, 0.75)',
-        zIndex: 100,       
-    },
-    content : {    
-            top                   : -500,
-            left                  : -500,
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(25%, -90%)',
-            backgroundColor: 'rgba(220, 220, 220, 0.74902)',
-            // padding: 0,
-            overflowY:'hidden',
-            overflowX:'hidden',
-            border: 0,
-            borderRadius:16
-            //border:  '1px solid #ccc',
-        }
-}
 
 /**
  * detect IE
  * This returns true for any version of Internet Explorer
  */
 function isIE(userAgent=navigator.userAgent) {
-  return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
+  return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1;
 }
 
 
 /***
- * Child Component
+ * Results Component
  */
 interface StateValues{
   isModalOpen?: boolean,
@@ -57,6 +31,8 @@ interface StateValues{
   mouseX?: number,
   mouseY?: number 
 }
+
+@CSSModules(styles, {errorWhenNotFound: true, allowMultiple: true})
 export class Results extends React.Component<any, StateValues> {
     constructor(props:any) {
         super(props);
@@ -139,53 +115,18 @@ export class Results extends React.Component<any, StateValues> {
             return null
         
         let ready = this.state.isImageReady;
-        return <div style={{ 
-                        display:'flex',
-                        flexDirection:'column',
-                        justifyContent:'center',
-                        alignItems: 'center',
-                        position:'absolute', 
-                        top:67,
-                        left:23,
-                        width:'84%',
-                        height:'78%',
-                        borderBottomLeftRadius:3,
-                        borderBottomRightRadius:3,
-                        backgroundColor:'rgba(255, 255, 255, 1)' 
-                    }}>
-                    <i className="fa fa-spinner fa-pulse" style={{ 
-                        textAlign: 'center',
-                        display: 'inline-block' , 
-                        width: '1.28571429em', 
-                        fontSize: '2em' 
-                    }}></i>
+        return <div styleName="results-spinner-div">
+                    <i className="fa fa-spinner fa-pulse" style={{ fontSize: '2em' }} />
                 </div>
     }
-    renderNoPreviewAvailable(){
+    renderNoPreviewAvailable() {
         if (!this.state.isImageLoadingError)
             return null
         
         let imageError = this.state.isImageLoadingError;
-        return <div style={{ 
-            	            display:'flex',
-                            flexDirection:'column',
-                            justifyContent:'center',
-                            alignItems: 'center',
-                            position:'absolute', 
-                            top:67,
-                            left:23,
-                            width:'84%',
-                            height:'78%',
-                            backgroundColor:'rgba(255, 255, 255, 1)',
-                            //height:348,
-                            //width:248,
-                            borderBottomLeftRadius:3,
-                            borderBottomRightRadius:3
-                    }}>
-                    <span style={{ 
-                        display: 'block' 
-                    }}>No preview available.</span>
-                </div>
+        return <div styleName="results-noPreview">
+                    <span>No preview available.</span>
+               </div>
 
     }
     renderModal() {
@@ -225,31 +166,17 @@ export class Results extends React.Component<any, StateValues> {
         },100);
 
         return <div>                
-                <div style={{
-                        backgroundColor: '#ccc', 
-                        color: '#000', 
-                        textAlign:'center',
-                        border: '1px solid #ccc',
-                        borderTopLeftRadius: 3, 
-                        borderTopRightRadius: 3,
-                    }}>
+                <div styleName="doc-title-div">
                     <strong>{name}</strong>
                 </div>                
                 <div>
                     {this.renderSpinner()}
                     {this.renderNoPreviewAvailable()}
                     <img onLoad={this.imageLoaded} onError={this.imageLoadError} 
-                        style={{
-                                backgroundColor: '#fff',
-                                border: '1px solid #ccc', 
-                                // borderTop: 0,
-                                minHeight:350, 
-                                minWidth:250,
-                                maxWidth:270,
-                                borderBottomLeftRadius: 3, 
-                                borderBottomRightRadius: 3
-                        }}
-                     src={strDocUrl} alt="Preview Image" />                     
+                        styleName="doc-preview-image"
+                        
+                        
+                         src={strDocUrl} alt="Preview Image" />                     
                 </div>   
             </div>
 
@@ -287,7 +214,7 @@ export class Results extends React.Component<any, StateValues> {
                         imageUrl = {imageUrl}
                         onClick = {this.handleItemClick }  
                         onMouseEnter = {this.handleMouseEnter }                      
-                        onMouseLeave = {this.handleMouseLeave }                      
+                        onMouseLeave = {this.handleMouseLeave }  
                     />                    
                     <a href={fileUrl}  target="_blank">{fullName}</a>
                     
@@ -327,12 +254,11 @@ export class Results extends React.Component<any, StateValues> {
                     {this.renderModal()}
                 </Modal>
             </div>
-            //<div className="hover-arrow"></div>
     }
 }
 
 /***
- * Child Component (stateless)
+ * Preview Button Component (stateless)
  */
 interface PropsValue {
     fullName:string, 
@@ -342,7 +268,9 @@ interface PropsValue {
     onMouseEnter:any,
     onMouseLeave:any
 }
-const PreviewButton = (props: PropsValue) => {
+
+let PreviewButton;  // CSSModules() used after this component declaration, see below!
+PreviewButton = (props: PropsValue) => {
     let handleClick = (evt) => {
         if (props.onClick) {
             let document = {
@@ -368,19 +296,14 @@ const PreviewButton = (props: PropsValue) => {
             props.onMouseLeave();
         }
     }
-    
-    return	<div style={{ display:'inline-block', marginRight:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
-                <a title={props.fullName} style={{border:0, color:'#000'}} href="#">
-                    <img style={{ 
-                            position: 'relative', 
-                            top: 5, 
-                            marginRight: 2 
-                        }} 
-                        src={props.imageUrl}>
-                    </img>
-                </a>
-                <i className="fa fa-search doc-preview-icon" aria-hidden="true"></i>
-        </div>    
+    let iconCssClasses = classNames('fa','fa-search');
+    return	<div styleName='preview-div' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} 
+                onClick={handleClick}>
+                    <a title={props.fullName} styleName='preview-anchor' href='#'>
+                        <img styleName='preview-image' src={props.imageUrl} />
+                    </a>
+                    <i className={iconCssClasses} styleName='preview-icon' aria-hidden="true" />
+            </div>    
 
     // return	<div style={{ display:'inline-block', marginLeft:10 }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
     //             <a className="ms-lstItmLinkAnchor ms-ellipsis-a" title="Open Preview dialog for selected item"
@@ -393,3 +316,5 @@ const PreviewButton = (props: PropsValue) => {
     //     </div>
 
 }
+//see: https://github.com/gajus/react-css-modules#loops-and-child-components
+PreviewButton = CSSModules(PreviewButton, styles);
