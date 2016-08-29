@@ -109,7 +109,7 @@ class Link extends React.Component<any,any>{
     let name = this.props.name;
     return (
       <span className="title-wrap">
-        <a href={this.props.link} id={name==='View All'?'view_all':''}> {this.props.name}</a>
+        <a href={this.props.link} title={this.props.name} id={name==='View All'?'view_all':''}> {this.props.name}</a>
       </span>
     );
   }

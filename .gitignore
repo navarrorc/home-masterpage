@@ -3,7 +3,7 @@ builds/development/js
 builds/development/css
 builds/production
 ssl/*.pfx
-typings
+/typings
 coverage
 
 # Ignore Visual Studio  Project #

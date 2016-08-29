@@ -11,8 +11,7 @@
   "dependencies": {
     "compass-mixins": "^0.12.7",
     "connect": "^3.4.0",
-    "css-loader": "^0.19.0",
-    "es6-promise": "^3.2.1",
+    "css-loader": "^0.19.0",    
     "expect": "1.13.4",
     "extract-text-webpack-plugin": "^0.8.2",
     "gulp": "^3.9.0",
@@ -24,11 +23,11 @@
     "q": "^1.4.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "request": "^2.65.0",
-    "whatwg-fetch": "^1.0.0"
+    "request": "^2.65.0"    
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "babel-polyfill": "^6.9.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
     "chai-equal-jsx": "^1.0.9",

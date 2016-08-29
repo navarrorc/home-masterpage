@@ -1,0 +1,33 @@
+.nanoGalleryPagination{
+    margin: 10px auto 5px auto;
+	padding: 4px;
+	text-align:center;
+	position: relative;
+	box-sizing: content-box;	
+	overflow:hidden;
+	white-space: nowrap;
+}
+    .paginationItem {
+        margin: 0px 5px;
+        white-space: nowrap;
+        cursor:pointer;
+        vertical-align: middle;
+        display: inline-block;
+    }
+        .currentPage {
+            text-decoration:underline;
+        }
+        .paginationPrev {
+           	margin: 0px 5px;
+            white-space: nowrap;
+            cursor:pointer;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .paginationNext {
+            margin: 0px 5px;
+            white-space: nowrap;
+            cursor:pointer;
+            vertical-align: middle;
+            display: inline-block;
+        }

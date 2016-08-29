@@ -14,21 +14,20 @@ module.exports = {
   noInfo: true,  
   context: path.resolve('./src/app'),
   entry: {
-   // https://github.com/github/fetch Promise and fetch for older browsers (IE 11)
-    // app: ['es6-promise','whatwg-fetch','./app'], // app.ts?x
-    app: ['./app'], // app.ts?x
+    // https://github.com/github/fetch Promise and fetch for older browsers (IE 11)
+    app: ['babel-polyfill','./app'], // app.ts?x
     vendors: [
         'react', // v15.0.2
-        'react-dom',
-        'react-modal',
+        'react-dom', // v15.0.2
+        'react-modal', // v1.3.0
         'lodash', // v4.13.1
         'q', // v1.4.1
       ]
   },
   target: 'web',
   output: {
-    path: remoteDirDEV, //path.resolve('builds/dev'), // destination of bundle.js
-    // publicPath: '/builds/assets/', // not used
+    path: remoteDirDEV, // destination of bundle.js
+    //publicPath: '', // not used, see: https://github.com/petehunt/webpack-howto/blob/master/README.md#9-async-loading
     filename: 'bundle.js'
   },
   devServer: {
@@ -76,9 +75,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, "src/sass"),
           path.resolve(__dirname, "src/app")
-        ],
-        // exclude: node_modules_dir,
-        // exclude: /node_modules/,
+        ],        
         loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?includePaths[]=' 
