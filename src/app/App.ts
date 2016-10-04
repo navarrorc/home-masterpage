@@ -58,6 +58,7 @@ import {DocumentCenter} from './components/document-center';
 import {DocCenter_BPCForecast} from './components/document-centers/bpc-forecast';
 import { DocCenter_RigTough } from './components/document-centers/rig-tough';
 import { DocCenter_Leasing } from './components/document-centers/leasing';
+import { DocCenter_Procurement } from './components/document-centers/procurement';
 import { DocCenter_WasteExpo } from './components/document-centers/waste-expo';
 
 // CSS Dependencies
@@ -158,6 +159,11 @@ $(()=>{
 
 	if ( pathname.includes('/documents/leasing/pages/leasing' )) {
 		let doc = new DocCenter_Leasing(null);
+		doc.showComponent();
+	}
+
+	if ( pathname.includes('/documents/procurement/pages/procurement' )) {
+		let doc = new DocCenter_Procurement(null);
 		doc.showComponent();
 	}
 

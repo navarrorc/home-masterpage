@@ -59,7 +59,11 @@ export function getQueryStringValue (key) {
 export var fileImages = [
         {key: 'pdf', value:'/_layouts/15/images/lg_icpdf.png'},
         {key: 'docx', value:'_layouts/15/images/lg_icdocx.png'},
+        {key: 'doc', value:'_layouts/15/images/lg_icdoc.png'},
         {key: 'xlsx', value: '_layouts/15/images/lg_icxlsx.png'},
+        {key: 'xls', value: '_layouts/15/images/lg_icxls.png'},
         {key: 'pptx', value: '/_layouts/15/images/lg_icpptx.png'},
-        {key: 'xlsm', value: '/_layouts/15/images/lg_icxlsm.png'}
+        {key: 'ppt', value: '/_layouts/15/images/lg_icppt.png'},
+        {key: 'xlsm', value: '/_layouts/15/images/lg_icxlsm.png'},
+        {key: 'txt', value: '/_layouts/15/images/lg_ictxt.gif'}
 ]

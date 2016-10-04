@@ -208,7 +208,7 @@ export class Results extends React.Component<any, StateValues> {
 
     }
 
-    getClassification(classification, key) {
+    getClassification = (classification, key) => {
         let total_documents = classification.length;
 
         return <div className="document-accordion-group" key={key}>
@@ -219,15 +219,18 @@ export class Results extends React.Component<any, StateValues> {
         </div>
     }
 
-    generateResult = (groups, key) => {
-        // console.log(key, JSON.stringify(groups, null, 4));
-        let total_classifications = Object.keys(groups).length;
+    generateResult = (group, key) => {
+        let total_documents = 0;
+        _.each(group, (classifications)=>{
+            total_documents += classifications.length;
+        });
+        
         return <div className="col-xs-6" key={key}>
             <div className="document-accordion" key={key}>
                 <div className="document-accordion-link">
-                    {`${key} (${total_classifications})`} <i className="icon icon-arrow-down"></i>
+                    {`${key} (${total_documents})`} <i className="icon icon-arrow-down"></i>
                 </div>
-                {_.map(groups, this.getClassification.bind(this)) }
+                {_.map(group, this.getClassification) }
             </div>
         </div>
     }

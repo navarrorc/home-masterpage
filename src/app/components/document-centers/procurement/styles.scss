@@ -1,0 +1,82 @@
+// Results Component
+    //Spinner
+    .results-spinner-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 67px;
+        left: 23px;
+        width: 84%;
+        height: 78%;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+    //No Preview Available
+    .results-noPreview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 67px;
+        left: 23px;
+        width: 84%;
+        height: 78%;
+        background-color: rgba(255, 255, 255, 1);
+        //height:348,
+        //width:248,
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    //Modal
+    .doc-title-div {
+        background-color: #ccc; 
+        color: #000; 
+        text-align: center;
+        border: 1px solid #ccc;
+        border-top-left-radius: 3px; 
+        border-top-right-radius: 3px;
+    }
+    .doc-preview-image {
+        background-color: #fff;
+        border: 1px solid #ccc; 
+        // borderTop: 0,
+        min-height: 350px;
+        min-width:250px;
+        // max-width:270px;
+        border-bottom-left-radius: 3px; 
+        border-bottom-right-radius: 3px;
+    }
+
+
+
+// PreviewButton component styles
+.preview-div {
+    display: inline-block;
+    margin: 1px 10px 5px 0;
+}
+
+.preview-anchor {
+    border: 0;
+    color: #000;
+}
+
+.preview-image {
+    position: relative;
+    top: 5px;    
+}
+
+.preview-icon {
+    position: absolute;
+    left: 56px;
+    cursor: pointer;
+    z-index: 1;
+    // background-color: #fff;
+}
+
+// document name
+.document-name:hover {
+    color: #000;
+}
+

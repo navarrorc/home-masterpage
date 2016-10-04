@@ -15,7 +15,7 @@ class Image extends React.Component<any, any> {
         <div className="">          
           <div className="content">          
             <a href={this.props.item.articleURL} style={{borderBottom:"none"}}>
-              <img src={this.props.item.imageURL} style={{maxWidth:"none"}}></img>
+              <img src={this.props.item.imageURL}></img>
             </a>            
           </div>
         </div>

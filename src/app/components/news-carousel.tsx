@@ -140,11 +140,15 @@ class NewsImages extends React.Component<any, any> {
       if(index===0) {
         // first image only
         return (
-          <img key={index} className="news-image show" src={image} alt=""></img>          
+          <div className="news-image show" style={{
+            backgroundImage: `url(${image})`
+          }}></div>
         )
       } else {
         return (
-          <img key={index} className="news-image" src={image} alt=""></img>
+          <div className="news-image" style={{
+            backgroundImage: `url(${image})`
+          }}></div>
         )
       }
     }
