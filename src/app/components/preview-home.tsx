@@ -11,6 +11,9 @@ class ArticleList extends React.Component<any, any> {
   }
 
   render() {
+    let spanStyles = {
+      fontSize: '12px'
+    };
     let root_url = '/sites/authoring/communications/preview/Pages/preview.aspx?articleId='
     let generateList = function(data, index) {
       let path = root_url + data.id;
@@ -22,7 +25,7 @@ class ArticleList extends React.Component<any, any> {
         <li style={style}>
           {index+1} <a href={path}>
             {data.title}
-          </a> {data.createdOn.format('MMMM Do YYYY, h:mm:ss a')}
+          </a> <span style={spanStyles}><strong>Created On: </strong> {data.createdOn.format('MMMM Do YYYY')} <strong>Article Date: </strong> {data.articleDate.format('MMMM Do YYYY')}</span>
         </li>
       )
     }
@@ -59,7 +62,8 @@ export class PreviewHome extends React.Component<any, any> {
         id: article.Id,
         title: article.Title,
         createdOn: moment(article.Created),
-        file: article.FileLeafRef
+        file: article.FileLeafRef,
+        articleDate: moment(article.ArticleStartDate)
       })
     })
 
@@ -93,7 +97,8 @@ export class PreviewHome extends React.Component<any, any> {
       'Id',
       'FileLeafRef',
       'Title',
-      'Created'
+      'ArticleStartDate', // mapped to ows_q_DATE_ArticleStartDate crawled property
+      'Created'      
       // 'PublishingPageContent'
     ]
     //let theList = [];

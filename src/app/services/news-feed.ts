@@ -19,10 +19,11 @@ export class NewsFeed {
       'listItemId',
       'owstaxidNewsCategory',
       'ArticleByLineOWSTEXT',
+      'PublishingPageContentOWSHTML'
     ];
     
     var search = `/sites/rushnet/_api/search/
-      query?querytext='contenttype:"${contentType}"'      
+      query?querytext='contenttype:${contentType}'      
       &rowlimit=5
       &selectproperties='${selectProps.join(', ')}'
       &refinementfilters='GlobalOWSBOOL:true'
@@ -48,7 +49,8 @@ export class NewsFeed {
               byLine: (article.ArticleByLineOWSTEXT === null) ? '[no byline found]' : article.ArticleByLineOWSTEXT,
               url: `${articleRootUrl}/${article.owstaxidNewsCategory}/${article.listItemId}/${article.Title}`,
               pubStartDate: article.RefinableDate00,
-              image: article.PublishingRollupImageOWSIMGE
+              image: article.PublishingRollupImageOWSIMGE,
+              html: article.PublishingPageContentOWSHTML
             });
           }
         }

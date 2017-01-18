@@ -7,13 +7,6 @@ import {FooterLinks} from './components/footer-links';
 import SuiteBarTop = require('./components/suite-bar-top/suite-bar-top');
 
 import actions = require('./actions');
-// import ChirpStore = require('./stores/chirps');
-// [ChirpStore]
-//import {API} from './services/Api';
-
-//import {RssService} from './services/RSS';
-
-// import {StockFeedService} from './services/StockFeed';
 
 import {StockTicker} from './components/stock-ticker';
 
@@ -138,6 +131,28 @@ renderUI.showSharePointElements(); // only if site Owner
 /* DOM is ready */
 $(()=>{   
 	let pathname = window.location.pathname.toLowerCase();
+
+	/** Hiding Video Controls on Carousel for Audio Articles **/
+	if(pathname.includes('/sites/rushnet')) {
+		var interval = setInterval(function(){
+			var $i = $('.audio');
+			if ($i.length){
+				$i.load(function(){
+					var $c = $i.contents();
+					$c.find('.mediaPlayerControl').hide();
+				});   
+				clearInterval(interval);
+			}
+			// console.log('.audio interval');
+		},100);
+
+		// clear the interval after 4 seconds if no Audio Articles are shown in the carousel
+		setTimeout(function(){
+			if (interval){
+				clearInterval(interval);
+			}
+		},4000);
+	}
 
 	/***
 	 * Document Centers START
