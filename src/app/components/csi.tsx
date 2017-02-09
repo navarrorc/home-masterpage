@@ -15,9 +15,7 @@ class Image extends React.Component<any, any> {
         <h1>{title}</h1>
         <div className="">          
           <div className="content">          
-            <img src={imageURL} 
-                  style={{maxWidth:"none"}}>
-            </img>
+            <img src={imageURL}></img>
           </div>
         </div>
        </div>

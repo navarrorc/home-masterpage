@@ -68,7 +68,10 @@ export class FooterLinks extends React.Component<any, any> {
         });
     });
   }
-  render(){
+  render(){    
+    const spanStyle = {
+      fontSize: '76%'
+    };
     return (
       <div>
         <div id="footer-container" className="clearfix">
@@ -92,7 +95,11 @@ export class FooterLinks extends React.Component<any, any> {
           </div>
           <div id="footer-information" className="col-xs-3">
             <h1>Information</h1>
-            <p><strong>IT Service Desk 888-758-HELP</strong></p>
+            <p>
+              <strong>IT Service Desk</strong><br/>
+              <strong>1-830-302-5301 <span style={spanStyle}>(from company extensions)</span></strong><br/>
+              <strong>1-888-758-4357 <span style={spanStyle}>(from external lines)</span></strong><br/>
+            </p>
             <nav id="social-link-list">
               <a href={this.state.social.facebook} target="_blank"><i className="icon icon-facebook"></i></a>
               <a href={this.state.social.LinkedIn} target="_blank"><i className="icon icon-linkedin"></i></a>

@@ -173,10 +173,23 @@ span.o365cs-nav-brandingText h1 {
 /**
 ** brandingText
 **/
-a.o365cs-nav-appTitle.o365cs-topnavText.o365button {
+.o365cs-nav-appTitle.o365cs-topnavText {
   margin-top:11px;
 }
 a#O365_MainLink_Logo {
   margin-top: 2px;
+  vertical-align: top;
 }
 
+.o365cs-nav-topItem.o365cs-nav-o365Branding.o365cs-rsp-tn-hideIfAffordanceOn {
+    height: 50px;
+}
+
+.o365cs-nav-appTitleLine.o365cs-nav-brandingText.o365cs-topnavText.o365cs-rsp-tw-hide.o365cs-rsp-tn-hide {
+    vertical-align: top;
+    height: 50px;
+}
+
+span.o365cs-nav-brandingText {
+    margin-top: 2px;
+}

@@ -1,45 +1,46 @@
 
-import * as React from 'react';
-import { fileImages } from '../../../services/shared';
-import { findDOMNode } from 'react-dom';
-import { customStyles } from './modal-styles';
+import * as React from 'react'
+import { fileImages } from '../../../services/shared'
+import { findDOMNode } from 'react-dom'
+import { customStyles } from './modal-styles'
 
-const Modal = require('react-modal');
-const classNames = require('classnames');
-const CSSModules = require('react-css-modules');
-const styles = require('./rig-tough.scss');
+const Modal = require('react-modal')
+const classNames = require('classnames')
+const CSSModules = require('react-css-modules')
+const styles = require('./styles.scss')
 
-declare var unescape: any;
+declare var unescape: any
 
 /**
  * detect IE
  * This returns true for any version of Internet Explorer
  */
-function isIE(userAgent=navigator.userAgent) {
-  return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1;
+function isIE(userAgent = navigator.userAgent) {
+    return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1
 }
 
 
 /***
  * Results Component
  */
-interface StateValues{
-  isModalOpen?: boolean,
-  isImageReady?: boolean,
-  isImageLoadingError?: boolean,
-  document?: {name:string, url:string},
-  mouseX?: number,
-  mouseY?: number 
+interface StateValues {
+    isModalOpen?: boolean,
+    isImageReady?: boolean,
+    isImageLoadingError?: boolean,
+    document?: { name: string, url: string },
+    mouseX?: number,
+    mouseY?: number
 }
 
 @CSSModules(styles, { errorWhenNotFound: true, allowMultiple: true })
 export class Results extends React.Component<any, StateValues> {
+
     constructor(props: any) {
-        super(props);
+        super(props)
         /**
          * State Init
          */
-        this.state = { isModalOpen: false, isImageReady: false, isImageLoadingError: false };
+        this.state = { isModalOpen: false, isImageReady: false, isImageLoadingError: false }
     }
 
     /**
@@ -47,8 +48,9 @@ export class Results extends React.Component<any, StateValues> {
      * Using Arrow functions to avoid having to bind 'this'
      */
     handleItemClick = (evt, document) => {
+
         let mouseX = evt.clientX,
-            mouseY = evt.clientY;
+            mouseY = evt.clientY
         // console.log(mouseX, mouseY);
 
         if (this.state.isModalOpen && _.isEqual(document, this.state.document)) {
@@ -57,7 +59,7 @@ export class Results extends React.Component<any, StateValues> {
                 mouseX,
                 mouseY
             })
-            return;
+            return
         }
 
         this.setState({
@@ -68,15 +70,16 @@ export class Results extends React.Component<any, StateValues> {
             mouseX,
             mouseY
         })
-        // console.log(evt);
-        evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
+ 
+        evt.preventDefault() // necessary to preventing IE from scrolling to top of page
     }
     handleMouseEnter = (evt, document) => {
-        if (isIE())
-            return;
+
+        if ( isIE() )
+            return
 
         let mouseX = evt.clientX,
-            mouseY = evt.clientY;
+            mouseY = evt.clientY
         // console.log(mouseX, mouseY);
 
         this.setState({
@@ -99,7 +102,7 @@ export class Results extends React.Component<any, StateValues> {
         this.setState({ isModalOpen: false })
     }
     handleCloseModalClick = (evt) => {
-        this.setState({ isModalOpen: false });
+        this.setState({ isModalOpen: false })
         evt.preventDefault(); // necessary to preventing IE from scrolling to top of page
     }
     imageLoaded = () => {
@@ -132,7 +135,7 @@ export class Results extends React.Component<any, StateValues> {
     }
     renderModal() {
         if (!this.state.isModalOpen) {
-            return null;
+            return null
         }
 
         let absoluteUrl = _spPageContextInfo.webAbsoluteUrl;
@@ -174,7 +177,7 @@ export class Results extends React.Component<any, StateValues> {
 
     getItem = (item, index) => {
         let pieces = item.name.split('.');
-        let fileExtension = pieces[pieces.length - 1];
+        let fileExtension = pieces[pieces.length - 1].toLowerCase();
 
         let imageUrl;
         _.each(fileImages, (i) => {
@@ -252,11 +255,11 @@ export class Results extends React.Component<any, StateValues> {
                 <span style={{ display: 'block' }}>{ready ? '' : 'Working on it...'}</span>
             </div>
             <div className="row margin-bottom-20">
-                {_.map(groupedItems, this.generateResult) }
+                { _.map(groupedItems, this.generateResult) }
             </div>
             <Modal ref="modal" isOpen={this.state.isModalOpen} onRequestClose={this.handleModalRequestClose}
                 style={customStyles} >
-                {this.renderModal() }
+                { this.renderModal() }
             </Modal>
         </div>
     }
@@ -282,7 +285,7 @@ PreviewButton = (props: PropsValue) => {
                 name: props.fullName,
                 url: props.fileUrl
             }
-            props.onClick(evt, document);
+            props.onClick(evt, document)
         }
     }
 
@@ -313,4 +316,4 @@ PreviewButton = (props: PropsValue) => {
 
 }
 //see: https://github.com/gajus/react-css-modules#loops-and-child-components
-PreviewButton = CSSModules(PreviewButton, styles);
+PreviewButton = CSSModules(PreviewButton, styles)

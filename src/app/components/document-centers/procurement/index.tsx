@@ -8,7 +8,7 @@ import { Results } from './results';
 /***
  * Main Component
  */
-export class DocCenter_RigTough extends React.Component<any, any> {
+export class DocCenter_Procurement extends React.Component<any, any> {
     isMore: boolean;
     items;
     //count:number;
@@ -194,7 +194,7 @@ export class DocCenter_RigTough extends React.Component<any, any> {
             'Created'
         ]
 
-        service.getListItemsWithPaging('documents/marketing', 'Rig Tough', columns).then((data: any) => {
+        service.getListItemsWithPaging('documents/procurement', 'ProcurementDocuments', columns).then((data: any) => {
             this.processNextLink(data.values, data.nextLink);
         })
 
@@ -206,8 +206,8 @@ export class DocCenter_RigTough extends React.Component<any, any> {
     }
     showComponent() {
         ReactDOM.render(
-            <DocCenter_RigTough/>,
-            document.getElementById('doc-results-rigtough')
+            <DocCenter_Procurement/>,
+            document.getElementById('doc-results-procurement')
         );
     }
 }

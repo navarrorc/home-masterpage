@@ -7,7 +7,7 @@ import { customStyles } from './modal-styles';
 const Modal = require('react-modal');
 const classNames = require('classnames');
 const CSSModules = require('react-css-modules');
-const styles = require('./rig-tough.scss');
+const styles = require('./styles.scss');
 
 declare var unescape: any;
 
@@ -15,21 +15,21 @@ declare var unescape: any;
  * detect IE
  * This returns true for any version of Internet Explorer
  */
-function isIE(userAgent=navigator.userAgent) {
-  return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1;
+function isIE(userAgent = navigator.userAgent) {
+    return userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('Edge/') > -1;
 }
 
 
 /***
  * Results Component
  */
-interface StateValues{
-  isModalOpen?: boolean,
-  isImageReady?: boolean,
-  isImageLoadingError?: boolean,
-  document?: {name:string, url:string},
-  mouseX?: number,
-  mouseY?: number 
+interface StateValues {
+    isModalOpen?: boolean,
+    isImageReady?: boolean,
+    isImageLoadingError?: boolean,
+    document?: { name: string, url: string },
+    mouseX?: number,
+    mouseY?: number
 }
 
 @CSSModules(styles, { errorWhenNotFound: true, allowMultiple: true })
@@ -174,7 +174,7 @@ export class Results extends React.Component<any, StateValues> {
 
     getItem = (item, index) => {
         let pieces = item.name.split('.');
-        let fileExtension = pieces[pieces.length - 1];
+        let fileExtension = pieces[pieces.length - 1].toLowerCase();
 
         let imageUrl;
         _.each(fileImages, (i) => {

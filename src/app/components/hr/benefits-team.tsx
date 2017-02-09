@@ -12,7 +12,7 @@ export class BenefitsTeam extends React.Component<any, any> {
     var service = new api.DataService();
     var listColumns = ['Title','Telephone','Region','Popup', 'Classification_List', 'Domain'];
     service.getListItems('hr', 'Benefits Team', listColumns).then((data:any)=>{
-      console.info(JSON.stringify(data));
+      // console.info(JSON.stringify(data));
 
       let grouped = _.groupBy(data, 'Classification_List');
 

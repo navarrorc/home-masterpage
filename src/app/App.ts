@@ -7,13 +7,6 @@ import {FooterLinks} from './components/footer-links';
 import SuiteBarTop = require('./components/suite-bar-top/suite-bar-top');
 
 import actions = require('./actions');
-// import ChirpStore = require('./stores/chirps');
-// [ChirpStore]
-//import {API} from './services/Api';
-
-//import {RssService} from './services/RSS';
-
-// import {StockFeedService} from './services/StockFeed';
 
 import {StockTicker} from './components/stock-ticker';
 
@@ -52,10 +45,15 @@ import {KnowRush} from './components/get-to-know-rush';
 import {CSI} from './components/csi';
 import {Spotlight} from './components/spotlight';
 import {HomeBanner} from './components/home-banner';
+
+// Document Centers
 import {DocumentCenter} from './components/document-center';
 import {DocCenter_BPCForecast} from './components/document-centers/bpc-forecast';
 import { DocCenter_RigTough } from './components/document-centers/rig-tough';
+import { DocCenter_Leasing } from './components/document-centers/leasing';
+import { DocCenter_Procurement } from './components/document-centers/procurement';
 import { DocCenter_WasteExpo } from './components/document-centers/waste-expo';
+import { DocCenter_Telematics } from './components/document-centers/telematics';
 
 // CSS Dependencies
 /*
@@ -135,31 +133,69 @@ renderUI.showSharePointElements(); // only if site Owner
 $(()=>{   
 	let pathname = window.location.pathname.toLowerCase();
 
+	/** Hiding Video Controls on Carousel for Audio Articles **/
+	if(pathname.includes('/sites/rushnet')) {
+		var interval = setInterval(function(){
+			var $i = $('.audio');
+			if ($i.length){
+				$i.load(function(){
+					var $c = $i.contents();
+					$c.find('.mediaPlayerControl').hide();
+				});   
+				clearInterval(interval);
+			}
+			// console.log('.audio interval');
+		},100);
+
+		// clear the interval after 4 seconds if no Audio Articles are shown in the carousel
+		setTimeout(function(){
+			if (interval){
+				clearInterval(interval);
+			}
+		},4000);
+	}
+
 	/***
 	 * Document Centers START
 	 */
-	if(pathname.indexOf('/documents/nationalaccounts') > 0) {
+	if ( pathname.includes('/documents/nationalaccounts') ) {
 		let doc = new DocumentCenter(null);
 		doc.showComponent();
 	}
 
-	if(pathname.indexOf('/documents/finance/pages/bpc-forecast') > 0) {
+	if ( pathname.includes('/documents/finance/pages/bpc-forecast') ) {
 		let doc = new DocCenter_BPCForecast(null);
 		doc.showComponent();
 	}
 
-	if ( pathname.indexOf('/documents/marketing/pages/rigtough') > 0 ) {
+	if ( pathname.includes('/documents/marketing/pages/rigtough') ) {
 		let doc = new DocCenter_RigTough(null);
 		doc.showComponent();
 	}
 
-	if ( pathname.indexOf('/documents/marketing/pages/waste-expo-photos-2016') > 0 ) {
+	if ( pathname.includes('/documents/leasing/pages/leasing') ) {
+		let doc = new DocCenter_Leasing(null);
+		doc.showComponent();
+	}
+
+	if ( pathname.includes('/documents/procurement/pages/procurement') ) {
+		let doc = new DocCenter_Procurement(null);
+		doc.showComponent();
+	}
+
+	if ( pathname.includes('/documents/marketing/pages/waste-expo-photos-2016') ) {
 		let doc = new DocCenter_WasteExpo(null);
 		doc.showComponent();
 	}
 
+	if ( pathname.includes('/documents/telematics/pages/documentcenterhome') ) {
+		let doc = new DocCenter_Telematics(null)
+		doc.showComponent()
+	}
 
-	/********************END*************************/
+	/***
+	 * END
+	 */
 
 	// Render the SuiteBarTop Components
 	SuiteBarTop.showComponents();
