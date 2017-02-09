@@ -53,6 +53,7 @@ import { DocCenter_RigTough } from './components/document-centers/rig-tough';
 import { DocCenter_Leasing } from './components/document-centers/leasing';
 import { DocCenter_Procurement } from './components/document-centers/procurement';
 import { DocCenter_WasteExpo } from './components/document-centers/waste-expo';
+import { DocCenter_Telematics } from './components/document-centers/telematics';
 
 // CSS Dependencies
 /*
@@ -157,36 +158,41 @@ $(()=>{
 	/***
 	 * Document Centers START
 	 */
-	if(pathname.includes('/documents/nationalaccounts')) {
+	if ( pathname.includes('/documents/nationalaccounts') ) {
 		let doc = new DocumentCenter(null);
 		doc.showComponent();
 	}
 
-	if(pathname.includes('/documents/finance/pages/bpc-forecast')) {
+	if ( pathname.includes('/documents/finance/pages/bpc-forecast') ) {
 		let doc = new DocCenter_BPCForecast(null);
 		doc.showComponent();
 	}
 
-	if ( pathname.includes('/documents/marketing/pages/rigtough' )) {
+	if ( pathname.includes('/documents/marketing/pages/rigtough') ) {
 		let doc = new DocCenter_RigTough(null);
 		doc.showComponent();
 	}
 
-	if ( pathname.includes('/documents/leasing/pages/leasing' )) {
+	if ( pathname.includes('/documents/leasing/pages/leasing') ) {
 		let doc = new DocCenter_Leasing(null);
 		doc.showComponent();
 	}
 
-	if ( pathname.includes('/documents/procurement/pages/procurement' )) {
+	if ( pathname.includes('/documents/procurement/pages/procurement') ) {
 		let doc = new DocCenter_Procurement(null);
 		doc.showComponent();
 	}
-
 
 	if ( pathname.includes('/documents/marketing/pages/waste-expo-photos-2016') ) {
 		let doc = new DocCenter_WasteExpo(null);
 		doc.showComponent();
 	}
+
+	if ( pathname.includes('/documents/telematics/pages/documentcenterhome') ) {
+		let doc = new DocCenter_Telematics(null)
+		doc.showComponent()
+	}
+
 	/***
 	 * END
 	 */
